@@ -1,12 +1,34 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 40" width="120" height="40">
-  <!-- Legs -->
-  <rect x="0" y="18" width="20" height="4" fill="#B0BEC5" />
-  <rect x="100" y="18" width="20" height="4" fill="#B0BEC5" />
-  <!-- Body -->
-  <path d="M20 15 c 5 -5, 10 -5, 15 -2 h 50 c 5 -3, 10 -3, 15 2 v 10 c -5 5, -10 5, -15 2 h -50 c -5 3, -10 3, -15 -2 z" fill="#E2C29B" />
-  <!-- Bands -->
-  <rect x="35" y="13.5" width="4" height="13" fill="#D32F2F" /> <!-- Red -->
-  <rect x="45" y="14" width="4" height="12" fill="#D32F2F" /> <!-- Red -->
-  <rect x="55" y="14" width="4" height="12" fill="#000000" /> <!-- Black -->
-  <rect x="75" y="13.5" width="4" height="13" fill="#D4AF37" /> <!-- Gold -->
+  <defs>
+    <!-- 3D Cylindrical Gradient for Resistor Body -->
+    <linearGradient id="bodyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.6" />
+      <stop offset="30%" stop-color="#FFFFFF" stop-opacity="0.1" />
+      <stop offset="70%" stop-color="#000000" stop-opacity="0.1" />
+      <stop offset="100%" stop-color="#000000" stop-opacity="0.5" />
+    </linearGradient>
+    <!-- Metallic Gradient for Legs -->
+    <linearGradient id="legGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#E0E0E0" />
+      <stop offset="50%" stop-color="#FFFFFF" />
+      <stop offset="100%" stop-color="#9E9E9E" />
+    </linearGradient>
+  </defs>
+
+  <!-- Left Leg -->
+  <rect x="0" y="18" width="26" height="4" fill="url(#legGrad)" />
+  <!-- Right Leg -->
+  <rect x="94" y="18" width="26" height="4" fill="url(#legGrad)" />
+  
+  <!-- Bulbous Resistor Body -->
+  <path d="M 25 10 C 35 10, 35 14, 40 14 L 80 14 C 85 14, 85 10, 95 10 L 95 30 C 85 30, 85 26, 80 26 L 40 26 C 35 26, 35 30, 25 30 Z" fill="#e3c396" />
+  
+  <!-- Color Bands (Red, Red, Brown, Gold) -->
+  <path d="M 32 11.5 L 36 12 L 36 28 L 32 28.5 Z" fill="#D32F2F" /> <!-- Red -->
+  <path d="M 45 14 L 49 14 L 49 26 L 45 26 Z" fill="#D32F2F" /> <!-- Red -->
+  <path d="M 58 14 L 62 14 L 62 26 L 58 26 Z" fill="#5D4037" /> <!-- Brown -->
+  <path d="M 82 12 L 86 11.5 L 86 28.5 L 82 28 Z" fill="#CFB53B" /> <!-- Gold -->
+
+  <!-- Shading overlay for 3D effect -->
+  <path d="M 25 10 C 35 10, 35 14, 40 14 L 80 14 C 85 14, 85 10, 95 10 L 95 30 C 85 30, 85 26, 80 26 L 40 26 C 35 26, 35 30, 25 30 Z" fill="url(#bodyGrad)" pointer-events="none" />
 </svg>

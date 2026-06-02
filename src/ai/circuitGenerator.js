@@ -10,6 +10,7 @@
 
 import { componentRegistry } from './componentRegistry.js';
 import { safetyEngine } from './safetyEngine.js';
+import { autoCorrectionEngine } from './autoCorrectionEngine.js';
 
 export class CircuitGenerator {
     constructor() {
@@ -40,8 +41,25 @@ export class CircuitGenerator {
         // Step 4: Customize based on entities
         circuit = this._customizeCircuit(circuit, entities);
 
-        // Step 5: Validate circuit
-        const validation = safetyEngine.analyze(circuit);
+        // Step 5: Validate circuit and apply AI auto-corrections
+        let validation = safetyEngine.analyze(circuit);
+        const autoCorrections = autoCorrectionEngine.analyze(circuit);
+        
+        if (autoCorrections.autoFixable > 0) {
+            autoCorrections.suggestions.filter(s => s.autoFixable).forEach(fix => {
+                autoCorrectionEngine.applyFix(fix, circuit);
+            });
+            // Re-validate after fixes
+            validation = safetyEngine.analyze(circuit);
+        }
+
+        // Reject if critical issues still exist after auto-fix attempts
+        if (validation.critical.length > 0) {
+            return {
+                success: false,
+                error: `Generated circuit rejected due to unfixable critical safety hazards: ${validation.critical[0].message}`
+            };
+        }
 
         // Step 6: Generate code
         const code = this._generateCode(circuit, intent);

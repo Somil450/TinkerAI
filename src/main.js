@@ -11,6 +11,7 @@ import { getComponentHTML } from './ui/svgRenderer.js'
 import { autoWire } from './engine/autoWire.js'
 import { initializeAIUI } from './ai/uiIntegration.js'
 import { safetyEngine } from './ai/safetyEngine.js'
+import { autoCorrectionEngine } from './ai/autoCorrectionEngine.js'
 import { simulator } from './engine/simulator.js'
 
 document.querySelector('#app').innerHTML = `
@@ -89,13 +90,24 @@ startSimBtn.addEventListener('click', () => {
   }
 
   const connections = getConnections();
-  const circuitGraph = { components: componentRegistry, connections };
+  const circuitGraph = {
+    components: componentRegistry.map(c => ({ id: c.id, type: c.type })),
+    connections: connections.map(c => ({ from: c.from, to: c.to })),
+  };
+
+  const safetyStatus = validateCircuit(connections);
   
-  const safetyStatus = safetyEngine.analyze(circuitGraph);
-  
-  if (!safetyStatus.isSafe) {
-    const criticalIssue = safetyStatus.critical[0];
-    alert(`SIMULATION HALTED! Safety Hazard Detected: ${criticalIssue.message}\nImpact: ${criticalIssue.impact}`);
+  if (!safetyStatus.valid) {
+    const issue = safetyStatus.issues[0];
+    const corrections = autoCorrectionEngine.analyze(circuitGraph);
+    
+    let fixMsg = '';
+    if (corrections.suggestions && corrections.suggestions.length > 0) {
+        const fix = corrections.suggestions[0];
+        fixMsg = `\n\nSuggestion: ${fix.suggestion}`;
+    }
+    
+    alert(`SIMULATION HALTED! Safety Hazard Detected: ${issue.message}${fixMsg}`);
     return;
   }
 
@@ -158,11 +170,12 @@ canvas.addEventListener('drop', e => {
     selectedComponent = item
     selectedComponent.classList.add('selected')
     
+    const safetyStatus = validateCircuit(getConnections())
     propertiesContent.innerHTML = renderProperties({
       type,
       id: item.dataset.componentId,
       pinCount: item.querySelectorAll('.pin').length
-    })
+    }, safetyStatus)
     propertiesPanel.classList.remove('hidden')
   })
 
@@ -204,7 +217,16 @@ canvas.addEventListener('drop', e => {
       console.clear()
       console.log("Connections:", getConnections())
       console.log("Graph:", buildGraph(getConnections()))
-      console.log("Validation:", validateCircuit(getConnections()))
+      const validation = validateCircuit(getConnections())
+      console.log("Validation:", validation)
+      if (selectedComponent) {
+        const type = componentRegistry.find(c => c.id === selectedComponent.dataset.componentId)?.type || "Unknown";
+        propertiesContent.innerHTML = renderProperties({
+          type,
+          id: selectedComponent.dataset.componentId,
+          pinCount: selectedComponent.querySelectorAll('.pin').length
+        }, validation)
+      }
     })
   })
 

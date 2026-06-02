@@ -1,17 +1,17 @@
-import { COMPONENTS } from "../components/index.js"
+import { componentRegistry } from "../ai/componentRegistry.js"
+import { getComponentIcon } from "./componentIcons.js"
 
 export function renderSidebar() {
-    return COMPONENTS.map(component => `
+    return componentRegistry.getAll().map(component => `
         <div
             class="component"
             draggable="true"
-            data-type="${component.type}"
+            data-type="${component.id}"
         >
-            <div class="component-icon">
-                <img src="/src/assets/${component.type.toLowerCase()}.svg" alt="${component.name}" style="width: 100%; height: 100%; object-fit: contain; padding: 4px;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
-                <span style="display: none; font-weight: 700; font-size: 18px; color: #1a73e8;">${component.name.charAt(0)}</span>
+            <div class="component-icon" style="display: flex; align-items: center; justify-content: center; width: 40px; height: 40px;">
+                ${getComponentIcon(component.id)}
             </div>
-            <span>${component.name}</span>
+            <span style="font-size: 11px; text-align: center; margin-top: 5px; width: 100%; display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" title="${component.name}">${component.name}</span>
         </div>
     `).join("")
 }

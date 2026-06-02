@@ -418,6 +418,638 @@ export class ComponentRegistry {
             commonUses: ['IoT device', 'Data logging cloud', 'Weather station'],
             tips: ['Needs 3.3V', 'Can replace Arduino as main controller', 'Powerful WiFi capabilities'],
         });
+
+        // === MORE MICROCONTROLLERS ===
+        this.register({ id: 'arduino-mega', name: 'Arduino Mega 2560', category: 'Microcontroller', price: 35,
+            pins: { '5V': { type: 'power', voltage: 5, maxCurrent: 800 }, 'GND': { type: 'ground' }, 'D0-D53': { type: 'digital_io', voltage: 5, count: 54 }, 'A0-A15': { type: 'analog_input', voltage: 5, count: 16 } },
+            specs: { processor: 'ATmega2560', clockSpeed: '16 MHz', memory: '256 KB', operatingVoltage: 5 }, protocols: ['UART', 'I2C', 'SPI'] });
+
+        this.register({ id: 'arduino-leonardo', name: 'Arduino Leonardo', category: 'Microcontroller', price: 20,
+            specs: { processor: 'ATmega32u4', clockSpeed: '16 MHz', memory: '32 KB', operatingVoltage: 5 }, protocols: ['UART', 'I2C', 'SPI', 'USB HID'] });
+
+        this.register({ id: 'arduino-due', name: 'Arduino Due', category: 'Microcontroller', price: 40,
+            specs: { processor: 'Atmel SAM3X8E ARM Cortex-M3', clockSpeed: '84 MHz', memory: '512 KB', operatingVoltage: 3.3 }, protocols: ['UART', 'I2C', 'SPI', 'CAN'] });
+
+        this.register({ id: 'raspberry-pi-pico', name: 'Raspberry Pi Pico', category: 'Microcontroller', price: 4,
+            pins: { '3V3': { type: 'power', voltage: 3.3 }, 'GND': { type: 'ground' }, 'GP0-GP28': { type: 'digital_io', voltage: 3.3, count: 26 } },
+            specs: { processor: 'RP2040 Dual ARM Cortex-M0+', clockSpeed: '133 MHz', memory: '264 KB SRAM + 2 MB Flash', operatingVoltage: 3.3 }, protocols: ['UART', 'I2C', 'SPI', 'USB'] });
+
+        this.register({ id: 'raspberry-pi-pico-w', name: 'Raspberry Pi Pico W', category: 'Microcontroller', price: 6,
+            specs: { processor: 'RP2040 + CYW43439 WiFi', clockSpeed: '133 MHz', memory: '264 KB SRAM + 2 MB Flash', operatingVoltage: 3.3 }, protocols: ['UART', 'I2C', 'SPI', 'WiFi', 'Bluetooth'] });
+
+        this.register({ id: 'stm32-bluepill', name: 'STM32 Blue Pill (STM32F103)', category: 'Microcontroller', price: 3,
+            specs: { processor: 'ARM Cortex-M3', clockSpeed: '72 MHz', memory: '64 KB Flash + 20 KB SRAM', operatingVoltage: 3.3 }, protocols: ['UART', 'I2C', 'SPI', 'USB', 'CAN'] });
+
+        this.register({ id: 'attiny85', name: 'ATtiny85 Digispark', category: 'Microcontroller', price: 2,
+            specs: { processor: 'ATtiny85', clockSpeed: '16 MHz', memory: '8 KB', operatingVoltage: 5 }, protocols: ['I2C', 'SPI'] });
+
+        this.register({ id: 'teensy-4', name: 'Teensy 4.0', category: 'Microcontroller', price: 20,
+            specs: { processor: 'ARM Cortex-M7', clockSpeed: '600 MHz', memory: '2 MB Flash + 1 MB RAM', operatingVoltage: 3.3 }, protocols: ['UART', 'I2C', 'SPI', 'USB', 'CAN'] });
+
+        this.register({ id: 'bbc-microbit', name: 'BBC micro:bit V2', category: 'Microcontroller', price: 15,
+            specs: { processor: 'nRF52833 ARM Cortex-M4', clockSpeed: '64 MHz', memory: '512 KB Flash + 128 KB RAM', operatingVoltage: 3.3 }, protocols: ['Bluetooth', 'I2C', 'SPI', 'USB'] });
+
+        this.register({ id: 'esp32-s3', name: 'ESP32-S3', category: 'Microcontroller', price: 10,
+            specs: { processor: 'Xtensa 32-bit LX7 Dual-Core', clockSpeed: '240 MHz', memory: '512 KB SRAM + 8 MB PSRAM', operatingVoltage: 3.3 }, protocols: ['WiFi', 'Bluetooth 5', 'USB', 'I2C', 'SPI'] });
+
+        this.register({ id: 'esp32-c3', name: 'ESP32-C3', category: 'Microcontroller', price: 5,
+            specs: { processor: 'RISC-V 32-bit', clockSpeed: '160 MHz', memory: '400 KB SRAM + 4 MB Flash', operatingVoltage: 3.3 }, protocols: ['WiFi', 'Bluetooth 5', 'I2C', 'SPI'] });
+
+        // === MORE SENSORS ===
+        this.register({ id: 'dht11', name: 'DHT11 Temperature & Humidity', category: 'Sensor', subcategory: 'Environmental', price: 1.50,
+            pins: { 'VCC': { type: 'power', voltage: 5 }, 'GND': { type: 'ground' }, 'OUT': { type: 'digital_io', voltage: 5 } },
+            specs: { operatingVoltage: 5, temperature: { range: '0-50°C', accuracy: '±2°C' }, humidity: { range: '20-90%', accuracy: '±5%' } } });
+
+        this.register({ id: 'ldr', name: 'LDR (Light Dependent Resistor)', category: 'Sensor', subcategory: 'Light', price: 0.30,
+            pins: { 'pin1': { type: 'analog' }, 'pin2': { type: 'analog' } },
+            specs: { resistance: '1kΩ (light) to 10MΩ (dark)', operatingVoltage: 5 } });
+
+        this.register({ id: 'pir-sensor', name: 'PIR Motion Sensor (HC-SR501)', category: 'Sensor', subcategory: 'Motion', price: 1.50,
+            pins: { 'VCC': { type: 'power', voltage: 5 }, 'GND': { type: 'ground' }, 'OUT': { type: 'digital_output', voltage: 3.3 } },
+            specs: { operatingVoltage: 5, range: '7m', angle: '120°', delay: '0.3-300s' } });
+
+        this.register({ id: 'ir-sensor', name: 'IR Obstacle Sensor', category: 'Sensor', subcategory: 'Proximity', price: 1,
+            pins: { 'VCC': { type: 'power', voltage: 5 }, 'GND': { type: 'ground' }, 'OUT': { type: 'digital_output' } },
+            specs: { operatingVoltage: 5, range: '2-30cm' } });
+
+        this.register({ id: 'ir-receiver', name: 'IR Receiver (TSOP1838)', category: 'Sensor', subcategory: 'IR', price: 0.50,
+            pins: { 'VCC': { type: 'power', voltage: 5 }, 'GND': { type: 'ground' }, 'OUT': { type: 'digital_output' } },
+            specs: { operatingVoltage: 5, frequency: '38 kHz' } });
+
+        this.register({ id: 'soil-moisture', name: 'Soil Moisture Sensor', category: 'Sensor', subcategory: 'Environmental', price: 1,
+            pins: { 'VCC': { type: 'power', voltage: 5 }, 'GND': { type: 'ground' }, 'AO': { type: 'analog_output' }, 'DO': { type: 'digital_output' } },
+            specs: { operatingVoltage: 5 } });
+
+        this.register({ id: 'mq2-gas', name: 'MQ-2 Gas/Smoke Sensor', category: 'Sensor', subcategory: 'Gas', price: 2.50,
+            pins: { 'VCC': { type: 'power', voltage: 5 }, 'GND': { type: 'ground' }, 'AO': { type: 'analog_output' }, 'DO': { type: 'digital_output' } },
+            specs: { operatingVoltage: 5, gases: ['LPG', 'Methane', 'Smoke', 'Hydrogen'] } });
+
+        this.register({ id: 'mq135-air', name: 'MQ-135 Air Quality Sensor', category: 'Sensor', subcategory: 'Gas', price: 3,
+            pins: { 'VCC': { type: 'power', voltage: 5 }, 'GND': { type: 'ground' }, 'AO': { type: 'analog_output' }, 'DO': { type: 'digital_output' } },
+            specs: { operatingVoltage: 5, gases: ['NH3', 'NOx', 'Alcohol', 'Benzene', 'Smoke', 'CO2'] } });
+
+        this.register({ id: 'water-level', name: 'Water Level Sensor', category: 'Sensor', subcategory: 'Liquid', price: 1,
+            pins: { 'VCC': { type: 'power', voltage: 5 }, 'GND': { type: 'ground' }, 'S': { type: 'analog_output' } },
+            specs: { operatingVoltage: 5, depth: '40mm' } });
+
+        this.register({ id: 'flame-sensor', name: 'Flame Sensor Module', category: 'Sensor', subcategory: 'Safety', price: 1.50,
+            pins: { 'VCC': { type: 'power', voltage: 5 }, 'GND': { type: 'ground' }, 'DO': { type: 'digital_output' }, 'AO': { type: 'analog_output' } },
+            specs: { operatingVoltage: 5, wavelength: '760-1100nm', angle: '60°' } });
+
+        this.register({ id: 'sound-sensor', name: 'Sound/Microphone Sensor', category: 'Sensor', subcategory: 'Audio', price: 1,
+            pins: { 'VCC': { type: 'power', voltage: 5 }, 'GND': { type: 'ground' }, 'AO': { type: 'analog_output' }, 'DO': { type: 'digital_output' } },
+            specs: { operatingVoltage: 5 } });
+
+        this.register({ id: 'bmp280', name: 'BMP280 Barometric Pressure', category: 'Sensor', subcategory: 'Environmental', price: 2,
+            pins: { 'VCC': { type: 'power', voltage: 3.3 }, 'GND': { type: 'ground' }, 'SCL': { type: 'i2c_clock' }, 'SDA': { type: 'i2c_data' } },
+            specs: { operatingVoltage: 3.3, pressure: '300-1100 hPa', temperature: '-40 to 85°C', accuracy: '±1 hPa' }, protocols: ['I2C', 'SPI'] });
+
+        this.register({ id: 'bme280', name: 'BME280 Temp/Humidity/Pressure', category: 'Sensor', subcategory: 'Environmental', price: 4,
+            pins: { 'VCC': { type: 'power', voltage: 3.3 }, 'GND': { type: 'ground' }, 'SCL': { type: 'i2c_clock' }, 'SDA': { type: 'i2c_data' } },
+            specs: { operatingVoltage: 3.3 }, protocols: ['I2C', 'SPI'] });
+
+        this.register({ id: 'adxl345', name: 'ADXL345 Accelerometer', category: 'Sensor', subcategory: 'Motion', price: 3,
+            pins: { 'VCC': { type: 'power', voltage: 3.3 }, 'GND': { type: 'ground' }, 'SCL': { type: 'i2c_clock' }, 'SDA': { type: 'i2c_data' } },
+            specs: { operatingVoltage: 3.3, range: '±16g', resolution: '13-bit' }, protocols: ['I2C', 'SPI'] });
+
+        this.register({ id: 'acs712', name: 'ACS712 Current Sensor', category: 'Sensor', subcategory: 'Current', price: 3,
+            pins: { 'VCC': { type: 'power', voltage: 5 }, 'GND': { type: 'ground' }, 'OUT': { type: 'analog_output' }, 'IP+': { type: 'power' }, 'IP-': { type: 'power' } },
+            specs: { operatingVoltage: 5, range: '±5A / ±20A / ±30A', sensitivity: '185/100/66 mV/A' } });
+
+        this.register({ id: 'hx711', name: 'HX711 Load Cell Amplifier', category: 'Sensor', subcategory: 'Weight', price: 1.50,
+            pins: { 'VCC': { type: 'power', voltage: 5 }, 'GND': { type: 'ground' }, 'DT': { type: 'digital_io' }, 'SCK': { type: 'digital_io' }, 'E+': { type: 'analog' }, 'E-': { type: 'analog' }, 'A+': { type: 'analog' }, 'A-': { type: 'analog' } },
+            specs: { operatingVoltage: 5, resolution: '24-bit ADC', gain: '128/64' } });
+
+        this.register({ id: 'max30102', name: 'MAX30102 Heart Rate/SpO2', category: 'Sensor', subcategory: 'Medical', price: 4,
+            pins: { 'VCC': { type: 'power', voltage: 3.3 }, 'GND': { type: 'ground' }, 'SCL': { type: 'i2c_clock' }, 'SDA': { type: 'i2c_data' } },
+            specs: { operatingVoltage: 3.3 }, protocols: ['I2C'] });
+
+        this.register({ id: 'ds18b20', name: 'DS18B20 Waterproof Temp Probe', category: 'Sensor', subcategory: 'Temperature', price: 2.50,
+            pins: { 'VCC': { type: 'power', voltage: 5 }, 'GND': { type: 'ground' }, 'DQ': { type: 'digital_io' } },
+            specs: { operatingVoltage: 5, range: '-55 to 125°C', accuracy: '±0.5°C', resolution: '12-bit' }, protocols: ['OneWire'] });
+
+        this.register({ id: 'tcs3200', name: 'TCS3200 Color Sensor', category: 'Sensor', subcategory: 'Color', price: 3,
+            pins: { 'VCC': { type: 'power', voltage: 5 }, 'GND': { type: 'ground' }, 'S0': { type: 'digital_input' }, 'S1': { type: 'digital_input' }, 'S2': { type: 'digital_input' }, 'S3': { type: 'digital_input' }, 'OUT': { type: 'digital_output' } },
+            specs: { operatingVoltage: 5 } });
+
+        this.register({ id: 'rain-sensor', name: 'Rain Sensor Module', category: 'Sensor', subcategory: 'Weather', price: 1,
+            pins: { 'VCC': { type: 'power', voltage: 5 }, 'GND': { type: 'ground' }, 'AO': { type: 'analog_output' }, 'DO': { type: 'digital_output' } },
+            specs: { operatingVoltage: 5 } });
+
+        this.register({ id: 'touch-sensor', name: 'TTP223 Capacitive Touch', category: 'Sensor', subcategory: 'Touch', price: 0.50,
+            pins: { 'VCC': { type: 'power', voltage: 5 }, 'GND': { type: 'ground' }, 'SIG': { type: 'digital_output' } },
+            specs: { operatingVoltage: 2.0 } });
+
+        this.register({ id: 'rotary-encoder', name: 'Rotary Encoder (KY-040)', category: 'Sensor', subcategory: 'Input', price: 1,
+            pins: { 'VCC': { type: 'power', voltage: 5 }, 'GND': { type: 'ground' }, 'CLK': { type: 'digital_output' }, 'DT': { type: 'digital_output' }, 'SW': { type: 'digital_output' } },
+            specs: { operatingVoltage: 5, pulsesPerRevolution: 20 } });
+
+        this.register({ id: 'hall-effect', name: 'Hall Effect Sensor (A3144)', category: 'Sensor', subcategory: 'Magnetic', price: 0.50,
+            pins: { 'VCC': { type: 'power', voltage: 5 }, 'GND': { type: 'ground' }, 'OUT': { type: 'digital_output' } },
+            specs: { operatingVoltage: 5 } });
+
+        this.register({ id: 'vibration-sensor', name: 'Vibration Sensor (SW-420)', category: 'Sensor', subcategory: 'Motion', price: 1,
+            pins: { 'VCC': { type: 'power', voltage: 5 }, 'GND': { type: 'ground' }, 'DO': { type: 'digital_output' } },
+            specs: { operatingVoltage: 5 } });
+
+        this.register({ id: 'uv-sensor', name: 'UV Sensor (GUVA-S12SD)', category: 'Sensor', subcategory: 'Light', price: 3,
+            pins: { 'VCC': { type: 'power', voltage: 5 }, 'GND': { type: 'ground' }, 'OUT': { type: 'analog_output' } },
+            specs: { operatingVoltage: 5, wavelength: '240-370nm' } });
+
+        this.register({ id: 'flex-sensor', name: 'Flex Sensor (2.2")', category: 'Sensor', subcategory: 'Bend', price: 8,
+            pins: { 'pin1': { type: 'analog' }, 'pin2': { type: 'analog' } },
+            specs: { resistance: '25kΩ (flat) to 100kΩ (bent)' } });
+
+        this.register({ id: 'force-sensor', name: 'Force Sensitive Resistor (FSR)', category: 'Sensor', subcategory: 'Pressure', price: 5,
+            pins: { 'pin1': { type: 'analog' }, 'pin2': { type: 'analog' } },
+            specs: { force: '0.1N to 100N' } });
+
+        this.register({ id: 'tilt-sensor', name: 'Tilt Sensor (SW-520D)', category: 'Sensor', subcategory: 'Motion', price: 0.50,
+            pins: { 'pin1': { type: 'digital' }, 'pin2': { type: 'digital' } },
+            specs: { angle: '15° activation' } });
+
+        this.register({ id: 'fingerprint-sensor', name: 'Fingerprint Sensor (R307)', category: 'Sensor', subcategory: 'Biometric', price: 15,
+            pins: { 'VCC': { type: 'power', voltage: 5 }, 'GND': { type: 'ground' }, 'TX': { type: 'uart_out' }, 'RX': { type: 'uart_in' } },
+            specs: { operatingVoltage: 5, capacity: '1000 fingerprints', baudRate: 57600 }, protocols: ['UART'] });
+
+        this.register({ id: 'voltage-sensor', name: 'Voltage Sensor Module (0-25V)', category: 'Sensor', subcategory: 'Voltage', price: 1,
+            pins: { 'VCC': { type: 'power' }, 'GND': { type: 'ground' }, 'S': { type: 'analog_output' } },
+            specs: { range: '0-25V DC', resolution: '0.00489V' } });
+
+        // === DISPLAYS ===
+        this.register({ id: 'lcd-16x2', name: 'LCD 16x2 Display', category: 'Display', subcategory: 'LCD', price: 3,
+            pins: { 'VCC': { type: 'power', voltage: 5 }, 'GND': { type: 'ground' }, 'SDA': { type: 'i2c_data' }, 'SCL': { type: 'i2c_clock' } },
+            specs: { operatingVoltage: 5, rows: 2, columns: 16 }, protocols: ['I2C'] });
+
+        this.register({ id: 'lcd-20x4', name: 'LCD 20x4 Display', category: 'Display', subcategory: 'LCD', price: 6,
+            pins: { 'VCC': { type: 'power', voltage: 5 }, 'GND': { type: 'ground' }, 'SDA': { type: 'i2c_data' }, 'SCL': { type: 'i2c_clock' } },
+            specs: { operatingVoltage: 5, rows: 4, columns: 20 }, protocols: ['I2C'] });
+
+        this.register({ id: 'oled-096', name: 'OLED 0.96" Display (SSD1306)', category: 'Display', subcategory: 'OLED', price: 4,
+            pins: { 'VCC': { type: 'power', voltage: 3.3 }, 'GND': { type: 'ground' }, 'SCL': { type: 'i2c_clock' }, 'SDA': { type: 'i2c_data' } },
+            specs: { operatingVoltage: 3.3, resolution: '128x64', driver: 'SSD1306' }, protocols: ['I2C'] });
+
+        this.register({ id: 'oled-130', name: 'OLED 1.3" Display (SH1106)', category: 'Display', subcategory: 'OLED', price: 5,
+            pins: { 'VCC': { type: 'power', voltage: 3.3 }, 'GND': { type: 'ground' }, 'SCL': { type: 'i2c_clock' }, 'SDA': { type: 'i2c_data' } },
+            specs: { operatingVoltage: 3.3, resolution: '128x64', driver: 'SH1106' }, protocols: ['I2C'] });
+
+        this.register({ id: 'tft-18', name: 'TFT 1.8" Color Display (ST7735)', category: 'Display', subcategory: 'TFT', price: 5,
+            pins: { 'VCC': { type: 'power', voltage: 3.3 }, 'GND': { type: 'ground' }, 'CS': { type: 'spi' }, 'RST': { type: 'digital' }, 'DC': { type: 'digital' }, 'MOSI': { type: 'spi' }, 'CLK': { type: 'spi' } },
+            specs: { operatingVoltage: 3.3, resolution: '128x160', colors: '65K' }, protocols: ['SPI'] });
+
+        this.register({ id: 'tft-28', name: 'TFT 2.8" Touch Display (ILI9341)', category: 'Display', subcategory: 'TFT', price: 12,
+            pins: { 'VCC': { type: 'power', voltage: 3.3 }, 'GND': { type: 'ground' }, 'CS': { type: 'spi' }, 'RST': { type: 'digital' }, 'DC': { type: 'digital' }, 'MOSI': { type: 'spi' }, 'CLK': { type: 'spi' }, 'T_CS': { type: 'spi' } },
+            specs: { operatingVoltage: 3.3, resolution: '240x320', touch: 'resistive' }, protocols: ['SPI'] });
+
+        this.register({ id: '7seg-display', name: '7-Segment Display (Common Cathode)', category: 'Display', subcategory: 'LED', price: 0.50,
+            pins: { 'a': {type:'digital'}, 'b': {type:'digital'}, 'c': {type:'digital'}, 'd': {type:'digital'}, 'e': {type:'digital'}, 'f': {type:'digital'}, 'g': {type:'digital'}, 'dp': {type:'digital'}, 'CC': {type:'ground'} },
+            specs: { operatingVoltage: 5 } });
+
+        this.register({ id: '4digit-7seg', name: '4-Digit 7-Segment (TM1637)', category: 'Display', subcategory: 'LED', price: 1.50,
+            pins: { 'VCC': { type: 'power', voltage: 5 }, 'GND': { type: 'ground' }, 'CLK': { type: 'digital' }, 'DIO': { type: 'digital' } },
+            specs: { operatingVoltage: 5, digits: 4 } });
+
+        this.register({ id: 'led-matrix-8x8', name: 'LED Matrix 8x8 (MAX7219)', category: 'Display', subcategory: 'LED', price: 3,
+            pins: { 'VCC': { type: 'power', voltage: 5 }, 'GND': { type: 'ground' }, 'DIN': { type: 'spi' }, 'CS': { type: 'spi' }, 'CLK': { type: 'spi' } },
+            specs: { operatingVoltage: 5, resolution: '8x8', driver: 'MAX7219' }, protocols: ['SPI'] });
+
+        this.register({ id: 'epaper', name: 'E-Paper/E-Ink Display 2.9"', category: 'Display', subcategory: 'E-Paper', price: 15,
+            pins: { 'VCC': { type: 'power', voltage: 3.3 }, 'GND': { type: 'ground' }, 'DIN': { type: 'spi' }, 'CLK': { type: 'spi' }, 'CS': { type: 'spi' }, 'DC': { type: 'digital' }, 'RST': { type: 'digital' }, 'BUSY': { type: 'digital' } },
+            specs: { operatingVoltage: 3.3, resolution: '296x128' }, protocols: ['SPI'] });
+
+        this.register({ id: 'neopixel-ring', name: 'NeoPixel Ring (WS2812B x16)', category: 'Display', subcategory: 'Addressable LED', price: 8,
+            pins: { 'VCC': { type: 'power', voltage: 5 }, 'GND': { type: 'ground' }, 'DIN': { type: 'digital_input' } },
+            specs: { operatingVoltage: 5, leds: 16 } });
+
+        this.register({ id: 'neopixel-strip', name: 'NeoPixel LED Strip (WS2812B x30)', category: 'Display', subcategory: 'Addressable LED', price: 10,
+            pins: { 'VCC': { type: 'power', voltage: 5 }, 'GND': { type: 'ground' }, 'DIN': { type: 'digital_input' } },
+            specs: { operatingVoltage: 5, leds: 30, perMeter: 30 } });
+
+        // === MORE ACTUATORS ===
+        this.register({ id: 'dc-motor-6v', name: 'DC Motor 6V', category: 'Actuator', subcategory: 'Motor', price: 2,
+            pins: { '+': { type: 'power', voltage: 6 }, '-': { type: 'power' } },
+            specs: { operatingVoltage: 6, stallCurrent: 1200, speed: '8000 RPM' } });
+
+        this.register({ id: 'dc-motor-12v', name: 'DC Motor 12V', category: 'Actuator', subcategory: 'Motor', price: 4,
+            pins: { '+': { type: 'power', voltage: 12 }, '-': { type: 'power' } },
+            specs: { operatingVoltage: 12, stallCurrent: 2000, speed: '6000 RPM' } });
+
+        this.register({ id: 'servo-mg996r', name: 'MG996R High-Torque Servo', category: 'Actuator', subcategory: 'Servo', price: 6,
+            pins: { 'VCC': { type: 'power', voltage: 5, maxCurrent: 500 }, 'GND': { type: 'ground' }, 'SIGNAL': { type: 'digital_input' } },
+            specs: { operatingVoltage: 5, torque: '11 kg·cm', speed: '0.14s/60°' }, protocols: ['PWM'] });
+
+        this.register({ id: 'stepper-28byj48', name: 'Stepper Motor 28BYJ-48', category: 'Actuator', subcategory: 'Stepper', price: 3,
+            pins: { 'IN1': { type: 'digital_input' }, 'IN2': { type: 'digital_input' }, 'IN3': { type: 'digital_input' }, 'IN4': { type: 'digital_input' }, 'VCC': { type: 'power', voltage: 5 } },
+            specs: { operatingVoltage: 5, stepsPerRevolution: 2048, gearRatio: '1:64' } });
+
+        this.register({ id: 'stepper-nema17', name: 'NEMA 17 Stepper Motor', category: 'Actuator', subcategory: 'Stepper', price: 10,
+            pins: { 'A+': { type: 'power' }, 'A-': { type: 'power' }, 'B+': { type: 'power' }, 'B-': { type: 'power' } },
+            specs: { operatingVoltage: 12, stepsPerRevolution: 200, holdingTorque: '4.2 kg·cm', current: '1.7A' } });
+
+        this.register({ id: 'linear-actuator', name: 'Linear Actuator 12V', category: 'Actuator', subcategory: 'Linear', price: 25,
+            pins: { '+': { type: 'power', voltage: 12 }, '-': { type: 'power' } },
+            specs: { operatingVoltage: 12, stroke: '100mm', force: '750N', speed: '10mm/s' } });
+
+        this.register({ id: 'solenoid-5v', name: 'Solenoid Valve 5V', category: 'Actuator', subcategory: 'Solenoid', price: 5,
+            pins: { '+': { type: 'power', voltage: 5 }, '-': { type: 'power' } },
+            specs: { operatingVoltage: 5, type: 'push-pull' } });
+
+        this.register({ id: 'solenoid-12v', name: 'Solenoid Valve 12V', category: 'Actuator', subcategory: 'Solenoid', price: 8,
+            pins: { '+': { type: 'power', voltage: 12 }, '-': { type: 'power' } },
+            specs: { operatingVoltage: 12, type: 'push-pull' } });
+
+        this.register({ id: 'relay-module', name: 'Relay Module (5V Single)', category: 'Actuator', subcategory: 'Relay', price: 2,
+            pins: { 'VCC': { type: 'power', voltage: 5 }, 'GND': { type: 'ground' }, 'IN': { type: 'digital_input' }, 'COM': { type: 'switch' }, 'NO': { type: 'switch' }, 'NC': { type: 'switch' } },
+            specs: { operatingVoltage: 5, contactRating: '10A 250VAC / 10A 30VDC', channels: 1 } });
+
+        this.register({ id: 'relay-4ch', name: 'Relay Module 4-Channel', category: 'Actuator', subcategory: 'Relay', price: 5,
+            pins: { 'VCC': { type: 'power', voltage: 5 }, 'GND': { type: 'ground' }, 'IN1': { type: 'digital_input' }, 'IN2': { type: 'digital_input' }, 'IN3': { type: 'digital_input' }, 'IN4': { type: 'digital_input' } },
+            specs: { operatingVoltage: 5, contactRating: '10A 250VAC', channels: 4 } });
+
+        this.register({ id: 'relay-8ch', name: 'Relay Module 8-Channel', category: 'Actuator', subcategory: 'Relay', price: 8,
+            pins: { 'VCC': { type: 'power', voltage: 5 }, 'GND': { type: 'ground' }, 'IN1': {type:'digital_input'}, 'IN2': {type:'digital_input'}, 'IN3': {type:'digital_input'}, 'IN4': {type:'digital_input'}, 'IN5': {type:'digital_input'}, 'IN6': {type:'digital_input'}, 'IN7': {type:'digital_input'}, 'IN8': {type:'digital_input'} },
+            specs: { operatingVoltage: 5, channels: 8 } });
+
+        this.register({ id: 'buzzer-active', name: 'Active Buzzer 5V', category: 'Actuator', subcategory: 'Audio', price: 0.50,
+            pins: { '+': { type: 'power', voltage: 5 }, '-': { type: 'ground' } },
+            specs: { operatingVoltage: 5, frequency: '2300 Hz', loudness: '85 dB' } });
+
+        this.register({ id: 'buzzer-passive', name: 'Passive Buzzer', category: 'Actuator', subcategory: 'Audio', price: 0.50,
+            pins: { '+': { type: 'digital_input' }, '-': { type: 'ground' } },
+            specs: { operatingVoltage: 5, frequency: '1-5000 Hz' } });
+
+        this.register({ id: 'speaker-8ohm', name: 'Speaker 8Ω 0.5W', category: 'Actuator', subcategory: 'Audio', price: 1,
+            pins: { '+': { type: 'power' }, '-': { type: 'ground' } },
+            specs: { impedance: '8Ω', power: '0.5W' } });
+
+        this.register({ id: 'vibration-motor', name: 'Vibration Motor (Coin Type)', category: 'Actuator', subcategory: 'Haptic', price: 1,
+            pins: { '+': { type: 'power', voltage: 3 }, '-': { type: 'ground' } },
+            specs: { operatingVoltage: 3, current: '80mA' } });
+
+        this.register({ id: 'water-pump', name: 'Mini Water Pump 3-6V', category: 'Actuator', subcategory: 'Pump', price: 3,
+            pins: { '+': { type: 'power', voltage: 5 }, '-': { type: 'ground' } },
+            specs: { operatingVoltage: '3-6V', flowRate: '120 L/h', current: '130-220mA' } });
+
+        this.register({ id: 'fan-5v', name: 'Cooling Fan 5V (30mm)', category: 'Actuator', subcategory: 'Fan', price: 2,
+            pins: { '+': { type: 'power', voltage: 5 }, '-': { type: 'ground' } },
+            specs: { operatingVoltage: 5, current: '100mA' } });
+
+        // === MORE PASSIVE COMPONENTS ===
+        this.register({ id: 'resistor-100ohm', name: 'Resistor 100Ω', category: 'Passive', subcategory: 'Resistor', price: 0.01,
+            pins: { 'pin1': { type: 'passive' }, 'pin2': { type: 'passive' } },
+            specs: { resistance: 100, tolerance: '5%', powerRating: '0.25W' } });
+
+        this.register({ id: 'resistor-330ohm', name: 'Resistor 330Ω', category: 'Passive', subcategory: 'Resistor', price: 0.01,
+            pins: { 'pin1': { type: 'passive' }, 'pin2': { type: 'passive' } },
+            specs: { resistance: 330, tolerance: '5%', powerRating: '0.25W' } });
+
+        this.register({ id: 'resistor-1kohm', name: 'Resistor 1kΩ', category: 'Passive', subcategory: 'Resistor', price: 0.01,
+            pins: { 'pin1': { type: 'passive' }, 'pin2': { type: 'passive' } },
+            specs: { resistance: 1000, tolerance: '5%', powerRating: '0.25W' } });
+
+        this.register({ id: 'resistor-100kohm', name: 'Resistor 100kΩ', category: 'Passive', subcategory: 'Resistor', price: 0.01,
+            pins: { 'pin1': { type: 'passive' }, 'pin2': { type: 'passive' } },
+            specs: { resistance: 100000, tolerance: '5%', powerRating: '0.25W' } });
+
+        this.register({ id: 'potentiometer-10k', name: 'Potentiometer 10kΩ', category: 'Passive', subcategory: 'Variable Resistor', price: 0.50,
+            pins: { 'VCC': { type: 'power' }, 'GND': { type: 'ground' }, 'WIPER': { type: 'analog_output' } },
+            specs: { resistance: 10000, taper: 'Linear' } });
+
+        this.register({ id: 'potentiometer-100k', name: 'Potentiometer 100kΩ', category: 'Passive', subcategory: 'Variable Resistor', price: 0.50,
+            pins: { 'VCC': { type: 'power' }, 'GND': { type: 'ground' }, 'WIPER': { type: 'analog_output' } },
+            specs: { resistance: 100000, taper: 'Linear' } });
+
+        this.register({ id: 'trimmer-10k', name: 'Trimmer Potentiometer 10kΩ', category: 'Passive', subcategory: 'Variable Resistor', price: 0.30,
+            pins: { 'pin1': { type: 'passive' }, 'pin2': { type: 'passive' }, 'wiper': { type: 'passive' } },
+            specs: { resistance: 10000 } });
+
+        this.register({ id: 'cap-ceramic-100nf', name: 'Ceramic Capacitor 100nF', category: 'Passive', subcategory: 'Capacitor', price: 0.05,
+            pins: { 'pin1': { type: 'passive' }, 'pin2': { type: 'passive' } },
+            specs: { capacitance: '100nF', voltage: '50V', type: 'Ceramic' } });
+
+        this.register({ id: 'cap-ceramic-10uf', name: 'Ceramic Capacitor 10µF', category: 'Passive', subcategory: 'Capacitor', price: 0.10,
+            pins: { 'pin1': { type: 'passive' }, 'pin2': { type: 'passive' } },
+            specs: { capacitance: '10µF', voltage: '25V', type: 'Ceramic' } });
+
+        this.register({ id: 'cap-electrolytic-100uf', name: 'Electrolytic Capacitor 100µF', category: 'Passive', subcategory: 'Capacitor', price: 0.15,
+            pins: { '+': { type: 'passive' }, '-': { type: 'passive' } },
+            specs: { capacitance: '100µF', voltage: '25V', type: 'Electrolytic', polarized: true } });
+
+        this.register({ id: 'cap-electrolytic-470uf', name: 'Electrolytic Capacitor 470µF', category: 'Passive', subcategory: 'Capacitor', price: 0.25,
+            pins: { '+': { type: 'passive' }, '-': { type: 'passive' } },
+            specs: { capacitance: '470µF', voltage: '25V', type: 'Electrolytic', polarized: true } });
+
+        this.register({ id: 'cap-electrolytic-1000uf', name: 'Electrolytic Capacitor 1000µF', category: 'Passive', subcategory: 'Capacitor', price: 0.40,
+            pins: { '+': { type: 'passive' }, '-': { type: 'passive' } },
+            specs: { capacitance: '1000µF', voltage: '25V', type: 'Electrolytic', polarized: true } });
+
+        this.register({ id: 'inductor-10uh', name: 'Inductor 10µH', category: 'Passive', subcategory: 'Inductor', price: 0.20,
+            pins: { 'pin1': { type: 'passive' }, 'pin2': { type: 'passive' } },
+            specs: { inductance: '10µH', current: '1A' } });
+
+        this.register({ id: 'inductor-100uh', name: 'Inductor 100µH', category: 'Passive', subcategory: 'Inductor', price: 0.30,
+            pins: { 'pin1': { type: 'passive' }, 'pin2': { type: 'passive' } },
+            specs: { inductance: '100µH', current: '500mA' } });
+
+        this.register({ id: 'thermistor-ntc', name: 'NTC Thermistor 10kΩ', category: 'Passive', subcategory: 'Thermistor', price: 0.30,
+            pins: { 'pin1': { type: 'analog' }, 'pin2': { type: 'analog' } },
+            specs: { resistance: '10kΩ at 25°C', beta: 3950 } });
+
+        this.register({ id: 'fuse-1a', name: 'Fuse 1A (Glass Tube)', category: 'Passive', subcategory: 'Protection', price: 0.20,
+            pins: { 'pin1': { type: 'passive' }, 'pin2': { type: 'passive' } },
+            specs: { rating: '1A', voltage: '250V' } });
+
+        this.register({ id: 'crystal-16mhz', name: 'Crystal Oscillator 16 MHz', category: 'Passive', subcategory: 'Oscillator', price: 0.30,
+            pins: { 'pin1': { type: 'passive' }, 'pin2': { type: 'passive' } },
+            specs: { frequency: '16 MHz', tolerance: '±20 ppm' } });
+
+        // === SEMICONDUCTORS ===
+        this.register({ id: 'diode-1n4007', name: 'Diode 1N4007', category: 'Semiconductor', subcategory: 'Diode', price: 0.05,
+            pins: { 'anode': { type: 'passive' }, 'cathode': { type: 'passive' } },
+            specs: { forwardVoltage: 1.0, maxCurrent: 1000, reverseVoltage: '1000V' } });
+
+        this.register({ id: 'diode-1n4148', name: 'Signal Diode 1N4148', category: 'Semiconductor', subcategory: 'Diode', price: 0.03,
+            pins: { 'anode': { type: 'passive' }, 'cathode': { type: 'passive' } },
+            specs: { forwardVoltage: 0.7, maxCurrent: 200, reverseVoltage: '100V', speed: 'fast switching' } });
+
+        this.register({ id: 'zener-5v1', name: 'Zener Diode 5.1V', category: 'Semiconductor', subcategory: 'Diode', price: 0.10,
+            pins: { 'anode': { type: 'passive' }, 'cathode': { type: 'passive' } },
+            specs: { zenerVoltage: 5.1, power: '500mW' } });
+
+        this.register({ id: 'schottky-1n5819', name: 'Schottky Diode 1N5819', category: 'Semiconductor', subcategory: 'Diode', price: 0.10,
+            pins: { 'anode': { type: 'passive' }, 'cathode': { type: 'passive' } },
+            specs: { forwardVoltage: 0.3, maxCurrent: 1000, reverseVoltage: '40V' } });
+
+        this.register({ id: 'led-blue', name: 'Blue LED (5mm)', category: 'Indicator', subcategory: 'LED', price: 0.15,
+            pins: { 'anode': { type: 'output' }, 'cathode': { type: 'output' } },
+            specs: { forwardVoltage: 3.2, maxCurrent: 20, wavelength: '470 nm' }, requiresResistor: true });
+
+        this.register({ id: 'led-yellow', name: 'Yellow LED (5mm)', category: 'Indicator', subcategory: 'LED', price: 0.10,
+            pins: { 'anode': { type: 'output' }, 'cathode': { type: 'output' } },
+            specs: { forwardVoltage: 2.1, maxCurrent: 20, wavelength: '590 nm' }, requiresResistor: true });
+
+        this.register({ id: 'led-white', name: 'White LED (5mm)', category: 'Indicator', subcategory: 'LED', price: 0.15,
+            pins: { 'anode': { type: 'output' }, 'cathode': { type: 'output' } },
+            specs: { forwardVoltage: 3.0, maxCurrent: 20 }, requiresResistor: true });
+
+        this.register({ id: 'led-ir', name: 'IR LED (5mm)', category: 'Indicator', subcategory: 'LED', price: 0.20,
+            pins: { 'anode': { type: 'output' }, 'cathode': { type: 'output' } },
+            specs: { forwardVoltage: 1.2, maxCurrent: 100, wavelength: '940 nm' }, requiresResistor: true });
+
+        this.register({ id: 'npn-2n2222', name: 'NPN Transistor 2N2222', category: 'Semiconductor', subcategory: 'Transistor', price: 0.10,
+            pins: { 'B': { type: 'base' }, 'C': { type: 'collector' }, 'E': { type: 'emitter' } },
+            specs: { type: 'NPN', vceo: '40V', ic: '800mA', hfe: '100-300' } });
+
+        this.register({ id: 'pnp-2n2907', name: 'PNP Transistor 2N2907', category: 'Semiconductor', subcategory: 'Transistor', price: 0.10,
+            pins: { 'B': { type: 'base' }, 'C': { type: 'collector' }, 'E': { type: 'emitter' } },
+            specs: { type: 'PNP', vceo: '40V', ic: '600mA', hfe: '100-300' } });
+
+        this.register({ id: 'npn-tip120', name: 'NPN Darlington TIP120', category: 'Semiconductor', subcategory: 'Transistor', price: 0.50,
+            pins: { 'B': { type: 'base' }, 'C': { type: 'collector' }, 'E': { type: 'emitter' } },
+            specs: { type: 'NPN Darlington', vceo: '60V', ic: '5A', hfe: '1000' } });
+
+        this.register({ id: 'mosfet-irf540n', name: 'N-Channel MOSFET IRF540N', category: 'Semiconductor', subcategory: 'MOSFET', price: 0.50,
+            pins: { 'G': { type: 'gate' }, 'D': { type: 'drain' }, 'S': { type: 'source' } },
+            specs: { type: 'N-Channel', vds: '100V', id: '33A', rdsOn: '44mΩ' } });
+
+        this.register({ id: 'mosfet-irf9540n', name: 'P-Channel MOSFET IRF9540N', category: 'Semiconductor', subcategory: 'MOSFET', price: 0.60,
+            pins: { 'G': { type: 'gate' }, 'D': { type: 'drain' }, 'S': { type: 'source' } },
+            specs: { type: 'P-Channel', vds: '-100V', id: '-23A', rdsOn: '117mΩ' } });
+
+        this.register({ id: 'mosfet-irlz44n', name: 'Logic-Level MOSFET IRLZ44N', category: 'Semiconductor', subcategory: 'MOSFET', price: 0.70,
+            pins: { 'G': { type: 'gate' }, 'D': { type: 'drain' }, 'S': { type: 'source' } },
+            specs: { type: 'N-Channel Logic Level', vds: '55V', id: '47A', vgsThreshold: '1-2V' } });
+
+        this.register({ id: 'optocoupler-817', name: 'Optocoupler PC817', category: 'Semiconductor', subcategory: 'Optocoupler', price: 0.20,
+            pins: { 'A': { type: 'anode' }, 'K': { type: 'cathode' }, 'E': { type: 'emitter' }, 'C': { type: 'collector' } },
+            specs: { forwardVoltage: 1.2, ctr: '50-300%', isolation: '5000V' } });
+
+        this.register({ id: 'bridge-rectifier', name: 'Bridge Rectifier (KBP307)', category: 'Semiconductor', subcategory: 'Rectifier', price: 0.30,
+            pins: { 'AC1': { type: 'ac' }, 'AC2': { type: 'ac' }, '+': { type: 'power' }, '-': { type: 'ground' } },
+            specs: { maxVoltage: '700V', maxCurrent: '3A' } });
+
+        // === ICs & CHIPS ===
+        this.register({ id: '555-timer', name: '555 Timer IC (NE555)', category: 'IC', subcategory: 'Timer', price: 0.30,
+            pins: { 'GND': {type:'ground'}, 'TRIG': {type:'digital_input'}, 'OUT': {type:'digital_output'}, 'RST': {type:'digital_input'}, 'CTRL': {type:'analog'}, 'THR': {type:'analog'}, 'DIS': {type:'analog'}, 'VCC': {type:'power', voltage: 5} },
+            specs: { operatingVoltage: '4.5-16V', frequency: '0.1 Hz to 100 kHz' } });
+
+        this.register({ id: 'lm741-opamp', name: 'Op-Amp LM741', category: 'IC', subcategory: 'Amplifier', price: 0.30,
+            pins: { 'IN-': {type:'analog'}, 'IN+': {type:'analog'}, 'OUT': {type:'analog_output'}, 'V+': {type:'power'}, 'V-': {type:'power'}, 'OFFSET1': {type:'analog'}, 'OFFSET2': {type:'analog'}, 'NC': {type:'nc'} },
+            specs: { gainBandwidth: '1 MHz', slewRate: '0.5 V/µs', operatingVoltage: '±15V' } });
+
+        this.register({ id: 'lm358-opamp', name: 'Dual Op-Amp LM358', category: 'IC', subcategory: 'Amplifier', price: 0.30,
+            pins: { 'OUT1': {type:'analog_output'}, 'IN1-': {type:'analog'}, 'IN1+': {type:'analog'}, 'GND': {type:'ground'}, 'IN2+': {type:'analog'}, 'IN2-': {type:'analog'}, 'OUT2': {type:'analog_output'}, 'VCC': {type:'power'} },
+            specs: { gainBandwidth: '1 MHz', operatingVoltage: '3-32V' } });
+
+        this.register({ id: '74hc595', name: 'Shift Register 74HC595', category: 'IC', subcategory: 'Logic', price: 0.30,
+            pins: { 'Q0-Q7': {type:'digital_output', count: 8}, 'GND': {type:'ground'}, 'VCC': {type:'power', voltage: 5}, 'SER': {type:'digital_input'}, 'SRCLK': {type:'digital_input'}, 'RCLK': {type:'digital_input'}, 'OE': {type:'digital_input'}, 'SRCLR': {type:'digital_input'} },
+            specs: { operatingVoltage: 5 }, protocols: ['SPI'] });
+
+        this.register({ id: 'pcf8574', name: 'I/O Expander PCF8574', category: 'IC', subcategory: 'IO Expander', price: 1,
+            pins: { 'VCC': {type:'power', voltage: 5}, 'GND': {type:'ground'}, 'SDA': {type:'i2c_data'}, 'SCL': {type:'i2c_clock'}, 'P0-P7': {type:'digital_io', count: 8} },
+            specs: { operatingVoltage: 5 }, protocols: ['I2C'] });
+
+        this.register({ id: 'ads1115', name: 'ADC ADS1115 (16-bit)', category: 'IC', subcategory: 'ADC', price: 4,
+            pins: { 'VCC': {type:'power', voltage: 5}, 'GND': {type:'ground'}, 'SDA': {type:'i2c_data'}, 'SCL': {type:'i2c_clock'}, 'A0-A3': {type:'analog_input', count: 4} },
+            specs: { resolution: '16-bit', channels: 4, sampleRate: '860 SPS' }, protocols: ['I2C'] });
+
+        this.register({ id: 'mcp4725', name: 'DAC MCP4725 (12-bit)', category: 'IC', subcategory: 'DAC', price: 3,
+            pins: { 'VCC': {type:'power', voltage: 5}, 'GND': {type:'ground'}, 'SDA': {type:'i2c_data'}, 'SCL': {type:'i2c_clock'}, 'OUT': {type:'analog_output'} },
+            specs: { resolution: '12-bit' }, protocols: ['I2C'] });
+
+        this.register({ id: 'at24c256', name: 'EEPROM AT24C256', category: 'IC', subcategory: 'Memory', price: 1,
+            pins: { 'VCC': {type:'power', voltage: 5}, 'GND': {type:'ground'}, 'SDA': {type:'i2c_data'}, 'SCL': {type:'i2c_clock'} },
+            specs: { capacity: '256 Kbit (32 KB)', operatingVoltage: 5 }, protocols: ['I2C'] });
+
+        this.register({ id: 'ds3231', name: 'RTC DS3231 Module', category: 'IC', subcategory: 'Clock', price: 3,
+            pins: { 'VCC': {type:'power', voltage: 5}, 'GND': {type:'ground'}, 'SDA': {type:'i2c_data'}, 'SCL': {type:'i2c_clock'} },
+            specs: { operatingVoltage: 5, accuracy: '±2 ppm', battery: 'CR2032' }, protocols: ['I2C'] });
+
+        this.register({ id: 'ds1307', name: 'RTC DS1307 Module', category: 'IC', subcategory: 'Clock', price: 2,
+            pins: { 'VCC': {type:'power', voltage: 5}, 'GND': {type:'ground'}, 'SDA': {type:'i2c_data'}, 'SCL': {type:'i2c_clock'} },
+            specs: { operatingVoltage: 5 }, protocols: ['I2C'] });
+
+        this.register({ id: 'sd-card-module', name: 'SD Card Module', category: 'IC', subcategory: 'Storage', price: 2,
+            pins: { 'VCC': {type:'power', voltage: 5}, 'GND': {type:'ground'}, 'MISO': {type:'spi'}, 'MOSI': {type:'spi'}, 'SCK': {type:'spi'}, 'CS': {type:'spi'} },
+            specs: { operatingVoltage: 5, format: 'FAT16/FAT32' }, protocols: ['SPI'] });
+
+        this.register({ id: 'dfplayer-mini', name: 'DFPlayer Mini (MP3)', category: 'IC', subcategory: 'Audio', price: 2,
+            pins: { 'VCC': {type:'power', voltage: 5}, 'GND': {type:'ground'}, 'TX': {type:'uart_out'}, 'RX': {type:'uart_in'}, 'SPK+': {type:'audio_out'}, 'SPK-': {type:'audio_out'} },
+            specs: { operatingVoltage: 5, formats: ['MP3', 'WAV', 'WMA'], amplifier: '3W' }, protocols: ['UART'] });
+
+        this.register({ id: 'pam8403', name: 'PAM8403 Audio Amplifier', category: 'IC', subcategory: 'Audio', price: 1,
+            pins: { 'VCC': {type:'power', voltage: 5}, 'GND': {type:'ground'}, 'L-IN': {type:'audio_in'}, 'R-IN': {type:'audio_in'}, 'L+': {type:'audio_out'}, 'L-': {type:'audio_out'}, 'R+': {type:'audio_out'}, 'R-': {type:'audio_out'} },
+            specs: { operatingVoltage: 5, power: '3W x2', class: 'Class D' } });
+
+        // === MOTOR DRIVERS ===
+        this.register({ id: 'l298n', name: 'L298N Motor Driver', category: 'Motor Driver', price: 3,
+            pins: { 'VCC': {type:'power', voltage: 12}, 'GND': {type:'ground'}, '5V': {type:'power', voltage: 5}, 'IN1': {type:'digital_input'}, 'IN2': {type:'digital_input'}, 'IN3': {type:'digital_input'}, 'IN4': {type:'digital_input'}, 'ENA': {type:'pwm'}, 'ENB': {type:'pwm'}, 'OUT1': {type:'motor'}, 'OUT2': {type:'motor'}, 'OUT3': {type:'motor'}, 'OUT4': {type:'motor'} },
+            specs: { operatingVoltage: '5-35V', maxCurrent: '2A per channel', channels: 2 } });
+
+        this.register({ id: 'l293d', name: 'L293D Motor Driver IC', category: 'Motor Driver', price: 1.50,
+            pins: { 'VCC1': {type:'power', voltage: 5}, 'VCC2': {type:'power'}, 'GND': {type:'ground'}, '1A': {type:'digital_input'}, '2A': {type:'digital_input'}, '3A': {type:'digital_input'}, '4A': {type:'digital_input'}, '1Y': {type:'motor'}, '2Y': {type:'motor'}, '3Y': {type:'motor'}, '4Y': {type:'motor'}, 'EN12': {type:'digital_input'}, 'EN34': {type:'digital_input'} },
+            specs: { operatingVoltage: '4.5-36V', maxCurrent: '600mA per channel', channels: 4 } });
+
+        this.register({ id: 'a4988', name: 'A4988 Stepper Driver', category: 'Motor Driver', price: 2,
+            pins: { 'VCC': {type:'power'}, 'GND': {type:'ground'}, 'VMOT': {type:'power', voltage: 35}, 'STEP': {type:'digital_input'}, 'DIR': {type:'digital_input'}, 'EN': {type:'digital_input'}, 'MS1': {type:'digital_input'}, 'MS2': {type:'digital_input'}, 'MS3': {type:'digital_input'}, '1A': {type:'motor'}, '1B': {type:'motor'}, '2A': {type:'motor'}, '2B': {type:'motor'} },
+            specs: { operatingVoltage: '8-35V', maxCurrent: '2A', microstepping: '1/16' } });
+
+        this.register({ id: 'drv8825', name: 'DRV8825 Stepper Driver', category: 'Motor Driver', price: 3,
+            pins: { 'VCC': {type:'power'}, 'GND': {type:'ground'}, 'VMOT': {type:'power', voltage: 45}, 'STEP': {type:'digital_input'}, 'DIR': {type:'digital_input'}, 'EN': {type:'digital_input'}, 'M0': {type:'digital_input'}, 'M1': {type:'digital_input'}, 'M2': {type:'digital_input'}, 'A1': {type:'motor'}, 'A2': {type:'motor'}, 'B1': {type:'motor'}, 'B2': {type:'motor'} },
+            specs: { operatingVoltage: '8.2-45V', maxCurrent: '2.5A', microstepping: '1/32' } });
+
+        this.register({ id: 'tb6612fng', name: 'TB6612FNG Motor Driver', category: 'Motor Driver', price: 2.50,
+            pins: { 'VM': {type:'power'}, 'VCC': {type:'power', voltage: 5}, 'GND': {type:'ground'}, 'AIN1': {type:'digital_input'}, 'AIN2': {type:'digital_input'}, 'BIN1': {type:'digital_input'}, 'BIN2': {type:'digital_input'}, 'PWMA': {type:'pwm'}, 'PWMB': {type:'pwm'}, 'AO1': {type:'motor'}, 'AO2': {type:'motor'}, 'BO1': {type:'motor'}, 'BO2': {type:'motor'}, 'STBY': {type:'digital_input'} },
+            specs: { operatingVoltage: '2.5-13.5V', maxCurrent: '1.2A cont / 3.2A peak', channels: 2 } });
+
+        this.register({ id: 'uln2003', name: 'ULN2003 Stepper Driver Board', category: 'Motor Driver', price: 1.50,
+            pins: { 'IN1': {type:'digital_input'}, 'IN2': {type:'digital_input'}, 'IN3': {type:'digital_input'}, 'IN4': {type:'digital_input'}, 'VCC': {type:'power', voltage: 5}, 'GND': {type:'ground'} },
+            specs: { operatingVoltage: 5, compatible: '28BYJ-48' } });
+
+        // === COMMUNICATION MODULES ===
+        this.register({ id: 'bluetooth-hc06', name: 'HC-06 Bluetooth Module', category: 'Communication', subcategory: 'Wireless', price: 4,
+            pins: { 'VCC': {type:'power', voltage: 5}, 'GND': {type:'ground'}, 'TX': {type:'uart_out'}, 'RX': {type:'uart_in'} },
+            specs: { operatingVoltage: 5, mode: 'Slave only', baudRate: 9600 }, protocols: ['UART', 'Bluetooth'] });
+
+        this.register({ id: 'nrf24l01', name: 'NRF24L01 2.4GHz Transceiver', category: 'Communication', subcategory: 'Wireless', price: 2,
+            pins: { 'VCC': {type:'power', voltage: 3.3}, 'GND': {type:'ground'}, 'CE': {type:'digital_input'}, 'CSN': {type:'spi'}, 'SCK': {type:'spi'}, 'MOSI': {type:'spi'}, 'MISO': {type:'spi'}, 'IRQ': {type:'digital_output'} },
+            specs: { operatingVoltage: 3.3, frequency: '2.4 GHz', dataRate: '2 Mbps', range: '100m' }, protocols: ['SPI'] });
+
+        this.register({ id: 'lora-sx1278', name: 'LoRa SX1278 Module', category: 'Communication', subcategory: 'Wireless', price: 8,
+            pins: { 'VCC': {type:'power', voltage: 3.3}, 'GND': {type:'ground'}, 'SCK': {type:'spi'}, 'MOSI': {type:'spi'}, 'MISO': {type:'spi'}, 'NSS': {type:'spi'}, 'RST': {type:'digital'}, 'DIO0': {type:'digital_output'} },
+            specs: { operatingVoltage: 3.3, frequency: '433/868/915 MHz', range: '10 km', power: '+20 dBm' }, protocols: ['SPI', 'LoRa'] });
+
+        this.register({ id: 'gps-neo6m', name: 'GPS Module NEO-6M', category: 'Communication', subcategory: 'GPS', price: 8,
+            pins: { 'VCC': {type:'power', voltage: 5}, 'GND': {type:'ground'}, 'TX': {type:'uart_out'}, 'RX': {type:'uart_in'} },
+            specs: { operatingVoltage: 5, channels: 50, accuracy: '2.5m CEP', baudRate: 9600 }, protocols: ['UART', 'NMEA'] });
+
+        this.register({ id: 'gsm-sim800l', name: 'GSM SIM800L Module', category: 'Communication', subcategory: 'Cellular', price: 8,
+            pins: { 'VCC': {type:'power', voltage: 4.0}, 'GND': {type:'ground'}, 'TX': {type:'uart_out'}, 'RX': {type:'uart_in'}, 'RST': {type:'digital'} },
+            specs: { operatingVoltage: '3.4-4.4V', bands: '850/900/1800/1900 MHz' }, protocols: ['UART', 'AT Commands'] });
+
+        this.register({ id: 'rfid-rc522', name: 'RFID Reader RC522', category: 'Communication', subcategory: 'RFID', price: 3,
+            pins: { 'VCC': {type:'power', voltage: 3.3}, 'GND': {type:'ground'}, 'RST': {type:'digital'}, 'SDA': {type:'spi'}, 'SCK': {type:'spi'}, 'MOSI': {type:'spi'}, 'MISO': {type:'spi'}, 'IRQ': {type:'digital_output'} },
+            specs: { operatingVoltage: 3.3, frequency: '13.56 MHz', range: '5 cm' }, protocols: ['SPI'] });
+
+        this.register({ id: 'rs485-module', name: 'RS485 Module (MAX485)', category: 'Communication', subcategory: 'Wired', price: 1,
+            pins: { 'VCC': {type:'power', voltage: 5}, 'GND': {type:'ground'}, 'DI': {type:'digital_input'}, 'RO': {type:'digital_output'}, 'DE': {type:'digital_input'}, 'RE': {type:'digital_input'}, 'A': {type:'bus'}, 'B': {type:'bus'} },
+            specs: { operatingVoltage: 5, distance: '1200m', baudRate: '115200' }, protocols: ['RS485'] });
+
+        this.register({ id: 'can-mcp2515', name: 'CAN Bus Module (MCP2515)', category: 'Communication', subcategory: 'Wired', price: 3,
+            pins: { 'VCC': {type:'power', voltage: 5}, 'GND': {type:'ground'}, 'CS': {type:'spi'}, 'SCK': {type:'spi'}, 'MOSI': {type:'spi'}, 'MISO': {type:'spi'}, 'INT': {type:'digital_output'} },
+            specs: { operatingVoltage: 5, baudRate: '1 Mbps' }, protocols: ['SPI', 'CAN'] });
+
+        this.register({ id: 'ethernet-w5500', name: 'Ethernet Module W5500', category: 'Communication', subcategory: 'Wired', price: 6,
+            pins: { 'VCC': {type:'power', voltage: 3.3}, 'GND': {type:'ground'}, 'CS': {type:'spi'}, 'SCK': {type:'spi'}, 'MOSI': {type:'spi'}, 'MISO': {type:'spi'}, 'INT': {type:'digital_output'}, 'RST': {type:'digital'} },
+            specs: { operatingVoltage: 3.3, speed: '10/100 Mbps' }, protocols: ['SPI', 'TCP/IP'] });
+
+        this.register({ id: 'ir-transmitter', name: 'IR Transmitter LED', category: 'Communication', subcategory: 'IR', price: 0.30,
+            pins: { 'anode': { type: 'output' }, 'cathode': { type: 'output' } },
+            specs: { wavelength: '940 nm', angle: '20°' } });
+
+        // === POWER ===
+        this.register({ id: 'battery-aa', name: 'AA Battery 1.5V', category: 'Power', subcategory: 'Battery', price: 0.50,
+            specs: { voltage: 1.5, capacity: '2500 mAh', chemistry: 'Alkaline' } });
+
+        this.register({ id: 'battery-lipo-3.7v', name: 'LiPo Battery 3.7V 1000mAh', category: 'Power', subcategory: 'Battery', price: 5,
+            specs: { voltage: 3.7, capacity: '1000 mAh', chemistry: 'LiPo', maxDischarge: '2C' } });
+
+        this.register({ id: 'battery-18650', name: '18650 Li-Ion Cell 3.7V', category: 'Power', subcategory: 'Battery', price: 4,
+            specs: { voltage: 3.7, capacity: '2600 mAh', chemistry: 'Li-Ion' } });
+
+        this.register({ id: 'lm7805', name: 'Voltage Regulator LM7805 (5V)', category: 'Power', subcategory: 'Regulator', price: 0.50,
+            pins: { 'IN': { type: 'power' }, 'GND': { type: 'ground' }, 'OUT': { type: 'power', voltage: 5 } },
+            specs: { inputVoltage: '7-35V', outputVoltage: 5, maxCurrent: 1500, dropout: '2V' } });
+
+        this.register({ id: 'lm7812', name: 'Voltage Regulator LM7812 (12V)', category: 'Power', subcategory: 'Regulator', price: 0.50,
+            pins: { 'IN': { type: 'power' }, 'GND': { type: 'ground' }, 'OUT': { type: 'power', voltage: 12 } },
+            specs: { inputVoltage: '14-35V', outputVoltage: 12, maxCurrent: 1500 } });
+
+        this.register({ id: 'lm317', name: 'Adjustable Regulator LM317', category: 'Power', subcategory: 'Regulator', price: 0.50,
+            pins: { 'IN': { type: 'power' }, 'ADJ': { type: 'analog' }, 'OUT': { type: 'power' } },
+            specs: { inputVoltage: '3-40V', outputVoltage: '1.25-37V', maxCurrent: 1500 } });
+
+        this.register({ id: 'ams1117-3.3', name: 'AMS1117-3.3V LDO Regulator', category: 'Power', subcategory: 'Regulator', price: 0.30,
+            pins: { 'IN': { type: 'power' }, 'GND': { type: 'ground' }, 'OUT': { type: 'power', voltage: 3.3 } },
+            specs: { inputVoltage: '4.5-12V', outputVoltage: 3.3, maxCurrent: 1000, dropout: '1.1V' } });
+
+        this.register({ id: 'buck-converter', name: 'Buck Converter (LM2596)', category: 'Power', subcategory: 'DC-DC', price: 2,
+            pins: { 'IN+': { type: 'power' }, 'IN-': { type: 'ground' }, 'OUT+': { type: 'power' }, 'OUT-': { type: 'ground' } },
+            specs: { inputVoltage: '4.5-40V', outputVoltage: '1.23-37V', maxCurrent: 3000, efficiency: '92%' } });
+
+        this.register({ id: 'boost-converter', name: 'Boost Converter (MT3608)', category: 'Power', subcategory: 'DC-DC', price: 1.50,
+            pins: { 'IN+': { type: 'power' }, 'IN-': { type: 'ground' }, 'OUT+': { type: 'power' }, 'OUT-': { type: 'ground' } },
+            specs: { inputVoltage: '2-24V', outputVoltage: '5-28V', maxCurrent: 2000 } });
+
+        this.register({ id: 'solar-panel-6v', name: 'Solar Panel 6V 1W', category: 'Power', subcategory: 'Solar', price: 5,
+            pins: { '+': { type: 'power', voltage: 6 }, '-': { type: 'ground' } },
+            specs: { voltage: 6, power: '1W', current: '170mA' } });
+
+        this.register({ id: 'tp4056', name: 'TP4056 Li-Ion Charger', category: 'Power', subcategory: 'Charger', price: 0.50,
+            pins: { 'IN+': { type: 'power', voltage: 5 }, 'IN-': { type: 'ground' }, 'B+': { type: 'power' }, 'B-': { type: 'ground' }, 'OUT+': { type: 'power' }, 'OUT-': { type: 'ground' } },
+            specs: { inputVoltage: 5, chargeCurrent: '1A', protection: true } });
+
+        // === CONNECTORS & MECHANICAL ===
+        this.register({ id: 'breadboard-830', name: 'Breadboard 830 Points', category: 'Connector', subcategory: 'Breadboard', price: 3,
+            specs: { points: 830, rows: 63, powerRails: 4 } });
+
+        this.register({ id: 'breadboard-400', name: 'Breadboard 400 Points (Half)', category: 'Connector', subcategory: 'Breadboard', price: 2,
+            specs: { points: 400, rows: 30, powerRails: 4 } });
+
+        this.register({ id: 'jumper-mm', name: 'Jumper Wires M-M (40pc)', category: 'Connector', subcategory: 'Wire', price: 2,
+            specs: { type: 'Male-Male', quantity: 40, length: '20cm' } });
+
+        this.register({ id: 'jumper-mf', name: 'Jumper Wires M-F (40pc)', category: 'Connector', subcategory: 'Wire', price: 2,
+            specs: { type: 'Male-Female', quantity: 40, length: '20cm' } });
+
+        this.register({ id: 'jumper-ff', name: 'Jumper Wires F-F (40pc)', category: 'Connector', subcategory: 'Wire', price: 2,
+            specs: { type: 'Female-Female', quantity: 40, length: '20cm' } });
+
+        this.register({ id: 'push-button', name: 'Push Button (Tactile Switch)', category: 'Connector', subcategory: 'Switch', price: 0.05,
+            pins: { 'pin1': { type: 'switch' }, 'pin2': { type: 'switch' } },
+            specs: { type: 'Momentary SPST', rating: '50mA 12V' } });
+
+        this.register({ id: 'toggle-switch', name: 'Toggle Switch SPDT', category: 'Connector', subcategory: 'Switch', price: 0.50,
+            pins: { 'COM': { type: 'switch' }, 'NO': { type: 'switch' }, 'NC': { type: 'switch' } },
+            specs: { type: 'SPDT Toggle', rating: '6A 125V' } });
+
+        this.register({ id: 'slide-switch', name: 'Slide Switch SPDT', category: 'Connector', subcategory: 'Switch', price: 0.20,
+            pins: { 'pin1': { type: 'switch' }, 'pin2': { type: 'switch' }, 'pin3': { type: 'switch' } },
+            specs: { type: 'SPDT Slide', rating: '300mA 6V' } });
+
+        this.register({ id: 'dip-switch-4', name: 'DIP Switch 4-Position', category: 'Connector', subcategory: 'Switch', price: 0.30,
+            pins: { 'SW1': {type:'switch'}, 'SW2': {type:'switch'}, 'SW3': {type:'switch'}, 'SW4': {type:'switch'} },
+            specs: { positions: 4, type: 'SPST' } });
+
+        this.register({ id: 'rocker-switch', name: 'Rocker Switch 250V', category: 'Connector', subcategory: 'Switch', price: 0.50,
+            pins: { 'pin1': { type: 'switch' }, 'pin2': { type: 'switch' } },
+            specs: { type: 'SPST Rocker', rating: '6A 250V' } });
+
+        this.register({ id: 'keypad-4x4', name: 'Keypad 4x4 Matrix', category: 'Connector', subcategory: 'Input', price: 2,
+            pins: { 'R1': {type:'digital'}, 'R2': {type:'digital'}, 'R3': {type:'digital'}, 'R4': {type:'digital'}, 'C1': {type:'digital'}, 'C2': {type:'digital'}, 'C3': {type:'digital'}, 'C4': {type:'digital'} },
+            specs: { keys: 16, layout: '4x4' } });
+
+        this.register({ id: 'keypad-4x3', name: 'Keypad 4x3 Matrix', category: 'Connector', subcategory: 'Input', price: 1.50,
+            pins: { 'R1': {type:'digital'}, 'R2': {type:'digital'}, 'R3': {type:'digital'}, 'R4': {type:'digital'}, 'C1': {type:'digital'}, 'C2': {type:'digital'}, 'C3': {type:'digital'} },
+            specs: { keys: 12, layout: '4x3' } });
+
+        this.register({ id: 'joystick', name: 'Joystick Module (Dual Axis)', category: 'Connector', subcategory: 'Input', price: 1.50,
+            pins: { 'VCC': {type:'power', voltage: 5}, 'GND': {type:'ground'}, 'VRx': {type:'analog_output'}, 'VRy': {type:'analog_output'}, 'SW': {type:'digital_output'} },
+            specs: { operatingVoltage: 5, axes: 2, button: true } });
+
+        this.register({ id: 'terminal-block-2', name: 'Screw Terminal Block (2-pin)', category: 'Connector', subcategory: 'Terminal', price: 0.20,
+            pins: { 'pin1': { type: 'passive' }, 'pin2': { type: 'passive' } },
+            specs: { pins: 2, pitch: '5mm', wire: '12-24 AWG' } });
+
+        this.register({ id: 'header-male-40', name: 'Male Pin Header 40-pin', category: 'Connector', subcategory: 'Header', price: 0.20,
+            specs: { pins: 40, pitch: '2.54mm', type: 'Male' } });
+
+        this.register({ id: 'header-female-40', name: 'Female Pin Header 40-pin', category: 'Connector', subcategory: 'Header', price: 0.30,
+            specs: { pins: 40, pitch: '2.54mm', type: 'Female' } });
+
+        this.register({ id: 'level-shifter-4ch', name: 'Logic Level Shifter (4-Ch)', category: 'Connector', subcategory: 'Level Shifter', price: 1,
+            pins: { 'LV': {type:'power', voltage: 3.3}, 'HV': {type:'power', voltage: 5}, 'GND': {type:'ground'}, 'LV1-LV4': {type:'digital_io', count: 4}, 'HV1-HV4': {type:'digital_io', count: 4} },
+            specs: { channels: 4, lowVoltage: '1.8-3.3V', highVoltage: '3.3-5V' } });
     }
 
     /**

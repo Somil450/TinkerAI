@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 110 85" width="110" height="85">
+<rect x="4" y="8" width="102" height="70" rx="4" fill="#1565C0"/>
+<rect x="12" y="16" width="40" height="30" rx="2" fill="#111"/>
+<rect x="58" y="18" width="40" height="44" fill="#E0E0E0" stroke="#9E9E9E"/>
+<circle cx="78" cy="32" r="8" fill="#F44336" opacity="0.8"/>
+<text x="55" y="78" text-anchor="middle" fill="#fff" font-size="8">RELAY</text>
+</svg>

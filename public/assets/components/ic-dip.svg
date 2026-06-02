@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 52" width="100" height="52">
+  <defs>
+    <linearGradient id="pcb-dip" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1E88E5"/><stop offset="100%" stop-color="#0D47A1"/></linearGradient>
+    <linearGradient id="pcbTeal-dip" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#00939d"/><stop offset="100%" stop-color="#007982"/></linearGradient>
+    <linearGradient id="metal-dip" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#eee"/><stop offset="50%" stop-color="#fff"/><stop offset="100%" stop-color="#999"/></linearGradient>
+    <linearGradient id="pin-dip" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#f5f5f5"/><stop offset="100%" stop-color="#bdbdbd"/></linearGradient>
+    <filter id="sh-dip" x="-8%" y="-8%" width="116%" height="116%"><feDropShadow dx="1" dy="2" stdDeviation="2.5" flood-opacity="0.28"/></filter>
+    <filter id="glow-dip"><feGaussianBlur stdDeviation="1.5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs><rect x="20" y="10" width="60" height="32" rx="2" fill="#1a1a1a" stroke="#000"/><path d="M20 18.8 a4 4 0 0 1 0 8" fill="#050505"/><rect x="24" y="12" width="4" height="6" fill="#bbb"/><rect x="72" y="12" width="4" height="6" fill="#bbb"/><rect x="24" y="20" width="4" height="6" fill="#bbb"/><rect x="72" y="20" width="4" height="6" fill="#bbb"/><rect x="24" y="28" width="4" height="6" fill="#bbb"/><rect x="72" y="28" width="4" height="6" fill="#bbb"/><rect x="24" y="36" width="4" height="6" fill="#bbb"/><rect x="72" y="36" width="4" height="6" fill="#bbb"/></svg>

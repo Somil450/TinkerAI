@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130 65" width="130" height="65">
+<rect x="2" y="6" width="126" height="52" rx="2" fill="#1a1a1a" stroke="#333"/>
+<rect x="42" y="14" width="46" height="32" fill="#111" stroke="#444"/>
+<text x="65" y="34" text-anchor="middle" fill="#fff" font-size="8" font-family="monospace">ESP-12E</text>
+<rect x="6" y="2" width="118" height="6" fill="#0a0a0a"/><rect x="6" y="56" width="118" height="6" fill="#0a0a0a"/>
+<g fill="#ccc"><rect x="10" y="1" width="4" height="6"/><rect x="10" y="58" width="4" height="6"/><rect x="24" y="1" width="4" height="6"/><rect x="24" y="58" width="4" height="6"/><rect x="38" y="1" width="4" height="6"/><rect x="38" y="58" width="4" height="6"/><rect x="52" y="1" width="4" height="6"/><rect x="52" y="58" width="4" height="6"/><rect x="66" y="1" width="4" height="6"/><rect x="66" y="58" width="4" height="6"/><rect x="80" y="1" width="4" height="6"/><rect x="80" y="58" width="4" height="6"/><rect x="94" y="1" width="4" height="6"/><rect x="94" y="58" width="4" height="6"/><rect x="108" y="1" width="4" height="6"/><rect x="108" y="58" width="4" height="6"/></g>
+</svg>

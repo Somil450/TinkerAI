@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 90 90" width="90" height="90">
+<rect x="12" y="28" width="66" height="44" rx="4" fill="#E0E0E0" stroke="#9E9E9E"/>
+<circle cx="45" cy="50" r="22" fill="url(#pg)" stroke="#757575"/>
+<defs><radialGradient id="pg"><stop offset="0%" stop-color="#fff"/><stop offset="100%" stop-color="#9e9e9e"/></radialGradient></defs>
+<circle cx="45" cy="50" r="7" fill="#424242"/>
+<line x1="45" y1="8" x2="45" y2="30" stroke="#333" stroke-width="4" stroke-linecap="round"/>
+<rect x="0" y="46" width="12" height="4" fill="#999"/><rect x="78" y="46" width="12" height="4" fill="#999"/>
+</svg>

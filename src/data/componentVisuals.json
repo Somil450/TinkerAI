@@ -1,0 +1,6791 @@
+{
+  "arduino-uno": {
+    "archetype": "arduino-uno",
+    "width": 308,
+    "height": 220,
+    "pins": [
+      {
+        "id": "AREF",
+        "x": 79,
+        "y": 17,
+        "labelSide": "top"
+      },
+      {
+        "id": "GND",
+        "x": 93,
+        "y": 17,
+        "labelSide": "top"
+      },
+      {
+        "id": "D13",
+        "x": 107,
+        "y": 17,
+        "labelSide": "top"
+      },
+      {
+        "id": "D12",
+        "x": 121,
+        "y": 17,
+        "labelSide": "top"
+      },
+      {
+        "id": "D11",
+        "x": 135,
+        "y": 17,
+        "labelSide": "top"
+      },
+      {
+        "id": "D10",
+        "x": 149,
+        "y": 17,
+        "labelSide": "top"
+      },
+      {
+        "id": "D9",
+        "x": 163,
+        "y": 17,
+        "labelSide": "top"
+      },
+      {
+        "id": "D8",
+        "x": 177,
+        "y": 17,
+        "labelSide": "top"
+      },
+      {
+        "id": "D7",
+        "x": 191,
+        "y": 17,
+        "labelSide": "top"
+      },
+      {
+        "id": "D6",
+        "x": 205,
+        "y": 17,
+        "labelSide": "top"
+      },
+      {
+        "id": "D5",
+        "x": 219,
+        "y": 17,
+        "labelSide": "top"
+      },
+      {
+        "id": "D4",
+        "x": 233,
+        "y": 17,
+        "labelSide": "top"
+      },
+      {
+        "id": "D3",
+        "x": 247,
+        "y": 17,
+        "labelSide": "top"
+      },
+      {
+        "id": "D2",
+        "x": 261,
+        "y": 17,
+        "labelSide": "top"
+      },
+      {
+        "id": "D1",
+        "x": 275,
+        "y": 17,
+        "labelSide": "top"
+      },
+      {
+        "id": "D0",
+        "x": 289,
+        "y": 17,
+        "labelSide": "top"
+      },
+      {
+        "id": "3V3",
+        "x": 107,
+        "y": 203,
+        "labelSide": "bottom"
+      },
+      {
+        "id": "5V",
+        "x": 121,
+        "y": 203,
+        "labelSide": "bottom"
+      },
+      {
+        "id": "GND",
+        "x": 135,
+        "y": 203,
+        "labelSide": "bottom"
+      },
+      {
+        "id": "VIN",
+        "x": 163,
+        "y": 203,
+        "labelSide": "bottom"
+      },
+      {
+        "id": "A0",
+        "x": 199,
+        "y": 203,
+        "labelSide": "bottom"
+      },
+      {
+        "id": "A1",
+        "x": 213,
+        "y": 203,
+        "labelSide": "bottom"
+      },
+      {
+        "id": "A2",
+        "x": 227,
+        "y": 203,
+        "labelSide": "bottom"
+      },
+      {
+        "id": "A3",
+        "x": 241,
+        "y": 203,
+        "labelSide": "bottom"
+      },
+      {
+        "id": "A4",
+        "x": 255,
+        "y": 203,
+        "labelSide": "bottom"
+      },
+      {
+        "id": "A5",
+        "x": 269,
+        "y": 203,
+        "labelSide": "bottom"
+      }
+    ],
+    "pinCount": 27
+  },
+  "esp32": {
+    "archetype": "esp32-devkit",
+    "width": 378,
+    "height": 200,
+    "pins": [
+      {
+        "id": "5V",
+        "x": 10,
+        "y": 18,
+        "labelSide": "left"
+      },
+      {
+        "id": "3V3",
+        "x": 10,
+        "y": 26,
+        "labelSide": "left"
+      },
+      {
+        "id": "GND",
+        "x": 10,
+        "y": 34,
+        "labelSide": "left"
+      },
+      {
+        "id": "GPIO0",
+        "x": 10,
+        "y": 41,
+        "labelSide": "left"
+      },
+      {
+        "id": "GPIO1",
+        "x": 10,
+        "y": 49,
+        "labelSide": "left"
+      },
+      {
+        "id": "GPIO2",
+        "x": 10,
+        "y": 57,
+        "labelSide": "left"
+      },
+      {
+        "id": "GPIO3",
+        "x": 10,
+        "y": 65,
+        "labelSide": "left"
+      },
+      {
+        "id": "GPIO4",
+        "x": 10,
+        "y": 73,
+        "labelSide": "left"
+      },
+      {
+        "id": "GPIO5",
+        "x": 10,
+        "y": 80,
+        "labelSide": "left"
+      },
+      {
+        "id": "GPIO6",
+        "x": 10,
+        "y": 88,
+        "labelSide": "left"
+      },
+      {
+        "id": "GPIO7",
+        "x": 10,
+        "y": 96,
+        "labelSide": "left"
+      },
+      {
+        "id": "GPIO8",
+        "x": 10,
+        "y": 104,
+        "labelSide": "left"
+      },
+      {
+        "id": "GPIO9",
+        "x": 10,
+        "y": 112,
+        "labelSide": "left"
+      },
+      {
+        "id": "GPIO10",
+        "x": 10,
+        "y": 120,
+        "labelSide": "left"
+      },
+      {
+        "id": "GPIO11",
+        "x": 10,
+        "y": 127,
+        "labelSide": "left"
+      },
+      {
+        "id": "GPIO12",
+        "x": 10,
+        "y": 135,
+        "labelSide": "left"
+      },
+      {
+        "id": "GPIO13",
+        "x": 10,
+        "y": 143,
+        "labelSide": "left"
+      },
+      {
+        "id": "GPIO14",
+        "x": 10,
+        "y": 151,
+        "labelSide": "left"
+      },
+      {
+        "id": "GPIO15",
+        "x": 10,
+        "y": 159,
+        "labelSide": "left"
+      },
+      {
+        "id": "GPIO16",
+        "x": 10,
+        "y": 166,
+        "labelSide": "left"
+      },
+      {
+        "id": "GPIO17",
+        "x": 10,
+        "y": 174,
+        "labelSide": "left"
+      },
+      {
+        "id": "GPIO18",
+        "x": 10,
+        "y": 182,
+        "labelSide": "left"
+      },
+      {
+        "id": "GPIO19",
+        "x": 368,
+        "y": 18,
+        "labelSide": "right"
+      },
+      {
+        "id": "GPIO20",
+        "x": 368,
+        "y": 26,
+        "labelSide": "right"
+      },
+      {
+        "id": "GPIO21",
+        "x": 368,
+        "y": 34,
+        "labelSide": "right"
+      },
+      {
+        "id": "GPIO22",
+        "x": 368,
+        "y": 43,
+        "labelSide": "right"
+      },
+      {
+        "id": "GPIO23",
+        "x": 368,
+        "y": 51,
+        "labelSide": "right"
+      },
+      {
+        "id": "GPIO24",
+        "x": 368,
+        "y": 59,
+        "labelSide": "right"
+      },
+      {
+        "id": "GPIO25",
+        "x": 368,
+        "y": 67,
+        "labelSide": "right"
+      },
+      {
+        "id": "GPIO26",
+        "x": 368,
+        "y": 75,
+        "labelSide": "right"
+      },
+      {
+        "id": "GPIO27",
+        "x": 368,
+        "y": 84,
+        "labelSide": "right"
+      },
+      {
+        "id": "GPIO28",
+        "x": 368,
+        "y": 92,
+        "labelSide": "right"
+      },
+      {
+        "id": "GPIO29",
+        "x": 368,
+        "y": 100,
+        "labelSide": "right"
+      },
+      {
+        "id": "GPIO30",
+        "x": 368,
+        "y": 108,
+        "labelSide": "right"
+      },
+      {
+        "id": "GPIO31",
+        "x": 368,
+        "y": 116,
+        "labelSide": "right"
+      },
+      {
+        "id": "GPIO32",
+        "x": 368,
+        "y": 125,
+        "labelSide": "right"
+      },
+      {
+        "id": "GPIO33",
+        "x": 368,
+        "y": 133,
+        "labelSide": "right"
+      },
+      {
+        "id": "GPIO34",
+        "x": 368,
+        "y": 141,
+        "labelSide": "right"
+      },
+      {
+        "id": "GPIO35",
+        "x": 368,
+        "y": 149,
+        "labelSide": "right"
+      },
+      {
+        "id": "GPIO36",
+        "x": 368,
+        "y": 157,
+        "labelSide": "right"
+      },
+      {
+        "id": "GPIO37",
+        "x": 368,
+        "y": 166,
+        "labelSide": "right"
+      },
+      {
+        "id": "GPIO38",
+        "x": 368,
+        "y": 174,
+        "labelSide": "right"
+      },
+      {
+        "id": "GPIO39",
+        "x": 368,
+        "y": 182,
+        "labelSide": "right"
+      }
+    ],
+    "pinCount": 43
+  },
+  "arduino-nano": {
+    "archetype": "arduino-nano",
+    "width": 292,
+    "height": 140,
+    "pins": [
+      {
+        "id": "5V",
+        "x": 14,
+        "y": 8,
+        "labelSide": "top"
+      },
+      {
+        "id": "GND",
+        "x": 26,
+        "y": 8,
+        "labelSide": "top"
+      },
+      {
+        "id": "D2",
+        "x": 38,
+        "y": 8,
+        "labelSide": "top"
+      },
+      {
+        "id": "D3",
+        "x": 50,
+        "y": 8,
+        "labelSide": "top"
+      },
+      {
+        "id": "D4",
+        "x": 62,
+        "y": 8,
+        "labelSide": "top"
+      },
+      {
+        "id": "D5",
+        "x": 74,
+        "y": 8,
+        "labelSide": "top"
+      },
+      {
+        "id": "D6",
+        "x": 86,
+        "y": 8,
+        "labelSide": "top"
+      },
+      {
+        "id": "D7",
+        "x": 98,
+        "y": 8,
+        "labelSide": "top"
+      },
+      {
+        "id": "D8",
+        "x": 110,
+        "y": 8,
+        "labelSide": "top"
+      },
+      {
+        "id": "D9",
+        "x": 122,
+        "y": 8,
+        "labelSide": "top"
+      },
+      {
+        "id": "D10",
+        "x": 134,
+        "y": 8,
+        "labelSide": "top"
+      },
+      {
+        "id": "D11",
+        "x": 146,
+        "y": 8,
+        "labelSide": "top"
+      },
+      {
+        "id": "D12",
+        "x": 158,
+        "y": 8,
+        "labelSide": "top"
+      },
+      {
+        "id": "D13",
+        "x": 170,
+        "y": 8,
+        "labelSide": "top"
+      },
+      {
+        "id": "A0",
+        "x": 14,
+        "y": 72,
+        "labelSide": "bottom"
+      },
+      {
+        "id": "A1",
+        "x": 26,
+        "y": 72,
+        "labelSide": "bottom"
+      },
+      {
+        "id": "A2",
+        "x": 38,
+        "y": 72,
+        "labelSide": "bottom"
+      },
+      {
+        "id": "A3",
+        "x": 50,
+        "y": 72,
+        "labelSide": "bottom"
+      },
+      {
+        "id": "A4",
+        "x": 62,
+        "y": 72,
+        "labelSide": "bottom"
+      },
+      {
+        "id": "A5",
+        "x": 74,
+        "y": 72,
+        "labelSide": "bottom"
+      },
+      {
+        "id": "3V3",
+        "x": 86,
+        "y": 72,
+        "labelSide": "bottom"
+      },
+      {
+        "id": "GND",
+        "x": 98,
+        "y": 72,
+        "labelSide": "bottom"
+      },
+      {
+        "id": "VIN",
+        "x": 110,
+        "y": 72,
+        "labelSide": "bottom"
+      }
+    ],
+    "pinCount": 23
+  },
+  "hc-sr04": {
+    "archetype": "hc-sr04",
+    "width": 130,
+    "height": 88,
+    "pins": [
+      {
+        "id": "VCC",
+        "x": 28,
+        "y": 13,
+        "labelSide": "top"
+      },
+      {
+        "id": "GND",
+        "x": 88,
+        "y": 13,
+        "labelSide": "top"
+      },
+      {
+        "id": "TRIG",
+        "x": 48,
+        "y": 13,
+        "labelSide": "top"
+      },
+      {
+        "id": "ECHO",
+        "x": 68,
+        "y": 13,
+        "labelSide": "top"
+      }
+    ],
+    "pinCount": 4
+  },
+  "dht22": {
+    "archetype": "dht-module",
+    "width": 80,
+    "height": 110,
+    "pins": [
+      {
+        "id": "VCC",
+        "x": 8,
+        "y": 28,
+        "labelSide": "left"
+      },
+      {
+        "id": "GND",
+        "x": 8,
+        "y": 55,
+        "labelSide": "left"
+      },
+      {
+        "id": "OUT",
+        "x": 8,
+        "y": 83,
+        "labelSide": "left"
+      }
+    ],
+    "pinCount": 3
+  },
+  "mpu6050": {
+    "archetype": "mpu6050",
+    "width": 130,
+    "height": 78,
+    "pins": [
+      {
+        "id": "VCC",
+        "x": 16,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "GND",
+        "x": 30,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "SCL",
+        "x": 44,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "SDA",
+        "x": 58,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "XDA",
+        "x": 72,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "XCL",
+        "x": 86,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "AD0",
+        "x": 100,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "INT",
+        "x": 114,
+        "y": 12,
+        "labelSide": "top"
+      }
+    ],
+    "pinCount": 8
+  },
+  "led-red": {
+    "archetype": "led-red",
+    "width": 60,
+    "height": 120,
+    "pins": [
+      {
+        "id": "anode",
+        "x": 4,
+        "y": 60,
+        "labelSide": "left"
+      },
+      {
+        "id": "cathode",
+        "x": 56,
+        "y": 60,
+        "labelSide": "right"
+      }
+    ],
+    "pinCount": 2
+  },
+  "led-green": {
+    "archetype": "led-green",
+    "width": 130,
+    "height": 78,
+    "pins": [],
+    "pinCount": 0
+  },
+  "rgb-led": {
+    "archetype": "rgb-led",
+    "width": 130,
+    "height": 78,
+    "pins": [
+      {
+        "id": "R",
+        "x": 16,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "G",
+        "x": 49,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "B",
+        "x": 81,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "GND",
+        "x": 114,
+        "y": 12,
+        "labelSide": "top"
+      }
+    ],
+    "pinCount": 4
+  },
+  "resistor-220ohm": {
+    "archetype": "resistor",
+    "width": 120,
+    "height": 40,
+    "pins": [],
+    "pinCount": 0
+  },
+  "resistor-10kohm": {
+    "archetype": "resistor",
+    "width": 120,
+    "height": 40,
+    "pins": [],
+    "pinCount": 0
+  },
+  "resistor-4.7kohm": {
+    "archetype": "resistor",
+    "width": 120,
+    "height": 40,
+    "pins": [],
+    "pinCount": 0
+  },
+  "dc-motor-3v": {
+    "archetype": "dc-motor",
+    "width": 130,
+    "height": 78,
+    "pins": [
+      {
+        "id": "+",
+        "x": 4,
+        "y": 39,
+        "labelSide": "left"
+      },
+      {
+        "id": "-",
+        "x": 126,
+        "y": 39,
+        "labelSide": "right"
+      }
+    ],
+    "pinCount": 2
+  },
+  "servo-sg90": {
+    "archetype": "servo",
+    "width": 120,
+    "height": 95,
+    "pins": [
+      {
+        "id": "VCC",
+        "x": 8,
+        "y": 24,
+        "labelSide": "left"
+      },
+      {
+        "id": "GND",
+        "x": 8,
+        "y": 48,
+        "labelSide": "left"
+      },
+      {
+        "id": "SIGNAL",
+        "x": 8,
+        "y": 71,
+        "labelSide": "left"
+      }
+    ],
+    "pinCount": 3
+  },
+  "usb-cable": {
+    "archetype": "power-module",
+    "width": 130,
+    "height": 78,
+    "pins": [],
+    "pinCount": 0
+  },
+  "battery-9v": {
+    "archetype": "battery-9v",
+    "width": 130,
+    "height": 78,
+    "pins": [],
+    "pinCount": 0
+  },
+  "power-bank-5v": {
+    "archetype": "power-module",
+    "width": 130,
+    "height": 78,
+    "pins": [],
+    "pinCount": 0
+  },
+  "bluetooth-hc05": {
+    "archetype": "bluetooth-hc05",
+    "width": 130,
+    "height": 78,
+    "pins": [
+      {
+        "id": "VCC",
+        "x": 16,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "GND",
+        "x": 49,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "TX",
+        "x": 81,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "RX",
+        "x": 114,
+        "y": 12,
+        "labelSide": "top"
+      }
+    ],
+    "pinCount": 4
+  },
+  "wifi-esp8266": {
+    "archetype": "esp8266",
+    "width": 130,
+    "height": 78,
+    "pins": [],
+    "pinCount": 0
+  },
+  "arduino-mega": {
+    "archetype": "arduino-mega",
+    "width": 360,
+    "height": 220,
+    "pins": [
+      {
+        "id": "GND",
+        "x": 75,
+        "y": 17,
+        "labelSide": "top"
+      },
+      {
+        "id": "D13",
+        "x": 89,
+        "y": 17,
+        "labelSide": "top"
+      },
+      {
+        "id": "D12",
+        "x": 98,
+        "y": 17,
+        "labelSide": "top"
+      },
+      {
+        "id": "D11",
+        "x": 107,
+        "y": 17,
+        "labelSide": "top"
+      },
+      {
+        "id": "D10",
+        "x": 116,
+        "y": 17,
+        "labelSide": "top"
+      },
+      {
+        "id": "D9",
+        "x": 125,
+        "y": 17,
+        "labelSide": "top"
+      },
+      {
+        "id": "D8",
+        "x": 134,
+        "y": 17,
+        "labelSide": "top"
+      },
+      {
+        "id": "D7",
+        "x": 143,
+        "y": 17,
+        "labelSide": "top"
+      },
+      {
+        "id": "D6",
+        "x": 152,
+        "y": 17,
+        "labelSide": "top"
+      },
+      {
+        "id": "D5",
+        "x": 161,
+        "y": 17,
+        "labelSide": "top"
+      },
+      {
+        "id": "D4",
+        "x": 170,
+        "y": 17,
+        "labelSide": "top"
+      },
+      {
+        "id": "D3",
+        "x": 179,
+        "y": 17,
+        "labelSide": "top"
+      },
+      {
+        "id": "D2",
+        "x": 188,
+        "y": 17,
+        "labelSide": "top"
+      },
+      {
+        "id": "D1",
+        "x": 197,
+        "y": 17,
+        "labelSide": "top"
+      },
+      {
+        "id": "D0",
+        "x": 206,
+        "y": 17,
+        "labelSide": "top"
+      },
+      {
+        "id": "3V3",
+        "x": 75,
+        "y": 203,
+        "labelSide": "bottom"
+      },
+      {
+        "id": "5V",
+        "x": 89,
+        "y": 203,
+        "labelSide": "bottom"
+      },
+      {
+        "id": "GND",
+        "x": 103,
+        "y": 203,
+        "labelSide": "bottom"
+      },
+      {
+        "id": "VIN",
+        "x": 131,
+        "y": 203,
+        "labelSide": "bottom"
+      },
+      {
+        "id": "A0",
+        "x": 175,
+        "y": 203,
+        "labelSide": "bottom"
+      },
+      {
+        "id": "A1",
+        "x": 184,
+        "y": 203,
+        "labelSide": "bottom"
+      },
+      {
+        "id": "A2",
+        "x": 193,
+        "y": 203,
+        "labelSide": "bottom"
+      },
+      {
+        "id": "A3",
+        "x": 202,
+        "y": 203,
+        "labelSide": "bottom"
+      },
+      {
+        "id": "A4",
+        "x": 211,
+        "y": 203,
+        "labelSide": "bottom"
+      },
+      {
+        "id": "A5",
+        "x": 220,
+        "y": 203,
+        "labelSide": "bottom"
+      },
+      {
+        "id": "A6",
+        "x": 229,
+        "y": 203,
+        "labelSide": "bottom"
+      },
+      {
+        "id": "A7",
+        "x": 238,
+        "y": 203,
+        "labelSide": "bottom"
+      },
+      {
+        "id": "A8",
+        "x": 247,
+        "y": 203,
+        "labelSide": "bottom"
+      },
+      {
+        "id": "A9",
+        "x": 256,
+        "y": 203,
+        "labelSide": "bottom"
+      },
+      {
+        "id": "A10",
+        "x": 265,
+        "y": 203,
+        "labelSide": "bottom"
+      },
+      {
+        "id": "A11",
+        "x": 274,
+        "y": 203,
+        "labelSide": "bottom"
+      },
+      {
+        "id": "A12",
+        "x": 283,
+        "y": 203,
+        "labelSide": "bottom"
+      },
+      {
+        "id": "A13",
+        "x": 292,
+        "y": 203,
+        "labelSide": "bottom"
+      },
+      {
+        "id": "A14",
+        "x": 301,
+        "y": 203,
+        "labelSide": "bottom"
+      },
+      {
+        "id": "A15",
+        "x": 310,
+        "y": 203,
+        "labelSide": "bottom"
+      }
+    ],
+    "pinCount": 34
+  },
+  "arduino-leonardo": {
+    "archetype": "arduino-nano",
+    "width": 200,
+    "height": 80,
+    "pins": [
+      {
+        "id": "5V",
+        "x": 14,
+        "y": 8,
+        "labelSide": "top"
+      },
+      {
+        "id": "GND",
+        "x": 26,
+        "y": 8,
+        "labelSide": "top"
+      },
+      {
+        "id": "D2",
+        "x": 38,
+        "y": 8,
+        "labelSide": "top"
+      },
+      {
+        "id": "D3",
+        "x": 50,
+        "y": 8,
+        "labelSide": "top"
+      },
+      {
+        "id": "D4",
+        "x": 62,
+        "y": 8,
+        "labelSide": "top"
+      },
+      {
+        "id": "D5",
+        "x": 74,
+        "y": 8,
+        "labelSide": "top"
+      },
+      {
+        "id": "D6",
+        "x": 86,
+        "y": 8,
+        "labelSide": "top"
+      },
+      {
+        "id": "D7",
+        "x": 98,
+        "y": 8,
+        "labelSide": "top"
+      },
+      {
+        "id": "D8",
+        "x": 110,
+        "y": 8,
+        "labelSide": "top"
+      },
+      {
+        "id": "D9",
+        "x": 122,
+        "y": 8,
+        "labelSide": "top"
+      },
+      {
+        "id": "D10",
+        "x": 134,
+        "y": 8,
+        "labelSide": "top"
+      },
+      {
+        "id": "D11",
+        "x": 146,
+        "y": 8,
+        "labelSide": "top"
+      },
+      {
+        "id": "D12",
+        "x": 158,
+        "y": 8,
+        "labelSide": "top"
+      },
+      {
+        "id": "D13",
+        "x": 170,
+        "y": 8,
+        "labelSide": "top"
+      },
+      {
+        "id": "A0",
+        "x": 14,
+        "y": 72,
+        "labelSide": "bottom"
+      },
+      {
+        "id": "A1",
+        "x": 26,
+        "y": 72,
+        "labelSide": "bottom"
+      },
+      {
+        "id": "A2",
+        "x": 38,
+        "y": 72,
+        "labelSide": "bottom"
+      },
+      {
+        "id": "A3",
+        "x": 50,
+        "y": 72,
+        "labelSide": "bottom"
+      },
+      {
+        "id": "A4",
+        "x": 62,
+        "y": 72,
+        "labelSide": "bottom"
+      },
+      {
+        "id": "A5",
+        "x": 74,
+        "y": 72,
+        "labelSide": "bottom"
+      },
+      {
+        "id": "3V3",
+        "x": 86,
+        "y": 72,
+        "labelSide": "bottom"
+      },
+      {
+        "id": "GND",
+        "x": 98,
+        "y": 72,
+        "labelSide": "bottom"
+      },
+      {
+        "id": "VIN",
+        "x": 110,
+        "y": 72,
+        "labelSide": "bottom"
+      }
+    ],
+    "pinCount": 0
+  },
+  "arduino-due": {
+    "archetype": "arduino-mega",
+    "width": 360,
+    "height": 220,
+    "pins": [
+      {
+        "id": "GND",
+        "x": 75,
+        "y": 17,
+        "labelSide": "top"
+      },
+      {
+        "id": "D13",
+        "x": 89,
+        "y": 17,
+        "labelSide": "top"
+      },
+      {
+        "id": "D12",
+        "x": 98,
+        "y": 17,
+        "labelSide": "top"
+      },
+      {
+        "id": "D11",
+        "x": 107,
+        "y": 17,
+        "labelSide": "top"
+      },
+      {
+        "id": "D10",
+        "x": 116,
+        "y": 17,
+        "labelSide": "top"
+      },
+      {
+        "id": "D9",
+        "x": 125,
+        "y": 17,
+        "labelSide": "top"
+      },
+      {
+        "id": "D8",
+        "x": 134,
+        "y": 17,
+        "labelSide": "top"
+      },
+      {
+        "id": "D7",
+        "x": 143,
+        "y": 17,
+        "labelSide": "top"
+      },
+      {
+        "id": "D6",
+        "x": 152,
+        "y": 17,
+        "labelSide": "top"
+      },
+      {
+        "id": "D5",
+        "x": 161,
+        "y": 17,
+        "labelSide": "top"
+      },
+      {
+        "id": "D4",
+        "x": 170,
+        "y": 17,
+        "labelSide": "top"
+      },
+      {
+        "id": "D3",
+        "x": 179,
+        "y": 17,
+        "labelSide": "top"
+      },
+      {
+        "id": "D2",
+        "x": 188,
+        "y": 17,
+        "labelSide": "top"
+      },
+      {
+        "id": "D1",
+        "x": 197,
+        "y": 17,
+        "labelSide": "top"
+      },
+      {
+        "id": "D0",
+        "x": 206,
+        "y": 17,
+        "labelSide": "top"
+      },
+      {
+        "id": "3V3",
+        "x": 75,
+        "y": 203,
+        "labelSide": "bottom"
+      },
+      {
+        "id": "5V",
+        "x": 89,
+        "y": 203,
+        "labelSide": "bottom"
+      },
+      {
+        "id": "GND",
+        "x": 103,
+        "y": 203,
+        "labelSide": "bottom"
+      },
+      {
+        "id": "VIN",
+        "x": 131,
+        "y": 203,
+        "labelSide": "bottom"
+      },
+      {
+        "id": "A0",
+        "x": 175,
+        "y": 203,
+        "labelSide": "bottom"
+      },
+      {
+        "id": "A1",
+        "x": 184,
+        "y": 203,
+        "labelSide": "bottom"
+      },
+      {
+        "id": "A2",
+        "x": 193,
+        "y": 203,
+        "labelSide": "bottom"
+      },
+      {
+        "id": "A3",
+        "x": 202,
+        "y": 203,
+        "labelSide": "bottom"
+      },
+      {
+        "id": "A4",
+        "x": 211,
+        "y": 203,
+        "labelSide": "bottom"
+      },
+      {
+        "id": "A5",
+        "x": 220,
+        "y": 203,
+        "labelSide": "bottom"
+      },
+      {
+        "id": "A6",
+        "x": 229,
+        "y": 203,
+        "labelSide": "bottom"
+      },
+      {
+        "id": "A7",
+        "x": 238,
+        "y": 203,
+        "labelSide": "bottom"
+      },
+      {
+        "id": "A8",
+        "x": 247,
+        "y": 203,
+        "labelSide": "bottom"
+      },
+      {
+        "id": "A9",
+        "x": 256,
+        "y": 203,
+        "labelSide": "bottom"
+      },
+      {
+        "id": "A10",
+        "x": 265,
+        "y": 203,
+        "labelSide": "bottom"
+      },
+      {
+        "id": "A11",
+        "x": 274,
+        "y": 203,
+        "labelSide": "bottom"
+      },
+      {
+        "id": "A12",
+        "x": 283,
+        "y": 203,
+        "labelSide": "bottom"
+      },
+      {
+        "id": "A13",
+        "x": 292,
+        "y": 203,
+        "labelSide": "bottom"
+      },
+      {
+        "id": "A14",
+        "x": 301,
+        "y": 203,
+        "labelSide": "bottom"
+      },
+      {
+        "id": "A15",
+        "x": 310,
+        "y": 203,
+        "labelSide": "bottom"
+      }
+    ],
+    "pinCount": 0
+  },
+  "raspberry-pi-pico": {
+    "archetype": "rpi-pico",
+    "width": 324,
+    "height": 160,
+    "pins": [
+      {
+        "id": "3V3",
+        "x": 10,
+        "y": 18,
+        "labelSide": "left"
+      },
+      {
+        "id": "GND",
+        "x": 10,
+        "y": 26,
+        "labelSide": "left"
+      },
+      {
+        "id": "GP0",
+        "x": 10,
+        "y": 35,
+        "labelSide": "left"
+      },
+      {
+        "id": "GP1",
+        "x": 10,
+        "y": 43,
+        "labelSide": "left"
+      },
+      {
+        "id": "GP2",
+        "x": 10,
+        "y": 51,
+        "labelSide": "left"
+      },
+      {
+        "id": "GP3",
+        "x": 10,
+        "y": 59,
+        "labelSide": "left"
+      },
+      {
+        "id": "GP4",
+        "x": 10,
+        "y": 68,
+        "labelSide": "left"
+      },
+      {
+        "id": "GP5",
+        "x": 10,
+        "y": 76,
+        "labelSide": "left"
+      },
+      {
+        "id": "GP6",
+        "x": 10,
+        "y": 84,
+        "labelSide": "left"
+      },
+      {
+        "id": "GP7",
+        "x": 10,
+        "y": 92,
+        "labelSide": "left"
+      },
+      {
+        "id": "GP8",
+        "x": 10,
+        "y": 101,
+        "labelSide": "left"
+      },
+      {
+        "id": "GP9",
+        "x": 10,
+        "y": 109,
+        "labelSide": "left"
+      },
+      {
+        "id": "GP10",
+        "x": 10,
+        "y": 117,
+        "labelSide": "left"
+      },
+      {
+        "id": "GP11",
+        "x": 10,
+        "y": 125,
+        "labelSide": "left"
+      },
+      {
+        "id": "GP12",
+        "x": 10,
+        "y": 134,
+        "labelSide": "left"
+      },
+      {
+        "id": "GP13",
+        "x": 10,
+        "y": 142,
+        "labelSide": "left"
+      },
+      {
+        "id": "GP14",
+        "x": 314,
+        "y": 18,
+        "labelSide": "right"
+      },
+      {
+        "id": "GP15",
+        "x": 314,
+        "y": 27,
+        "labelSide": "right"
+      },
+      {
+        "id": "GP16",
+        "x": 314,
+        "y": 36,
+        "labelSide": "right"
+      },
+      {
+        "id": "GP17",
+        "x": 314,
+        "y": 45,
+        "labelSide": "right"
+      },
+      {
+        "id": "GP18",
+        "x": 314,
+        "y": 53,
+        "labelSide": "right"
+      },
+      {
+        "id": "GP19",
+        "x": 314,
+        "y": 62,
+        "labelSide": "right"
+      },
+      {
+        "id": "GP20",
+        "x": 314,
+        "y": 71,
+        "labelSide": "right"
+      },
+      {
+        "id": "GP21",
+        "x": 314,
+        "y": 80,
+        "labelSide": "right"
+      },
+      {
+        "id": "GP22",
+        "x": 314,
+        "y": 89,
+        "labelSide": "right"
+      },
+      {
+        "id": "GP23",
+        "x": 314,
+        "y": 98,
+        "labelSide": "right"
+      },
+      {
+        "id": "GP24",
+        "x": 314,
+        "y": 107,
+        "labelSide": "right"
+      },
+      {
+        "id": "GP25",
+        "x": 314,
+        "y": 115,
+        "labelSide": "right"
+      },
+      {
+        "id": "GP26",
+        "x": 314,
+        "y": 124,
+        "labelSide": "right"
+      },
+      {
+        "id": "GP27",
+        "x": 314,
+        "y": 133,
+        "labelSide": "right"
+      },
+      {
+        "id": "GP28",
+        "x": 314,
+        "y": 142,
+        "labelSide": "right"
+      }
+    ],
+    "pinCount": 31
+  },
+  "raspberry-pi-pico-w": {
+    "archetype": "rpi-pico",
+    "width": 220,
+    "height": 95,
+    "pins": [],
+    "pinCount": 0
+  },
+  "stm32-bluepill": {
+    "archetype": "stm32-bluepill",
+    "width": 130,
+    "height": 78,
+    "pins": [],
+    "pinCount": 0
+  },
+  "attiny85": {
+    "archetype": "arduino-nano",
+    "width": 200,
+    "height": 80,
+    "pins": [],
+    "pinCount": 0
+  },
+  "teensy-4": {
+    "archetype": "esp32-devkit",
+    "width": 280,
+    "height": 100,
+    "pins": [],
+    "pinCount": 0
+  },
+  "bbc-microbit": {
+    "archetype": "microbit",
+    "width": 130,
+    "height": 78,
+    "pins": [],
+    "pinCount": 0
+  },
+  "esp32-s3": {
+    "archetype": "esp32-devkit",
+    "width": 280,
+    "height": 100,
+    "pins": [],
+    "pinCount": 0
+  },
+  "esp32-c3": {
+    "archetype": "esp32-devkit",
+    "width": 280,
+    "height": 100,
+    "pins": [],
+    "pinCount": 0
+  },
+  "dht11": {
+    "archetype": "dht-module",
+    "width": 80,
+    "height": 110,
+    "pins": [
+      {
+        "id": "VCC",
+        "x": 8,
+        "y": 28,
+        "labelSide": "left"
+      },
+      {
+        "id": "GND",
+        "x": 8,
+        "y": 55,
+        "labelSide": "left"
+      },
+      {
+        "id": "OUT",
+        "x": 8,
+        "y": 83,
+        "labelSide": "left"
+      }
+    ],
+    "pinCount": 3
+  },
+  "ldr": {
+    "archetype": "ldr",
+    "width": 130,
+    "height": 78,
+    "pins": [
+      {
+        "id": "pin1",
+        "x": 4,
+        "y": 39,
+        "labelSide": "left"
+      },
+      {
+        "id": "pin2",
+        "x": 126,
+        "y": 39,
+        "labelSide": "right"
+      }
+    ],
+    "pinCount": 2
+  },
+  "pir-sensor": {
+    "archetype": "pir-sensor",
+    "width": 120,
+    "height": 100,
+    "pins": [
+      {
+        "id": "VCC",
+        "x": 8,
+        "y": 25,
+        "labelSide": "left"
+      },
+      {
+        "id": "GND",
+        "x": 8,
+        "y": 50,
+        "labelSide": "left"
+      },
+      {
+        "id": "OUT",
+        "x": 8,
+        "y": 75,
+        "labelSide": "left"
+      }
+    ],
+    "pinCount": 3
+  },
+  "ir-sensor": {
+    "archetype": "ir-sensor",
+    "width": 130,
+    "height": 78,
+    "pins": [
+      {
+        "id": "VCC",
+        "x": 8,
+        "y": 20,
+        "labelSide": "left"
+      },
+      {
+        "id": "GND",
+        "x": 8,
+        "y": 39,
+        "labelSide": "left"
+      },
+      {
+        "id": "OUT",
+        "x": 8,
+        "y": 59,
+        "labelSide": "left"
+      }
+    ],
+    "pinCount": 3
+  },
+  "ir-receiver": {
+    "archetype": "ir-receiver",
+    "width": 130,
+    "height": 78,
+    "pins": [
+      {
+        "id": "VCC",
+        "x": 8,
+        "y": 20,
+        "labelSide": "left"
+      },
+      {
+        "id": "GND",
+        "x": 8,
+        "y": 39,
+        "labelSide": "left"
+      },
+      {
+        "id": "OUT",
+        "x": 8,
+        "y": 59,
+        "labelSide": "left"
+      }
+    ],
+    "pinCount": 3
+  },
+  "soil-moisture": {
+    "archetype": "soil-moisture",
+    "width": 130,
+    "height": 78,
+    "pins": [
+      {
+        "id": "VCC",
+        "x": 16,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "GND",
+        "x": 49,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "AO",
+        "x": 81,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "DO",
+        "x": 114,
+        "y": 12,
+        "labelSide": "top"
+      }
+    ],
+    "pinCount": 4
+  },
+  "mq2-gas": {
+    "archetype": "mq2-gas",
+    "width": 130,
+    "height": 95,
+    "pins": [
+      {
+        "id": "VCC",
+        "x": 16,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "GND",
+        "x": 49,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "AO",
+        "x": 81,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "DO",
+        "x": 114,
+        "y": 12,
+        "labelSide": "top"
+      }
+    ],
+    "pinCount": 4
+  },
+  "mq135-air": {
+    "archetype": "mq135-air",
+    "width": 130,
+    "height": 78,
+    "pins": [
+      {
+        "id": "VCC",
+        "x": 16,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "GND",
+        "x": 49,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "AO",
+        "x": 81,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "DO",
+        "x": 114,
+        "y": 12,
+        "labelSide": "top"
+      }
+    ],
+    "pinCount": 4
+  },
+  "water-level": {
+    "archetype": "water-level",
+    "width": 130,
+    "height": 78,
+    "pins": [
+      {
+        "id": "VCC",
+        "x": 8,
+        "y": 20,
+        "labelSide": "left"
+      },
+      {
+        "id": "GND",
+        "x": 8,
+        "y": 39,
+        "labelSide": "left"
+      },
+      {
+        "id": "S",
+        "x": 8,
+        "y": 59,
+        "labelSide": "left"
+      }
+    ],
+    "pinCount": 3
+  },
+  "flame-sensor": {
+    "archetype": "flame-sensor",
+    "width": 130,
+    "height": 78,
+    "pins": [
+      {
+        "id": "VCC",
+        "x": 16,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "GND",
+        "x": 49,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "DO",
+        "x": 81,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "AO",
+        "x": 114,
+        "y": 12,
+        "labelSide": "top"
+      }
+    ],
+    "pinCount": 4
+  },
+  "sound-sensor": {
+    "archetype": "sound-sensor",
+    "width": 130,
+    "height": 78,
+    "pins": [
+      {
+        "id": "VCC",
+        "x": 16,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "GND",
+        "x": 49,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "AO",
+        "x": 81,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "DO",
+        "x": 114,
+        "y": 12,
+        "labelSide": "top"
+      }
+    ],
+    "pinCount": 4
+  },
+  "bmp280": {
+    "archetype": "bmp280",
+    "width": 130,
+    "height": 78,
+    "pins": [
+      {
+        "id": "VCC",
+        "x": 16,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "GND",
+        "x": 49,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "SCL",
+        "x": 81,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "SDA",
+        "x": 114,
+        "y": 12,
+        "labelSide": "top"
+      }
+    ],
+    "pinCount": 4
+  },
+  "bme280": {
+    "archetype": "bme280",
+    "width": 130,
+    "height": 78,
+    "pins": [
+      {
+        "id": "VCC",
+        "x": 16,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "GND",
+        "x": 49,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "SCL",
+        "x": 81,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "SDA",
+        "x": 114,
+        "y": 12,
+        "labelSide": "top"
+      }
+    ],
+    "pinCount": 4
+  },
+  "adxl345": {
+    "archetype": "adxl345",
+    "width": 130,
+    "height": 78,
+    "pins": [
+      {
+        "id": "VCC",
+        "x": 16,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "GND",
+        "x": 49,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "SCL",
+        "x": 81,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "SDA",
+        "x": 114,
+        "y": 12,
+        "labelSide": "top"
+      }
+    ],
+    "pinCount": 4
+  },
+  "acs712": {
+    "archetype": "acs712",
+    "width": 130,
+    "height": 78,
+    "pins": [
+      {
+        "id": "VCC",
+        "x": 16,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "GND",
+        "x": 41,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "OUT",
+        "x": 65,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "IP+",
+        "x": 90,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "IP-",
+        "x": 114,
+        "y": 12,
+        "labelSide": "top"
+      }
+    ],
+    "pinCount": 5
+  },
+  "hx711": {
+    "archetype": "hx711",
+    "width": 130,
+    "height": 78,
+    "pins": [
+      {
+        "id": "VCC",
+        "x": 16,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "GND",
+        "x": 30,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "DT",
+        "x": 44,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "SCK",
+        "x": 58,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "E+",
+        "x": 72,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "E-",
+        "x": 86,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "A+",
+        "x": 100,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "A-",
+        "x": 114,
+        "y": 12,
+        "labelSide": "top"
+      }
+    ],
+    "pinCount": 8
+  },
+  "max30102": {
+    "archetype": "max30102",
+    "width": 130,
+    "height": 78,
+    "pins": [
+      {
+        "id": "VCC",
+        "x": 16,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "GND",
+        "x": 49,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "SCL",
+        "x": 81,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "SDA",
+        "x": 114,
+        "y": 12,
+        "labelSide": "top"
+      }
+    ],
+    "pinCount": 4
+  },
+  "ds18b20": {
+    "archetype": "ds18b20",
+    "width": 130,
+    "height": 78,
+    "pins": [
+      {
+        "id": "VCC",
+        "x": 8,
+        "y": 20,
+        "labelSide": "left"
+      },
+      {
+        "id": "GND",
+        "x": 8,
+        "y": 39,
+        "labelSide": "left"
+      },
+      {
+        "id": "DQ",
+        "x": 8,
+        "y": 59,
+        "labelSide": "left"
+      }
+    ],
+    "pinCount": 3
+  },
+  "tcs3200": {
+    "archetype": "tcs3200",
+    "width": 130,
+    "height": 78,
+    "pins": [
+      {
+        "id": "VCC",
+        "x": 16,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "GND",
+        "x": 32,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "S0",
+        "x": 49,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "S1",
+        "x": 65,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "S2",
+        "x": 81,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "S3",
+        "x": 98,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "OUT",
+        "x": 114,
+        "y": 12,
+        "labelSide": "top"
+      }
+    ],
+    "pinCount": 7
+  },
+  "rain-sensor": {
+    "archetype": "rain-sensor",
+    "width": 130,
+    "height": 78,
+    "pins": [
+      {
+        "id": "VCC",
+        "x": 16,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "GND",
+        "x": 49,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "AO",
+        "x": 81,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "DO",
+        "x": 114,
+        "y": 12,
+        "labelSide": "top"
+      }
+    ],
+    "pinCount": 4
+  },
+  "touch-sensor": {
+    "archetype": "touch-sensor",
+    "width": 130,
+    "height": 78,
+    "pins": [
+      {
+        "id": "VCC",
+        "x": 8,
+        "y": 20,
+        "labelSide": "left"
+      },
+      {
+        "id": "GND",
+        "x": 8,
+        "y": 39,
+        "labelSide": "left"
+      },
+      {
+        "id": "SIG",
+        "x": 8,
+        "y": 59,
+        "labelSide": "left"
+      }
+    ],
+    "pinCount": 3
+  },
+  "rotary-encoder": {
+    "archetype": "rotary-encoder",
+    "width": 130,
+    "height": 78,
+    "pins": [
+      {
+        "id": "VCC",
+        "x": 16,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "GND",
+        "x": 41,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "CLK",
+        "x": 65,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "DT",
+        "x": 90,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "SW",
+        "x": 114,
+        "y": 12,
+        "labelSide": "top"
+      }
+    ],
+    "pinCount": 5
+  },
+  "hall-effect": {
+    "archetype": "hall-effect",
+    "width": 130,
+    "height": 78,
+    "pins": [
+      {
+        "id": "VCC",
+        "x": 8,
+        "y": 20,
+        "labelSide": "left"
+      },
+      {
+        "id": "GND",
+        "x": 8,
+        "y": 39,
+        "labelSide": "left"
+      },
+      {
+        "id": "OUT",
+        "x": 8,
+        "y": 59,
+        "labelSide": "left"
+      }
+    ],
+    "pinCount": 3
+  },
+  "vibration-sensor": {
+    "archetype": "vibration-sensor",
+    "width": 130,
+    "height": 78,
+    "pins": [
+      {
+        "id": "VCC",
+        "x": 8,
+        "y": 20,
+        "labelSide": "left"
+      },
+      {
+        "id": "GND",
+        "x": 8,
+        "y": 39,
+        "labelSide": "left"
+      },
+      {
+        "id": "DO",
+        "x": 8,
+        "y": 59,
+        "labelSide": "left"
+      }
+    ],
+    "pinCount": 3
+  },
+  "uv-sensor": {
+    "archetype": "uv-sensor",
+    "width": 130,
+    "height": 78,
+    "pins": [
+      {
+        "id": "VCC",
+        "x": 8,
+        "y": 20,
+        "labelSide": "left"
+      },
+      {
+        "id": "GND",
+        "x": 8,
+        "y": 39,
+        "labelSide": "left"
+      },
+      {
+        "id": "OUT",
+        "x": 8,
+        "y": 59,
+        "labelSide": "left"
+      }
+    ],
+    "pinCount": 3
+  },
+  "flex-sensor": {
+    "archetype": "flex-sensor",
+    "width": 130,
+    "height": 78,
+    "pins": [
+      {
+        "id": "pin1",
+        "x": 4,
+        "y": 39,
+        "labelSide": "left"
+      },
+      {
+        "id": "pin2",
+        "x": 126,
+        "y": 39,
+        "labelSide": "right"
+      }
+    ],
+    "pinCount": 2
+  },
+  "force-sensor": {
+    "archetype": "force-sensor",
+    "width": 130,
+    "height": 78,
+    "pins": [
+      {
+        "id": "pin1",
+        "x": 4,
+        "y": 39,
+        "labelSide": "left"
+      },
+      {
+        "id": "pin2",
+        "x": 126,
+        "y": 39,
+        "labelSide": "right"
+      }
+    ],
+    "pinCount": 2
+  },
+  "tilt-sensor": {
+    "archetype": "tilt-sensor",
+    "width": 130,
+    "height": 78,
+    "pins": [
+      {
+        "id": "pin1",
+        "x": 4,
+        "y": 39,
+        "labelSide": "left"
+      },
+      {
+        "id": "pin2",
+        "x": 126,
+        "y": 39,
+        "labelSide": "right"
+      }
+    ],
+    "pinCount": 2
+  },
+  "fingerprint-sensor": {
+    "archetype": "fingerprint-sensor",
+    "width": 130,
+    "height": 78,
+    "pins": [
+      {
+        "id": "VCC",
+        "x": 16,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "GND",
+        "x": 49,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "TX",
+        "x": 81,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "RX",
+        "x": 114,
+        "y": 12,
+        "labelSide": "top"
+      }
+    ],
+    "pinCount": 4
+  },
+  "voltage-sensor": {
+    "archetype": "voltage-sensor",
+    "width": 130,
+    "height": 78,
+    "pins": [
+      {
+        "id": "VCC",
+        "x": 8,
+        "y": 20,
+        "labelSide": "left"
+      },
+      {
+        "id": "GND",
+        "x": 8,
+        "y": 39,
+        "labelSide": "left"
+      },
+      {
+        "id": "S",
+        "x": 8,
+        "y": 59,
+        "labelSide": "left"
+      }
+    ],
+    "pinCount": 3
+  },
+  "lcd-16x2": {
+    "archetype": "lcd-16x2",
+    "width": 292,
+    "height": 140,
+    "pins": [
+      {
+        "id": "VSS",
+        "x": 10,
+        "y": 18,
+        "labelSide": "left"
+      },
+      {
+        "id": "VDD",
+        "x": 10,
+        "y": 27,
+        "labelSide": "left"
+      },
+      {
+        "id": "V0",
+        "x": 10,
+        "y": 37,
+        "labelSide": "left"
+      },
+      {
+        "id": "RS",
+        "x": 10,
+        "y": 46,
+        "labelSide": "left"
+      },
+      {
+        "id": "RW",
+        "x": 10,
+        "y": 56,
+        "labelSide": "left"
+      },
+      {
+        "id": "E",
+        "x": 10,
+        "y": 65,
+        "labelSide": "left"
+      },
+      {
+        "id": "D0",
+        "x": 10,
+        "y": 75,
+        "labelSide": "left"
+      },
+      {
+        "id": "D1",
+        "x": 10,
+        "y": 84,
+        "labelSide": "left"
+      },
+      {
+        "id": "D2",
+        "x": 10,
+        "y": 94,
+        "labelSide": "left"
+      },
+      {
+        "id": "D3",
+        "x": 10,
+        "y": 103,
+        "labelSide": "left"
+      },
+      {
+        "id": "D4",
+        "x": 10,
+        "y": 113,
+        "labelSide": "left"
+      },
+      {
+        "id": "D5",
+        "x": 10,
+        "y": 122,
+        "labelSide": "left"
+      },
+      {
+        "id": "D6",
+        "x": 282,
+        "y": 18,
+        "labelSide": "right"
+      },
+      {
+        "id": "D7",
+        "x": 282,
+        "y": 28,
+        "labelSide": "right"
+      },
+      {
+        "id": "A0",
+        "x": 282,
+        "y": 39,
+        "labelSide": "right"
+      },
+      {
+        "id": "A1",
+        "x": 282,
+        "y": 49,
+        "labelSide": "right"
+      },
+      {
+        "id": "A2",
+        "x": 282,
+        "y": 60,
+        "labelSide": "right"
+      },
+      {
+        "id": "A3",
+        "x": 282,
+        "y": 70,
+        "labelSide": "right"
+      },
+      {
+        "id": "A4",
+        "x": 282,
+        "y": 80,
+        "labelSide": "right"
+      },
+      {
+        "id": "A5",
+        "x": 282,
+        "y": 91,
+        "labelSide": "right"
+      },
+      {
+        "id": "A6",
+        "x": 282,
+        "y": 101,
+        "labelSide": "right"
+      },
+      {
+        "id": "BL+",
+        "x": 282,
+        "y": 112,
+        "labelSide": "right"
+      },
+      {
+        "id": "BL-",
+        "x": 282,
+        "y": 122,
+        "labelSide": "right"
+      }
+    ],
+    "pinCount": 23
+  },
+  "lcd-20x4": {
+    "archetype": "lcd-16x2",
+    "width": 292,
+    "height": 140,
+    "pins": [
+      {
+        "id": "VSS",
+        "x": 10,
+        "y": 18,
+        "labelSide": "left"
+      },
+      {
+        "id": "VDD",
+        "x": 10,
+        "y": 27,
+        "labelSide": "left"
+      },
+      {
+        "id": "V0",
+        "x": 10,
+        "y": 37,
+        "labelSide": "left"
+      },
+      {
+        "id": "RS",
+        "x": 10,
+        "y": 46,
+        "labelSide": "left"
+      },
+      {
+        "id": "RW",
+        "x": 10,
+        "y": 56,
+        "labelSide": "left"
+      },
+      {
+        "id": "E",
+        "x": 10,
+        "y": 65,
+        "labelSide": "left"
+      },
+      {
+        "id": "D0",
+        "x": 10,
+        "y": 75,
+        "labelSide": "left"
+      },
+      {
+        "id": "D1",
+        "x": 10,
+        "y": 84,
+        "labelSide": "left"
+      },
+      {
+        "id": "D2",
+        "x": 10,
+        "y": 94,
+        "labelSide": "left"
+      },
+      {
+        "id": "D3",
+        "x": 10,
+        "y": 103,
+        "labelSide": "left"
+      },
+      {
+        "id": "D4",
+        "x": 10,
+        "y": 113,
+        "labelSide": "left"
+      },
+      {
+        "id": "D5",
+        "x": 10,
+        "y": 122,
+        "labelSide": "left"
+      },
+      {
+        "id": "D6",
+        "x": 282,
+        "y": 18,
+        "labelSide": "right"
+      },
+      {
+        "id": "D7",
+        "x": 282,
+        "y": 28,
+        "labelSide": "right"
+      },
+      {
+        "id": "A0",
+        "x": 282,
+        "y": 39,
+        "labelSide": "right"
+      },
+      {
+        "id": "A1",
+        "x": 282,
+        "y": 49,
+        "labelSide": "right"
+      },
+      {
+        "id": "A2",
+        "x": 282,
+        "y": 60,
+        "labelSide": "right"
+      },
+      {
+        "id": "A3",
+        "x": 282,
+        "y": 70,
+        "labelSide": "right"
+      },
+      {
+        "id": "A4",
+        "x": 282,
+        "y": 80,
+        "labelSide": "right"
+      },
+      {
+        "id": "A5",
+        "x": 282,
+        "y": 91,
+        "labelSide": "right"
+      },
+      {
+        "id": "A6",
+        "x": 282,
+        "y": 101,
+        "labelSide": "right"
+      },
+      {
+        "id": "BL+",
+        "x": 282,
+        "y": 112,
+        "labelSide": "right"
+      },
+      {
+        "id": "BL-",
+        "x": 282,
+        "y": 122,
+        "labelSide": "right"
+      }
+    ],
+    "pinCount": 23
+  },
+  "oled-096": {
+    "archetype": "oled-module",
+    "width": 130,
+    "height": 78,
+    "pins": [
+      {
+        "id": "VCC",
+        "x": 16,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "GND",
+        "x": 49,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "SCL",
+        "x": 81,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "SDA",
+        "x": 114,
+        "y": 12,
+        "labelSide": "top"
+      }
+    ],
+    "pinCount": 4
+  },
+  "oled-130": {
+    "archetype": "oled-module",
+    "width": 130,
+    "height": 78,
+    "pins": [
+      {
+        "id": "VCC",
+        "x": 16,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "GND",
+        "x": 49,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "SCL",
+        "x": 81,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "SDA",
+        "x": 114,
+        "y": 12,
+        "labelSide": "top"
+      }
+    ],
+    "pinCount": 4
+  },
+  "tft-18": {
+    "archetype": "tft-module",
+    "width": 130,
+    "height": 78,
+    "pins": [
+      {
+        "id": "VCC",
+        "x": 16,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "GND",
+        "x": 32,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "CS",
+        "x": 49,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "RST",
+        "x": 65,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "DC",
+        "x": 81,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "MOSI",
+        "x": 98,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "CLK",
+        "x": 114,
+        "y": 12,
+        "labelSide": "top"
+      }
+    ],
+    "pinCount": 7
+  },
+  "tft-28": {
+    "archetype": "tft-module",
+    "width": 130,
+    "height": 78,
+    "pins": [
+      {
+        "id": "VCC",
+        "x": 16,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "GND",
+        "x": 30,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "CS",
+        "x": 44,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "RST",
+        "x": 58,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "DC",
+        "x": 72,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "MOSI",
+        "x": 86,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "CLK",
+        "x": 100,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "T_CS",
+        "x": 114,
+        "y": 12,
+        "labelSide": "top"
+      }
+    ],
+    "pinCount": 8
+  },
+  "7seg-display": {
+    "archetype": "display-7seg",
+    "width": 174,
+    "height": 78,
+    "pins": [
+      {
+        "id": "a",
+        "x": 14,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "b",
+        "x": 51,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "c",
+        "x": 87,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "d",
+        "x": 124,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "e",
+        "x": 160,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "f",
+        "x": 14,
+        "y": 66,
+        "labelSide": "bottom"
+      },
+      {
+        "id": "g",
+        "x": 63,
+        "y": 66,
+        "labelSide": "bottom"
+      },
+      {
+        "id": "dp",
+        "x": 111,
+        "y": 66,
+        "labelSide": "bottom"
+      },
+      {
+        "id": "CC",
+        "x": 160,
+        "y": 66,
+        "labelSide": "bottom"
+      }
+    ],
+    "pinCount": 9
+  },
+  "4digit-7seg": {
+    "archetype": "display-7seg",
+    "width": 130,
+    "height": 78,
+    "pins": [
+      {
+        "id": "VCC",
+        "x": 16,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "GND",
+        "x": 49,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "CLK",
+        "x": 81,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "DIO",
+        "x": 114,
+        "y": 12,
+        "labelSide": "top"
+      }
+    ],
+    "pinCount": 4
+  },
+  "led-matrix-8x8": {
+    "archetype": "oled-module",
+    "width": 130,
+    "height": 78,
+    "pins": [
+      {
+        "id": "VCC",
+        "x": 16,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "GND",
+        "x": 41,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "DIN",
+        "x": 65,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "CS",
+        "x": 90,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "CLK",
+        "x": 114,
+        "y": 12,
+        "labelSide": "top"
+      }
+    ],
+    "pinCount": 5
+  },
+  "epaper": {
+    "archetype": "oled-module",
+    "width": 130,
+    "height": 78,
+    "pins": [
+      {
+        "id": "VCC",
+        "x": 16,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "GND",
+        "x": 30,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "DIN",
+        "x": 44,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "CLK",
+        "x": 58,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "CS",
+        "x": 72,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "DC",
+        "x": 86,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "RST",
+        "x": 100,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "BUSY",
+        "x": 114,
+        "y": 12,
+        "labelSide": "top"
+      }
+    ],
+    "pinCount": 8
+  },
+  "neopixel-ring": {
+    "archetype": "neopixel-ring",
+    "width": 130,
+    "height": 78,
+    "pins": [
+      {
+        "id": "VCC",
+        "x": 8,
+        "y": 20,
+        "labelSide": "left"
+      },
+      {
+        "id": "GND",
+        "x": 8,
+        "y": 39,
+        "labelSide": "left"
+      },
+      {
+        "id": "DIN",
+        "x": 8,
+        "y": 59,
+        "labelSide": "left"
+      }
+    ],
+    "pinCount": 3
+  },
+  "neopixel-strip": {
+    "archetype": "neopixel-strip",
+    "width": 130,
+    "height": 78,
+    "pins": [
+      {
+        "id": "VCC",
+        "x": 8,
+        "y": 20,
+        "labelSide": "left"
+      },
+      {
+        "id": "GND",
+        "x": 8,
+        "y": 39,
+        "labelSide": "left"
+      },
+      {
+        "id": "DIN",
+        "x": 8,
+        "y": 59,
+        "labelSide": "left"
+      }
+    ],
+    "pinCount": 3
+  },
+  "dc-motor-6v": {
+    "archetype": "dc-motor",
+    "width": 130,
+    "height": 78,
+    "pins": [
+      {
+        "id": "+",
+        "x": 4,
+        "y": 39,
+        "labelSide": "left"
+      },
+      {
+        "id": "-",
+        "x": 126,
+        "y": 39,
+        "labelSide": "right"
+      }
+    ],
+    "pinCount": 2
+  },
+  "dc-motor-12v": {
+    "archetype": "dc-motor",
+    "width": 130,
+    "height": 78,
+    "pins": [
+      {
+        "id": "+",
+        "x": 4,
+        "y": 39,
+        "labelSide": "left"
+      },
+      {
+        "id": "-",
+        "x": 126,
+        "y": 39,
+        "labelSide": "right"
+      }
+    ],
+    "pinCount": 2
+  },
+  "servo-mg996r": {
+    "archetype": "servo",
+    "width": 120,
+    "height": 95,
+    "pins": [
+      {
+        "id": "VCC",
+        "x": 8,
+        "y": 24,
+        "labelSide": "left"
+      },
+      {
+        "id": "GND",
+        "x": 8,
+        "y": 48,
+        "labelSide": "left"
+      },
+      {
+        "id": "SIGNAL",
+        "x": 8,
+        "y": 71,
+        "labelSide": "left"
+      }
+    ],
+    "pinCount": 3
+  },
+  "stepper-28byj48": {
+    "archetype": "stepper",
+    "width": 130,
+    "height": 78,
+    "pins": [
+      {
+        "id": "IN1",
+        "x": 16,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "IN2",
+        "x": 41,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "IN3",
+        "x": 65,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "IN4",
+        "x": 90,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "VCC",
+        "x": 114,
+        "y": 12,
+        "labelSide": "top"
+      }
+    ],
+    "pinCount": 5
+  },
+  "stepper-nema17": {
+    "archetype": "stepper",
+    "width": 130,
+    "height": 78,
+    "pins": [
+      {
+        "id": "A+",
+        "x": 16,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "A-",
+        "x": 49,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "B+",
+        "x": 81,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "B-",
+        "x": 114,
+        "y": 12,
+        "labelSide": "top"
+      }
+    ],
+    "pinCount": 4
+  },
+  "linear-actuator": {
+    "archetype": "dc-motor",
+    "width": 130,
+    "height": 78,
+    "pins": [
+      {
+        "id": "+",
+        "x": 4,
+        "y": 39,
+        "labelSide": "left"
+      },
+      {
+        "id": "-",
+        "x": 126,
+        "y": 39,
+        "labelSide": "right"
+      }
+    ],
+    "pinCount": 2
+  },
+  "solenoid-5v": {
+    "archetype": "dc-motor",
+    "width": 130,
+    "height": 78,
+    "pins": [
+      {
+        "id": "+",
+        "x": 4,
+        "y": 39,
+        "labelSide": "left"
+      },
+      {
+        "id": "-",
+        "x": 126,
+        "y": 39,
+        "labelSide": "right"
+      }
+    ],
+    "pinCount": 2
+  },
+  "solenoid-12v": {
+    "archetype": "dc-motor",
+    "width": 130,
+    "height": 78,
+    "pins": [
+      {
+        "id": "+",
+        "x": 4,
+        "y": 39,
+        "labelSide": "left"
+      },
+      {
+        "id": "-",
+        "x": 126,
+        "y": 39,
+        "labelSide": "right"
+      }
+    ],
+    "pinCount": 2
+  },
+  "relay-module": {
+    "archetype": "relay-module",
+    "width": 130,
+    "height": 78,
+    "pins": [
+      {
+        "id": "VCC",
+        "x": 16,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "GND",
+        "x": 36,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "IN",
+        "x": 55,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "COM",
+        "x": 75,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "NO",
+        "x": 94,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "NC",
+        "x": 114,
+        "y": 12,
+        "labelSide": "top"
+      }
+    ],
+    "pinCount": 6
+  },
+  "relay-4ch": {
+    "archetype": "relay-module",
+    "width": 130,
+    "height": 78,
+    "pins": [
+      {
+        "id": "VCC",
+        "x": 16,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "GND",
+        "x": 36,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "IN1",
+        "x": 55,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "IN2",
+        "x": 75,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "IN3",
+        "x": 94,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "IN4",
+        "x": 114,
+        "y": 12,
+        "labelSide": "top"
+      }
+    ],
+    "pinCount": 6
+  },
+  "relay-8ch": {
+    "archetype": "relay-module",
+    "width": 180,
+    "height": 78,
+    "pins": [
+      {
+        "id": "VCC",
+        "x": 14,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "GND",
+        "x": 52,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "IN1",
+        "x": 90,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "IN2",
+        "x": 128,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "IN3",
+        "x": 166,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "IN4",
+        "x": 14,
+        "y": 66,
+        "labelSide": "bottom"
+      },
+      {
+        "id": "IN5",
+        "x": 52,
+        "y": 66,
+        "labelSide": "bottom"
+      },
+      {
+        "id": "IN6",
+        "x": 90,
+        "y": 66,
+        "labelSide": "bottom"
+      },
+      {
+        "id": "IN7",
+        "x": 128,
+        "y": 66,
+        "labelSide": "bottom"
+      },
+      {
+        "id": "IN8",
+        "x": 166,
+        "y": 66,
+        "labelSide": "bottom"
+      }
+    ],
+    "pinCount": 10
+  },
+  "buzzer-active": {
+    "archetype": "buzzer",
+    "width": 130,
+    "height": 78,
+    "pins": [
+      {
+        "id": "+",
+        "x": 4,
+        "y": 39,
+        "labelSide": "left"
+      },
+      {
+        "id": "-",
+        "x": 126,
+        "y": 39,
+        "labelSide": "right"
+      }
+    ],
+    "pinCount": 2
+  },
+  "buzzer-passive": {
+    "archetype": "buzzer",
+    "width": 130,
+    "height": 78,
+    "pins": [
+      {
+        "id": "+",
+        "x": 4,
+        "y": 39,
+        "labelSide": "left"
+      },
+      {
+        "id": "-",
+        "x": 126,
+        "y": 39,
+        "labelSide": "right"
+      }
+    ],
+    "pinCount": 2
+  },
+  "speaker-8ohm": {
+    "archetype": "buzzer",
+    "width": 130,
+    "height": 78,
+    "pins": [
+      {
+        "id": "+",
+        "x": 4,
+        "y": 39,
+        "labelSide": "left"
+      },
+      {
+        "id": "-",
+        "x": 126,
+        "y": 39,
+        "labelSide": "right"
+      }
+    ],
+    "pinCount": 2
+  },
+  "vibration-motor": {
+    "archetype": "dc-motor",
+    "width": 130,
+    "height": 78,
+    "pins": [
+      {
+        "id": "+",
+        "x": 4,
+        "y": 39,
+        "labelSide": "left"
+      },
+      {
+        "id": "-",
+        "x": 126,
+        "y": 39,
+        "labelSide": "right"
+      }
+    ],
+    "pinCount": 2
+  },
+  "water-pump": {
+    "archetype": "dc-motor",
+    "width": 130,
+    "height": 78,
+    "pins": [
+      {
+        "id": "+",
+        "x": 4,
+        "y": 39,
+        "labelSide": "left"
+      },
+      {
+        "id": "-",
+        "x": 126,
+        "y": 39,
+        "labelSide": "right"
+      }
+    ],
+    "pinCount": 2
+  },
+  "fan-5v": {
+    "archetype": "dc-motor",
+    "width": 130,
+    "height": 78,
+    "pins": [
+      {
+        "id": "+",
+        "x": 4,
+        "y": 39,
+        "labelSide": "left"
+      },
+      {
+        "id": "-",
+        "x": 126,
+        "y": 39,
+        "labelSide": "right"
+      }
+    ],
+    "pinCount": 2
+  },
+  "resistor-100ohm": {
+    "archetype": "resistor",
+    "width": 120,
+    "height": 40,
+    "pins": [
+      {
+        "id": "pin1",
+        "x": 4,
+        "y": 20,
+        "labelSide": "left"
+      },
+      {
+        "id": "pin2",
+        "x": 116,
+        "y": 20,
+        "labelSide": "right"
+      }
+    ],
+    "pinCount": 2
+  },
+  "resistor-330ohm": {
+    "archetype": "resistor",
+    "width": 120,
+    "height": 40,
+    "pins": [
+      {
+        "id": "pin1",
+        "x": 4,
+        "y": 20,
+        "labelSide": "left"
+      },
+      {
+        "id": "pin2",
+        "x": 116,
+        "y": 20,
+        "labelSide": "right"
+      }
+    ],
+    "pinCount": 2
+  },
+  "resistor-1kohm": {
+    "archetype": "resistor",
+    "width": 120,
+    "height": 40,
+    "pins": [
+      {
+        "id": "pin1",
+        "x": 4,
+        "y": 20,
+        "labelSide": "left"
+      },
+      {
+        "id": "pin2",
+        "x": 116,
+        "y": 20,
+        "labelSide": "right"
+      }
+    ],
+    "pinCount": 2
+  },
+  "resistor-100kohm": {
+    "archetype": "resistor",
+    "width": 120,
+    "height": 40,
+    "pins": [
+      {
+        "id": "pin1",
+        "x": 4,
+        "y": 20,
+        "labelSide": "left"
+      },
+      {
+        "id": "pin2",
+        "x": 116,
+        "y": 20,
+        "labelSide": "right"
+      }
+    ],
+    "pinCount": 2
+  },
+  "potentiometer-10k": {
+    "archetype": "potentiometer",
+    "width": 130,
+    "height": 78,
+    "pins": [
+      {
+        "id": "VCC",
+        "x": 8,
+        "y": 20,
+        "labelSide": "left"
+      },
+      {
+        "id": "GND",
+        "x": 8,
+        "y": 39,
+        "labelSide": "left"
+      },
+      {
+        "id": "WIPER",
+        "x": 8,
+        "y": 59,
+        "labelSide": "left"
+      }
+    ],
+    "pinCount": 3
+  },
+  "potentiometer-100k": {
+    "archetype": "potentiometer",
+    "width": 130,
+    "height": 78,
+    "pins": [
+      {
+        "id": "VCC",
+        "x": 8,
+        "y": 20,
+        "labelSide": "left"
+      },
+      {
+        "id": "GND",
+        "x": 8,
+        "y": 39,
+        "labelSide": "left"
+      },
+      {
+        "id": "WIPER",
+        "x": 8,
+        "y": 59,
+        "labelSide": "left"
+      }
+    ],
+    "pinCount": 3
+  },
+  "trimmer-10k": {
+    "archetype": "potentiometer",
+    "width": 130,
+    "height": 78,
+    "pins": [
+      {
+        "id": "pin1",
+        "x": 8,
+        "y": 20,
+        "labelSide": "left"
+      },
+      {
+        "id": "pin2",
+        "x": 8,
+        "y": 39,
+        "labelSide": "left"
+      },
+      {
+        "id": "wiper",
+        "x": 8,
+        "y": 59,
+        "labelSide": "left"
+      }
+    ],
+    "pinCount": 3
+  },
+  "cap-ceramic-100nf": {
+    "archetype": "cap-ceramic",
+    "width": 130,
+    "height": 78,
+    "pins": [
+      {
+        "id": "pin1",
+        "x": 4,
+        "y": 39,
+        "labelSide": "left"
+      },
+      {
+        "id": "pin2",
+        "x": 126,
+        "y": 39,
+        "labelSide": "right"
+      }
+    ],
+    "pinCount": 2
+  },
+  "cap-ceramic-10uf": {
+    "archetype": "cap-ceramic",
+    "width": 130,
+    "height": 78,
+    "pins": [
+      {
+        "id": "pin1",
+        "x": 4,
+        "y": 39,
+        "labelSide": "left"
+      },
+      {
+        "id": "pin2",
+        "x": 126,
+        "y": 39,
+        "labelSide": "right"
+      }
+    ],
+    "pinCount": 2
+  },
+  "cap-electrolytic-100uf": {
+    "archetype": "cap-electrolytic",
+    "width": 130,
+    "height": 78,
+    "pins": [
+      {
+        "id": "+",
+        "x": 4,
+        "y": 39,
+        "labelSide": "left"
+      },
+      {
+        "id": "-",
+        "x": 126,
+        "y": 39,
+        "labelSide": "right"
+      }
+    ],
+    "pinCount": 2
+  },
+  "cap-electrolytic-470uf": {
+    "archetype": "cap-electrolytic",
+    "width": 130,
+    "height": 78,
+    "pins": [
+      {
+        "id": "+",
+        "x": 4,
+        "y": 39,
+        "labelSide": "left"
+      },
+      {
+        "id": "-",
+        "x": 126,
+        "y": 39,
+        "labelSide": "right"
+      }
+    ],
+    "pinCount": 2
+  },
+  "cap-electrolytic-1000uf": {
+    "archetype": "cap-electrolytic",
+    "width": 130,
+    "height": 78,
+    "pins": [
+      {
+        "id": "+",
+        "x": 4,
+        "y": 39,
+        "labelSide": "left"
+      },
+      {
+        "id": "-",
+        "x": 126,
+        "y": 39,
+        "labelSide": "right"
+      }
+    ],
+    "pinCount": 2
+  },
+  "inductor-10uh": {
+    "archetype": "inductor",
+    "width": 130,
+    "height": 78,
+    "pins": [
+      {
+        "id": "pin1",
+        "x": 4,
+        "y": 39,
+        "labelSide": "left"
+      },
+      {
+        "id": "pin2",
+        "x": 126,
+        "y": 39,
+        "labelSide": "right"
+      }
+    ],
+    "pinCount": 2
+  },
+  "inductor-100uh": {
+    "archetype": "inductor",
+    "width": 130,
+    "height": 78,
+    "pins": [
+      {
+        "id": "pin1",
+        "x": 4,
+        "y": 39,
+        "labelSide": "left"
+      },
+      {
+        "id": "pin2",
+        "x": 126,
+        "y": 39,
+        "labelSide": "right"
+      }
+    ],
+    "pinCount": 2
+  },
+  "thermistor-ntc": {
+    "archetype": "thermistor-ntc",
+    "width": 130,
+    "height": 78,
+    "pins": [
+      {
+        "id": "pin1",
+        "x": 4,
+        "y": 39,
+        "labelSide": "left"
+      },
+      {
+        "id": "pin2",
+        "x": 126,
+        "y": 39,
+        "labelSide": "right"
+      }
+    ],
+    "pinCount": 2
+  },
+  "fuse-1a": {
+    "archetype": "resistor",
+    "width": 120,
+    "height": 40,
+    "pins": [
+      {
+        "id": "pin1",
+        "x": 4,
+        "y": 20,
+        "labelSide": "left"
+      },
+      {
+        "id": "pin2",
+        "x": 116,
+        "y": 20,
+        "labelSide": "right"
+      }
+    ],
+    "pinCount": 2
+  },
+  "crystal-16mhz": {
+    "archetype": "ic-dip",
+    "width": 100,
+    "height": 60,
+    "pins": [
+      {
+        "id": "pin1",
+        "x": 4,
+        "y": 30,
+        "labelSide": "left"
+      },
+      {
+        "id": "pin2",
+        "x": 96,
+        "y": 30,
+        "labelSide": "right"
+      }
+    ],
+    "pinCount": 2
+  },
+  "diode-1n4007": {
+    "archetype": "diode",
+    "width": 130,
+    "height": 78,
+    "pins": [
+      {
+        "id": "anode",
+        "x": 4,
+        "y": 39,
+        "labelSide": "left"
+      },
+      {
+        "id": "cathode",
+        "x": 126,
+        "y": 39,
+        "labelSide": "right"
+      }
+    ],
+    "pinCount": 2
+  },
+  "diode-1n4148": {
+    "archetype": "diode",
+    "width": 130,
+    "height": 78,
+    "pins": [
+      {
+        "id": "anode",
+        "x": 4,
+        "y": 39,
+        "labelSide": "left"
+      },
+      {
+        "id": "cathode",
+        "x": 126,
+        "y": 39,
+        "labelSide": "right"
+      }
+    ],
+    "pinCount": 2
+  },
+  "zener-5v1": {
+    "archetype": "diode",
+    "width": 130,
+    "height": 78,
+    "pins": [
+      {
+        "id": "anode",
+        "x": 4,
+        "y": 39,
+        "labelSide": "left"
+      },
+      {
+        "id": "cathode",
+        "x": 126,
+        "y": 39,
+        "labelSide": "right"
+      }
+    ],
+    "pinCount": 2
+  },
+  "schottky-1n5819": {
+    "archetype": "diode",
+    "width": 130,
+    "height": 78,
+    "pins": [
+      {
+        "id": "anode",
+        "x": 4,
+        "y": 39,
+        "labelSide": "left"
+      },
+      {
+        "id": "cathode",
+        "x": 126,
+        "y": 39,
+        "labelSide": "right"
+      }
+    ],
+    "pinCount": 2
+  },
+  "led-blue": {
+    "archetype": "led-blue",
+    "width": 130,
+    "height": 78,
+    "pins": [
+      {
+        "id": "anode",
+        "x": 4,
+        "y": 39,
+        "labelSide": "left"
+      },
+      {
+        "id": "cathode",
+        "x": 126,
+        "y": 39,
+        "labelSide": "right"
+      }
+    ],
+    "pinCount": 2
+  },
+  "led-yellow": {
+    "archetype": "led-yellow",
+    "width": 130,
+    "height": 78,
+    "pins": [
+      {
+        "id": "anode",
+        "x": 4,
+        "y": 39,
+        "labelSide": "left"
+      },
+      {
+        "id": "cathode",
+        "x": 126,
+        "y": 39,
+        "labelSide": "right"
+      }
+    ],
+    "pinCount": 2
+  },
+  "led-white": {
+    "archetype": "led-white",
+    "width": 130,
+    "height": 78,
+    "pins": [
+      {
+        "id": "anode",
+        "x": 4,
+        "y": 39,
+        "labelSide": "left"
+      },
+      {
+        "id": "cathode",
+        "x": 126,
+        "y": 39,
+        "labelSide": "right"
+      }
+    ],
+    "pinCount": 2
+  },
+  "led-ir": {
+    "archetype": "led-ir",
+    "width": 130,
+    "height": 78,
+    "pins": [
+      {
+        "id": "anode",
+        "x": 4,
+        "y": 39,
+        "labelSide": "left"
+      },
+      {
+        "id": "cathode",
+        "x": 126,
+        "y": 39,
+        "labelSide": "right"
+      }
+    ],
+    "pinCount": 2
+  },
+  "npn-2n2222": {
+    "archetype": "transistor",
+    "width": 130,
+    "height": 78,
+    "pins": [
+      {
+        "id": "B",
+        "x": 8,
+        "y": 20,
+        "labelSide": "left"
+      },
+      {
+        "id": "C",
+        "x": 8,
+        "y": 39,
+        "labelSide": "left"
+      },
+      {
+        "id": "E",
+        "x": 8,
+        "y": 59,
+        "labelSide": "left"
+      }
+    ],
+    "pinCount": 3
+  },
+  "pnp-2n2907": {
+    "archetype": "transistor",
+    "width": 130,
+    "height": 78,
+    "pins": [
+      {
+        "id": "B",
+        "x": 8,
+        "y": 20,
+        "labelSide": "left"
+      },
+      {
+        "id": "C",
+        "x": 8,
+        "y": 39,
+        "labelSide": "left"
+      },
+      {
+        "id": "E",
+        "x": 8,
+        "y": 59,
+        "labelSide": "left"
+      }
+    ],
+    "pinCount": 3
+  },
+  "npn-tip120": {
+    "archetype": "transistor",
+    "width": 130,
+    "height": 78,
+    "pins": [
+      {
+        "id": "B",
+        "x": 8,
+        "y": 20,
+        "labelSide": "left"
+      },
+      {
+        "id": "C",
+        "x": 8,
+        "y": 39,
+        "labelSide": "left"
+      },
+      {
+        "id": "E",
+        "x": 8,
+        "y": 59,
+        "labelSide": "left"
+      }
+    ],
+    "pinCount": 3
+  },
+  "mosfet-irf540n": {
+    "archetype": "transistor",
+    "width": 130,
+    "height": 78,
+    "pins": [
+      {
+        "id": "G",
+        "x": 8,
+        "y": 20,
+        "labelSide": "left"
+      },
+      {
+        "id": "D",
+        "x": 8,
+        "y": 39,
+        "labelSide": "left"
+      },
+      {
+        "id": "S",
+        "x": 8,
+        "y": 59,
+        "labelSide": "left"
+      }
+    ],
+    "pinCount": 3
+  },
+  "mosfet-irf9540n": {
+    "archetype": "transistor",
+    "width": 130,
+    "height": 78,
+    "pins": [
+      {
+        "id": "G",
+        "x": 8,
+        "y": 20,
+        "labelSide": "left"
+      },
+      {
+        "id": "D",
+        "x": 8,
+        "y": 39,
+        "labelSide": "left"
+      },
+      {
+        "id": "S",
+        "x": 8,
+        "y": 59,
+        "labelSide": "left"
+      }
+    ],
+    "pinCount": 3
+  },
+  "mosfet-irlz44n": {
+    "archetype": "transistor",
+    "width": 130,
+    "height": 78,
+    "pins": [
+      {
+        "id": "G",
+        "x": 8,
+        "y": 20,
+        "labelSide": "left"
+      },
+      {
+        "id": "D",
+        "x": 8,
+        "y": 39,
+        "labelSide": "left"
+      },
+      {
+        "id": "S",
+        "x": 8,
+        "y": 59,
+        "labelSide": "left"
+      }
+    ],
+    "pinCount": 3
+  },
+  "optocoupler-817": {
+    "archetype": "ic-dip",
+    "width": 100,
+    "height": 60,
+    "pins": [
+      {
+        "id": "A",
+        "x": 16,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "K",
+        "x": 39,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "E",
+        "x": 61,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "C",
+        "x": 84,
+        "y": 12,
+        "labelSide": "top"
+      }
+    ],
+    "pinCount": 4
+  },
+  "bridge-rectifier": {
+    "archetype": "ic-dip",
+    "width": 100,
+    "height": 60,
+    "pins": [
+      {
+        "id": "AC1",
+        "x": 16,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "AC2",
+        "x": 39,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "+",
+        "x": 61,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "-",
+        "x": 84,
+        "y": 12,
+        "labelSide": "top"
+      }
+    ],
+    "pinCount": 4
+  },
+  "555-timer": {
+    "archetype": "ic-dip",
+    "width": 100,
+    "height": 60,
+    "pins": [
+      {
+        "id": "GND",
+        "x": 16,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "TRIG",
+        "x": 26,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "OUT",
+        "x": 35,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "RST",
+        "x": 45,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "CTRL",
+        "x": 55,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "THR",
+        "x": 65,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "DIS",
+        "x": 74,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "VCC",
+        "x": 84,
+        "y": 12,
+        "labelSide": "top"
+      }
+    ],
+    "pinCount": 8
+  },
+  "lm741-opamp": {
+    "archetype": "ic-dip",
+    "width": 100,
+    "height": 60,
+    "pins": [
+      {
+        "id": "IN-",
+        "x": 16,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "IN+",
+        "x": 26,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "OUT",
+        "x": 35,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "V+",
+        "x": 45,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "V-",
+        "x": 55,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "OFFSET1",
+        "x": 65,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "OFFSET2",
+        "x": 74,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "NC",
+        "x": 84,
+        "y": 12,
+        "labelSide": "top"
+      }
+    ],
+    "pinCount": 8
+  },
+  "lm358-opamp": {
+    "archetype": "ic-dip",
+    "width": 100,
+    "height": 60,
+    "pins": [
+      {
+        "id": "OUT1",
+        "x": 16,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "IN1-",
+        "x": 26,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "IN1+",
+        "x": 35,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "GND",
+        "x": 45,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "IN2+",
+        "x": 55,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "IN2-",
+        "x": 65,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "OUT2",
+        "x": 74,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "VCC",
+        "x": 84,
+        "y": 12,
+        "labelSide": "top"
+      }
+    ],
+    "pinCount": 8
+  },
+  "74hc595": {
+    "archetype": "ic-dip",
+    "width": 210,
+    "height": 120,
+    "pins": [
+      {
+        "id": "Q0",
+        "x": 17,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "Q1",
+        "x": 42,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "Q2",
+        "x": 67,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "Q3",
+        "x": 92,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "Q4",
+        "x": 118,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "Q5",
+        "x": 143,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "Q6",
+        "x": 168,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "Q7",
+        "x": 193,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "GND",
+        "x": 17,
+        "y": 108,
+        "labelSide": "bottom"
+      },
+      {
+        "id": "VCC",
+        "x": 46,
+        "y": 108,
+        "labelSide": "bottom"
+      },
+      {
+        "id": "SER",
+        "x": 76,
+        "y": 108,
+        "labelSide": "bottom"
+      },
+      {
+        "id": "SRCLK",
+        "x": 105,
+        "y": 108,
+        "labelSide": "bottom"
+      },
+      {
+        "id": "RCLK",
+        "x": 134,
+        "y": 108,
+        "labelSide": "bottom"
+      },
+      {
+        "id": "OE",
+        "x": 164,
+        "y": 108,
+        "labelSide": "bottom"
+      },
+      {
+        "id": "SRCLR",
+        "x": 193,
+        "y": 108,
+        "labelSide": "bottom"
+      }
+    ],
+    "pinCount": 15
+  },
+  "pcf8574": {
+    "archetype": "ic-dip",
+    "width": 192,
+    "height": 60,
+    "pins": [
+      {
+        "id": "VCC",
+        "x": 15,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "GND",
+        "x": 48,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "SDA",
+        "x": 80,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "SCL",
+        "x": 112,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "P0",
+        "x": 144,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "P1",
+        "x": 177,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "P2",
+        "x": 15,
+        "y": 48,
+        "labelSide": "bottom"
+      },
+      {
+        "id": "P3",
+        "x": 48,
+        "y": 48,
+        "labelSide": "bottom"
+      },
+      {
+        "id": "P4",
+        "x": 80,
+        "y": 48,
+        "labelSide": "bottom"
+      },
+      {
+        "id": "P5",
+        "x": 112,
+        "y": 48,
+        "labelSide": "bottom"
+      },
+      {
+        "id": "P6",
+        "x": 144,
+        "y": 48,
+        "labelSide": "bottom"
+      },
+      {
+        "id": "P7",
+        "x": 177,
+        "y": 48,
+        "labelSide": "bottom"
+      }
+    ],
+    "pinCount": 12
+  },
+  "ads1115": {
+    "archetype": "ic-dip",
+    "width": 100,
+    "height": 60,
+    "pins": [
+      {
+        "id": "VCC",
+        "x": 16,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "GND",
+        "x": 26,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "SDA",
+        "x": 35,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "SCL",
+        "x": 45,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "A0",
+        "x": 55,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "A1",
+        "x": 65,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "A2",
+        "x": 74,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "A3",
+        "x": 84,
+        "y": 12,
+        "labelSide": "top"
+      }
+    ],
+    "pinCount": 8
+  },
+  "mcp4725": {
+    "archetype": "ic-dip",
+    "width": 100,
+    "height": 60,
+    "pins": [
+      {
+        "id": "VCC",
+        "x": 16,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "GND",
+        "x": 33,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "SDA",
+        "x": 50,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "SCL",
+        "x": 67,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "OUT",
+        "x": 84,
+        "y": 12,
+        "labelSide": "top"
+      }
+    ],
+    "pinCount": 5
+  },
+  "at24c256": {
+    "archetype": "ic-dip",
+    "width": 100,
+    "height": 60,
+    "pins": [
+      {
+        "id": "VCC",
+        "x": 16,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "GND",
+        "x": 39,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "SDA",
+        "x": 61,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "SCL",
+        "x": 84,
+        "y": 12,
+        "labelSide": "top"
+      }
+    ],
+    "pinCount": 4
+  },
+  "ds3231": {
+    "archetype": "ic-dip",
+    "width": 100,
+    "height": 60,
+    "pins": [
+      {
+        "id": "VCC",
+        "x": 16,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "GND",
+        "x": 39,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "SDA",
+        "x": 61,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "SCL",
+        "x": 84,
+        "y": 12,
+        "labelSide": "top"
+      }
+    ],
+    "pinCount": 4
+  },
+  "ds1307": {
+    "archetype": "ic-dip",
+    "width": 100,
+    "height": 60,
+    "pins": [
+      {
+        "id": "VCC",
+        "x": 16,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "GND",
+        "x": 39,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "SDA",
+        "x": 61,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "SCL",
+        "x": 84,
+        "y": 12,
+        "labelSide": "top"
+      }
+    ],
+    "pinCount": 4
+  },
+  "sd-card-module": {
+    "archetype": "ic-dip",
+    "width": 100,
+    "height": 60,
+    "pins": [
+      {
+        "id": "VCC",
+        "x": 16,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "GND",
+        "x": 30,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "MISO",
+        "x": 43,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "MOSI",
+        "x": 57,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "SCK",
+        "x": 70,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "CS",
+        "x": 84,
+        "y": 12,
+        "labelSide": "top"
+      }
+    ],
+    "pinCount": 6
+  },
+  "dfplayer-mini": {
+    "archetype": "ic-dip",
+    "width": 100,
+    "height": 60,
+    "pins": [
+      {
+        "id": "VCC",
+        "x": 16,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "GND",
+        "x": 30,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "TX",
+        "x": 43,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "RX",
+        "x": 57,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "SPK+",
+        "x": 70,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "SPK-",
+        "x": 84,
+        "y": 12,
+        "labelSide": "top"
+      }
+    ],
+    "pinCount": 6
+  },
+  "pam8403": {
+    "archetype": "ic-dip",
+    "width": 100,
+    "height": 60,
+    "pins": [
+      {
+        "id": "VCC",
+        "x": 16,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "GND",
+        "x": 26,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "L-IN",
+        "x": 35,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "R-IN",
+        "x": 45,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "L+",
+        "x": 55,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "L-",
+        "x": 65,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "R+",
+        "x": 74,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "R-",
+        "x": 84,
+        "y": 12,
+        "labelSide": "top"
+      }
+    ],
+    "pinCount": 8
+  },
+  "l298n": {
+    "archetype": "l298n",
+    "width": 198,
+    "height": 120,
+    "pins": [
+      {
+        "id": "ENA",
+        "x": 16,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "IN1",
+        "x": 44,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "IN2",
+        "x": 71,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "IN3",
+        "x": 99,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "IN4",
+        "x": 127,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "ENB",
+        "x": 154,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "5V",
+        "x": 182,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "GND",
+        "x": 16,
+        "y": 108,
+        "labelSide": "bottom"
+      },
+      {
+        "id": "12V",
+        "x": 49,
+        "y": 108,
+        "labelSide": "bottom"
+      },
+      {
+        "id": "OUT1",
+        "x": 82,
+        "y": 108,
+        "labelSide": "bottom"
+      },
+      {
+        "id": "OUT2",
+        "x": 116,
+        "y": 108,
+        "labelSide": "bottom"
+      },
+      {
+        "id": "OUT3",
+        "x": 149,
+        "y": 108,
+        "labelSide": "bottom"
+      },
+      {
+        "id": "OUT4",
+        "x": 182,
+        "y": 108,
+        "labelSide": "bottom"
+      }
+    ],
+    "pinCount": 13
+  },
+  "l293d": {
+    "archetype": "motor-driver",
+    "width": 198,
+    "height": 120,
+    "pins": [
+      {
+        "id": "VCC1",
+        "x": 16,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "VCC2",
+        "x": 44,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "GND",
+        "x": 71,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "1A",
+        "x": 99,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "2A",
+        "x": 127,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "3A",
+        "x": 154,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "4A",
+        "x": 182,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "1Y",
+        "x": 16,
+        "y": 108,
+        "labelSide": "bottom"
+      },
+      {
+        "id": "2Y",
+        "x": 49,
+        "y": 108,
+        "labelSide": "bottom"
+      },
+      {
+        "id": "3Y",
+        "x": 82,
+        "y": 108,
+        "labelSide": "bottom"
+      },
+      {
+        "id": "4Y",
+        "x": 116,
+        "y": 108,
+        "labelSide": "bottom"
+      },
+      {
+        "id": "EN12",
+        "x": 149,
+        "y": 108,
+        "labelSide": "bottom"
+      },
+      {
+        "id": "EN34",
+        "x": 182,
+        "y": 108,
+        "labelSide": "bottom"
+      }
+    ],
+    "pinCount": 13
+  },
+  "a4988": {
+    "archetype": "motor-driver",
+    "width": 198,
+    "height": 120,
+    "pins": [
+      {
+        "id": "VCC",
+        "x": 16,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "GND",
+        "x": 44,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "VMOT",
+        "x": 71,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "STEP",
+        "x": 99,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "DIR",
+        "x": 127,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "EN",
+        "x": 154,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "MS1",
+        "x": 182,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "MS2",
+        "x": 16,
+        "y": 108,
+        "labelSide": "bottom"
+      },
+      {
+        "id": "MS3",
+        "x": 49,
+        "y": 108,
+        "labelSide": "bottom"
+      },
+      {
+        "id": "1A",
+        "x": 82,
+        "y": 108,
+        "labelSide": "bottom"
+      },
+      {
+        "id": "1B",
+        "x": 116,
+        "y": 108,
+        "labelSide": "bottom"
+      },
+      {
+        "id": "2A",
+        "x": 149,
+        "y": 108,
+        "labelSide": "bottom"
+      },
+      {
+        "id": "2B",
+        "x": 182,
+        "y": 108,
+        "labelSide": "bottom"
+      }
+    ],
+    "pinCount": 13
+  },
+  "drv8825": {
+    "archetype": "motor-driver",
+    "width": 198,
+    "height": 120,
+    "pins": [
+      {
+        "id": "VCC",
+        "x": 16,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "GND",
+        "x": 44,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "VMOT",
+        "x": 71,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "STEP",
+        "x": 99,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "DIR",
+        "x": 127,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "EN",
+        "x": 154,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "M0",
+        "x": 182,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "M1",
+        "x": 16,
+        "y": 108,
+        "labelSide": "bottom"
+      },
+      {
+        "id": "M2",
+        "x": 49,
+        "y": 108,
+        "labelSide": "bottom"
+      },
+      {
+        "id": "A1",
+        "x": 82,
+        "y": 108,
+        "labelSide": "bottom"
+      },
+      {
+        "id": "A2",
+        "x": 116,
+        "y": 108,
+        "labelSide": "bottom"
+      },
+      {
+        "id": "B1",
+        "x": 149,
+        "y": 108,
+        "labelSide": "bottom"
+      },
+      {
+        "id": "B2",
+        "x": 182,
+        "y": 108,
+        "labelSide": "bottom"
+      }
+    ],
+    "pinCount": 13
+  },
+  "tb6612fng": {
+    "archetype": "motor-driver",
+    "width": 204,
+    "height": 120,
+    "pins": [
+      {
+        "id": "VM",
+        "x": 16,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "VCC",
+        "x": 45,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "GND",
+        "x": 73,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "AIN1",
+        "x": 102,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "AIN2",
+        "x": 131,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "BIN1",
+        "x": 159,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "BIN2",
+        "x": 188,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "PWMA",
+        "x": 16,
+        "y": 108,
+        "labelSide": "bottom"
+      },
+      {
+        "id": "PWMB",
+        "x": 45,
+        "y": 108,
+        "labelSide": "bottom"
+      },
+      {
+        "id": "AO1",
+        "x": 73,
+        "y": 108,
+        "labelSide": "bottom"
+      },
+      {
+        "id": "AO2",
+        "x": 102,
+        "y": 108,
+        "labelSide": "bottom"
+      },
+      {
+        "id": "BO1",
+        "x": 131,
+        "y": 108,
+        "labelSide": "bottom"
+      },
+      {
+        "id": "BO2",
+        "x": 159,
+        "y": 108,
+        "labelSide": "bottom"
+      },
+      {
+        "id": "STBY",
+        "x": 188,
+        "y": 108,
+        "labelSide": "bottom"
+      }
+    ],
+    "pinCount": 14
+  },
+  "uln2003": {
+    "archetype": "motor-driver",
+    "width": 130,
+    "height": 78,
+    "pins": [
+      {
+        "id": "IN1",
+        "x": 16,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "IN2",
+        "x": 36,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "IN3",
+        "x": 55,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "IN4",
+        "x": 75,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "VCC",
+        "x": 94,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "GND",
+        "x": 114,
+        "y": 12,
+        "labelSide": "top"
+      }
+    ],
+    "pinCount": 6
+  },
+  "bluetooth-hc06": {
+    "archetype": "bluetooth-hc05",
+    "width": 130,
+    "height": 78,
+    "pins": [
+      {
+        "id": "VCC",
+        "x": 16,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "GND",
+        "x": 49,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "TX",
+        "x": 81,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "RX",
+        "x": 114,
+        "y": 12,
+        "labelSide": "top"
+      }
+    ],
+    "pinCount": 4
+  },
+  "nrf24l01": {
+    "archetype": "comm-module",
+    "width": 130,
+    "height": 78,
+    "pins": [
+      {
+        "id": "VCC",
+        "x": 16,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "GND",
+        "x": 30,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "CE",
+        "x": 44,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "CSN",
+        "x": 58,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "SCK",
+        "x": 72,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "MOSI",
+        "x": 86,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "MISO",
+        "x": 100,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "IRQ",
+        "x": 114,
+        "y": 12,
+        "labelSide": "top"
+      }
+    ],
+    "pinCount": 8
+  },
+  "lora-sx1278": {
+    "archetype": "comm-module",
+    "width": 130,
+    "height": 78,
+    "pins": [
+      {
+        "id": "VCC",
+        "x": 16,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "GND",
+        "x": 30,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "SCK",
+        "x": 44,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "MOSI",
+        "x": 58,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "MISO",
+        "x": 72,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "NSS",
+        "x": 86,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "RST",
+        "x": 100,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "DIO0",
+        "x": 114,
+        "y": 12,
+        "labelSide": "top"
+      }
+    ],
+    "pinCount": 8
+  },
+  "gps-neo6m": {
+    "archetype": "comm-module",
+    "width": 130,
+    "height": 78,
+    "pins": [
+      {
+        "id": "VCC",
+        "x": 16,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "GND",
+        "x": 49,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "TX",
+        "x": 81,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "RX",
+        "x": 114,
+        "y": 12,
+        "labelSide": "top"
+      }
+    ],
+    "pinCount": 4
+  },
+  "gsm-sim800l": {
+    "archetype": "comm-module",
+    "width": 130,
+    "height": 78,
+    "pins": [
+      {
+        "id": "VCC",
+        "x": 16,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "GND",
+        "x": 41,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "TX",
+        "x": 65,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "RX",
+        "x": 90,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "RST",
+        "x": 114,
+        "y": 12,
+        "labelSide": "top"
+      }
+    ],
+    "pinCount": 5
+  },
+  "rfid-rc522": {
+    "archetype": "comm-module",
+    "width": 130,
+    "height": 78,
+    "pins": [
+      {
+        "id": "VCC",
+        "x": 16,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "GND",
+        "x": 30,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "RST",
+        "x": 44,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "SDA",
+        "x": 58,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "SCK",
+        "x": 72,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "MOSI",
+        "x": 86,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "MISO",
+        "x": 100,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "IRQ",
+        "x": 114,
+        "y": 12,
+        "labelSide": "top"
+      }
+    ],
+    "pinCount": 8
+  },
+  "rs485-module": {
+    "archetype": "comm-module",
+    "width": 130,
+    "height": 78,
+    "pins": [
+      {
+        "id": "VCC",
+        "x": 16,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "GND",
+        "x": 30,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "DI",
+        "x": 44,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "RO",
+        "x": 58,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "DE",
+        "x": 72,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "RE",
+        "x": 86,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "A",
+        "x": 100,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "B",
+        "x": 114,
+        "y": 12,
+        "labelSide": "top"
+      }
+    ],
+    "pinCount": 8
+  },
+  "can-mcp2515": {
+    "archetype": "comm-module",
+    "width": 130,
+    "height": 78,
+    "pins": [
+      {
+        "id": "VCC",
+        "x": 16,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "GND",
+        "x": 32,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "CS",
+        "x": 49,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "SCK",
+        "x": 65,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "MOSI",
+        "x": 81,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "MISO",
+        "x": 98,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "INT",
+        "x": 114,
+        "y": 12,
+        "labelSide": "top"
+      }
+    ],
+    "pinCount": 7
+  },
+  "ethernet-w5500": {
+    "archetype": "comm-module",
+    "width": 130,
+    "height": 78,
+    "pins": [
+      {
+        "id": "VCC",
+        "x": 16,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "GND",
+        "x": 30,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "CS",
+        "x": 44,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "SCK",
+        "x": 58,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "MOSI",
+        "x": 72,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "MISO",
+        "x": 86,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "INT",
+        "x": 100,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "RST",
+        "x": 114,
+        "y": 12,
+        "labelSide": "top"
+      }
+    ],
+    "pinCount": 8
+  },
+  "ir-transmitter": {
+    "archetype": "ir-transmitter",
+    "width": 130,
+    "height": 78,
+    "pins": [
+      {
+        "id": "anode",
+        "x": 4,
+        "y": 39,
+        "labelSide": "left"
+      },
+      {
+        "id": "cathode",
+        "x": 126,
+        "y": 39,
+        "labelSide": "right"
+      }
+    ],
+    "pinCount": 2
+  },
+  "battery-aa": {
+    "archetype": "battery-9v",
+    "width": 130,
+    "height": 78,
+    "pins": [],
+    "pinCount": 0
+  },
+  "battery-lipo-3.7v": {
+    "archetype": "battery-9v",
+    "width": 130,
+    "height": 78,
+    "pins": [],
+    "pinCount": 0
+  },
+  "battery-18650": {
+    "archetype": "battery-9v",
+    "width": 130,
+    "height": 78,
+    "pins": [],
+    "pinCount": 0
+  },
+  "lm7805": {
+    "archetype": "power-module",
+    "width": 130,
+    "height": 78,
+    "pins": [
+      {
+        "id": "IN",
+        "x": 8,
+        "y": 20,
+        "labelSide": "left"
+      },
+      {
+        "id": "GND",
+        "x": 8,
+        "y": 39,
+        "labelSide": "left"
+      },
+      {
+        "id": "OUT",
+        "x": 8,
+        "y": 59,
+        "labelSide": "left"
+      }
+    ],
+    "pinCount": 3
+  },
+  "lm7812": {
+    "archetype": "power-module",
+    "width": 130,
+    "height": 78,
+    "pins": [
+      {
+        "id": "IN",
+        "x": 8,
+        "y": 20,
+        "labelSide": "left"
+      },
+      {
+        "id": "GND",
+        "x": 8,
+        "y": 39,
+        "labelSide": "left"
+      },
+      {
+        "id": "OUT",
+        "x": 8,
+        "y": 59,
+        "labelSide": "left"
+      }
+    ],
+    "pinCount": 3
+  },
+  "lm317": {
+    "archetype": "power-module",
+    "width": 130,
+    "height": 78,
+    "pins": [
+      {
+        "id": "IN",
+        "x": 8,
+        "y": 20,
+        "labelSide": "left"
+      },
+      {
+        "id": "ADJ",
+        "x": 8,
+        "y": 39,
+        "labelSide": "left"
+      },
+      {
+        "id": "OUT",
+        "x": 8,
+        "y": 59,
+        "labelSide": "left"
+      }
+    ],
+    "pinCount": 3
+  },
+  "ams1117-3.3": {
+    "archetype": "power-module",
+    "width": 130,
+    "height": 78,
+    "pins": [
+      {
+        "id": "IN",
+        "x": 8,
+        "y": 20,
+        "labelSide": "left"
+      },
+      {
+        "id": "GND",
+        "x": 8,
+        "y": 39,
+        "labelSide": "left"
+      },
+      {
+        "id": "OUT",
+        "x": 8,
+        "y": 59,
+        "labelSide": "left"
+      }
+    ],
+    "pinCount": 3
+  },
+  "buck-converter": {
+    "archetype": "power-module",
+    "width": 130,
+    "height": 78,
+    "pins": [
+      {
+        "id": "IN+",
+        "x": 16,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "IN-",
+        "x": 49,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "OUT+",
+        "x": 81,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "OUT-",
+        "x": 114,
+        "y": 12,
+        "labelSide": "top"
+      }
+    ],
+    "pinCount": 4
+  },
+  "boost-converter": {
+    "archetype": "power-module",
+    "width": 130,
+    "height": 78,
+    "pins": [
+      {
+        "id": "IN+",
+        "x": 16,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "IN-",
+        "x": 49,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "OUT+",
+        "x": 81,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "OUT-",
+        "x": 114,
+        "y": 12,
+        "labelSide": "top"
+      }
+    ],
+    "pinCount": 4
+  },
+  "solar-panel-6v": {
+    "archetype": "solar-panel",
+    "width": 130,
+    "height": 78,
+    "pins": [
+      {
+        "id": "+",
+        "x": 4,
+        "y": 39,
+        "labelSide": "left"
+      },
+      {
+        "id": "-",
+        "x": 126,
+        "y": 39,
+        "labelSide": "right"
+      }
+    ],
+    "pinCount": 2
+  },
+  "tp4056": {
+    "archetype": "power-module",
+    "width": 130,
+    "height": 78,
+    "pins": [
+      {
+        "id": "IN+",
+        "x": 16,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "IN-",
+        "x": 36,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "B+",
+        "x": 55,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "B-",
+        "x": 75,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "OUT+",
+        "x": 94,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "OUT-",
+        "x": 114,
+        "y": 12,
+        "labelSide": "top"
+      }
+    ],
+    "pinCount": 6
+  },
+  "breadboard-830": {
+    "archetype": "breadboard",
+    "width": 200,
+    "height": 140,
+    "pins": [],
+    "pinCount": 0
+  },
+  "breadboard-400": {
+    "archetype": "breadboard",
+    "width": 200,
+    "height": 140,
+    "pins": [],
+    "pinCount": 0
+  },
+  "jumper-mm": {
+    "archetype": "jumper-wire",
+    "width": 130,
+    "height": 78,
+    "pins": [],
+    "pinCount": 0
+  },
+  "jumper-mf": {
+    "archetype": "jumper-wire",
+    "width": 130,
+    "height": 78,
+    "pins": [],
+    "pinCount": 0
+  },
+  "jumper-ff": {
+    "archetype": "jumper-wire",
+    "width": 130,
+    "height": 78,
+    "pins": [],
+    "pinCount": 0
+  },
+  "push-button": {
+    "archetype": "push-button",
+    "width": 130,
+    "height": 78,
+    "pins": [
+      {
+        "id": "pin1",
+        "x": 4,
+        "y": 39,
+        "labelSide": "left"
+      },
+      {
+        "id": "pin2",
+        "x": 126,
+        "y": 39,
+        "labelSide": "right"
+      }
+    ],
+    "pinCount": 2
+  },
+  "toggle-switch": {
+    "archetype": "switch",
+    "width": 130,
+    "height": 78,
+    "pins": [
+      {
+        "id": "COM",
+        "x": 8,
+        "y": 20,
+        "labelSide": "left"
+      },
+      {
+        "id": "NO",
+        "x": 8,
+        "y": 39,
+        "labelSide": "left"
+      },
+      {
+        "id": "NC",
+        "x": 8,
+        "y": 59,
+        "labelSide": "left"
+      }
+    ],
+    "pinCount": 3
+  },
+  "slide-switch": {
+    "archetype": "switch",
+    "width": 130,
+    "height": 78,
+    "pins": [
+      {
+        "id": "pin1",
+        "x": 8,
+        "y": 20,
+        "labelSide": "left"
+      },
+      {
+        "id": "pin2",
+        "x": 8,
+        "y": 39,
+        "labelSide": "left"
+      },
+      {
+        "id": "pin3",
+        "x": 8,
+        "y": 59,
+        "labelSide": "left"
+      }
+    ],
+    "pinCount": 3
+  },
+  "dip-switch-4": {
+    "archetype": "switch",
+    "width": 130,
+    "height": 78,
+    "pins": [
+      {
+        "id": "SW1",
+        "x": 16,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "SW2",
+        "x": 49,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "SW3",
+        "x": 81,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "SW4",
+        "x": 114,
+        "y": 12,
+        "labelSide": "top"
+      }
+    ],
+    "pinCount": 4
+  },
+  "rocker-switch": {
+    "archetype": "switch",
+    "width": 130,
+    "height": 78,
+    "pins": [
+      {
+        "id": "pin1",
+        "x": 4,
+        "y": 39,
+        "labelSide": "left"
+      },
+      {
+        "id": "pin2",
+        "x": 126,
+        "y": 39,
+        "labelSide": "right"
+      }
+    ],
+    "pinCount": 2
+  },
+  "keypad-4x4": {
+    "archetype": "sensor-module",
+    "width": 130,
+    "height": 78,
+    "pins": [
+      {
+        "id": "R1",
+        "x": 16,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "R2",
+        "x": 30,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "R3",
+        "x": 44,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "R4",
+        "x": 58,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "C1",
+        "x": 72,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "C2",
+        "x": 86,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "C3",
+        "x": 100,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "C4",
+        "x": 114,
+        "y": 12,
+        "labelSide": "top"
+      }
+    ],
+    "pinCount": 8
+  },
+  "keypad-4x3": {
+    "archetype": "sensor-module",
+    "width": 130,
+    "height": 78,
+    "pins": [
+      {
+        "id": "R1",
+        "x": 16,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "R2",
+        "x": 32,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "R3",
+        "x": 49,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "R4",
+        "x": 65,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "C1",
+        "x": 81,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "C2",
+        "x": 98,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "C3",
+        "x": 114,
+        "y": 12,
+        "labelSide": "top"
+      }
+    ],
+    "pinCount": 7
+  },
+  "joystick": {
+    "archetype": "joystick",
+    "width": 130,
+    "height": 78,
+    "pins": [
+      {
+        "id": "VCC",
+        "x": 16,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "GND",
+        "x": 41,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "VRx",
+        "x": 65,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "VRy",
+        "x": 90,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "SW",
+        "x": 114,
+        "y": 12,
+        "labelSide": "top"
+      }
+    ],
+    "pinCount": 5
+  },
+  "terminal-block-2": {
+    "archetype": "push-button",
+    "width": 130,
+    "height": 78,
+    "pins": [
+      {
+        "id": "pin1",
+        "x": 4,
+        "y": 39,
+        "labelSide": "left"
+      },
+      {
+        "id": "pin2",
+        "x": 126,
+        "y": 39,
+        "labelSide": "right"
+      }
+    ],
+    "pinCount": 2
+  },
+  "header-male-40": {
+    "archetype": "jumper-wire",
+    "width": 130,
+    "height": 78,
+    "pins": [],
+    "pinCount": 0
+  },
+  "header-female-40": {
+    "archetype": "jumper-wire",
+    "width": 130,
+    "height": 78,
+    "pins": [],
+    "pinCount": 0
+  },
+  "level-shifter-4ch": {
+    "archetype": "ic-dip",
+    "width": 186,
+    "height": 60,
+    "pins": [
+      {
+        "id": "LV",
+        "x": 15,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "HV",
+        "x": 46,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "GND",
+        "x": 77,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "LV1",
+        "x": 109,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "LV2",
+        "x": 140,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "LV3",
+        "x": 171,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "LV4",
+        "x": 15,
+        "y": 48,
+        "labelSide": "bottom"
+      },
+      {
+        "id": "HV1",
+        "x": 54,
+        "y": 48,
+        "labelSide": "bottom"
+      },
+      {
+        "id": "HV2",
+        "x": 93,
+        "y": 48,
+        "labelSide": "bottom"
+      },
+      {
+        "id": "HV3",
+        "x": 132,
+        "y": 48,
+        "labelSide": "bottom"
+      },
+      {
+        "id": "HV4",
+        "x": 171,
+        "y": 48,
+        "labelSide": "bottom"
+      }
+    ],
+    "pinCount": 11
+  }
+}

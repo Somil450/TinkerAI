@@ -6,21 +6,34 @@
   box-sizing: border-box;
 }
 
+html,
+body {
+  height: 100%;
+  overflow: hidden;
+}
+
+#app {
+  height: 100%;
+  overflow: hidden;
+}
+
 body {
   background: #f4f5f6; /* Tinkercad light background */
   color: #333333;
   font-family: 'Inter', sans-serif;
-  overflow: hidden;
 }
 
 .app-layout {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: 100%;
+  min-height: 0;
+  overflow: hidden;
 }
 
 /* TOP NAVBAR */
 .navbar {
+  flex-shrink: 0;
   height: 56px;
   background: #ffffff;
   border-bottom: 1px solid #e0e0e0;
@@ -98,13 +111,17 @@ body {
 /* MAIN WORKSPACE */
 .main-workspace {
   display: flex;
-  flex: 1;
+  flex: 1 1 0;
+  min-height: 0;
   position: relative;
+  overflow: hidden;
 }
 
 /* CANVAS GRID */
 .canvas {
-  flex: 1;
+  flex: 1 1 0;
+  min-width: 0;
+  min-height: 0;
   position: relative;
   /* Tinkercad blueprint grid */
   background-color: #f0f3f6;
@@ -129,16 +146,53 @@ body {
 
 /* RIGHT SIDEBAR */
 .right-sidebar {
-  width: 280px;
+  --sidebar-width: 280px;
+  width: var(--sidebar-width);
+  min-width: 200px;
+  max-width: min(560px, 50vw);
+  flex-shrink: 0;
+  height: 100%;
+  max-height: 100%;
   background: #ffffff;
   border-left: 1px solid #e0e0e0;
   display: flex;
   flex-direction: column;
+  min-height: 0;
+  overflow: hidden;
   box-shadow: -2px 0 8px rgba(0,0,0,0.03);
   z-index: 10;
 }
 
+.sidebar-resizer {
+  flex-shrink: 0;
+  width: 6px;
+  margin-left: -3px;
+  cursor: col-resize;
+  background: transparent;
+  position: relative;
+  z-index: 11;
+  touch-action: none;
+}
+
+.sidebar-resizer::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 2px;
+  width: 2px;
+  background: #e0e0e0;
+  border-radius: 1px;
+  transition: background 0.15s;
+}
+
+.sidebar-resizer:hover::after,
+.sidebar-resizer.is-dragging::after {
+  background: #1a73e8;
+}
+
 .sidebar-header {
+  flex-shrink: 0;
   padding: 16px;
   border-bottom: 1px solid #f0f0f0;
   display: flex;
@@ -168,14 +222,35 @@ body {
 }
 .search-input:focus { border-color: #1a73e8; }
 
+/* Scroll on outer wrapper; grid on inner — grid on the scroll box breaks overflow in flex layouts */
 .component-list {
-  flex: 1;
+  flex: 1 1 0;
+  min-height: 0;
   overflow-y: auto;
-  padding: 16px;
+  overflow-x: hidden;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+}
+
+.component-list-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 12px;
+  padding: 16px;
   align-content: start;
+}
+
+.component-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.component-list::-webkit-scrollbar-thumb {
+  background: #c5cbd3;
+  border-radius: 4px;
+}
+
+.component-list::-webkit-scrollbar-thumb:hover {
+  background: #9aa0a6;
 }
 
 .component {
@@ -211,6 +286,12 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
+}
+
+.component-svg-icon {
+  pointer-events: none;
+  user-select: none;
 }
 
 /* PLACED COMPONENTS ON CANVAS */
@@ -222,9 +303,34 @@ body {
   cursor: grab;
   user-select: none;
   z-index: 10;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: block;
+  overflow: visible;
+}
+
+.component-body {
+  position: relative;
+  overflow: visible;
+}
+
+.component-name-badge {
+  position: absolute;
+  left: 50%;
+  bottom: -18px;
+  transform: translateX(-50%);
+  max-width: 160px;
+  padding: 2px 8px;
+  font-size: 10px;
+  font-weight: 600;
+  color: #333;
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid #dadce0;
+  border-radius: 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  pointer-events: none;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  z-index: 8;
 }
 
 .placed-component:active { cursor: grabbing; }
@@ -235,13 +341,24 @@ body {
 }
 
 /* PINS */
+.pin-group {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  z-index: 15;
+  pointer-events: none;
+}
+
+.pin-group .pin {
+  pointer-events: auto;
+}
+
 .pin {
   width: 14px;
   height: 14px;
   background: #e0e0e0;
   border: 2px solid #fff;
   border-radius: 50%;
-  position: absolute;
+  position: relative;
   cursor: crosshair;
   transition: background 0.2s, transform 0.2s;
   box-shadow: 0 1px 3px rgba(0,0,0,0.2);
@@ -250,6 +367,79 @@ body {
 .pin:hover {
   background: #00d26a;
   transform: scale(1.2);
+}
+
+.pin-label {
+  position: absolute;
+  font-size: 9px;
+  font-weight: 700;
+  font-family: 'Inter', Arial, sans-serif;
+  line-height: 1.1;
+  padding: 1px 4px;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.96);
+  border: 1px solid #dadce0;
+  white-space: nowrap;
+  pointer-events: none;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  z-index: 16;
+}
+
+.pin-label-top {
+  left: 50%;
+  bottom: calc(100% + 4px);
+  transform: translateX(-50%);
+}
+
+.pin-label-bottom {
+  left: 50%;
+  top: calc(100% + 4px);
+  transform: translateX(-50%);
+}
+
+.pin-label-left {
+  right: calc(100% + 4px);
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.pin-label-right {
+  left: calc(100% + 4px);
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.pin-label-power {
+  color: #c62828;
+  border-color: #ef9a9a;
+}
+
+.pin-label-gnd {
+  color: #212121;
+  border-color: #9e9e9e;
+}
+
+.pin-label-signal {
+  color: #1565c0;
+  border-color: #90caf9;
+}
+
+.component-body[data-pin-density="medium"] .pin-label {
+  font-size: 8px;
+  padding: 0 3px;
+}
+
+.component-body[data-pin-density="high"] .pin-label {
+  font-size: 7px;
+  padding: 0 2px;
+  max-width: 36px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.component-body[data-pin-density="high"] .pin {
+  width: 11px;
+  height: 11px;
 }
 
 .pin.left { left: -7px; top: 50%; transform: translateY(-50%); }

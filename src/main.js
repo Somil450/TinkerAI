@@ -43,7 +43,8 @@ document.querySelector('#app').innerHTML = `
       </div>
     </div>
 
-    <div class="right-sidebar">
+    <div class="sidebar-resizer" id="sidebar-resizer" role="separator" aria-orientation="vertical" aria-label="Resize component panel"></div>
+    <div class="right-sidebar" id="right-sidebar">
       <div class="sidebar-header">
         <select class="category-select">
           <option>Basic</option>
@@ -52,17 +53,56 @@ document.querySelector('#app').innerHTML = `
         </select>
         <input type="text" placeholder="Search..." class="search-input"/>
       </div>
-      <div class="component-list">
-        ${renderSidebar()}
+      <div class="component-list" id="component-list">
+        <div class="component-list-grid">
+          ${renderSidebar()}
+        </div>
       </div>
     </div>
   </div>
 </div>
 `
 
-const components = document.querySelectorAll('.component')
+const componentList = document.getElementById('component-list')
+const components = componentList.querySelectorAll('.component')
 const canvas = document.getElementById('canvas')
 const wireLayer = document.getElementById('wireLayer')
+const rightSidebar = document.getElementById('right-sidebar')
+const sidebarResizer = document.getElementById('sidebar-resizer')
+
+const SIDEBAR_WIDTH_MIN = 200
+const SIDEBAR_WIDTH_MAX = () => Math.min(560, window.innerWidth * 0.5)
+
+function setSidebarWidth(px) {
+  const width = Math.round(Math.min(SIDEBAR_WIDTH_MAX(), Math.max(SIDEBAR_WIDTH_MIN, px)))
+  rightSidebar.style.setProperty('--sidebar-width', `${width}px`)
+  return width
+}
+
+let isResizingSidebar = false
+
+sidebarResizer.addEventListener('mousedown', (e) => {
+  e.preventDefault()
+  isResizingSidebar = true
+  sidebarResizer.classList.add('is-dragging')
+  document.body.style.cursor = 'col-resize'
+  document.body.style.userSelect = 'none'
+})
+
+document.addEventListener('mousemove', (e) => {
+  if (!isResizingSidebar) return
+  const workspace = document.querySelector('.main-workspace')
+  const rect = workspace.getBoundingClientRect()
+  setSidebarWidth(rect.right - e.clientX)
+})
+
+document.addEventListener('mouseup', () => {
+  if (!isResizingSidebar) return
+  isResizingSidebar = false
+  sidebarResizer.classList.remove('is-dragging')
+  document.body.style.cursor = ''
+  document.body.style.userSelect = ''
+})
 
 const propertiesPanel = document.getElementById('properties')
 const propertiesContent = document.getElementById('properties-content')
@@ -157,7 +197,7 @@ canvas.addEventListener('drop', e => {
   item.style.left = `${e.offsetX}px`
   item.style.top = `${e.offsetY}px`
 
-  item.innerHTML = getComponentHTML(type, componentCounter)
+  item.innerHTML = getComponentHTML(type)
 
   canvas.appendChild(item)
   componentRegistry.push({

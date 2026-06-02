@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 110 125" width="110" height="125">
+<rect x="12" y="10" width="86" height="105" rx="12" fill="#4CAF50" stroke="#388E3C"/>
+<rect x="24" y="24" width="62" height="48" rx="3" fill="#111"/>
+<g fill="#555"><circle cx="30" cy="32" r="2.5"/><circle cx="42" cy="32" r="2.5"/><circle cx="54" cy="32" r="2.5"/><circle cx="66" cy="32" r="2.5"/><circle cx="78" cy="32" r="2.5"/><circle cx="30" cy="42" r="2.5"/><circle cx="42" cy="42" r="2.5"/><circle cx="54" cy="42" r="2.5"/><circle cx="66" cy="42" r="2.5"/><circle cx="78" cy="42" r="2.5"/><circle cx="30" cy="52" r="2.5"/><circle cx="42" cy="52" r="2.5"/><circle cx="54" cy="52" r="2.5"/><circle cx="66" cy="52" r="2.5"/><circle cx="78" cy="52" r="2.5"/><circle cx="30" cy="62" r="2.5"/><circle cx="42" cy="62" r="2.5"/><circle cx="54" cy="62" r="2.5"/><circle cx="66" cy="62" r="2.5"/><circle cx="78" cy="62" r="2.5"/><circle cx="30" cy="72" r="2.5"/><circle cx="42" cy="72" r="2.5"/><circle cx="54" cy="72" r="2.5"/><circle cx="66" cy="72" r="2.5"/><circle cx="78" cy="72" r="2.5"/></g>
+<text x="55" y="95" text-anchor="middle" fill="#fff" font-size="9" font-weight="bold">micro:bit</text>
+</svg>

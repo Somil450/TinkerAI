@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 110 75" width="110" height="75">
+<defs><filter id="osh"><feDropShadow dx="1" dy="2" stdDeviation="2" flood-opacity="0.3"/></filter></defs>
+<rect x="3" y="10" width="104" height="58" rx="3" fill="#111" stroke="#333" filter="url(#osh)"/>
+<rect x="10" y="16" width="90" height="42" rx="1" fill="#000"/>
+<rect x="12" y="18" width="86" height="38" fill="#0a0a0a"/>
+<text x="55" y="42" text-anchor="middle" fill="#0f0" font-family="monospace" font-size="10">0.96" OLED</text>
+<rect x="8" y="4" width="94" height="8" fill="#1a1a1a"/>
+<g fill="#ddd"><rect x="14" y="5" width="4" height="6"/><rect x="34" y="5" width="4" height="6"/><rect x="54" y="5" width="4" height="6"/><rect x="74" y="5" width="4" height="6"/></g>
+<text x="14" y="3" font-size="5" fill="#fff">VCC</text><text x="34" y="3" font-size="5" fill="#fff">GND</text><text x="54" y="3" font-size="5" fill="#fff">SCL</text><text x="74" y="3" font-size="5" fill="#fff">SDA</text>
+</svg>

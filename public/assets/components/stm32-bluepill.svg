@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150 55" width="150" height="55">
+<rect x="3" y="6" width="144" height="42" rx="2" fill="#1565C0" stroke="#0D47A1"/>
+<rect x="55" y="14" width="40" height="26" fill="#111"/>
+<text x="75" y="31" text-anchor="middle" fill="#fff" font-size="8">STM32F103</text>
+<rect x="6" y="2" width="138" height="5" fill="#111"/><rect x="6" y="47" width="138" height="5" fill="#111"/>
+</svg>

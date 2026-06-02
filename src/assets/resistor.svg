@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 40" width="120" height="40">
+  <!-- Legs -->
+  <rect x="0" y="18" width="20" height="4" fill="#B0BEC5" />
+  <rect x="100" y="18" width="20" height="4" fill="#B0BEC5" />
+  <!-- Body -->
+  <path d="M20 15 c 5 -5, 10 -5, 15 -2 h 50 c 5 -3, 10 -3, 15 2 v 10 c -5 5, -10 5, -15 2 h -50 c -5 3, -10 3, -15 -2 z" fill="#E2C29B" />
+  <!-- Bands -->
+  <rect x="35" y="13.5" width="4" height="13" fill="#D32F2F" /> <!-- Red -->
+  <rect x="45" y="14" width="4" height="12" fill="#D32F2F" /> <!-- Red -->
+  <rect x="55" y="14" width="4" height="12" fill="#000000" /> <!-- Black -->
+  <rect x="75" y="13.5" width="4" height="13" fill="#D4AF37" /> <!-- Gold -->
+</svg>

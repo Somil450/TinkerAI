@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 120" width="60" height="120">
+  <!-- Legs -->
+  <!-- Anode (Longer) -->
+  <rect x="22" y="60" width="4" height="50" fill="#B0BEC5" />
+  <!-- Cathode (Shorter) -->
+  <rect x="34" y="60" width="4" height="40" fill="#B0BEC5" />
+  <!-- Base -->
+  <path d="M15 60 h 30 v 8 a 4 4 0 0 1 -4 4 h -22 a 4 4 0 0 1 -4 -4 z" fill="#D32F2F" />
+  <!-- Bulb -->
+  <path d="M16 60 v -25 a 14 14 0 0 1 28 0 v 25 z" fill="#F44336" />
+  <!-- Highlight -->
+  <path d="M22 35 a 6 6 0 0 1 6 -6" stroke="#FFCDD2" stroke-width="2" fill="none" />
+</svg>

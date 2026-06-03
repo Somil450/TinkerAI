@@ -196,6 +196,10 @@ export class ComponentRegistry {
             subcategory: 'LED',
             manufacturer: 'Generic',
             price: 0.10,
+            pins: {
+                'anode': { type: 'output', voltage: 2.1 },
+                'cathode': { type: 'output', voltage: 0 },
+            },
             specs: {
                 forwardVoltage: 2.1,
                 maxCurrent: 20,
@@ -234,6 +238,7 @@ export class ComponentRegistry {
             subcategory: 'Resistor',
             manufacturer: 'Generic',
             price: 0.01,
+            pins: { 'pin1': { type: 'passive' }, 'pin2': { type: 'passive' } },
             specs: {
                 resistance: 220,
                 tolerance: '5%',
@@ -253,6 +258,7 @@ export class ComponentRegistry {
             subcategory: 'Resistor',
             manufacturer: 'Generic',
             price: 0.01,
+            pins: { 'pin1': { type: 'passive' }, 'pin2': { type: 'passive' } },
             specs: {
                 resistance: 10000,
                 tolerance: '5%',
@@ -268,6 +274,7 @@ export class ComponentRegistry {
             subcategory: 'Resistor',
             manufacturer: 'Generic',
             price: 0.01,
+            pins: { 'pin1': { type: 'passive' }, 'pin2': { type: 'passive' } },
             specs: {
                 resistance: 4700,
                 tolerance: '5%',
@@ -348,6 +355,7 @@ export class ComponentRegistry {
             subcategory: 'Battery',
             manufacturer: 'Generic',
             price: 1,
+            pins: { '+': { type: 'power', voltage: 9 }, '-': { type: 'ground' } },
             specs: {
                 voltage: 9,
                 capacity: '500 mAh',
@@ -408,6 +416,12 @@ export class ComponentRegistry {
             subcategory: 'Wireless',
             manufacturer: 'Espressif',
             price: 3,
+            pins: {
+                '3V3': { type: 'power', voltage: 3.3 }, 'GND': { type: 'ground' },
+                'TX': { type: 'uart_out', voltage: 3.3 }, 'RX': { type: 'uart_in', voltage: 3.3 },
+                'EN': { type: 'digital_input' }, 'RST': { type: 'digital_input' },
+                'GPIO0': { type: 'digital_io' }, 'GPIO2': { type: 'digital_io' }
+            },
             specs: {
                 operatingVoltage: 3.3,
                 frequency: '2.4 GHz',

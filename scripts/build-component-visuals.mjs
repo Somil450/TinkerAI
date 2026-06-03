@@ -108,8 +108,8 @@ function computeSize(pinCount, archetype) {
   return { width: Math.min(w, 420), height: Math.min(h, 280) }
 }
 
-function mergeBoardPins(componentId, pinIds) {
-  const board = BOARD_LAYOUTS[componentId]
+function mergeBoardPins(componentId, archetype, pinIds) {
+  const board = BOARD_LAYOUTS[componentId] || BOARD_LAYOUTS[archetype]
   if (!board) return null
 
   if (board.pins?.length) {
@@ -135,7 +135,7 @@ for (const comp of componentRegistry.getAll()) {
   const pinIds = expandRegistryPins(comp.pins, comp.id)
   const { width, height } = computeSize(pinIds.length, archetype)
 
-  let pins = mergeBoardPins(comp.id, pinIds)
+  let pins = mergeBoardPins(comp.id, archetype, pinIds)
   if (!pins) {
     pins = layoutPins(pinIds, width, height)
   } else {

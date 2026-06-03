@@ -368,6 +368,10 @@ export const EXPANDED_COMPONENTS = {
             id: 'battery-9v', name: '9V Battery', category: 'Power', subcategory: 'Battery', price: 1,
             specs: { voltage: 9, capacity: '500mAh', chemistry: 'Alkaline', type: 'Disposable' }
         },
+        'battery-holder-2cell': {
+            id: 'battery-holder-2cell', name: '2-Cell 18650 Battery Holder', category: 'Power', subcategory: 'Battery', price: 1.5,
+            specs: { voltage: 7.4, capacity: '2600mAh', chemistry: 'Li-Ion' }
+        },
         'battery-aa': {
             id: 'battery-aa', name: 'AA Battery', category: 'Power', subcategory: 'Battery', price: 0.50,
             specs: { voltage: 1.5, capacity: '3000mAh', chemistry: 'Alkaline', type: 'Disposable' }

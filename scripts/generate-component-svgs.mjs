@@ -243,6 +243,16 @@ write('battery-9v', `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 75 110
 <text x="37" y="62" text-anchor="middle" fill="#fff" font-size="16" font-weight="bold">9V</text>
 </svg>`)
 
+write('battery-holder-2cell', `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 80" width="100" height="80">
+  <rect x="5" y="5" width="80" height="70" rx="3" fill="#222" stroke="#444"/>
+  <rect x="10" y="10" width="70" height="25" rx="3" fill="#4CAF50"/>
+  <text x="45" y="27" text-anchor="middle" fill="#111" font-size="10" font-family="sans-serif">18650 3.7V</text>
+  <rect x="10" y="45" width="70" height="25" rx="3" fill="#4CAF50"/>
+  <text x="45" y="62" text-anchor="middle" fill="#111" font-size="10" font-family="sans-serif">18650 3.7V</text>
+  <rect x="85" y="27" width="5" height="6" fill="#cc0000"/>
+  <rect x="85" y="47" width="5" height="6" fill="#111111"/>
+</svg>`)
+
 write('push-button', `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 85 65" width="85" height="65">
 <rect x="10" y="14" width="65" height="38" rx="4" fill="#E0E0E0" stroke="#9E9E9E"/>
 <circle cx="42" cy="33" r="14" fill="#F44336" stroke="#C62828"/>
@@ -291,5 +301,72 @@ write('display-7seg', `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 110 
 </svg>`)
 
 write('sensor-module', () => blueBreakout(130, 78, 'SENSOR', ['VCC', 'GND', 'OUT', 'AO'], { uid: 'sns' }))
+
+write('l298n', `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="300" height="300">
+  <!-- PCB -->
+  <rect x="10" y="10" width="280" height="280" rx="10" fill="#D32F2F" stroke="#B71C1C" stroke-width="4"/>
+  <!-- Heat Sink -->
+  <rect x="30" y="20" width="240" height="80" fill="#212121" stroke="#000" stroke-width="2"/>
+  <path d="M50 20 v80 M90 20 v80 M130 20 v80 M170 20 v80 M210 20 v80 M250 20 v80" stroke="#424242" stroke-width="6"/>
+  <!-- L298N Chip -->
+  <rect x="110" y="90" width="80" height="50" fill="#111" rx="4"/>
+  <text x="150" y="120" fill="#ddd" font-size="12" text-anchor="middle" font-family="monospace">L298N</text>
+  <!-- Output A Terminal Block (Left) -->
+  <rect x="20" y="120" width="40" height="80" fill="#1565C0" stroke="#0D47A1"/>
+  <circle cx="40" cy="140" r="8" fill="#90CAF9"/> <!-- OUT1 -->
+  <circle cx="40" cy="180" r="8" fill="#90CAF9"/> <!-- OUT2 -->
+  <!-- Output B Terminal Block (Right) -->
+  <rect x="240" y="120" width="40" height="80" fill="#1565C0" stroke="#0D47A1"/>
+  <circle cx="260" cy="140" r="8" fill="#90CAF9"/> <!-- OUT3 -->
+  <circle cx="260" cy="180" r="8" fill="#90CAF9"/> <!-- OUT4 -->
+  <!-- Power Terminal Block (Bottom) -->
+  <rect x="90" y="240" width="120" height="40" fill="#1565C0" stroke="#0D47A1"/>
+  <circle cx="110" cy="260" r="8" fill="#90CAF9"/> <!-- 12V -->
+  <circle cx="150" cy="260" r="8" fill="#90CAF9"/> <!-- GND -->
+  <circle cx="190" cy="260" r="8" fill="#90CAF9"/> <!-- 5V -->
+  <text x="110" y="230" fill="#fff" font-size="12" text-anchor="middle">12V</text>
+  <text x="150" y="230" fill="#fff" font-size="12" text-anchor="middle">GND</text>
+  <text x="190" y="230" fill="#fff" font-size="12" text-anchor="middle">5V</text>
+  <!-- Logic Pins (Center Bottom) -->
+  <rect x="100" y="170" width="100" height="30" fill="#111"/>
+  <!-- ENA IN1 IN2 IN3 IN4 ENB -->
+  <g fill="#ddd">
+    <rect x="108" y="180" width="8" height="8"/>
+    <rect x="124" y="180" width="8" height="8"/>
+    <rect x="140" y="180" width="8" height="8"/>
+    <rect x="156" y="180" width="8" height="8"/>
+    <rect x="172" y="180" width="8" height="8"/>
+    <rect x="188" y="180" width="8" height="8"/>
+  </g>
+  <text x="112" y="160" fill="#fff" font-size="10" text-anchor="middle">ENA</text>
+  <text x="128" y="160" fill="#fff" font-size="10" text-anchor="middle">IN1</text>
+  <text x="144" y="160" fill="#fff" font-size="10" text-anchor="middle">IN2</text>
+  <text x="160" y="160" fill="#fff" font-size="10" text-anchor="middle">IN3</text>
+  <text x="176" y="160" fill="#fff" font-size="10" text-anchor="middle">IN4</text>
+  <text x="192" y="160" fill="#fff" font-size="10" text-anchor="middle">ENB</text>
+  <!-- Capacitors -->
+  <circle cx="70" cy="260" r="12" fill="#111"/>
+  <circle cx="230" cy="260" r="12" fill="#111"/>
+  </svg>`)
+
+write('4wd-car-chassis', `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 250" width="200" height="250">
+<!-- Chassis Acrylic Base -->
+<rect x="30" y="10" width="140" height="230" rx="15" fill="#4fc3f7" fill-opacity="0.3" stroke="#0288d1" stroke-width="2"/>
+<!-- Front Left Wheel -->
+<rect x="5" y="30" width="25" height="60" rx="5" fill="#212121" stroke="#000" stroke-width="2"/>
+<rect x="30" y="45" width="20" height="30" fill="#ffb300"/> <!-- Motor -->
+<!-- Front Right Wheel -->
+<rect x="170" y="30" width="25" height="60" rx="5" fill="#212121" stroke="#000" stroke-width="2"/>
+<rect x="150" y="45" width="20" height="30" fill="#ffb300"/>
+<!-- Rear Left Wheel -->
+<rect x="5" y="160" width="25" height="60" rx="5" fill="#212121" stroke="#000" stroke-width="2"/>
+<rect x="30" y="175" width="20" height="30" fill="#ffb300"/>
+<!-- Rear Right Wheel -->
+<rect x="170" y="160" width="25" height="60" rx="5" fill="#212121" stroke="#000" stroke-width="2"/>
+<rect x="150" y="175" width="20" height="30" fill="#ffb300"/>
+<!-- Cutouts to make it look mechanical -->
+<rect x="70" y="25" width="60" height="40" rx="5" fill="none" stroke="#0288d1" stroke-width="2"/>
+<rect x="70" y="185" width="60" height="40" rx="5" fill="none" stroke="#0288d1" stroke-width="2"/>
+</svg>`)
 
 console.log('\nDone — high-fidelity SVG library written.')

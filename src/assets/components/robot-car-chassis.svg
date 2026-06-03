@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 250" width="200" height="250">
+<!-- Chassis Base -->
+<rect x="40" y="20" width="120" height="200" rx="20" fill="#FFC107" stroke="#FFA000" stroke-width="4"/>
+<!-- Left Wheel -->
+<rect x="10" y="100" width="30" height="80" rx="5" fill="#212121" stroke="#000" stroke-width="2"/>
+<rect x="15" y="110" width="20" height="60" rx="3" fill="#424242"/>
+<!-- Right Wheel -->
+<rect x="160" y="100" width="30" height="80" rx="5" fill="#212121" stroke="#000" stroke-width="2"/>
+<rect x="165" y="110" width="20" height="60" rx="3" fill="#424242"/>
+<!-- Caster Wheel (Front) -->
+<circle cx="100" cy="40" r="15" fill="#9E9E9E" stroke="#757575" stroke-width="2"/>
+<!-- Integrated Motor Driver Board -->
+<rect x="60" y="120" width="80" height="70" rx="4" fill="#E65100" stroke="#BF360C"/>
+<rect x="66" y="126" width="68" height="30" fill="#111" rx="2"/>
+<text x="100" y="145" text-anchor="middle" fill="#fff" font-size="10" font-family="monospace">L298N (INT)</text>
+<!-- Header Pins for Logic (IN1, IN2, IN3, IN4, ENA, ENB, VCC, GND) -->
+<rect x="64" y="170" width="72" height="12" fill="#1a1a1a"/>
+<g fill="#ddd">
+  <rect x="68" y="173" width="4" height="6"/><rect x="76" y="173" width="4" height="6"/>
+  <rect x="84" y="173" width="4" height="6"/><rect x="92" y="173" width="4" height="6"/>
+  <rect x="100" y="173" width="4" height="6"/><rect x="108" y="173" width="4" height="6"/>
+  <rect x="116" y="173" width="4" height="6"/><rect x="124" y="173" width="4" height="6"/>
+</g>
+</svg>

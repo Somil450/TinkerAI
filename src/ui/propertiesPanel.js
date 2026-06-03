@@ -46,6 +46,26 @@ export function renderProperties(component, safetyStatus = null){
         ${component.pinCount}
         </p>
 
+        <div style="margin-top: 15px;">
+            <label for="comp-scale" style="font-size: 14px; font-weight: bold; color: #333;">Scale Component:</label>
+            <div style="display: flex; align-items: center; gap: 10px; margin-top: 5px;">
+                <input type="range" id="comp-scale" min="0.5" max="3" step="0.1" value="${component.scale || 1}" style="flex-grow: 1;">
+                <span id="comp-scale-val" style="font-size: 12px; color: #666; min-width: 30px;">${component.scale || 1}x</span>
+            </div>
+        </div>
+
+        <div style="margin-top: 15px; border-top: 1px solid #eee; padding-top: 15px;">
+            <label style="font-size: 14px; font-weight: bold; color: #333; display: block; margin-bottom: 8px;">Layering (Z-Index)</label>
+            <div style="display: flex; gap: 8px;">
+                <button id="btn-bring-forward" style="flex: 1; padding: 6px; font-size: 12px; border: 1px solid #ccc; background: #fff; cursor: pointer; border-radius: 4px;">Bring Forward</button>
+                <button id="btn-send-backward" style="flex: 1; padding: 6px; font-size: 12px; border: 1px solid #ccc; background: #fff; cursor: pointer; border-radius: 4px;">Send Backward</button>
+            </div>
+            <div style="display: flex; gap: 8px; margin-top: 8px;">
+                <button id="btn-bring-front" style="flex: 1; padding: 6px; font-size: 12px; border: 1px solid #ccc; background: #fff; cursor: pointer; border-radius: 4px;">Bring to Front</button>
+                <button id="btn-send-back" style="flex: 1; padding: 6px; font-size: 12px; border: 1px solid #ccc; background: #fff; cursor: pointer; border-radius: 4px;">Send to Back</button>
+            </div>
+        </div>
+
         ${safetyHtml}
     `
 }

@@ -149,6 +149,7 @@ export const ID_TO_ARCHETYPE = {
   'ir-transmitter': 'sensor-module',
   'usb-cable': 'power-module',
   'battery-9v': 'battery-9v',
+  'battery-holder-2cell': 'battery-holder-2cell',
   'battery-aa': 'battery-9v',
   'battery-lipo-3.7v': 'battery-9v',
   'battery-18650': 'battery-9v',
@@ -178,6 +179,7 @@ export const ID_TO_ARCHETYPE = {
   'header-male-40': 'jumper-wire',
   'header-female-40': 'jumper-wire',
   'level-shifter-4ch': 'ic-dip',
+  '4wd-car-chassis': '4wd-car-chassis',
   // Legacy aliases
   LED: 'led-red',
   Resistor: 'resistor',
@@ -237,6 +239,7 @@ export const COMPONENT_SVG = {
   'servo-sg90': 'servo',
   'servo-mg996r': 'servo',
   '74hc595': 'ic-dip',
+  '4wd-car-chassis': '4wd-car-chassis',
 }
 
 export function resolveSvgAsset(componentId) {

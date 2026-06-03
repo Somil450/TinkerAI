@@ -366,6 +366,23 @@ export class ComponentRegistry {
         });
 
         this.register({
+            id: 'battery-holder-2cell',
+            name: '2-Cell 18650 Battery Holder',
+            category: 'Power',
+            subcategory: 'Battery',
+            manufacturer: 'Generic',
+            price: 1.5,
+            pins: { '+': { type: 'power', voltage: 7.4 }, '-': { type: 'ground' } },
+            specs: {
+                voltage: 7.4,
+                capacity: '2600 mAh',
+                chemistry: 'Li-Ion',
+            },
+            commonUses: ['Motor power', 'High current applications', 'Portable projects'],
+            tips: ['Outputs 7.4V', 'Requires 2x 18650 cells', 'Can provide high current for motors'],
+        });
+
+        this.register({
             id: 'power-bank-5v',
             name: 'USB Power Bank (5V 2A)',
             category: 'Power',
@@ -648,6 +665,15 @@ export class ComponentRegistry {
             pins: { '+': { type: 'power', voltage: 12 }, '-': { type: 'power' } },
             specs: { operatingVoltage: 12, stallCurrent: 2000, speed: '6000 RPM' } });
 
+        this.register({ id: '4wd-car-chassis', name: '4WD Smart Car Chassis', category: 'Actuator', subcategory: 'Robotics', price: 15,
+            pins: {
+                'M1+': { type: 'power' }, 'M1-': { type: 'power' },
+                'M2+': { type: 'power' }, 'M2-': { type: 'power' },
+                'M3+': { type: 'power' }, 'M3-': { type: 'power' },
+                'M4+': { type: 'power' }, 'M4-': { type: 'power' }
+            },
+            specs: { operatingVoltage: 5, type: '4WD Mechanical Chassis' } });
+
         this.register({ id: 'servo-mg996r', name: 'MG996R High-Torque Servo', category: 'Actuator', subcategory: 'Servo', price: 6,
             pins: { 'VCC': { type: 'power', voltage: 5, maxCurrent: 500 }, 'GND': { type: 'ground' }, 'SIGNAL': { type: 'digital_input' } },
             specs: { operatingVoltage: 5, torque: '11 kg·cm', speed: '0.14s/60°' }, protocols: ['PWM'] });
@@ -897,7 +923,7 @@ export class ComponentRegistry {
 
         // === MOTOR DRIVERS ===
         this.register({ id: 'l298n', name: 'L298N Motor Driver', category: 'Motor Driver', price: 3,
-            pins: { 'VCC': {type:'power', voltage: 12}, 'GND': {type:'ground'}, '5V': {type:'power', voltage: 5}, 'IN1': {type:'digital_input'}, 'IN2': {type:'digital_input'}, 'IN3': {type:'digital_input'}, 'IN4': {type:'digital_input'}, 'ENA': {type:'pwm'}, 'ENB': {type:'pwm'}, 'OUT1': {type:'motor'}, 'OUT2': {type:'motor'}, 'OUT3': {type:'motor'}, 'OUT4': {type:'motor'} },
+            pins: { '12V': {type:'power', voltage: 12}, 'GND': {type:'ground'}, '5V': {type:'power', voltage: 5}, 'IN1': {type:'digital_input'}, 'IN2': {type:'digital_input'}, 'IN3': {type:'digital_input'}, 'IN4': {type:'digital_input'}, 'ENA': {type:'pwm'}, 'ENB': {type:'pwm'}, 'OUT1': {type:'motor'}, 'OUT2': {type:'motor'}, 'OUT3': {type:'motor'}, 'OUT4': {type:'motor'} },
             specs: { operatingVoltage: '5-35V', maxCurrent: '2A per channel', channels: 2 } });
 
         this.register({ id: 'l293d', name: 'L293D Motor Driver IC', category: 'Motor Driver', price: 1.50,

@@ -428,6 +428,26 @@ const DC_MOTOR = {
   },
 }
 
+// L298N SVG: 300x300, better pin spacing
+export const L298N = {
+  width: 300, height: 300,
+  pinPositions: {
+    OUT1: { x: 40, y: 140, labelSide: 'left' },
+    OUT2: { x: 40, y: 180, labelSide: 'left' },
+    OUT3: { x: 260, y: 140, labelSide: 'right' },
+    OUT4: { x: 260, y: 180, labelSide: 'right' },
+    '12V': { x: 110, y: 260, labelSide: 'bottom' },
+    GND:  { x: 150, y: 260, labelSide: 'bottom' },
+    '5V': { x: 190, y: 260, labelSide: 'bottom' },
+    ENA:  { x: 112, y: 184, labelSide: 'top' },
+    IN1:  { x: 128, y: 184, labelSide: 'bottom' },
+    IN2:  { x: 144, y: 184, labelSide: 'top' },
+    IN3:  { x: 160, y: 184, labelSide: 'bottom' },
+    IN4:  { x: 176, y: 184, labelSide: 'top' },
+    ENB:  { x: 192, y: 184, labelSide: 'bottom' },
+  },
+}
+
 // Stepper SVG: 95×95, connector at top (rect at x=41 y=0 w=13 h=12)
 const STEPPER = {
   width: 95, height: 95,
@@ -476,23 +496,19 @@ const RELAY_MODULE = {
   },
 }
 
-// L298N SVG: 150×100, header at top (x=8 y=4 w=134 h=8)
-export const L298N = {
-  width: 150, height: 100,
+
+// 4WD Car Chassis SVG: 200x250, mechanical chassis
+export const WD4_CAR_CHASSIS = {
+  width: 200, height: 250,
   pinPositions: {
-    ENA:  { x: 14, y: 8, labelSide: 'top' },
-    IN1:  { x: 30, y: 8, labelSide: 'top' },
-    IN2:  { x: 46, y: 8, labelSide: 'top' },
-    IN3:  { x: 62, y: 8, labelSide: 'top' },
-    IN4:  { x: 78, y: 8, labelSide: 'top' },
-    ENB:  { x: 94, y: 8, labelSide: 'top' },
-    '12V': { x: 80, y: 60, labelSide: 'bottom' },
-    GND:  { x: 100, y: 60, labelSide: 'bottom' },
-    '5V': { x: 120, y: 60, labelSide: 'bottom' },
-    OUT1: { x: 80, y: 35, labelSide: 'top' },
-    OUT2: { x: 95, y: 35, labelSide: 'top' },
-    OUT3: { x: 110, y: 35, labelSide: 'top' },
-    OUT4: { x: 125, y: 35, labelSide: 'top' },
+    'M1+':  { x: 30, y: 35, labelSide: 'right' },
+    'M1-':  { x: 30, y: 55, labelSide: 'right' },
+    'M2+':  { x: 170, y: 35, labelSide: 'left' },
+    'M2-':  { x: 170, y: 55, labelSide: 'left' },
+    'M3+':  { x: 30, y: 165, labelSide: 'right' },
+    'M3-':  { x: 30, y: 185, labelSide: 'right' },
+    'M4+':  { x: 170, y: 165, labelSide: 'left' },
+    'M4-':  { x: 170, y: 185, labelSide: 'left' },
   },
 }
 
@@ -593,6 +609,14 @@ const BATTERY_9V = {
     '-': { x: 45, y: 9, labelSide: 'top' },
   },
 }
+
+const BATTERY_HOLDER_2CELL = {
+  width: 100, height: 80,
+  pinPositions: {
+    '+': { x: 90, y: 30, labelSide: 'right' },
+    '-': { x: 90, y: 50, labelSide: 'right' },
+  },
+};
 
 // Solar panel SVG: 125×85
 const SOLAR_PANEL = {
@@ -868,6 +892,7 @@ export const BOARD_LAYOUTS = {
   'relay-4ch': RELAY_MODULE,
   'relay-8ch': RELAY_MODULE,
   'l298n': L298N,
+  '4wd-car-chassis': WD4_CAR_CHASSIS,
   'motor-driver': MOTOR_DRIVER,
   'l293d': MOTOR_DRIVER,
   'a4988': MOTOR_DRIVER,
@@ -898,6 +923,7 @@ export const BOARD_LAYOUTS = {
   'boost-converter': POWER_MODULE,
   'tp4056': POWER_MODULE,
   'battery-9v': BATTERY_9V,
+  'battery-holder-2cell': BATTERY_HOLDER_2CELL,
   'battery-aa': BATTERY_9V,
   'battery-lipo-3.7v': BATTERY_9V,
   'battery-18650': BATTERY_9V,

@@ -1,6 +1,6 @@
 /**
- * ╔══════════════════════════════════════════════════════════════════════════════╗
- * ║               TinkerAI — ADVANCED CIRCUIT SAFETY ENGINE v3.0               ║
+ * ╔═════════════════════════════════════════════════════════════════════════════╗
+ * ║               TinkerAI — ADVANCED CIRCUIT SAFETY ENGINE v3.0                ║
  * ║                                                                             ║
  * ║  State-of-the-art real-time hazard detection, compliance checking,          ║
  * ║  predictive analytics, thermal modelling, EMC analysis, and                 ║
@@ -13,21 +13,21 @@
  * ║   7. Voltage Domain Bridging         8. Component Miswiring                 ║
  * ║   9. Power Budget Analyzer          10. ESD Protection Advisor              ║
  * ║  11. EMC / RF Interference          12. Signal Integrity                    ║
- * ║  13. Compliance Checker (CE,FCC,UL) 14. Battery Safety (LiPo/LiIon)        ║
+ * ║  13. Compliance Checker (CE,FCC,UL) 14. Battery Safety (LiPo/LiIon)         ║
  * ║  15. Race Condition Detection        16. Latch-Up Risk Assessment           ║
  * ║  17. Capacitor Bank Safety           18. Inductive Load Protection          ║
  * ║  19. Decoupling Advisor             20. Design Rule Engine (DRE)            ║
  * ║  21. Component Lifetime Estimator   22. Fan-Out / Drive Strength Check      ║
  * ║  23. Bus Contention Detector        24. Noise Margin Analyzer               ║
  * ║  25. Predictive Failure Engine      26. Auto-Fix Orchestrator               ║
- * ╚══════════════════════════════════════════════════════════════════════════════╝
+ * ╚═════════════════════════════════════════════════════════════════════════════╝
  */
 
 import { componentRegistry } from './componentRegistry.js';
 
 // ─── Severity Levels ─────────────────────────────────────────────────────────
 export const SEVERITY = {
-    CRITICAL:  { level: 5, label: 'CRITICAL',  color: '#FF1744', emoji: '🔴' },
+    CRITICAL:  { level: 5, label: 'CRITICAL',   color: '#FF1744', emoji: '🔴' },
     HIGH:      { level: 4, label: 'HIGH',       color: '#FF6D00', emoji: '🟠' },
     WARNING:   { level: 3, label: 'WARNING',    color: '#FFD600', emoji: '🟡' },
     INFO:      { level: 2, label: 'INFO',       color: '#40C4FF', emoji: '🔵' },
@@ -1055,6 +1055,41 @@ export class SafetyEngine {
                     fix:     'Add 10kΩ pull-up on CS line to deactivate device when MCU is in reset',
                 });
             }
+            // L298N Motor Driver miswiring
+            if (type === 'l298n') {
+                const conns = this._getComponentConnections(circuit, comp.id);
+                const has12V = conns.some(c => c.pin === '12V');
+                const hasGND = conns.some(c => c.pin === 'GND');
+                const hasMotorOut = conns.some(c => c.pin.startsWith('OUT'));
+                const hasLogicIn = conns.some(c => c.pin.startsWith('IN') || c.pin.startsWith('EN'));
+
+                if (!has12V || !hasGND) {
+                    this._addIssue(SEVERITY.HIGH, CATEGORY.POWER, {
+                        type: 'l298nUnpowered',
+                        component: comp.id,
+                        message: `⚠️  L298N Driver is missing power connections (12V or GND)`,
+                        detail:  'The L298N requires a power supply connected to 12V and GND to drive motors.',
+                        fix:     'Connect 12V pin to a battery/power source, and GND to system ground.',
+                    });
+                }
+                if (hasLogicIn && !hasMotorOut) {
+                    this._addIssue(SEVERITY.INFO, CATEGORY.DESIGN, {
+                        type: 'l298nNoMotors',
+                        component: comp.id,
+                        message: `ℹ️  L298N Driver is receiving logic signals but has no motors connected to OUT pins.`,
+                        fix:     'Connect DC motors to OUT1/OUT2 and OUT3/OUT4.',
+                    });
+                }
+                if (hasMotorOut && !hasLogicIn) {
+                    this._addIssue(SEVERITY.WARNING, CATEGORY.SIGNAL, {
+                        type: 'l298nNoLogic',
+                        component: comp.id,
+                        message: `⚠️  L298N Driver has motors connected but no logic inputs (IN1-IN4, ENA, ENB)`,
+                        detail:  'Motors will not move without logic signals from a microcontroller.',
+                        fix:     'Connect Arduino pins to IN1-IN4.',
+                    });
+                }
+            }
         });
     }
 
@@ -1897,7 +1932,6 @@ export class SafetyEngine {
         score += this.passes.length   * 2;
         return Math.max(0, Math.min(100, Math.round(score)));
     }
-
     _getGrade(score) {
         if (score >= 90) return 'A — Excellent';
         if (score >= 75) return 'B — Good';
@@ -1906,8 +1940,6 @@ export class SafetyEngine {
         return 'F — Unsafe';
     }
 }
-
 // ─── Singleton Export ─────────────────────────────────────────────────────────
 export const safetyEngine = new SafetyEngine();
-
 console.log('✅ TinkerAI Safety Engine v3.0 loaded — 26 safety modules active');

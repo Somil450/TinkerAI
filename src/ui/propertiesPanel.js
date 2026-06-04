@@ -69,3 +69,26 @@ export function renderProperties(component, safetyStatus = null){
         ${safetyHtml}
     `
 }
+
+export function renderWireProperties(wire) {
+    return `
+        <h3>Wire Properties</h3>
+        <p style="margin-bottom: 5px;"><strong>From:</strong> ${wire.pin1.dataset.pin}</p>
+        <p><strong>To:</strong> ${wire.pin2.dataset.pin}</p>
+        <div style="margin-top: 15px;">
+            <label for="wire-color" style="font-size: 14px; font-weight: bold; color: #333;">Wire Color:</label>
+            <select id="wire-color" style="margin-top: 5px; width: 100%; padding: 5px; border-radius: 4px; border: 1px solid #ccc;">
+                <option value="#ff3333" ${wire.color === '#ff3333' ? 'selected' : ''}>Red (Power)</option>
+                <option value="#333333" ${wire.color === '#333333' ? 'selected' : ''}>Black (Ground)</option>
+                <option value="#00cc66" ${wire.color === '#00cc66' ? 'selected' : ''}>Green (Signal)</option>
+                <option value="#ffaa00" ${wire.color === '#ffaa00' ? 'selected' : ''}>Orange</option>
+                <option value="#3399ff" ${wire.color === '#3399ff' ? 'selected' : ''}>Blue</option>
+                <option value="#cccc00" ${wire.color === '#cccc00' ? 'selected' : ''}>Yellow</option>
+                <option value="#9933cc" ${wire.color === '#9933cc' ? 'selected' : ''}>Purple</option>
+                <option value="#ffffff" ${wire.color === '#ffffff' ? 'selected' : ''}>White</option>
+                <option value="#999999" ${wire.color === '#999999' ? 'selected' : ''}>Gray</option>
+                <option value="#8b4513" ${wire.color === '#8b4513' ? 'selected' : ''}>Brown</option>
+            </select>
+        </div>
+    `;
+}

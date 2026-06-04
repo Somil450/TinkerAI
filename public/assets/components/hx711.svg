@@ -1,9 +1,28 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 78" width="140" height="78">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130 95" width="130" height="95">
   <defs>
-    <linearGradient id="pcb-hx" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1E88E5"/><stop offset="100%" stop-color="#0D47A1"/></linearGradient>
-    <linearGradient id="pcbTeal-hx" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#00939d"/><stop offset="100%" stop-color="#007982"/></linearGradient>
-    <linearGradient id="metal-hx" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#eee"/><stop offset="50%" stop-color="#fff"/><stop offset="100%" stop-color="#999"/></linearGradient>
-    <linearGradient id="pin-hx" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#f5f5f5"/><stop offset="100%" stop-color="#bdbdbd"/></linearGradient>
-    <filter id="sh-hx" x="-8%" y="-8%" width="116%" height="116%"><feDropShadow dx="1" dy="2" stdDeviation="2.5" flood-opacity="0.28"/></filter>
-    <filter id="glow-hx"><feGaussianBlur stdDeviation="1.5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-  </defs><rect x="3" y="18" width="134" height="56" rx="4" fill="url(#pcb-hx)" stroke="#0a3d7a" stroke-width="1.5" filter="url(#sh-hx)"/><rect x="14" y="4" width="112" height="16" rx="2" fill="#1a1a1a" stroke="#333"/><rect x="19" y="7" width="6" height="10" fill="url(#pin-hx)" rx="0.5"/><text x="22" y="3" text-anchor="middle" fill="#fff" font-size="6" font-weight="bold" font-family="Arial,sans-serif">VCC</text><rect x="31" y="7" width="6" height="10" fill="url(#pin-hx)" rx="0.5"/><text x="34" y="3" text-anchor="middle" fill="#fff" font-size="6" font-weight="bold" font-family="Arial,sans-serif">GND</text><rect x="43" y="7" width="6" height="10" fill="url(#pin-hx)" rx="0.5"/><text x="46" y="3" text-anchor="middle" fill="#fff" font-size="6" font-weight="bold" font-family="Arial,sans-serif">DT</text><rect x="55" y="7" width="6" height="10" fill="url(#pin-hx)" rx="0.5"/><text x="58" y="3" text-anchor="middle" fill="#fff" font-size="6" font-weight="bold" font-family="Arial,sans-serif">SCK</text><rect x="67" y="7" width="6" height="10" fill="url(#pin-hx)" rx="0.5"/><text x="70" y="3" text-anchor="middle" fill="#fff" font-size="6" font-weight="bold" font-family="Arial,sans-serif">E+</text><rect x="79" y="7" width="6" height="10" fill="url(#pin-hx)" rx="0.5"/><text x="82" y="3" text-anchor="middle" fill="#fff" font-size="6" font-weight="bold" font-family="Arial,sans-serif">E-</text><rect x="91" y="7" width="6" height="10" fill="url(#pin-hx)" rx="0.5"/><text x="94" y="3" text-anchor="middle" fill="#fff" font-size="6" font-weight="bold" font-family="Arial,sans-serif">A+</text><rect x="103" y="7" width="6" height="10" fill="url(#pin-hx)" rx="0.5"/><text x="106" y="3" text-anchor="middle" fill="#fff" font-size="6" font-weight="bold" font-family="Arial,sans-serif">A-</text><rect x="35" y="31.200000000000003" width="70" height="27.299999999999997" rx="2" fill="#111" stroke="#333"/><text x="70" y="45.239999999999995" text-anchor="middle" fill="#666" font-size="7" font-family="monospace">HX711</text><text x="70" y="74" text-anchor="middle" fill="#fff" font-size="8" font-weight="bold" font-family="Arial,sans-serif" opacity="0.9">HX711</text></svg>
+    <filter id="sh-hx711" x="-8%" y="-8%" width="116%" height="116%"><feDropShadow dx="1" dy="2" stdDeviation="2.5" flood-opacity="0.28"/></filter>
+  </defs>
+  <rect x="5" y="15" width="120" height="75" rx="4" fill="#4caf50" stroke="#1b5e20" stroke-width="1.5" filter="url(#sh-hx711)"/>
+  
+  <!-- PIN HEADER BLACK BASE -->
+  <rect x="33.0" y="6" width="60" height="14" rx="2" fill="#1a1a1a" stroke="#333"/>
+  
+        <rect x="37.0" y="7" width="8" height="10" fill="#bdbdbd" rx="1"/>
+        <text x="41.0" y="5" text-anchor="middle" fill="#fff" font-size="5" font-weight="bold" font-family="Arial,sans-serif">VCC</text>
+        
+        <rect x="51.0" y="7" width="8" height="10" fill="#bdbdbd" rx="1"/>
+        <text x="55.0" y="5" text-anchor="middle" fill="#fff" font-size="5" font-weight="bold" font-family="Arial,sans-serif">DT</text>
+        
+        <rect x="65.0" y="7" width="8" height="10" fill="#bdbdbd" rx="1"/>
+        <text x="69.0" y="5" text-anchor="middle" fill="#fff" font-size="5" font-weight="bold" font-family="Arial,sans-serif">SCK</text>
+        
+        <rect x="79.0" y="7" width="8" height="10" fill="#bdbdbd" rx="1"/>
+        <text x="83.0" y="5" text-anchor="middle" fill="#fff" font-size="5" font-weight="bold" font-family="Arial,sans-serif">GND</text>
+        
+  
+  <!-- CUSTOM GRAPHICS -->
+  <rect x="45" y="30" width="40" height="30" fill="#222"/><text x="65" y="45" text-anchor="middle" fill="#999" font-size="6">HX711</text><rect x="10" y="10" width="10" height="70" fill="#333"/><circle cx="15" cy="15" r="2" fill="#d4af37"/><circle cx="15" cy="25" r="2" fill="#d4af37"/><circle cx="15" cy="65" r="2" fill="#d4af37"/><circle cx="15" cy="75" r="2" fill="#d4af37"/>
+  
+  <!-- COMPONENT NAME -->
+  <text x="65" y="85" text-anchor="middle" fill="#fff" font-size="8" font-weight="bold" font-family="Arial,sans-serif" opacity="0.9">HX711</text>
+</svg>

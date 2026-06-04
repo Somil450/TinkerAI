@@ -4,7 +4,7 @@ import { renderSidebar } from './ui/sidebar.js'
 import { selectPin, getConnections } from './engine/wires.js'
 import { buildGraph } from './engine/graph.js'
 import { validateCircuit } from './engine/validator.js'
-import { renderProperties } from './ui/propertiesPanel.js'
+import { renderProperties, renderWireProperties } from './ui/propertiesPanel.js'
 import { deleteComponent } from './engine/deleteComponent.js'
 import { componentRegistry } from './engine/componentRegistry.js'
 import { getComponentHTML } from './ui/svgRenderer.js'
@@ -548,6 +548,7 @@ startSimBtn.addEventListener('click', async () => {
   let selectedComponent = null
   let selectedWire = null
   let activeWireLine = null
+  let activeWaypoints = []
   
   const wireObjects = []
 
@@ -575,14 +576,23 @@ canvas.addEventListener('dragover', e => {
         renderWires()
       }
       
-      // Cancel active wire drawing
+      // Add waypoint to active wire
       if (firstPinElement) {
-        firstPinElement.style.background = ''
-        firstPinElement = null
-        if (activeWireLine) {
-          activeWireLine.remove()
-          activeWireLine = null
-        }
+        const rect = canvas.getBoundingClientRect()
+        activeWaypoints.push({ x: e.clientX - rect.left, y: e.clientY - rect.top })
+      }
+    }
+  })
+
+  // Escape to cancel wire drawing
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && firstPinElement) {
+      firstPinElement.style.background = ''
+      firstPinElement = null
+      activeWaypoints = []
+      if (activeWireLine) {
+        activeWireLine.remove()
+        activeWireLine = null
       }
     }
   })
@@ -591,7 +601,7 @@ canvas.addEventListener('dragover', e => {
   canvas.addEventListener('mousemove', (e) => {
     if (firstPinElement) {
       if (!activeWireLine) {
-        activeWireLine = document.createElementNS("http://www.w3.org/2000/svg", "path")
+        activeWireLine = document.createElementNS("http://www.w3.org/2000/svg", "polyline")
         activeWireLine.setAttribute("stroke", "#ff9900") // Orange for active drawing
         activeWireLine.setAttribute("stroke-width", "3")
         activeWireLine.setAttribute("stroke-dasharray", "5,5")
@@ -607,8 +617,11 @@ canvas.addEventListener('dragover', e => {
       const x2 = e.clientX - canvasRect.left
       const y2 = e.clientY - canvasRect.top
       
-      const cpX = (x1 + x2) / 2
-      activeWireLine.setAttribute("d", `M ${x1} ${y1} C ${cpX} ${y1}, ${cpX} ${y2}, ${x2} ${y2}`)
+      let pointsStr = `${x1},${y1} `
+      activeWaypoints.forEach(wp => pointsStr += `${wp.x},${wp.y} `)
+      pointsStr += `${x2},${y2}`
+      
+      activeWireLine.setAttribute("points", pointsStr)
     }
   })
 
@@ -675,11 +688,23 @@ canvas.addEventListener('dragover', e => {
       const pinA = firstPinElement.dataset.pin
       const pinB = pin.dataset.pin
 
-      wireObjects.push({ pin1: firstPinElement, pin2: pin })
+      let defColor = "#00cc66" // Green for signal
+      const pinALower = firstPinElement.dataset.pin.toLowerCase()
+      const pinBLower = pin.dataset.pin.toLowerCase()
+      if (pinALower.includes("5v") || pinALower.includes("3.3v") || pinALower.includes("vcc") || pinALower.includes("vin") || pinBLower.includes("5v") || pinBLower.includes("3.3v") || pinBLower.includes("vcc") || pinBLower.includes("vin") || pinALower === "v+" || pinBLower === "v+") defColor = "#ff3333" // Red
+      if (pinALower.includes("gnd") || pinALower.includes("ground") || pinALower === "-" || pinBLower.includes("gnd") || pinBLower.includes("ground") || pinBLower === "-") defColor = "#333333" // Black
+
+      wireObjects.push({ 
+        pin1: firstPinElement, 
+        pin2: pin,
+        waypoints: [...activeWaypoints],
+        color: defColor
+      })
 
         renderWires()
         firstPinElement.style.background = ''
         firstPinElement = null
+        activeWaypoints = []
         
         if (activeWireLine) {
           activeWireLine.remove()
@@ -739,14 +764,6 @@ canvas.addEventListener('dragover', e => {
 function renderWires() {
   window.renderWires = renderWires; // Expose for simulator
   wireLayer.innerHTML = ""
-  
-  const getWireColor = (pA, pB) => {
-    pA = (pA || "").toLowerCase()
-    pB = (pB || "").toLowerCase()
-    if (pA.includes("5v") || pA.includes("3.3v") || pA.includes("vcc") || pA.includes("vin") || pB.includes("5v") || pB.includes("3.3v") || pB.includes("vcc") || pB.includes("vin") || pA === "v+" || pB === "v+") return "#ff3333" // Red
-    if (pA.includes("gnd") || pA.includes("ground") || pA === "-" || pB.includes("gnd") || pB.includes("ground") || pB === "-") return "#333333" // Black
-    return "#00cc66" // Green for signal
-  }
 
   wireObjects.forEach((wire, index) => {
       const rect1 = wire.pin1.getBoundingClientRect()
@@ -760,20 +777,22 @@ function renderWires() {
       
       const isSelected = selectedWire === wire
       
-      const path = document.createElementNS("http://www.w3.org/2000/svg", "path")
+      const path = document.createElementNS("http://www.w3.org/2000/svg", "polyline")
       
-      // Calculate bezier curve for a nicer wire look
-      const cpX = (x1 + x2) / 2
-      path.setAttribute("d", `M ${x1} ${y1} C ${cpX} ${y1}, ${cpX} ${y2}, ${x2} ${y2}`)
+      let pointsStr = `${x1},${y1} `
+      if (wire.waypoints) {
+         wire.waypoints.forEach(wp => pointsStr += `${wp.x},${wp.y} `)
+      }
+      pointsStr += `${x2},${y2}`
+      
+      path.setAttribute("points", pointsStr)
       path.setAttribute("fill", "none")
       
       if (isSelected) {
         path.setAttribute("stroke", "#ff3366")
         path.setAttribute("stroke-width", "5")
       } else {
-        const p1Name = wire.pin1.dataset.pin
-        const p2Name = wire.pin2.dataset.pin
-        path.setAttribute("stroke", getWireColor(p1Name, p2Name))
+        path.setAttribute("stroke", wire.color || "#00cc66")
         path.setAttribute("stroke-width", "3")
       }
       
@@ -785,10 +804,20 @@ function renderWires() {
         if (selectedComponent) {
           selectedComponent.classList.remove('selected')
           selectedComponent = null
-          propertiesPanel.classList.add('hidden')
         }
         selectedWire = wire
         renderWires()
+        
+        propertiesContent.innerHTML = renderWireProperties(wire)
+        propertiesPanel.classList.remove('hidden')
+        
+        const colorPicker = document.getElementById('wire-color')
+        if (colorPicker) {
+          colorPicker.addEventListener('change', (evt) => {
+             wire.color = evt.target.value
+             renderWires()
+          })
+        }
       })
       
       wireLayer.appendChild(path)

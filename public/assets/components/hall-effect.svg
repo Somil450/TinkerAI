@@ -1,9 +1,28 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 110 70" width="110" height="70">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130 95" width="130" height="95">
   <defs>
-    <linearGradient id="pcb-hall" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1E88E5"/><stop offset="100%" stop-color="#0D47A1"/></linearGradient>
-    <linearGradient id="pcbTeal-hall" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#00939d"/><stop offset="100%" stop-color="#007982"/></linearGradient>
-    <linearGradient id="metal-hall" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#eee"/><stop offset="50%" stop-color="#fff"/><stop offset="100%" stop-color="#999"/></linearGradient>
-    <linearGradient id="pin-hall" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#f5f5f5"/><stop offset="100%" stop-color="#bdbdbd"/></linearGradient>
-    <filter id="sh-hall" x="-8%" y="-8%" width="116%" height="116%"><feDropShadow dx="1" dy="2" stdDeviation="2.5" flood-opacity="0.28"/></filter>
-    <filter id="glow-hall"><feGaussianBlur stdDeviation="1.5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-  </defs><rect x="3" y="18" width="104" height="48" rx="4" fill="url(#pcb-hall)" stroke="#0a3d7a" stroke-width="1.5" filter="url(#sh-hall)"/><rect x="29" y="4" width="52" height="16" rx="2" fill="#1a1a1a" stroke="#333"/><rect x="34" y="7" width="6" height="10" fill="url(#pin-hall)" rx="0.5"/><text x="37" y="3" text-anchor="middle" fill="#fff" font-size="6" font-weight="bold" font-family="Arial,sans-serif">VCC</text><rect x="46" y="7" width="6" height="10" fill="url(#pin-hall)" rx="0.5"/><text x="49" y="3" text-anchor="middle" fill="#fff" font-size="6" font-weight="bold" font-family="Arial,sans-serif">GND</text><rect x="58" y="7" width="6" height="10" fill="url(#pin-hall)" rx="0.5"/><text x="61" y="3" text-anchor="middle" fill="#fff" font-size="6" font-weight="bold" font-family="Arial,sans-serif">OUT</text><text x="55" y="66" text-anchor="middle" fill="#fff" font-size="8" font-weight="bold" font-family="Arial,sans-serif" opacity="0.9">HALL</text></svg>
+    <filter id="sh-hall-effect" x="-8%" y="-8%" width="116%" height="116%"><feDropShadow dx="1" dy="2" stdDeviation="2.5" flood-opacity="0.28"/></filter>
+  </defs>
+  <rect x="5" y="15" width="120" height="75" rx="4" fill="#4caf50" stroke="#1b5e20" stroke-width="1.5" filter="url(#sh-hall-effect)"/>
+  
+  <!-- PIN HEADER BLACK BASE -->
+  <rect x="33.0" y="6" width="60" height="14" rx="2" fill="#1a1a1a" stroke="#333"/>
+  
+        <rect x="37.0" y="7" width="8" height="10" fill="#bdbdbd" rx="1"/>
+        <text x="41.0" y="5" text-anchor="middle" fill="#fff" font-size="5" font-weight="bold" font-family="Arial,sans-serif">VCC</text>
+        
+        <rect x="51.0" y="7" width="8" height="10" fill="#bdbdbd" rx="1"/>
+        <text x="55.0" y="5" text-anchor="middle" fill="#fff" font-size="5" font-weight="bold" font-family="Arial,sans-serif">GND</text>
+        
+        <rect x="65.0" y="7" width="8" height="10" fill="#bdbdbd" rx="1"/>
+        <text x="69.0" y="5" text-anchor="middle" fill="#fff" font-size="5" font-weight="bold" font-family="Arial,sans-serif">DO</text>
+        
+        <rect x="79.0" y="7" width="8" height="10" fill="#bdbdbd" rx="1"/>
+        <text x="83.0" y="5" text-anchor="middle" fill="#fff" font-size="5" font-weight="bold" font-family="Arial,sans-serif">AO</text>
+        
+  
+  <!-- CUSTOM GRAPHICS -->
+  <rect x="55" y="40" width="20" height="20" fill="#111"/><text x="65" y="53" text-anchor="middle" font-size="6" fill="#aaa">3144</text>
+  
+  <!-- COMPONENT NAME -->
+  <text x="65" y="85" text-anchor="middle" fill="#fff" font-size="8" font-weight="bold" font-family="Arial,sans-serif" opacity="0.9">HALL SENSOR</text>
+</svg>

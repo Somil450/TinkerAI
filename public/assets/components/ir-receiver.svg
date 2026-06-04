@@ -1,9 +1,25 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 110 70" width="110" height="70">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130 95" width="130" height="95">
   <defs>
-    <linearGradient id="pcb-irrx" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1E88E5"/><stop offset="100%" stop-color="#0D47A1"/></linearGradient>
-    <linearGradient id="pcbTeal-irrx" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#00939d"/><stop offset="100%" stop-color="#007982"/></linearGradient>
-    <linearGradient id="metal-irrx" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#eee"/><stop offset="50%" stop-color="#fff"/><stop offset="100%" stop-color="#999"/></linearGradient>
-    <linearGradient id="pin-irrx" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#f5f5f5"/><stop offset="100%" stop-color="#bdbdbd"/></linearGradient>
-    <filter id="sh-irrx" x="-8%" y="-8%" width="116%" height="116%"><feDropShadow dx="1" dy="2" stdDeviation="2.5" flood-opacity="0.28"/></filter>
-    <filter id="glow-irrx"><feGaussianBlur stdDeviation="1.5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-  </defs><rect x="3" y="18" width="104" height="48" rx="4" fill="url(#pcb-irrx)" stroke="#0a3d7a" stroke-width="1.5" filter="url(#sh-irrx)"/><rect x="29" y="4" width="52" height="16" rx="2" fill="#1a1a1a" stroke="#333"/><rect x="34" y="7" width="6" height="10" fill="url(#pin-irrx)" rx="0.5"/><text x="37" y="3" text-anchor="middle" fill="#fff" font-size="6" font-weight="bold" font-family="Arial,sans-serif">VCC</text><rect x="46" y="7" width="6" height="10" fill="url(#pin-irrx)" rx="0.5"/><text x="49" y="3" text-anchor="middle" fill="#fff" font-size="6" font-weight="bold" font-family="Arial,sans-serif">GND</text><rect x="58" y="7" width="6" height="10" fill="url(#pin-irrx)" rx="0.5"/><text x="61" y="3" text-anchor="middle" fill="#fff" font-size="6" font-weight="bold" font-family="Arial,sans-serif">OUT</text><text x="55" y="66" text-anchor="middle" fill="#fff" font-size="8" font-weight="bold" font-family="Arial,sans-serif" opacity="0.9">IR RX</text></svg>
+    <filter id="sh-ir-receiver" x="-8%" y="-8%" width="116%" height="116%"><feDropShadow dx="1" dy="2" stdDeviation="2.5" flood-opacity="0.28"/></filter>
+  </defs>
+  <rect x="5" y="15" width="120" height="75" rx="4" fill="#f44336" stroke="#b71c1c" stroke-width="1.5" filter="url(#sh-ir-receiver)"/>
+  
+  <!-- PIN HEADER BLACK BASE -->
+  <rect x="40.0" y="6" width="46" height="14" rx="2" fill="#1a1a1a" stroke="#333"/>
+  
+        <rect x="44.0" y="7" width="8" height="10" fill="#bdbdbd" rx="1"/>
+        <text x="48.0" y="5" text-anchor="middle" fill="#fff" font-size="5" font-weight="bold" font-family="Arial,sans-serif">OUT</text>
+        
+        <rect x="58.0" y="7" width="8" height="10" fill="#bdbdbd" rx="1"/>
+        <text x="62.0" y="5" text-anchor="middle" fill="#fff" font-size="5" font-weight="bold" font-family="Arial,sans-serif">GND</text>
+        
+        <rect x="72.0" y="7" width="8" height="10" fill="#bdbdbd" rx="1"/>
+        <text x="76.0" y="5" text-anchor="middle" fill="#fff" font-size="5" font-weight="bold" font-family="Arial,sans-serif">VCC</text>
+        
+  
+  <!-- CUSTOM GRAPHICS -->
+  <rect x="55" y="35" width="20" height="25" fill="#111" rx="2"/><circle cx="65" cy="45" r="8" fill="#212121"/>
+  
+  <!-- COMPONENT NAME -->
+  <text x="65" y="85" text-anchor="middle" fill="#fff" font-size="8" font-weight="bold" font-family="Arial,sans-serif" opacity="0.9">IR RECEIVER</text>
+</svg>

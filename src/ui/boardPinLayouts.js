@@ -89,15 +89,6 @@ export const ESP32_DEVKIT = {
     botPins.forEach((id, i) =>
       pins.push({ id, x: 14.5 + i * 13.5, y: 94, labelSide: 'bottom' }),
     )
-    // Also add aliases for the remaining GPIOs that weren't listed
-    for (let g = 0; g <= 39; g++) {
-      const name = `GPIO${g}`
-      if (!topPins.includes(name) && !botPins.includes(name)) {
-        // Place any extras not on the board at the nearest available position
-        const row = g < 20 ? 94 : 6
-        pins.push({ id: name, x: 14.5 + (g % 19) * 13.5, y: row, labelSide: row === 6 ? 'top' : 'bottom' })
-      }
-    }
     return pins
   })(),
 }

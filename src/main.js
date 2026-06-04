@@ -632,6 +632,8 @@ canvas.addEventListener('dragover', e => {
       const pinA = firstPinElement.dataset.pin
       const pinB = pin.dataset.pin
 
+      wireObjects.push({ pin1: firstPinElement, pin2: pin })
+
         renderWires()
         firstPinElement.style.background = ''
         firstPinElement = null

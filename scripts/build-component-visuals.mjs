@@ -226,12 +226,6 @@ for (const comp of componentRegistry.getAll()) {
   
   if (!pins) {
     pins = layoutPins(pinIds, width, height)
-  } else {
-    const placedIds = new Set(pins.map((p) => p.id))
-    const missing = pinIds.filter((id) => !placedIds.has(id))
-    if (missing.length) {
-      pins = [...pins, ...layoutPins(missing, width, height)]
-    }
   }
 
   visuals[comp.id] = {

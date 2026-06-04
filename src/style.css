@@ -635,15 +635,24 @@ body {
   border-color: #90caf9;
 }
 
+.component-body[data-pin-density="medium"] .pin-label-top,
+.component-body[data-pin-density="medium"] .pin-label-bottom,
+.component-body[data-pin-density="high"] .pin-label-top,
+.component-body[data-pin-density="high"] .pin-label-bottom {
+  writing-mode: vertical-rl;
+  padding: 4px 2px;
+}
+
 .component-body[data-pin-density="medium"] .pin-label {
   font-size: 8px;
   padding: 0 3px;
 }
 
 .component-body[data-pin-density="high"] .pin-label {
-  font-size: 7px;
+  font-size: 8px;
   padding: 0 2px;
-  max-width: 36px;
+  max-width: none;
+  max-height: 48px;
   overflow: hidden;
   text-overflow: ellipsis;
 }
@@ -726,4 +735,51 @@ body {
 /* Simulation Animation State */
 .placed-component.led-lit .svg-component {
   filter: drop-shadow(0 0 12px #ff0000) drop-shadow(0 0 24px #ff5555) brightness(1.5);
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .nav-btn {
+    padding: 6px 12px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 850px) {
+  .project-name {
+    display: none;
+  }
+  .navbar {
+    padding: 8px 16px;
+  }
+  .nav-left {
+    gap: 10px;
+  }
+}
+
+@media (max-width: 650px) {
+  .nav-btn {
+    padding: 6px 10px;
+    font-size: 11px;
+  }
+  .nav-right {
+    gap: 6px;
+  }
+  .logo {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-btn {
+    padding: 4px 6px;
+    font-size: 10px;
+  }
+  .navbar {
+    padding: 6px 10px;
+    gap: 6px;
+  }
+  .logo {
+    font-size: 16px;
+  }
 }

@@ -395,54 +395,6 @@
         "x": 257.5,
         "y": 94,
         "labelSide": "bottom"
-      },
-      {
-        "id": "GPIO20",
-        "x": 28,
-        "y": 6,
-        "labelSide": "top"
-      },
-      {
-        "id": "GPIO24",
-        "x": 82,
-        "y": 6,
-        "labelSide": "top"
-      },
-      {
-        "id": "GPIO28",
-        "x": 136,
-        "y": 6,
-        "labelSide": "top"
-      },
-      {
-        "id": "GPIO29",
-        "x": 149.5,
-        "y": 6,
-        "labelSide": "top"
-      },
-      {
-        "id": "GPIO30",
-        "x": 163,
-        "y": 6,
-        "labelSide": "top"
-      },
-      {
-        "id": "GPIO31",
-        "x": 176.5,
-        "y": 6,
-        "labelSide": "top"
-      },
-      {
-        "id": "GPIO37",
-        "x": 257.5,
-        "y": 6,
-        "labelSide": "top"
-      },
-      {
-        "id": "GPIO38",
-        "x": 14.5,
-        "y": 6,
-        "labelSide": "top"
       }
     ],
     "pinCount": 43
@@ -2880,54 +2832,6 @@
         "x": 257.5,
         "y": 94,
         "labelSide": "bottom"
-      },
-      {
-        "id": "GPIO20",
-        "x": 28,
-        "y": 6,
-        "labelSide": "top"
-      },
-      {
-        "id": "GPIO24",
-        "x": 82,
-        "y": 6,
-        "labelSide": "top"
-      },
-      {
-        "id": "GPIO28",
-        "x": 136,
-        "y": 6,
-        "labelSide": "top"
-      },
-      {
-        "id": "GPIO29",
-        "x": 149.5,
-        "y": 6,
-        "labelSide": "top"
-      },
-      {
-        "id": "GPIO30",
-        "x": 163,
-        "y": 6,
-        "labelSide": "top"
-      },
-      {
-        "id": "GPIO31",
-        "x": 176.5,
-        "y": 6,
-        "labelSide": "top"
-      },
-      {
-        "id": "GPIO37",
-        "x": 257.5,
-        "y": 6,
-        "labelSide": "top"
-      },
-      {
-        "id": "GPIO38",
-        "x": 14.5,
-        "y": 6,
-        "labelSide": "top"
       }
     ],
     "pinCount": 0
@@ -3171,54 +3075,6 @@
         "x": 257.5,
         "y": 94,
         "labelSide": "bottom"
-      },
-      {
-        "id": "GPIO20",
-        "x": 28,
-        "y": 6,
-        "labelSide": "top"
-      },
-      {
-        "id": "GPIO24",
-        "x": 82,
-        "y": 6,
-        "labelSide": "top"
-      },
-      {
-        "id": "GPIO28",
-        "x": 136,
-        "y": 6,
-        "labelSide": "top"
-      },
-      {
-        "id": "GPIO29",
-        "x": 149.5,
-        "y": 6,
-        "labelSide": "top"
-      },
-      {
-        "id": "GPIO30",
-        "x": 163,
-        "y": 6,
-        "labelSide": "top"
-      },
-      {
-        "id": "GPIO31",
-        "x": 176.5,
-        "y": 6,
-        "labelSide": "top"
-      },
-      {
-        "id": "GPIO37",
-        "x": 257.5,
-        "y": 6,
-        "labelSide": "top"
-      },
-      {
-        "id": "GPIO38",
-        "x": 14.5,
-        "y": 6,
-        "labelSide": "top"
       }
     ],
     "pinCount": 0
@@ -3455,54 +3311,6 @@
         "x": 257.5,
         "y": 94,
         "labelSide": "bottom"
-      },
-      {
-        "id": "GPIO20",
-        "x": 28,
-        "y": 6,
-        "labelSide": "top"
-      },
-      {
-        "id": "GPIO24",
-        "x": 82,
-        "y": 6,
-        "labelSide": "top"
-      },
-      {
-        "id": "GPIO28",
-        "x": 136,
-        "y": 6,
-        "labelSide": "top"
-      },
-      {
-        "id": "GPIO29",
-        "x": 149.5,
-        "y": 6,
-        "labelSide": "top"
-      },
-      {
-        "id": "GPIO30",
-        "x": 163,
-        "y": 6,
-        "labelSide": "top"
-      },
-      {
-        "id": "GPIO31",
-        "x": 176.5,
-        "y": 6,
-        "labelSide": "top"
-      },
-      {
-        "id": "GPIO37",
-        "x": 257.5,
-        "y": 6,
-        "labelSide": "top"
-      },
-      {
-        "id": "GPIO38",
-        "x": 14.5,
-        "y": 6,
-        "labelSide": "top"
       }
     ],
     "pinCount": 0

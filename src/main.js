@@ -18,6 +18,7 @@ import { initCodeEditor, getCode, setCompilerStatus } from './ui/codeEditor.js'
 import { compileCode } from './engine/compiler.js'
 import { connectToBoard, disconnectFromBoard, flashToBoard, getPort } from './engine/flasher.js'
 import { startSerialMonitor, sendSerialData, stopSerialMonitor } from './engine/serialMonitor.js'
+import { circuitChatAI } from './ai/circuitChatAI.js'
 
 document.querySelector('#app').innerHTML = `
 <div class="app-layout">
@@ -95,6 +96,48 @@ document.querySelector('#app').innerHTML = `
         <div class="properties-content" id="properties-content">
           <p>Select Component</p>
         </div>
+      </div>
+    </div>
+
+    <!-- AI Chat FAB & Panel -->
+    <button id="ai-chat-fab" title="Ask AI about your circuit" aria-label="Open AI Chat">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+      <span class="fab-label">AI Chat</span>
+    </button>
+    <div id="ai-chat-panel" class="ai-chat-panel hidden">
+      <div class="ai-chat-header">
+        <div class="ai-chat-header-left">
+          <div class="ai-avatar">🤖</div>
+          <div>
+            <div class="ai-chat-title">TinkerAI Assistant</div>
+            <div class="ai-chat-subtitle">Circuit & wiring expert · Self-trained</div>
+          </div>
+        </div>
+        <button id="ai-chat-close" class="ai-chat-close">&times;</button>
+      </div>
+      <div class="ai-chat-messages" id="ai-chat-messages">
+        <div class="ai-msg ai">
+          <div class="ai-msg-bubble">
+            👋 Hi! I'm <strong>TinkerAI</strong>, your built-in circuit AI.<br><br>
+            I give <strong>exact pin-to-pin wiring</strong> for any components and can design full systems. Try:
+          </div>
+        </div>
+      </div>
+      <div class="ai-chat-chips" id="ai-chat-chips">
+        <button class="ai-chip" data-msg="Make a 4WD robot car">🚗 Make a car</button>
+        <button class="ai-chip" data-msg="Connect ESP32 to LCD display">🖥️ ESP32 + LCD</button>
+        <button class="ai-chip" data-msg="Connect ESP32 to DHT22 and OLED">🌡️ ESP32 + DHT22</button>
+        <button class="ai-chip" data-msg="Make a weather station">🌤️ Weather station</button>
+        <button class="ai-chip" data-msg="Connect L298N motor driver to Arduino">⚙️ Motor driver</button>
+        <button class="ai-chip" data-msg="Connect HC-SR04 ultrasonic sensor to Arduino">📡 Ultrasonic</button>
+        <button class="ai-chip" data-msg="What is on my canvas">🔍 My canvas</button>
+        <button class="ai-chip" data-msg="Connect all components on my canvas">🔌 Wire all</button>
+      </div>
+      <div class="ai-chat-input-row">
+        <input id="ai-chat-input" class="ai-chat-input" type="text" placeholder="e.g. connect ESP32 to LCD and DHT22..." />
+        <button id="ai-chat-send" class="ai-chat-send">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+        </button>
       </div>
     </div>
 
@@ -771,4 +814,92 @@ function renderWires() {
         }
       }
     }
+  })
+
+  // ── AI Chat ────────────────────────────────────────────────────────────────
+  const chatFab = document.getElementById('ai-chat-fab')
+  const chatPanel = document.getElementById('ai-chat-panel')
+  const chatClose = document.getElementById('ai-chat-close')
+  const chatInput = document.getElementById('ai-chat-input')
+  const chatSend = document.getElementById('ai-chat-send')
+  const chatMessages = document.getElementById('ai-chat-messages')
+
+  function renderMarkdown(text) {
+    return text
+      .replace(/\*\*\*(.+?)\*\*\*/g, '<strong><em>$1</em></strong>')
+      .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+      .replace(/\*(.+?)\*/g, '<em>$1</em>')
+      .replace(/`([^`]+)`/g, '<code>$1</code>')
+      .replace(/```[\s\S]*?```/g, m => `<pre><code>${m.slice(3, -3).replace(/^\w+\n/, '')}</code></pre>`)
+      .replace(/^### (.+)$/gm, '<h4>$1</h4>')
+      .replace(/^## (.+)$/gm, '<h3>$1</h3>')
+      .replace(/^\|[-|\s]+\|$/gm, '') // Strip markdown table dividers like |---|---|
+      .replace(/^\| (.+) \|$/gm, m => {
+        const cells = m.slice(2, -2).split(' | ').map(c => `<td>${c}</td>`).join('')
+        return `<tr>${cells}</tr>`
+      })
+      .replace(/(<tr>.*<\/tr>\n?)+/g, m => `<table>${m}</table>`)
+      .replace(/^- (.+)$/gm, '<li>$1</li>')
+      .replace(/(<li>.*<\/li>\n?)+/g, m => `<ul>${m}</ul>`)
+      .replace(/\n/g, '<br>')
+  }
+
+  function appendMessage(role, text) {
+    const div = document.createElement('div')
+    div.className = `ai-msg ${role}`
+    const bubble = document.createElement('div')
+    bubble.className = 'ai-msg-bubble'
+    bubble.innerHTML = renderMarkdown(text)
+    div.appendChild(bubble)
+    chatMessages.appendChild(div)
+    chatMessages.scrollTop = chatMessages.scrollHeight
+  }
+
+  function appendTypingIndicator() {
+    const div = document.createElement('div')
+    div.className = 'ai-msg ai'
+    div.id = 'ai-typing'
+    div.innerHTML = '<div class="ai-msg-bubble ai-typing-bubble"><span class="typing-dot"></span><span class="typing-dot"></span><span class="typing-dot"></span></div>'
+    chatMessages.appendChild(div)
+    chatMessages.scrollTop = chatMessages.scrollHeight
+    return div
+  }
+
+  function sendChatMessage() {
+    const msg = chatInput.value.trim()
+    if (!msg) return
+    chatInput.value = ''
+    appendMessage('user', msg)
+    const typing = appendTypingIndicator()
+    setTimeout(() => {
+      typing.remove()
+      const reply = circuitChatAI.respond(msg)
+      appendMessage('ai', reply)
+    }, 400)
+  }
+
+  chatFab.addEventListener('click', () => {
+    chatPanel.classList.toggle('hidden')
+    if (!chatPanel.classList.contains('hidden')) chatInput.focus()
+  })
+  chatClose.addEventListener('click', () => chatPanel.classList.add('hidden'))
+  chatSend.addEventListener('click', sendChatMessage)
+  chatInput.addEventListener('keydown', e => { if (e.key === 'Enter') sendChatMessage() })
+
+  // Suggestion chip clicks
+  document.querySelectorAll('.ai-chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      const msg = chip.dataset.msg
+      if (!msg) return
+      // Hide chip bar after first use
+      const chipsBar = document.getElementById('ai-chat-chips')
+      if (chipsBar) chipsBar.style.display = 'none'
+      appendMessage('user', msg)
+      const typing = appendTypingIndicator()
+      setTimeout(() => {
+        typing.remove()
+        const reply = circuitChatAI.respond(msg)
+        appendMessage('ai', reply)
+      }, 500)
+    })
   })

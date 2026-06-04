@@ -132,19 +132,43 @@ export class CircuitSimulator {
         const grounds = new Set();
 
         componentRegistry.forEach(comp => {
-            if (comp.id.includes('arduino')) {
-                // Hardcoded 5V is a source
-                sources.push(`${comp.id}.5V`);
-                grounds.add(`${comp.id}.GND`);
+            const cid = comp.id;
+            
+            // Power Sources
+            if (cid.includes('battery') || cid.includes('solar') || cid.includes('power')) {
+                sources.push(`${cid}.+`, `${cid}.VCC`, `${cid}.5V`, `${cid}.9V`);
+                grounds.add(`${cid}.-`);
+                grounds.add(`${cid}.GND`);
+            }
+
+            // Microcontrollers
+            if (cid.includes('arduino') || cid.includes('esp') || cid.includes('pico')) {
+                // Hardcoded Power Pins
+                sources.push(`${cid}.5V`, `${cid}.3V3`, `${cid}.VCC`, `${cid}.VBUS`, `${cid}.VSYS`);
+                grounds.add(`${cid}.GND`);
+                grounds.add(`${cid}.AGND`);
                 
-                // Active HIGH pins are sources
+                // Map active HIGH pins to sources
                 Object.keys(pinStates).forEach(pin => {
-                    if (pinStates[pin]) {
-                        sources.push(`${comp.id}.${pin}`);
-                    } else {
-                        // LOW pins can act as ground sink!
-                        grounds.add(`${comp.id}.${pin}`);
+                    const isHigh = pinStates[pin];
+                    
+                    // Standard Arduino mapping (D0-D13, A0-A5)
+                    const mappedPins = [`${cid}.${pin}`];
+                    
+                    // ESP/Pico number mapping: D4 -> GPIO4, GP4
+                    const numMatch = pin.match(/\d+/);
+                    if (numMatch) {
+                        const n = numMatch[0];
+                        mappedPins.push(`${cid}.GPIO${n}`, `${cid}.GP${n}`);
                     }
+                    
+                    mappedPins.forEach(p => {
+                        if (isHigh) {
+                            sources.push(p);
+                        } else {
+                            grounds.add(p);
+                        }
+                    });
                 });
             }
         });
@@ -237,6 +261,11 @@ export class CircuitSimulator {
                 
                 const el = document.querySelector(`.placed-component[data-component-id="${id}"]`);
                 if (!el) return;
+                
+                el.dataset.m1 = m1f ? '1' : (m1r ? '-1' : '0');
+                el.dataset.m2 = m2f ? '1' : (m2r ? '-1' : '0');
+                el.dataset.m3 = m3f ? '1' : (m3r ? '-1' : '0');
+                el.dataset.m4 = m4f ? '1' : (m4r ? '-1' : '0');
                 
                 if (leftSpeed !== 0 || rightSpeed !== 0) {
                     this.poweredComponents.add(id);

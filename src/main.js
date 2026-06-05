@@ -152,6 +152,7 @@ document.querySelector('#app').innerHTML = `
           <option>Arduino</option>
         </select>
         <input type="text" placeholder="Search..." class="search-input"/>
+        <button id="close-sidebar-mobile" class="close-btn" style="display: none;">&times;</button>
       </div>
       <div class="component-list" id="component-list">
         <div class="component-list-grid">
@@ -355,6 +356,14 @@ toggleSidebarBtn.addEventListener('click', () => {
   rightSidebar.classList.toggle('hidden');
   sidebarResizer.classList.toggle('hidden');
 });
+
+const closeSidebarMobileBtn = document.getElementById('close-sidebar-mobile');
+if (closeSidebarMobileBtn) {
+  closeSidebarMobileBtn.addEventListener('click', () => {
+    rightSidebar.classList.add('hidden');
+    sidebarResizer.classList.add('hidden');
+  });
+}
 
 const closeSerialBtn = document.getElementById('close-serial');
 

@@ -93,7 +93,12 @@ document.querySelector('#app').innerHTML = `
       <div class="floating-properties hidden" id="properties">
         <div class="properties-header">
           <h3>Properties</h3>
-          <button id="close-properties">&times;</button>
+          <div style="display: flex; gap: 12px; align-items: center;">
+            <button id="delete-selected" title="Delete selected item" style="background: none; border: none; color: #ef4444; cursor: pointer; padding: 4px; display: flex;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"></path><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg>
+            </button>
+            <button id="close-properties">&times;</button>
+          </div>
         </div>
         <div class="properties-content" id="properties-content">
           <p>Select Component</p>
@@ -276,6 +281,24 @@ document.getElementById('close-properties').addEventListener('click', () => {
   if (selectedComponent) {
     selectedComponent.classList.remove('selected')
     selectedComponent = null
+  }
+})
+
+document.getElementById('delete-selected').addEventListener('click', () => {
+  if (selectedComponent) {
+    deleteComponent(selectedComponent, wireObjects, renderWires)
+    selectedComponent = null
+    propertiesPanel.classList.add('hidden')
+    propertiesContent.innerHTML = `<p>Select Component</p>`
+  } else if (selectedWire) {
+    const idx = wireObjects.indexOf(selectedWire)
+    if (idx > -1) {
+      wireObjects.splice(idx, 1)
+      selectedWire = null
+      renderWires()
+      propertiesPanel.classList.add('hidden')
+      propertiesContent.innerHTML = `<p>Select Component</p>`
+    }
   }
 })
 

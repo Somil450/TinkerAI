@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130 90" width="130" height="90">
+  <defs><filter id="sh"><feDropShadow dx="1" dy="2" stdDeviation="2.5" flood-opacity="0.3"/></filter>
+  <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#37474f"/><stop offset="100%" stop-color="#263238"/>
+  </linearGradient></defs>
+  <rect x="2" y="2" width="126" height="86" rx="4" fill="url(#bg)" stroke="#263238" stroke-width="2" filter="url(#sh)"/>
+  <!-- Antenna wire (spring) -->
+  <path d="M116,6 L116,50" stroke="#aaa" stroke-width="2" stroke-dasharray="4,2"/>
+  <line x1="113" y1="6" x2="119" y2="6" stroke="#aaa" stroke-width="2"/>
+  <!-- Module PCB with shielded section -->
+  <rect x="14" y="10" width="96" height="60" rx="3" fill="#555" stroke="#777" stroke-width="1.5"/>
+  <rect x="18" y="14" width="84" height="52" rx="2" fill="#666" stroke="#888"/>
+  <!-- SiLabs chip (Si4463) -->
+  <rect x="30" y="24" width="50" height="34" rx="1" fill="#111" stroke="#333"/>
+  <text x="55" y="40" text-anchor="middle" font-size="6.5" fill="#888" font-family="monospace">HC-12</text>
+  <text x="55" y="50" text-anchor="middle" font-size="5.5" fill="#666" font-family="monospace">433MHz</text>
+  <!-- Power LED -->
+  <circle cx="90" cy="20" r="4" fill="#4caf50"/>
+  <!-- 5-pin header: VCC GND RXD TXD SET -->
+  <rect x="18" y="72" width="90" height="14" rx="2" fill="#1a1a1a" stroke="#333"/>
+  <rect x="22" y="74" width="10" height="10" rx="1" fill="#c8b400"/>
+  <rect x="38" y="74" width="10" height="10" rx="1" fill="#c8b400"/>
+  <rect x="54" y="74" width="10" height="10" rx="1" fill="#c8b400"/>
+  <rect x="70" y="74" width="10" height="10" rx="1" fill="#c8b400"/>
+  <rect x="86" y="74" width="10" height="10" rx="1" fill="#c8b400"/>
+  <text x="27" y="72" text-anchor="middle" font-size="5" fill="#ddd" font-family="Arial" font-weight="bold">VCC</text>
+  <text x="43" y="72" text-anchor="middle" font-size="5" fill="#ddd" font-family="Arial" font-weight="bold">GND</text>
+  <text x="59" y="72" text-anchor="middle" font-size="5" fill="#ddd" font-family="Arial" font-weight="bold">RXD</text>
+  <text x="75" y="72" text-anchor="middle" font-size="5" fill="#ddd" font-family="Arial" font-weight="bold">TXD</text>
+  <text x="91" y="72" text-anchor="middle" font-size="5" fill="#ddd" font-family="Arial" font-weight="bold">SET</text>
+  <text x="65" y="88" text-anchor="middle" font-size="8" font-weight="bold" fill="white" font-family="Arial">HC-12 RF Module</text>
+</svg>

@@ -6,7 +6,7 @@
     <linearGradient id="pin-sr04" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#f5f5f5"/><stop offset="100%" stop-color="#bdbdbd"/></linearGradient>
     <filter id="sh-sr04" x="-8%" y="-8%" width="116%" height="116%"><feDropShadow dx="1" dy="2" stdDeviation="2.5" flood-opacity="0.28"/></filter>
     <filter id="glow-sr04"><feGaussianBlur stdDeviation="1.5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-  </defs><rect x="4" y="22" width="122" height="58" rx="4" fill="url(#pcb-sr04)" stroke="#0a3d7a" filter="url(#sh-sr04)"/>
+  </defs><rect x="4" y="4" width="122" height="76" rx="4" fill="url(#pcb-sr04)" stroke="#0a3d7a" filter="url(#sh-sr04)"/>
     <circle cx="38" cy="52" r="19" fill="#B3E5FC" stroke="#1976D2" stroke-width="2"/>
     <circle cx="38" cy="52" r="12" fill="#E1F5FE"/>
     <circle cx="38" cy="52" r="5" fill="#fff" opacity="0.9"/>
@@ -14,4 +14,4 @@
     <circle cx="92" cy="52" r="19" fill="#B3E5FC" stroke="#1976D2" stroke-width="2"/>
     <circle cx="92" cy="52" r="12" fill="#E1F5FE"/>
     <circle cx="92" cy="52" r="5" fill="#fff" opacity="0.9"/>
-    <rect x="90" y="33" width="4" height="8" fill="#90A4AE"/><rect x="18" y="4" width="94" height="18" rx="2" fill="#1a1a1a"/><rect x="24" y="8" width="8" height="10" fill="url(#pin-sr04)"/><text x="28" y="6" text-anchor="middle" fill="#fff" font-size="7" font-weight="bold">VCC</text><rect x="46" y="8" width="8" height="10" fill="url(#pin-sr04)"/><text x="50" y="6" text-anchor="middle" fill="#fff" font-size="7" font-weight="bold">TRIG</text><rect x="68" y="8" width="8" height="10" fill="url(#pin-sr04)"/><text x="72" y="6" text-anchor="middle" fill="#fff" font-size="7" font-weight="bold">ECHO</text><rect x="90" y="8" width="8" height="10" fill="url(#pin-sr04)"/><text x="94" y="6" text-anchor="middle" fill="#fff" font-size="7" font-weight="bold">GND</text><text x="65" y="78" text-anchor="middle" fill="#fff" font-size="9" font-weight="bold">HC-SR04</text></svg>
+    <rect x="90" y="33" width="4" height="8" fill="#90A4AE"/><circle cx="28" cy="12" r="4" fill="url(#pin-sr04)"/><circle cx="28" cy="12" r="2.5" fill="#111"/><text x="28" y="26" text-anchor="middle" fill="#fff" font-size="7" font-weight="bold">VCC</text><circle cx="50" cy="12" r="4" fill="url(#pin-sr04)"/><circle cx="50" cy="12" r="2.5" fill="#111"/><text x="50" y="26" text-anchor="middle" fill="#fff" font-size="7" font-weight="bold">TRIG</text><circle cx="72" cy="12" r="4" fill="url(#pin-sr04)"/><circle cx="72" cy="12" r="2.5" fill="#111"/><text x="72" y="26" text-anchor="middle" fill="#fff" font-size="7" font-weight="bold">ECHO</text><circle cx="94" cy="12" r="4" fill="url(#pin-sr04)"/><circle cx="94" cy="12" r="2.5" fill="#111"/><text x="94" y="26" text-anchor="middle" fill="#fff" font-size="7" font-weight="bold">GND</text><text x="65" y="76" text-anchor="middle" fill="#fff" font-size="9" font-weight="bold">HC-SR04</text></svg>

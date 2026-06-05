@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 180" width="220" height="180">
+  <defs><filter id="sh"><feDropShadow dx="1" dy="2" stdDeviation="3" flood-opacity="0.3"/></filter>
+  <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#212121"/><stop offset="100%" stop-color="#111111"/>
+  </linearGradient></defs>
+  <rect x="2" y="2" width="216" height="176" rx="5" fill="url(#bg)" stroke="#111" stroke-width="3" filter="url(#sh)"/>
+  <!-- Tegra X1 SoC + heatsink -->
+  <rect x="70" y="50" width="80" height="80" rx="3" fill="#444" stroke="#555" stroke-width="2"/>
+  <!-- Heatsink fins -->
+  <rect x="72" y="42" width="76" height="14" rx="1" fill="#888" stroke="#666"/>
+  <line x1="82" y1="42" x2="82" y2="56" stroke="#666" stroke-width="2.5"/>
+  <line x1="92" y1="42" x2="92" y2="56" stroke="#666" stroke-width="2.5"/>
+  <line x1="102" y1="42" x2="102" y2="56" stroke="#666" stroke-width="2.5"/>
+  <line x1="112" y1="42" x2="112" y2="56" stroke="#666" stroke-width="2.5"/>
+  <line x1="122" y1="42" x2="122" y2="56" stroke="#666" stroke-width="2.5"/>
+  <line x1="132" y1="42" x2="132" y2="56" stroke="#666" stroke-width="2.5"/>
+  <line x1="142" y1="42" x2="142" y2="56" stroke="#666" stroke-width="2.5"/>
+  <text x="110" y="82" text-anchor="middle" font-size="7.5" fill="#888" font-family="monospace">NVIDIA</text>
+  <text x="110" y="94" text-anchor="middle" font-size="7" fill="#888" font-family="monospace">Jetson Nano</text>
+  <text x="110" y="106" text-anchor="middle" font-size="6" fill="#666" font-family="monospace">4GB LPDDR4</text>
+  <!-- USB 3.0 x4 ports (right side) -->
+  <rect x="186" y="42" width="30" height="20" rx="2" fill="#333" stroke="#555"/>
+  <rect x="186" y="66" width="30" height="20" rx="2" fill="#333" stroke="#555"/>
+  <rect x="186" y="90" width="30" height="20" rx="2" fill="#1565C0" stroke="#0d47a1"/>
+  <rect x="186" y="114" width="30" height="20" rx="2" fill="#1565C0" stroke="#0d47a1"/>
+  <text x="201" y="55" text-anchor="middle" font-size="5.5" fill="#aaa" font-family="Arial">USB 3.0</text>
+  <text x="201" y="103" text-anchor="middle" font-size="5.5" fill="#90CAF9" font-family="Arial">USB3</text>
+  <!-- HDMI -->
+  <rect x="2" y="42" width="24" height="14" rx="1" fill="#222" stroke="#555"/>
+  <text x="14" y="51" text-anchor="middle" font-size="5" fill="#aaa" font-family="Arial">HDMI</text>
+  <!-- Ethernet -->
+  <rect x="2" y="60" width="24" height="20" rx="1" fill="#333" stroke="#555"/>
+  <text x="14" y="72" text-anchor="middle" font-size="5" fill="#aaa" font-family="Arial">ETH</text>
+  <!-- GPIO 40-pin header -->
+  <rect x="70" y="138" width="80" height="32" rx="1" fill="#1a1a1a" stroke="#333"/>
+  <text x="110" y="152" text-anchor="middle" font-size="5" fill="#aaa" font-family="Arial">40-pin GPIO</text>
+  <text x="110" y="162" text-anchor="middle" font-size="4.5" fill="#888" font-family="Arial">3V3 5V SDA SCL PWR GND GPIO...</text>
+  <!-- MicroSD -->
+  <rect x="2" y="138" width="30" height="18" rx="2" fill="#888" stroke="#666"/>
+  <text x="17" y="149" text-anchor="middle" font-size="5.5" fill="#444" font-family="Arial">µSD</text>
+  <!-- Power jack -->
+  <circle cx="14" cy="166" r="8" fill="#333" stroke="#555"/>
+  <circle cx="14" cy="166" r="4" fill="#222"/>
+  <text x="14" y="177" text-anchor="middle" font-size="5" fill="#aaa" font-family="Arial">5V DC</text>
+  <text x="110" y="178" text-anchor="middle" font-size="9" font-weight="bold" fill="white" font-family="Arial">NVIDIA Jetson Nano</text>
+</svg>

@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130 130" width="130" height="130">
+  <defs><filter id="sh"><feDropShadow dx="1" dy="2" stdDeviation="2.5" flood-opacity="0.3"/></filter></defs>
+  <!-- PCB -->
+  <rect x="2" y="2" width="126" height="126" rx="4" fill="#111" stroke="#333" stroke-width="2" filter="url(#sh)"/>
+  <!-- 8x8 LED matrix grid (64 dots) -->
+  <g fill="#f44336" opacity="0.85">
+    <!-- Row 1 pattern: 01111110 -->
+    <circle cx="14" cy="14" r="4.5" opacity="0.2"/>
+    <circle cx="28" cy="14" r="4.5"/>
+    <circle cx="42" cy="14" r="4.5"/>
+    <circle cx="56" cy="14" r="4.5"/>
+    <circle cx="70" cy="14" r="4.5"/>
+    <circle cx="84" cy="14" r="4.5"/>
+    <circle cx="98" cy="14" r="4.5"/>
+    <circle cx="112" cy="14" r="4.5" opacity="0.2"/>
+    <!-- Row 2: 10000001 -->
+    <circle cx="14" cy="28" r="4.5"/>
+    <circle cx="28" cy="28" r="4.5" opacity="0.2"/>
+    <circle cx="42" cy="28" r="4.5" opacity="0.2"/>
+    <circle cx="56" cy="28" r="4.5" opacity="0.2"/>
+    <circle cx="70" cy="28" r="4.5" opacity="0.2"/>
+    <circle cx="84" cy="28" r="4.5" opacity="0.2"/>
+    <circle cx="98" cy="28" r="4.5" opacity="0.2"/>
+    <circle cx="112" cy="28" r="4.5"/>
+    <!-- Row 3 full -->
+    <circle cx="14" cy="42" r="4.5"/>
+    <circle cx="28" cy="42" r="4.5"/>
+    <circle cx="42" cy="42" r="4.5"/>
+    <circle cx="56" cy="42" r="4.5"/>
+    <circle cx="70" cy="42" r="4.5"/>
+    <circle cx="84" cy="42" r="4.5"/>
+    <circle cx="98" cy="42" r="4.5"/>
+    <circle cx="112" cy="42" r="4.5"/>
+    <!-- Row 4 alternating -->
+    <circle cx="14" cy="56" r="4.5" opacity="0.2"/>
+    <circle cx="28" cy="56" r="4.5"/>
+    <circle cx="42" cy="56" r="4.5" opacity="0.2"/>
+    <circle cx="56" cy="56" r="4.5"/>
+    <circle cx="70" cy="56" r="4.5" opacity="0.2"/>
+    <circle cx="84" cy="56" r="4.5"/>
+    <circle cx="98" cy="56" r="4.5" opacity="0.2"/>
+    <circle cx="112" cy="56" r="4.5"/>
+    <!-- Row 5-8 similar patterns -->
+    <circle cx="14" cy="70" r="4.5"/>
+    <circle cx="28" cy="70" r="4.5" opacity="0.2"/>
+    <circle cx="56" cy="70" r="4.5"/>
+    <circle cx="84" cy="70" r="4.5" opacity="0.2"/>
+    <circle cx="112" cy="70" r="4.5"/>
+    <circle cx="14" cy="84" r="4.5"/>
+    <circle cx="42" cy="84" r="4.5"/>
+    <circle cx="70" cy="84" r="4.5"/>
+    <circle cx="98" cy="84" r="4.5"/>
+    <circle cx="14" cy="98" r="4.5"/>
+    <circle cx="56" cy="98" r="4.5"/>
+    <circle cx="70" cy="98" r="4.5"/>
+    <circle cx="112" cy="98" r="4.5"/>
+    <circle cx="28" cy="112" r="4.5"/>
+    <circle cx="42" cy="112" r="4.5"/>
+    <circle cx="70" cy="112" r="4.5"/>
+    <circle cx="84" cy="112" r="4.5"/>
+    <circle cx="112" cy="112" r="4.5"/>
+  </g>
+  <!-- 5-pin header: VCC GND DIN CS CLK -->
+  <rect x="14" y="116" width="100" height="12" rx="1" fill="#1a1a1a"/>
+  <text x="64" y="124" text-anchor="middle" font-size="5" fill="#aaa" font-family="Arial">VCC GND DIN CS CLK</text>
+  <text x="64" y="128" text-anchor="middle" font-size="7" font-weight="bold" fill="white" font-family="Arial">MAX7219 8x8</text>
+</svg>

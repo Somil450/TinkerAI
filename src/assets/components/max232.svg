@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 90" width="100" height="90">
+  <defs><filter id="sh"><feDropShadow dx="1" dy="2" stdDeviation="2" flood-opacity="0.3"/></filter></defs>
+  <!-- DIP-16 body -->
+  <rect x="22" y="10" width="56" height="72" rx="3" fill="#111" stroke="#333" stroke-width="2" filter="url(#sh)"/>
+  <!-- Notch -->
+  <ellipse cx="50" cy="10" rx="8" ry="5" fill="#222" stroke="#444"/>
+  <circle cx="28" cy="17" r="2.5" fill="#555"/>
+  <!-- Left DIP pins 1-8 -->
+  <line x1="8" y1="18" x2="22" y2="18" stroke="#bbb" stroke-width="2"/><text x="6" y="21" text-anchor="end" font-size="4.5" fill="#888" font-family="Arial">C1+</text>
+  <line x1="8" y1="28" x2="22" y2="28" stroke="#bbb" stroke-width="2"/><text x="6" y="31" text-anchor="end" font-size="4.5" fill="#888" font-family="Arial">V+</text>
+  <line x1="8" y1="38" x2="22" y2="38" stroke="#bbb" stroke-width="2"/><text x="6" y="41" text-anchor="end" font-size="4.5" fill="#888" font-family="Arial">C1-</text>
+  <line x1="8" y1="48" x2="22" y2="48" stroke="#bbb" stroke-width="2"/><text x="6" y="51" text-anchor="end" font-size="4.5" fill="#888" font-family="Arial">C2+</text>
+  <line x1="8" y1="58" x2="22" y2="58" stroke="#bbb" stroke-width="2"/><text x="6" y="61" text-anchor="end" font-size="4.5" fill="#888" font-family="Arial">C2-</text>
+  <line x1="8" y1="68" x2="22" y2="68" stroke="#bbb" stroke-width="2"/><text x="6" y="71" text-anchor="end" font-size="4.5" fill="#888" font-family="Arial">V-</text>
+  <line x1="8" y1="78" x2="22" y2="78" stroke="#bbb" stroke-width="2"/><text x="6" y="81" text-anchor="end" font-size="4.5" fill="#888" font-family="Arial">T2out</text>
+  <!-- Right DIP pins 9-16 -->
+  <line x1="78" y1="18" x2="92" y2="18" stroke="#bbb" stroke-width="2"/><text x="94" y="21" font-size="4.5" fill="#888" font-family="Arial">VCC</text>
+  <line x1="78" y1="28" x2="92" y2="28" stroke="#bbb" stroke-width="2"/><text x="94" y="31" font-size="4.5" fill="#888" font-family="Arial">GND</text>
+  <line x1="78" y1="38" x2="92" y2="38" stroke="#bbb" stroke-width="2"/><text x="94" y="41" font-size="4.5" fill="#888" font-family="Arial">T1in</text>
+  <line x1="78" y1="48" x2="92" y2="48" stroke="#bbb" stroke-width="2"/><text x="94" y="51" font-size="4.5" fill="#888" font-family="Arial">R1out</text>
+  <line x1="78" y1="58" x2="92" y2="58" stroke="#bbb" stroke-width="2"/><text x="94" y="61" font-size="4.5" fill="#888" font-family="Arial">R2in</text>
+  <line x1="78" y1="68" x2="92" y2="68" stroke="#bbb" stroke-width="2"/><text x="94" y="71" font-size="4.5" fill="#888" font-family="Arial">T2in</text>
+  <line x1="78" y1="78" x2="92" y2="78" stroke="#bbb" stroke-width="2"/><text x="94" y="81" font-size="4.5" fill="#888" font-family="Arial">R1in</text>
+  <text x="50" y="55" text-anchor="middle" font-size="7" fill="#888" font-family="monospace">MAX232</text>
+</svg>

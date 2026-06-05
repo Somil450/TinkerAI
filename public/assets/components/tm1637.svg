@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 65" width="160" height="65">
+  <defs><filter id="sh"><feDropShadow dx="1" dy="2" stdDeviation="2" flood-opacity="0.3"/></filter></defs>
+  <rect x="2" y="2" width="156" height="61" rx="4" fill="#111" stroke="#333" stroke-width="2" filter="url(#sh)"/>
+  <!-- 4 digit 7-seg displays -->
+  <rect x="8" y="8" width="30" height="40" rx="2" fill="#1a0000"/>
+  <rect x="9" y="9" width="28" height="8" rx="3" fill="#e53935"/>
+  <rect x="9" y="19" width="28" height="8" rx="3" fill="#e53935"/>
+  <rect x="9" y="29" width="28" height="8" rx="3" fill="#e53935"/>
+  <rect x="8" y="9" width="8" height="18" rx="3" fill="#e53935"/>
+  <rect x="8" y="29" width="8" height="18" rx="3" fill="#e53935"/>
+  <rect x="30" y="9" width="8" height="18" rx="3" fill="#e53935"/>
+  <rect x="30" y="29" width="8" height="18" rx="3" fill="#e53935"/>
+  <text x="23" y="52" text-anchor="middle" font-size="10" fill="#f44336" font-family="Courier New" font-weight="bold">1</text>
+
+  <rect x="46" y="8" width="30" height="40" rx="2" fill="#1a0000"/>
+  <text x="61" y="52" text-anchor="middle" font-size="10" fill="#f44336" font-family="Courier New" font-weight="bold">2</text>
+  <!-- Colon dots -->
+  <circle cx="83" cy="23" r="3" fill="#f44336"/>
+  <circle cx="83" cy="37" r="3" fill="#f44336"/>
+
+  <rect x="90" y="8" width="30" height="40" rx="2" fill="#1a0000"/>
+  <text x="105" y="52" text-anchor="middle" font-size="10" fill="#f44336" font-family="Courier New" font-weight="bold">3</text>
+
+  <rect x="128" y="8" width="30" height="40" rx="2" fill="#1a0000"/>
+  <text x="143" y="52" text-anchor="middle" font-size="10" fill="#f44336" font-family="Courier New" font-weight="bold">4</text>
+
+  <!-- 4-pin header: CLK DIO VCC GND -->
+  <rect x="8" y="50" width="62" height="12" rx="1" fill="#1a1a1a"/>
+  <rect x="11" y="52" width="8" height="8" rx="1" fill="#c8b400"/>
+  <rect x="23" y="52" width="8" height="8" rx="1" fill="#c8b400"/>
+  <rect x="35" y="52" width="8" height="8" rx="1" fill="#c8b400"/>
+  <rect x="47" y="52" width="8" height="8" rx="1" fill="#c8b400"/>
+  <text x="15" y="50" text-anchor="middle" font-size="5" fill="#ddd" font-family="Arial" font-weight="bold">CLK</text>
+  <text x="27" y="50" text-anchor="middle" font-size="5" fill="#ddd" font-family="Arial" font-weight="bold">DIO</text>
+  <text x="39" y="50" text-anchor="middle" font-size="5" fill="#ddd" font-family="Arial" font-weight="bold">VCC</text>
+  <text x="51" y="50" text-anchor="middle" font-size="5" fill="#ddd" font-family="Arial" font-weight="bold">GND</text>
+  <text x="112" y="60" text-anchor="middle" font-size="8" font-weight="bold" fill="white" font-family="Arial">TM1637 4-Digit</text>
+</svg>

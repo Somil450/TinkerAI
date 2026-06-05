@@ -9,7 +9,7 @@
 // ═══════════════════════════════════════════════════════════════════
 
 export const ARDUINO_UNO = {
-  width: 300, height: 220,
+  width: 320, height: 220,
   pins: (() => {
     const list = [
       { id: 'AREF', x: 79, y: 17, labelSide: 'top' },
@@ -120,8 +120,8 @@ export const RPI_PICO = {
       'GP27', 'GP26', 'RUN', 'GP22', 'GND', 'GP21', 'GP20', 'GP19', 'GP18',
       'GND', 'GP17', 'GP16',
     ]
-    topPins.forEach((id, i) => pins.push({ id, x: 14 + i * 10, y: 6, labelSide: 'top' }))
-    botPins.forEach((id, i) => pins.push({ id, x: 14 + i * 10, y: 89, labelSide: 'bottom' }))
+    topPins.forEach((id, i) => pins.push({ id, x: 14 + i * 10, y: 8, labelSide: 'top' }))
+    botPins.forEach((id, i) => pins.push({ id, x: 14 + i * 10, y: 87, labelSide: 'bottom' }))
     // Add aliases for GP14, GP15, GP23, GP24, GP25 that aren't on headers
     ;['GP14', 'GP15', 'GP23', 'GP24', 'GP25'].forEach((id, i) =>
       pins.push({ id, x: 14 + (i + 15) * 10, y: 89, labelSide: 'bottom' }),
@@ -421,21 +421,21 @@ const DC_MOTOR = {
 
 // L298N SVG: 300x300, better pin spacing
 export const L298N = {
-  width: 300, height: 300,
+  width: 200, height: 200,
   pinPositions: {
-    OUT1: { x: 40, y: 140, labelSide: 'left' },
-    OUT2: { x: 40, y: 180, labelSide: 'left' },
-    OUT3: { x: 260, y: 140, labelSide: 'right' },
-    OUT4: { x: 260, y: 180, labelSide: 'right' },
-    '12V': { x: 110, y: 260, labelSide: 'bottom' },
-    GND:  { x: 150, y: 260, labelSide: 'bottom' },
-    '5V': { x: 190, y: 260, labelSide: 'bottom' },
-    ENA:  { x: 112, y: 184, labelSide: 'top' },
-    IN1:  { x: 128, y: 184, labelSide: 'bottom' },
-    IN2:  { x: 144, y: 184, labelSide: 'top' },
-    IN3:  { x: 160, y: 184, labelSide: 'bottom' },
-    IN4:  { x: 176, y: 184, labelSide: 'top' },
-    ENB:  { x: 192, y: 184, labelSide: 'bottom' },
+    OUT1: { x: 27, y: 93, labelSide: 'left' },
+    OUT2: { x: 27, y: 120, labelSide: 'left' },
+    OUT3: { x: 173, y: 93, labelSide: 'right' },
+    OUT4: { x: 173, y: 120, labelSide: 'right' },
+    '12V': { x: 73, y: 173, labelSide: 'bottom' },
+    GND:  { x: 100, y: 173, labelSide: 'bottom' },
+    '5V': { x: 127, y: 173, labelSide: 'bottom' },
+    ENA:  { x: 75, y: 123, labelSide: 'top' },
+    IN1:  { x: 85, y: 123, labelSide: 'bottom' },
+    IN2:  { x: 96, y: 123, labelSide: 'top' },
+    IN3:  { x: 107, y: 123, labelSide: 'bottom' },
+    IN4:  { x: 117, y: 123, labelSide: 'top' },
+    ENB:  { x: 128, y: 123, labelSide: 'bottom' },
   },
 }
 
@@ -535,20 +535,7 @@ const MOTOR_DRIVER = {
 // COMMUNICATION MODULES
 // ═══════════════════════════════════════════════════════════════════
 
-// Bluetooth HC-05 SVG: 100×75, header at top (x=8 y=4 w=84 h=6)
-const BLUETOOTH_HC05 = {
-  width: 100, height: 75,
-  pinPositions: {
-    VCC:  { x: 18, y: 7, labelSide: 'top' },
-    GND:  { x: 38, y: 7, labelSide: 'top' },
-    TX:   { x: 58, y: 7, labelSide: 'top' },
-    TXD:  { x: 58, y: 7, labelSide: 'top' },
-    RX:   { x: 78, y: 7, labelSide: 'top' },
-    RXD:  { x: 78, y: 7, labelSide: 'top' },
-    STATE: { x: 48, y: 7, labelSide: 'top' },
-    EN:   { x: 68, y: 7, labelSide: 'top' },
-  },
-}
+
 
 // Comm module SVG: 115×80 (purple PCB)
 const COMM_MODULE = {
@@ -880,20 +867,88 @@ export const BOARD_LAYOUTS = {
   'buzzer-passive': BUZZER,
   'speaker-8ohm': BUZZER,
   'relay-module': RELAY_MODULE,
-  'relay-4ch': RELAY_MODULE,
-  'relay-8ch': RELAY_MODULE,
+  'relay-4ch': { width: 160, height: 90 },
+  'relay-8ch': { width: 220, height: 90 },
   'l298n': L298N,
   '4wd-car-chassis': WD4_CAR_CHASSIS,
   'motor-driver': MOTOR_DRIVER,
-  'l293d': MOTOR_DRIVER,
-  'a4988': MOTOR_DRIVER,
-  'drv8825': MOTOR_DRIVER,
-  'tb6612fng': MOTOR_DRIVER,
-  'uln2003': MOTOR_DRIVER,
+  'l293d': {
+    width: 120, height: 100,
+    pinPositions: {
+      '1Y': { x: 10, y: 22, labelSide: 'right' },
+      '2Y': { x: 10, y: 38, labelSide: 'right' },
+      '3Y': { x: 10, y: 57, labelSide: 'right' },
+      '4Y': { x: 10, y: 73, labelSide: 'right' },
+      'VCC1': { x: 110, y: 32, labelSide: 'left' },
+      'GND': { x: 110, y: 47, labelSide: 'left' },
+      'VCC2': { x: 110, y: 62, labelSide: 'left' },
+      'EN12': { x: 35, y: 90, labelSide: 'top' },
+      '1A': { x: 45, y: 90, labelSide: 'top' },
+      '2A': { x: 55, y: 90, labelSide: 'top' },
+      '3A': { x: 65, y: 90, labelSide: 'top' },
+      '4A': { x: 75, y: 90, labelSide: 'top' },
+      'EN34': { x: 85, y: 90, labelSide: 'top' }
+    }
+  },
+  'a4988': {
+    width: 120, height: 126,
+    pinPositions: {
+      'EN': { x: 15, y: 20, labelSide: 'left' },
+      'MS1': { x: 15, y: 32, labelSide: 'left' },
+      'MS2': { x: 15, y: 44, labelSide: 'left' },
+      'MS3': { x: 15, y: 56, labelSide: 'left' },
+      'STEP': { x: 15, y: 92, labelSide: 'left' },
+      'DIR': { x: 15, y: 104, labelSide: 'left' },
+      'VMOT': { x: 105, y: 20, labelSide: 'right' },
+      'GND': { x: 105, y: 32, labelSide: 'right' },
+      '2B': { x: 105, y: 44, labelSide: 'right' },
+      '2A': { x: 105, y: 56, labelSide: 'right' },
+      '1A': { x: 105, y: 68, labelSide: 'right' },
+      '1B': { x: 105, y: 80, labelSide: 'right' },
+      'VCC': { x: 105, y: 92, labelSide: 'right' }
+    }
+  },
+  'drv8825': {
+    width: 120, height: 126,
+    pinPositions: {
+      'EN': { x: 15, y: 20, labelSide: 'left' },
+      'M0': { x: 15, y: 32, labelSide: 'left' },
+      'M1': { x: 15, y: 44, labelSide: 'left' },
+      'M2': { x: 15, y: 56, labelSide: 'left' },
+      'STEP': { x: 15, y: 92, labelSide: 'left' },
+      'DIR': { x: 15, y: 104, labelSide: 'left' },
+      'VMOT': { x: 105, y: 20, labelSide: 'right' },
+      'GND': { x: 105, y: 32, labelSide: 'right' },
+      'B2': { x: 105, y: 44, labelSide: 'right' },
+      'B1': { x: 105, y: 56, labelSide: 'right' },
+      'A1': { x: 105, y: 68, labelSide: 'right' },
+      'A2': { x: 105, y: 80, labelSide: 'right' },
+      'VCC': { x: 105, y: 92, labelSide: 'right' }
+    }
+  },
+  'tb6612fng': {
+    width: 120, height: 126,
+    pinPositions: {
+      'VM': { x: 15, y: 20, labelSide: 'left' },
+      'VCC': { x: 15, y: 32, labelSide: 'left' },
+      'GND': { x: 15, y: 44, labelSide: 'left' },
+      'AO1': { x: 15, y: 56, labelSide: 'left' },
+      'AO2': { x: 15, y: 68, labelSide: 'left' },
+      'BO2': { x: 15, y: 80, labelSide: 'left' },
+      'BO1': { x: 15, y: 92, labelSide: 'left' },
+      'PWMA': { x: 105, y: 20, labelSide: 'right' },
+      'AIN2': { x: 105, y: 32, labelSide: 'right' },
+      'AIN1': { x: 105, y: 44, labelSide: 'right' },
+      'STBY': { x: 105, y: 56, labelSide: 'right' },
+      'BIN1': { x: 105, y: 68, labelSide: 'right' },
+      'BIN2': { x: 105, y: 80, labelSide: 'right' },
+      'PWMB': { x: 105, y: 92, labelSide: 'right' }
+    }
+  },
+  'uln2003': { width: 140, height: 85 },
 
   // ── Communication ─────────────────────────────────────────
-  'bluetooth-hc05': BLUETOOTH_HC05,
-  'bluetooth-hc06': BLUETOOTH_HC05,
+
   'comm-module': COMM_MODULE,
   'nrf24l01': COMM_MODULE,
   'lora-sx1278': COMM_MODULE,

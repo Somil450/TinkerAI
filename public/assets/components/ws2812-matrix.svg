@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130 130" width="130" height="130">
+  <defs><filter id="sh"><feDropShadow dx="1" dy="2" stdDeviation="2.5" flood-opacity="0.3"/></filter></defs>
+  <rect x="2" y="2" width="126" height="126" rx="4" fill="#111" stroke="#333" stroke-width="2" filter="url(#sh)"/>
+  <!-- 4x4 WS2812 matrix (larger LEDs than MAX7219) -->
+  <rect x="10" y="10" width="25" height="25" rx="2" fill="#f44336" opacity="0.9"/>
+  <rect x="40" y="10" width="25" height="25" rx="2" fill="#ff9800" opacity="0.9"/>
+  <rect x="70" y="10" width="25" height="25" rx="2" fill="#ffeb3b" opacity="0.9"/>
+  <rect x="100" y="10" width="25" height="25" rx="2" fill="#4caf50" opacity="0.9"/>
+  <rect x="10" y="40" width="25" height="25" rx="2" fill="#00bcd4" opacity="0.9"/>
+  <rect x="40" y="40" width="25" height="25" rx="2" fill="#2196f3" opacity="0.9"/>
+  <rect x="70" y="40" width="25" height="25" rx="2" fill="#9c27b0" opacity="0.9"/>
+  <rect x="100" y="40" width="25" height="25" rx="2" fill="#e91e63" opacity="0.9"/>
+  <rect x="10" y="70" width="25" height="25" rx="2" fill="#ff5722" opacity="0.9"/>
+  <rect x="40" y="70" width="25" height="25" rx="2" fill="#8bc34a" opacity="0.9"/>
+  <rect x="70" y="70" width="25" height="25" rx="2" fill="#00e5ff" opacity="0.9"/>
+  <rect x="100" y="70" width="25" height="25" rx="2" fill="#651fff" opacity="0.9"/>
+  <rect x="10" y="100" width="25" height="25" rx="2" fill="#ff1744" opacity="0.9"/>
+  <rect x="40" y="100" width="25" height="25" rx="2" fill="#00e676" opacity="0.9"/>
+  <rect x="70" y="100" width="25" height="25" rx="2" fill="#ffc400" opacity="0.9"/>
+  <rect x="100" y="100" width="25" height="25" rx="2" fill="#2979ff" opacity="0.9"/>
+  <!-- Signal pads -->
+  <rect x="10" y="118" width="60" height="10" rx="1" fill="#1a1a1a"/>
+  <text x="40" y="125" text-anchor="middle" font-size="5" fill="#aaa" font-family="Arial">DIN VCC GND DOUT</text>
+  <text x="65" y="128" text-anchor="middle" font-size="7.5" font-weight="bold" fill="white" font-family="Arial">WS2812 4x4 Matrix</text>
+</svg>

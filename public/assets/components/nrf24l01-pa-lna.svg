@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130 90" width="130" height="90">
+  <defs><filter id="sh"><feDropShadow dx="1" dy="2" stdDeviation="2.5" flood-opacity="0.3"/></filter>
+  <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#263238"/><stop offset="100%" stop-color="#102027"/>
+  </linearGradient></defs>
+  <rect x="2" y="2" width="126" height="86" rx="4" fill="url(#bg)" stroke="#102027" stroke-width="2" filter="url(#sh)"/>
+  <!-- External antenna (SMA) -->
+  <rect x="2" y="30" width="16" height="30" rx="3" fill="#aaa" stroke="#888" stroke-width="1.5"/>
+  <circle cx="10" cy="45" r="5" fill="#888" stroke="#777"/>
+  <!-- Metal shielded module (NRF24L01+PA+LNA chip) -->
+  <rect x="22" y="10" width="68" height="58" rx="3" fill="#555" stroke="#777" stroke-width="1.5"/>
+  <rect x="26" y="14" width="60" height="50" rx="2" fill="#666" stroke="#888"/>
+  <!-- NRF24L01+ chip label -->
+  <text x="56" y="38" text-anchor="middle" font-size="6" fill="#aaa" font-family="monospace">nRF24L01+</text>
+  <text x="56" y="48" text-anchor="middle" font-size="5.5" fill="#888" font-family="monospace">PA+LNA</text>
+  <text x="56" y="57" text-anchor="middle" font-size="5" fill="#777" font-family="monospace">2.4GHz</text>
+  <!-- Power LED -->
+  <circle cx="106" cy="20" r="4" fill="#f44336"/>
+  <!-- 8-pin header (2x4 arrangement): CE CSN SCK MOSI MISO IRQ VCC GND -->
+  <rect x="96" y="30" width="30" height="56" rx="1" fill="#1a1a1a" stroke="#333"/>
+  <rect x="100" y="34" width="8" height="8" rx="1" fill="#c8b400"/>
+  <rect x="114" y="34" width="8" height="8" rx="1" fill="#c8b400"/>
+  <rect x="100" y="46" width="8" height="8" rx="1" fill="#c8b400"/>
+  <rect x="114" y="46" width="8" height="8" rx="1" fill="#c8b400"/>
+  <rect x="100" y="58" width="8" height="8" rx="1" fill="#c8b400"/>
+  <rect x="114" y="58" width="8" height="8" rx="1" fill="#c8b400"/>
+  <rect x="100" y="70" width="8" height="8" rx="1" fill="#c8b400"/>
+  <rect x="114" y="70" width="8" height="8" rx="1" fill="#c8b400"/>
+  <text x="104" y="32" text-anchor="middle" font-size="4.5" fill="#ddd" font-family="Arial">GND</text>
+  <text x="118" y="32" text-anchor="middle" font-size="4.5" fill="#ddd" font-family="Arial">VCC</text>
+  <text x="104" y="44" text-anchor="middle" font-size="4.5" fill="#ddd" font-family="Arial">CE</text>
+  <text x="118" y="44" text-anchor="middle" font-size="4.5" fill="#ddd" font-family="Arial">CSN</text>
+  <text x="104" y="56" text-anchor="middle" font-size="4.5" fill="#ddd" font-family="Arial">SCK</text>
+  <text x="118" y="56" text-anchor="middle" font-size="4.5" fill="#ddd" font-family="Arial">MOS</text>
+  <text x="104" y="68" text-anchor="middle" font-size="4.5" fill="#ddd" font-family="Arial">MIS</text>
+  <text x="118" y="68" text-anchor="middle" font-size="4.5" fill="#ddd" font-family="Arial">IRQ</text>
+  <text x="65" y="82" text-anchor="middle" font-size="8" font-weight="bold" fill="white" font-family="Arial">nRF24L01 PA+LNA</text>
+</svg>

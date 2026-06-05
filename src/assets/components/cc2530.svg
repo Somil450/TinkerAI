@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 90" width="120" height="90">
+  <defs><filter id="sh"><feDropShadow dx="1" dy="2" stdDeviation="2.5" flood-opacity="0.3"/></filter>
+  <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#263238"/><stop offset="100%" stop-color="#102027"/>
+  </linearGradient></defs>
+  <rect x="3" y="18" width="114" height="68" rx="4" fill="url(#bg)" stroke="#102027" stroke-width="1.5" filter="url(#sh)"/>
+  <!-- CC2530 ZigBee module with chip antenna -->
+  <rect x="18" y="28" width="84" height="48" rx="3" fill="#555" stroke="#777" stroke-width="1.5"/>
+  <rect x="22" y="32" width="76" height="40" rx="2" fill="#666" stroke="#888"/>
+  <!-- Chip trace antenna pattern -->
+  <path d="M80,36 L96,36 L96,44 L90,44 L90,52 L96,52 L96,60 L80,60" stroke="#aaa" stroke-width="2" fill="none"/>
+  <!-- CC2530 chip -->
+  <rect x="28" y="38" width="44" height="28" rx="1" fill="#111" stroke="#333"/>
+  <text x="50" y="52" text-anchor="middle" font-size="6.5" fill="#888" font-family="monospace">CC2530</text>
+  <text x="50" y="61" text-anchor="middle" font-size="5.5" fill="#666" font-family="monospace">ZigBee</text>
+  <!-- Antenna + LED -->
+  <circle cx="100" cy="28" r="5" fill="#4caf50"/>
+  <!-- Pin headers: VCC GND P0.0-P0.7 etc -->
+  <rect x="18" y="6" width="84" height="14" rx="2" fill="#1a1a1a" stroke="#333"/>
+  <text x="60" y="14" text-anchor="middle" font-size="5" fill="#aaa" font-family="Arial">VCC GND RST P0.0 P0.1 P1.0 P1.1</text>
+  <text x="60" y="80" text-anchor="middle" font-size="8.5" font-weight="bold" fill="white" font-family="Arial">CC2530 ZigBee</text>
+</svg>

@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 80" width="160" height="80">
+  <defs><filter id="sh"><feDropShadow dx="1" dy="2" stdDeviation="2.5" flood-opacity="0.3"/></filter>
+  <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#880e4f"/><stop offset="100%" stop-color="#560027"/>
+  </linearGradient></defs>
+  <rect x="2" y="2" width="156" height="76" rx="4" fill="url(#bg)" stroke="#560027" stroke-width="2" filter="url(#sh)"/>
+  <!-- CH340G SOP-16 chip -->
+  <rect x="44" y="14" width="72" height="44" rx="2" fill="#111" stroke="#333" stroke-width="1.5"/>
+  <circle cx="47" cy="17" r="2" fill="#555"/>
+  <text x="80" y="36" text-anchor="middle" font-size="8" fill="#888" font-family="monospace">CH340G</text>
+  <text x="80" y="48" text-anchor="middle" font-size="5.5" fill="#666" font-family="monospace">USB-Serial</text>
+  <!-- USB-A connector on left -->
+  <rect x="4" y="22" width="36" height="26" rx="3" fill="#888" stroke="#666" stroke-width="1.5"/>
+  <rect x="8" y="26" width="28" height="18" rx="1" fill="#444"/>
+  <text x="22" y="68" text-anchor="middle" font-size="5.5" fill="#ddd" font-family="Arial">USB-A</text>
+  <!-- TX RX LEDs -->
+  <circle cx="126" cy="24" r="5" fill="#4caf50"/><text x="126" y="34" text-anchor="middle" font-size="4.5" fill="#aaa" font-family="Arial">TX</text>
+  <circle cx="142" cy="24" r="5" fill="#f44336"/><text x="142" y="34" text-anchor="middle" font-size="4.5" fill="#aaa" font-family="Arial">RX</text>
+  <!-- 6-pin header: 3.3V 5V TXD RXD GND DTR -->
+  <rect x="44" y="60" width="112" height="14" rx="1" fill="#1a1a1a"/>
+  <text x="100" y="70" text-anchor="middle" font-size="5.5" fill="#aaa" font-family="Arial">3V3 5V TXD RXD GND DTR</text>
+</svg>

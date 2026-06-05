@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 100" width="140" height="100">
+  <defs><filter id="sh"><feDropShadow dx="1" dy="2" stdDeviation="2.5" flood-opacity="0.3"/></filter>
+  <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#2d3748"/><stop offset="100%" stop-color="#1a2233"/>
+  </linearGradient></defs>
+  <rect x="2" y="2" width="136" height="96" rx="4" fill="url(#bg)" stroke="#111" stroke-width="2" filter="url(#sh)"/>
+  <!-- Camera module (OV2640 lens) -->
+  <rect x="12" y="8" width="52" height="52" rx="4" fill="#222" stroke="#555" stroke-width="2"/>
+  <!-- Lens barrel -->
+  <circle cx="38" cy="34" r="22" fill="#111" stroke="#444" stroke-width="2"/>
+  <circle cx="38" cy="34" r="16" fill="#0d0d0d" stroke="#333" stroke-width="1.5"/>
+  <circle cx="38" cy="34" r="10" fill="#1a1a1a"/>
+  <!-- Lens glass reflection -->
+  <ellipse cx="32" cy="28" rx="6" ry="5" fill="white" opacity="0.12"/>
+  <!-- ESP32 metal module -->
+  <rect x="70" y="8" width="64" height="54" rx="3" fill="#555" stroke="#777" stroke-width="1.5"/>
+  <rect x="74" y="12" width="56" height="46" rx="2" fill="#666" stroke="#888"/>
+  <text x="102" y="34" text-anchor="middle" font-size="7.5" fill="#aaa" font-family="monospace">ESP32-S</text>
+  <text x="102" y="45" text-anchor="middle" font-size="5.5" fill="#888" font-family="monospace">240MHz</text>
+  <!-- SD card slot (micro) -->
+  <rect x="12" y="64" width="44" height="16" rx="2" fill="#333" stroke="#555"/>
+  <rect x="15" y="66" width="38" height="12" rx="1" fill="#222"/>
+  <text x="34" y="75" text-anchor="middle" font-size="5.5" fill="#888" font-family="Arial">µSD</text>
+  <!-- Flash LED (white high power) -->
+  <rect x="60" y="64" width="16" height="16" rx="2" fill="#fffde7" stroke="#f5f5dc" stroke-width="1.5"/>
+  <text x="68" y="75" text-anchor="middle" font-size="5" fill="#999" font-family="Arial">FLASH</text>
+  <!-- Left side pins: 5V GND U0R U0T GPIO0 -->
+  <rect x="0" y="8" width="12" height="60" rx="1" fill="#1a1a1a"/>
+  <text x="6" y="16" text-anchor="middle" font-size="3.5" fill="#aaa" font-family="Arial">5V</text>
+  <text x="6" y="24" text-anchor="middle" font-size="3.5" fill="#aaa" font-family="Arial">GND</text>
+  <text x="6" y="32" text-anchor="middle" font-size="3.5" fill="#aaa" font-family="Arial">U0R</text>
+  <text x="6" y="40" text-anchor="middle" font-size="3.5" fill="#aaa" font-family="Arial">U0T</text>
+  <text x="6" y="48" text-anchor="middle" font-size="3.5" fill="#aaa" font-family="Arial">GP0</text>
+  <text x="6" y="56" text-anchor="middle" font-size="3.5" fill="#aaa" font-family="Arial">GP16</text>
+  <!-- Right side pins -->
+  <rect x="128" y="8" width="12" height="60" rx="1" fill="#1a1a1a"/>
+  <text x="134" y="16" text-anchor="middle" font-size="3.5" fill="#aaa" font-family="Arial">3V3</text>
+  <text x="134" y="24" text-anchor="middle" font-size="3.5" fill="#aaa" font-family="Arial">GP1</text>
+  <text x="134" y="32" text-anchor="middle" font-size="3.5" fill="#aaa" font-family="Arial">GP3</text>
+  <text x="134" y="40" text-anchor="middle" font-size="3.5" fill="#aaa" font-family="Arial">GP14</text>
+  <text x="134" y="48" text-anchor="middle" font-size="3.5" fill="#aaa" font-family="Arial">GP15</text>
+  <text x="134" y="56" text-anchor="middle" font-size="3.5" fill="#aaa" font-family="Arial">GND</text>
+  <text x="70" y="92" text-anchor="middle" font-size="8.5" font-weight="bold" fill="white" font-family="Arial">ESP32-CAM</text>
+</svg>

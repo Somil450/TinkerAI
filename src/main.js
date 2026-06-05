@@ -8,6 +8,7 @@ import { renderProperties, renderWireProperties } from './ui/propertiesPanel.js'
 import { deleteComponent } from './engine/deleteComponent.js'
 import { componentRegistry } from './engine/componentRegistry.js'
 import { getComponentHTML } from './ui/svgRenderer.js'
+// Force HMR reload to ensure CSS updates propagate
 import { autoWire } from './engine/autoWire.js'
 import { componentRegistry as aiComponentRegistry } from './ai/componentRegistry.js'
 import { initializeAIUI } from './ai/uiIntegration.js'
@@ -19,7 +20,8 @@ import { compileCode } from './engine/compiler.js'
 import { connectToBoard, disconnectFromBoard, flashToBoard, getPort } from './engine/flasher.js'
 import { startSerialMonitor, sendSerialData, stopSerialMonitor } from './engine/serialMonitor.js'
 import { circuitChatAI } from './ai/circuitChatAI.js'
-
+import { getComponentVisual } from './ui/componentSvgCatalog.js'
+import { getSvgUrl } from './ui/componentSvg.js'
 document.querySelector('#app').innerHTML = `
 <div class="app-layout">
   <nav class="navbar">
@@ -555,6 +557,27 @@ startSimBtn.addEventListener('click', async () => {
 components.forEach(comp => {
   comp.addEventListener('dragstart', e => {
     e.dataTransfer.setData('type', comp.dataset.type)
+    
+    // Create actual size drag image
+    const type = comp.dataset.type
+    const visual = getComponentVisual(type)
+    const url = getSvgUrl(type)
+    
+    if (visual && url) {
+      const dragImg = new Image()
+      dragImg.src = url
+      dragImg.style.width = visual.width + 'px'
+      dragImg.style.height = visual.height + 'px'
+      dragImg.style.position = 'absolute'
+      dragImg.style.top = '-9999px'
+      document.body.appendChild(dragImg)
+      
+      e.dataTransfer.setDragImage(dragImg, visual.width / 2, visual.height / 2)
+      
+      setTimeout(() => {
+        if (dragImg.parentNode) dragImg.parentNode.removeChild(dragImg)
+      }, 100)
+    }
   })
 })
 
@@ -601,35 +624,45 @@ canvas.addEventListener('dragover', e => {
   canvas.addEventListener('mousemove', (e) => {
     if (firstPinElement) {
       if (!activeWireLine) {
-        activeWireLine = document.createElementNS("http://www.w3.org/2000/svg", "polyline")
-        activeWireLine.setAttribute("stroke", "#ff9900") // Orange for active drawing
-        activeWireLine.setAttribute("stroke-width", "3")
-        activeWireLine.setAttribute("stroke-dasharray", "5,5")
+        activeWireLine = document.createElementNS("http://www.w3.org/2000/svg", "path")
+        activeWireLine.setAttribute("stroke", "#38bdf8") // Bright blue for active drawing
+        activeWireLine.setAttribute("stroke-width", "4")
+        activeWireLine.setAttribute("stroke-dasharray", "6,6")
+        activeWireLine.setAttribute("stroke-linecap", "round")
         activeWireLine.setAttribute("fill", "none")
+        activeWireLine.style.filter = "drop-shadow(0 0 5px rgba(56,189,248,0.6))"
         activeWireLine.style.pointerEvents = "none"
         wireLayer.appendChild(activeWireLine)
       }
       
       const rect1 = firstPinElement.getBoundingClientRect()
       const canvasRect = canvas.getBoundingClientRect()
-      const x1 = rect1.left - canvasRect.left + 6
-      const y1 = rect1.top - canvasRect.top + 6
+      const x1 = rect1.left - canvasRect.left + 7
+      const y1 = rect1.top - canvasRect.top + 7
       const x2 = e.clientX - canvasRect.left
       const y2 = e.clientY - canvasRect.top
       
-      let pointsStr = `${x1},${y1} `
-      activeWaypoints.forEach(wp => pointsStr += `${wp.x},${wp.y} `)
-      pointsStr += `${x2},${y2}`
+      let d = `M ${x1} ${y1} `;
+      if (activeWaypoints.length > 0) {
+        activeWaypoints.forEach(wp => d += `L ${wp.x} ${wp.y} `)
+        d += `L ${x2} ${y2}`
+      } else {
+        const dist = Math.sqrt(Math.pow(x2-x1,2) + Math.pow(y2-y1,2));
+        const droop = Math.min(dist * 0.4, 150);
+        d = `M ${x1} ${y1} C ${x1} ${y1 + droop}, ${x2} ${y2 + droop}, ${x2} ${y2}`;
+      }
       
-      activeWireLine.setAttribute("points", pointsStr)
+      activeWireLine.setAttribute("d", d)
     }
   })
 
   canvas.addEventListener('drop', e => {
-  e.preventDefault()
+    e.preventDefault()
 
-  const type = e.dataTransfer.getData('type')
-  componentCounter++
+    const type = e.dataTransfer.getData('type')
+    if (!type) return
+
+    componentCounter++
 
   const item = document.createElement('div')
   item.className = 'placed-component'
@@ -777,23 +810,30 @@ function renderWires() {
       
       const isSelected = selectedWire === wire
       
-      const path = document.createElementNS("http://www.w3.org/2000/svg", "polyline")
+      const path = document.createElementNS("http://www.w3.org/2000/svg", "path")
       
-      let pointsStr = `${x1},${y1} `
-      if (wire.waypoints) {
-         wire.waypoints.forEach(wp => pointsStr += `${wp.x},${wp.y} `)
+      let d = `M ${x1} ${y1} `;
+      if (wire.waypoints && wire.waypoints.length > 0) {
+        wire.waypoints.forEach(wp => d += `L ${wp.x} ${wp.y} `)
+        d += `L ${x2} ${y2}`
+      } else {
+        const dist = Math.sqrt(Math.pow(x2-x1,2) + Math.pow(y2-y1,2));
+        const droop = Math.min(dist * 0.4, 150);
+        d = `M ${x1} ${y1} C ${x1} ${y1 + droop}, ${x2} ${y2 + droop}, ${x2} ${y2}`;
       }
-      pointsStr += `${x2},${y2}`
       
-      path.setAttribute("points", pointsStr)
+      path.setAttribute("d", d)
       path.setAttribute("fill", "none")
+      path.setAttribute("stroke-linecap", "round")
       
       if (isSelected) {
         path.setAttribute("stroke", "#ff3366")
-        path.setAttribute("stroke-width", "5")
+        path.setAttribute("stroke-width", "6")
+        path.style.filter = "drop-shadow(0 0 8px rgba(255,51,102,0.6))"
       } else {
-        path.setAttribute("stroke", wire.color || "#00cc66")
-        path.setAttribute("stroke-width", "3")
+        path.setAttribute("stroke", wire.color || "#0ea5e9")
+        path.setAttribute("stroke-width", "4")
+        path.style.filter = "drop-shadow(0 4px 4px rgba(0,0,0,0.5))"
       }
       
       path.style.cursor = "pointer"
@@ -842,6 +882,23 @@ function renderWires() {
           propertiesContent.innerHTML = `<p>Select Component</p>`
         }
       }
+    } else if (selectedComponent && ['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(e.key)) {
+      e.preventDefault() // Prevent page scrolling
+      
+      const step = e.shiftKey ? 20 : 5 // Snap by 20px if Shift is held, else 5px for fine-tuning
+      let top = parseInt(selectedComponent.style.top, 10) || 0
+      let left = parseInt(selectedComponent.style.left, 10) || 0
+      
+      switch(e.key) {
+        case 'ArrowUp': top -= step; break
+        case 'ArrowDown': top += step; break
+        case 'ArrowLeft': left -= step; break
+        case 'ArrowRight': left += step; break
+      }
+      
+      selectedComponent.style.top = `${top}px`
+      selectedComponent.style.left = `${left}px`
+      renderWires() // update wires while moving
     }
   })
 
@@ -860,16 +917,18 @@ function renderWires() {
       .replace(/\*(.+?)\*/g, '<em>$1</em>')
       .replace(/`([^`]+)`/g, '<code>$1</code>')
       .replace(/```[\s\S]*?```/g, m => `<pre><code>${m.slice(3, -3).replace(/^\w+\n/, '')}</code></pre>`)
+      .replace(/^---$/gm, '<hr>')
       .replace(/^### (.+)$/gm, '<h4>$1</h4>')
       .replace(/^## (.+)$/gm, '<h3>$1</h3>')
-      .replace(/^\|[-|\s]+\|$/gm, '') // Strip markdown table dividers like |---|---|
+      .replace(/^\|[-|\s]+\|\r?\n/gm, '') // Strip markdown table dividers like |---|---| and their newline
       .replace(/^\| (.+) \|$/gm, m => {
         const cells = m.slice(2, -2).split(' | ').map(c => `<td>${c}</td>`).join('')
         return `<tr>${cells}</tr>`
       })
-      .replace(/(<tr>.*<\/tr>\n?)+/g, m => `<table>${m}</table>`)
+      .replace(/(<tr>.*<\/tr>\r?\n?)+/g, m => `<table>${m.replace(/\r?\n/g, '')}</table>`)
       .replace(/^- (.+)$/gm, '<li>$1</li>')
-      .replace(/(<li>.*<\/li>\n?)+/g, m => `<ul>${m}</ul>`)
+      .replace(/(<li>.*<\/li>\r?\n?)+/g, m => `<ul>${m.replace(/\r?\n/g, '')}</ul>`)
+      .replace(/(<\/(h3|h4|table|ul|pre)>|<hr>)\r?\n/g, '$1')
       .replace(/\n/g, '<br>')
   }
 

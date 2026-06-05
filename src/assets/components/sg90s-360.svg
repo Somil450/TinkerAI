@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 90" width="120" height="90">
+  <defs><filter id="sh"><feDropShadow dx="1" dy="2" stdDeviation="2.5" flood-opacity="0.3"/></filter></defs>
+  <rect x="8" y="22" width="104" height="60" rx="5" fill="#555" stroke="#333" stroke-width="2.5" filter="url(#sh)"/>
+  <rect x="0" y="30" width="10" height="30" rx="2" fill="#444" stroke="#333"/>
+  <circle cx="5" cy="45" r="3" fill="none" stroke="#666" stroke-width="1.5"/>
+  <rect x="110" y="30" width="10" height="30" rx="2" fill="#444" stroke="#333"/>
+  <circle cx="115" cy="45" r="3" fill="none" stroke="#666" stroke-width="1.5"/>
+  <!-- Continuous rotation symbol (double arrow circle) -->
+  <circle cx="32" cy="22" r="14" fill="#777" stroke="#555" stroke-width="2"/>
+  <circle cx="32" cy="22" r="8" fill="#666" stroke="#444" stroke-width="1.5"/>
+  <!-- Rotation arrows -->
+  <path d="M24,22 A8,8 0 1,1 40,22" stroke="#ffeb3b" stroke-width="2" fill="none" marker-end="url(#arr)"/>
+  <text x="72" y="50" text-anchor="middle" font-size="8" font-weight="bold" fill="#aaa" font-family="Arial">SG90 360°</text>
+  <text x="72" y="62" text-anchor="middle" font-size="7" fill="#888" font-family="Arial">Continuous Servo</text>
+  <!-- Wire connector -->
+  <rect x="60" y="8" width="44" height="16" rx="2" fill="#1a1a1a"/>
+  <rect x="64" y="10" width="8" height="12" rx="1" fill="#f44336"/>
+  <rect x="78" y="10" width="8" height="12" rx="1" fill="#c8b400"/>
+  <rect x="92" y="10" width="8" height="12" rx="1" fill="#333"/>
+  <text x="68" y="6" text-anchor="middle" font-size="5.5" fill="#ddd" font-family="Arial" font-weight="bold">VCC</text>
+  <text x="82" y="6" text-anchor="middle" font-size="5.5" fill="#ddd" font-family="Arial" font-weight="bold">SIG</text>
+  <text x="96" y="6" text-anchor="middle" font-size="5.5" fill="#ddd" font-family="Arial" font-weight="bold">GND</text>
+</svg>

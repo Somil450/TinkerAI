@@ -38,40 +38,102 @@ function extractSvgPins(archetype, pinIds, compWidth, compHeight) {
   const scaleX = compWidth / svgWidth
   const scaleY = compHeight / svgHeight
 
-  const foundPins = []
-  const placedIds = new Set()
-  const textRegex = /<text\s+x="([^"]+)"\s+y="([^"]+)"[^>]*>([^<]+)<\/text>/g
+  // 1. Extract visual holes (radius between 2 and 3.5)
+  const circleRegex = /<circle\s+cx="([^"]+)"\s+cy="([^"]+)"\s+r="([23](?:\.\d+)?)"[^>]*>/g
+  const uniqueHolesMap = new Map()
   let match
-  
-  while ((match = textRegex.exec(content)) !== null) {
+  while ((match = circleRegex.exec(content)) !== null) {
     const cx = parseFloat(match[1]) * scaleX
     const cy = parseFloat(match[2]) * scaleY
+    const r = parseFloat(match[3])
+    if (r >= 2 && r <= 3.5) {
+      const key = `${Math.round(cx)},${Math.round(cy)}`
+      if (!uniqueHolesMap.has(key)) {
+        uniqueHolesMap.set(key, { cx, cy, used: false })
+      }
+    }
+  }
+  const holes = Array.from(uniqueHolesMap.values())
+
+  const foundPins = []
+  const placedIds = new Set()
+  
+  // 2. Map explicitly labeled pins to their nearest hole
+  const textRegex = /<text\s+x="([^"]+)"\s+y="([^"]+)"[^>]*>([^<]+)<\/text>/g
+  while ((match = textRegex.exec(content)) !== null) {
+    const tx = parseFloat(match[1]) * scaleX
+    const ty = parseFloat(match[2]) * scaleY
     const label = match[3].trim()
     
     const matchedId = pinIds.find(id => !placedIds.has(id) && (id.toUpperCase() === label.toUpperCase() || id.toUpperCase().startsWith(label.toUpperCase() + '_')))
     if (matchedId) {
-      let py = cy
-      let labelSide = 'top'
-      
-      if (cy < svgHeight / 2) {
-         py += 9 * scaleY
-         labelSide = 'bottom'
-      } else {
-         py -= 9 * scaleY
-         labelSide = 'top'
+      // Find nearest unused hole
+      let nearestHole = null
+      let minDist = Infinity
+      for (const hole of holes) {
+        if (hole.used) continue
+        const dist = Math.hypot(hole.cx - tx, hole.cy - ty)
+        if (dist < minDist) {
+          minDist = dist
+          nearestHole = hole
+        }
       }
+
+      if (nearestHole) {
+        nearestHole.used = true
+        let labelSide = 'top'
+        if (nearestHole.cx < compWidth * 0.25) labelSide = 'left'
+        else if (nearestHole.cx > compWidth * 0.75) labelSide = 'right'
+        else if (nearestHole.cy < compHeight / 2) labelSide = 'top'
+        else labelSide = 'bottom'
+
+        foundPins.push({
+          id: matchedId,
+          x: Math.round(nearestHole.cx),
+          y: Math.round(nearestHole.cy),
+          labelSide
+        })
+        placedIds.add(matchedId)
+      }
+    }
+  }
+
+  // 3. Map remaining pins to sorted unused holes
+  const remainingIds = pinIds.filter(id => !placedIds.has(id))
+  const unusedHoles = holes.filter(h => !h.used)
+  
+  if (remainingIds.length > 0 && unusedHoles.length >= remainingIds.length) {
+    // Sort holes: top-to-bottom, left-to-right
+    unusedHoles.sort((a, b) => {
+      if (Math.abs(a.cy - b.cy) > 5) return a.cy - b.cy
+      return a.cx - b.cx
+    })
+
+    for (let i = 0; i < remainingIds.length; i++) {
+      const id = remainingIds[i]
+      const hole = unusedHoles[i]
       
+      let labelSide = 'top'
+      if (hole.cx < compWidth * 0.25) labelSide = 'left'
+      else if (hole.cx > compWidth * 0.75) labelSide = 'right'
+      else if (hole.cy < compHeight / 2) labelSide = 'top'
+      else labelSide = 'bottom'
+
       foundPins.push({
-        id: matchedId,
-        x: Math.round(cx),
-        y: Math.round(py),
+        id,
+        x: Math.round(hole.cx),
+        y: Math.round(hole.cy),
         labelSide
       })
-      placedIds.add(matchedId)
+      placedIds.add(id)
     }
   }
   
-  return foundPins.length > 0 ? foundPins : null
+  if (foundPins.length !== pinIds.length) {
+    return null
+  }
+  
+  return foundPins
 }
 
 function layoutPins(pinIds, width, height, layout = 'auto') {
@@ -199,6 +261,20 @@ function mergeBoardPins(componentId, archetype, pinIds) {
   return null
 }
 
+let p400Str, p830Str, p400Obj, p830Obj;
+try {
+  const vm = await import('vm');
+  p400Str = fs.readFileSync(path.join(root, 'breadboard-400-pins.txt'), 'utf8');
+  p830Str = fs.readFileSync(path.join(root, 'breadboard-830-pins.txt'), 'utf8');
+  const sandbox = {};
+  vm.runInNewContext('var p400 = {' + p400Str + '};', sandbox);
+  vm.runInNewContext('var p830 = {' + p830Str + '};', sandbox);
+  p400Obj = sandbox.p400['breadboard-400'];
+  p830Obj = sandbox.p830['breadboard-830'];
+} catch (e) {
+  console.warn('Could not load breadboard pins:', e.message);
+}
+
 const visuals = {}
 
 for (const comp of componentRegistry.getAll()) {
@@ -216,24 +292,36 @@ for (const comp of componentRegistry.getAll()) {
   }
 
   let pins = mergeBoardPins(comp.id, archetype, pinIds)
-  if (!pins) {
-    // Try to extract from SVG if no board layout is specified
-    const extracted = extractSvgPins(archetype, pinIds, width, height)
-    if (extracted && extracted.length > 0) {
-      pins = extracted
-    }
+
+  // If extraction couldn't find all pins perfectly (or returned empty), fallback to parsing the SVG
+  if (!pins || pins.length === 0) {
+    pins = extractSvgPins(archetype, pinIds, width, height)
   }
   
-  if (!pins) {
+  if (comp.id === 'breadboard-400' && p400Obj) {
+    pins = p400Obj.pins;
+    width = p400Obj.width;
+    height = p400Obj.height;
+  } else if (comp.id === 'breadboard-830' && p830Obj) {
+    pins = p830Obj.pins;
+    width = p830Obj.width;
+    height = p830Obj.height;
+  } else if (!pins) {
     pins = layoutPins(pinIds, width, height)
   }
 
+  const GLOBAL_SCALE = 1.2
+
   visuals[comp.id] = {
     archetype,
-    width,
-    height,
-    pins,
-    pinCount: pinIds.length,
+    width: Math.round(width * GLOBAL_SCALE),
+    height: Math.round(height * GLOBAL_SCALE),
+    pins: pins ? pins.map(p => ({
+      ...p,
+      x: Math.round(p.x * GLOBAL_SCALE),
+      y: Math.round(p.y * GLOBAL_SCALE)
+    })) : null,
+    pinCount: pins ? pins.length : pinIds.length,
   }
 }
 

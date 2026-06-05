@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <defs><filter id="sh"><feDropShadow dx="1" dy="2" stdDeviation="2.5" flood-opacity="0.3"/></filter></defs>
+  <!-- TO-39 metal can package -->
+  <circle cx="50" cy="55" r="36" fill="#888" stroke="#666" stroke-width="3" filter="url(#sh)"/>
+  <circle cx="50" cy="55" r="30" fill="#777" stroke="#555" stroke-width="1.5"/>
+  <!-- Optical window on top of can -->
+  <circle cx="50" cy="50" r="18" fill="#333" stroke="#222" stroke-width="2"/>
+  <circle cx="50" cy="50" r="13" fill="#1a1a1a"/>
+  <circle cx="50" cy="50" r="8" fill="#0d0d0d" stroke="#444"/>
+  <!-- Lens reflection -->
+  <ellipse cx="44" cy="44" rx="5" ry="4" fill="white" opacity="0.15"/>
+  <!-- Marking text -->
+  <text x="50" y="72" text-anchor="middle" font-size="5.5" fill="#888" font-family="monospace">MLX90614</text>
+  <!-- 3 leads -->
+  <line x1="32" y1="88" x2="28" y2="100" stroke="#bbb" stroke-width="3.5" stroke-linecap="round"/>
+  <line x1="50" y1="91" x2="50" y2="100" stroke="#bbb" stroke-width="3.5" stroke-linecap="round"/>
+  <line x1="68" y1="88" x2="72" y2="100" stroke="#bbb" stroke-width="3.5" stroke-linecap="round"/>
+  <text x="28" y="102" text-anchor="middle" font-size="5.5" fill="#c8b400" font-family="Arial" font-weight="bold">VCC</text>
+  <text x="50" y="102" text-anchor="middle" font-size="5.5" fill="#c8b400" font-family="Arial" font-weight="bold">SDA</text>
+  <text x="72" y="102" text-anchor="middle" font-size="5.5" fill="#c8b400" font-family="Arial" font-weight="bold">GND</text>
+  <text x="50" y="10" text-anchor="middle" font-size="8.5" font-weight="bold" fill="#555" font-family="Arial">MLX90614 IR Temp</text>
+</svg>

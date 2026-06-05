@@ -30,7 +30,6 @@ function renderPins(pins) {
       const side = p.labelSide || 'top'
       return `
         <div class="pin-group" style="left: ${p.x}px; top: ${p.y}px;">
-          <span class="pin-label pin-label-${side} ${labelCls}">${escapeHtml(p.id)}</span>
           <div class="pin" data-pin="${escapeHtml(p.id)}" title="${escapeHtml(p.id)}"></div>
         </div>
       `
@@ -55,7 +54,7 @@ export function getComponentHTML(type) {
         draggable="false"
         style="width: ${visual.width}px; height: ${visual.height}px; display: block;"
       />
-      <div class="component-name-badge" title="${escapeHtml(compName)}">${escapeHtml(compName)}</div>
+      <div class="component-name-badge" title="${escapeHtml(compName)}" style="user-select: none; pointer-events: none;">${escapeHtml(compName)}</div>
       ${renderPins(pins)}
     </div>
   `

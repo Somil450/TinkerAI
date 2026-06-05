@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 90 90" width="90" height="90">
+  <defs><filter id="sh"><feDropShadow dx="1" dy="2" stdDeviation="2.5" flood-opacity="0.3"/></filter></defs>
+  <!-- XT60 male connector body (yellow-orange) -->
+  <rect x="12" y="18" width="66" height="58" rx="6" fill="#f57f17" stroke="#e65100" stroke-width="2.5" filter="url(#sh)"/>
+  <!-- Two circular ports -->
+  <circle cx="34" cy="48" r="16" fill="#222" stroke="#111" stroke-width="2"/>
+  <circle cx="34" cy="48" r="10" fill="#333" stroke="#444"/>
+  <circle cx="56" cy="48" r="16" fill="#222" stroke="#111" stroke-width="2"/>
+  <circle cx="56" cy="48" r="10" fill="#333" stroke="#444"/>
+  <!-- + / - labels on ports -->
+  <text x="34" y="52" text-anchor="middle" font-size="12" fill="#f44336" font-family="Arial" font-weight="bold">+</text>
+  <text x="56" y="52" text-anchor="middle" font-size="12" fill="#bbb" font-family="Arial" font-weight="bold">-</text>
+  <!-- Strain relief wings -->
+  <rect x="2" y="32" width="12" height="26" rx="2" fill="#e65100" stroke="#bf360c"/>
+  <rect x="76" y="32" width="12" height="26" rx="2" fill="#e65100" stroke="#bf360c"/>
+  <text x="45" y="15" text-anchor="middle" font-size="8.5" font-weight="bold" fill="#333" font-family="Arial">XT60 Connector</text>
+  <text x="45" y="85" text-anchor="middle" font-size="7.5" fill="#555" font-family="Arial">60A Lipo Battery</text>
+</svg>

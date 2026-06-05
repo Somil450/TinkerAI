@@ -1,25 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130 95" width="130" height="95">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 72" width="120" height="72">
   <defs>
-    <filter id="sh-water-level" x="-8%" y="-8%" width="116%" height="116%"><feDropShadow dx="1" dy="2" stdDeviation="2.5" flood-opacity="0.28"/></filter>
-  </defs>
-  <rect x="5" y="15" width="120" height="75" rx="4" fill="#e53935" stroke="#c62828" stroke-width="1.5" filter="url(#sh-water-level)"/>
-  
-  <!-- PIN HEADER BLACK BASE -->
-  <rect x="40.0" y="6" width="46" height="14" rx="2" fill="#1a1a1a" stroke="#333"/>
-  
-        <rect x="44.0" y="7" width="8" height="10" fill="#bdbdbd" rx="1"/>
-        <text x="48.0" y="5" text-anchor="middle" fill="#fff" font-size="5" font-weight="bold" font-family="Arial,sans-serif">SIG</text>
-        
-        <rect x="58.0" y="7" width="8" height="10" fill="#bdbdbd" rx="1"/>
-        <text x="62.0" y="5" text-anchor="middle" fill="#fff" font-size="5" font-weight="bold" font-family="Arial,sans-serif">VCC</text>
-        
-        <rect x="72.0" y="7" width="8" height="10" fill="#bdbdbd" rx="1"/>
-        <text x="76.0" y="5" text-anchor="middle" fill="#fff" font-size="5" font-weight="bold" font-family="Arial,sans-serif">GND</text>
-        
-  
-  <!-- CUSTOM GRAPHICS -->
-  <rect x="15" y="30" width="100" height="45" fill="#c62828"/><path d="M25,35 v35 M35,35 v35 M45,35 v35 M55,35 v35 M65,35 v35 M75,35 v35 M85,35 v35 M95,35 v35 M105,35 v35" stroke="#ffd700" stroke-width="2"/>
-  
-  <!-- COMPONENT NAME -->
-  <text x="65" y="85" text-anchor="middle" fill="#fff" font-size="8" font-weight="bold" font-family="Arial,sans-serif" opacity="0.9">WATER LEVEL</text>
-</svg>
+    <linearGradient id="pcb-h2o" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1E88E5"/><stop offset="100%" stop-color="#0D47A1"/></linearGradient>
+    <linearGradient id="pcbTeal-h2o" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#00939d"/><stop offset="100%" stop-color="#007982"/></linearGradient>
+    <linearGradient id="metal-h2o" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#eee"/><stop offset="50%" stop-color="#fff"/><stop offset="100%" stop-color="#999"/></linearGradient>
+    <linearGradient id="pin-h2o" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#f5f5f5"/><stop offset="100%" stop-color="#bdbdbd"/></linearGradient>
+    <filter id="sh-h2o" x="-8%" y="-8%" width="116%" height="116%"><feDropShadow dx="1" dy="2" stdDeviation="2.5" flood-opacity="0.28"/></filter>
+    <filter id="glow-h2o"><feGaussianBlur stdDeviation="1.5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs><rect x="3" y="3" width="114" height="66" rx="4" fill="url(#pcb-h2o)" stroke="#0a3d7a" stroke-width="1.5" filter="url(#sh-h2o)"/><circle cx="44" cy="10" r="4" fill="url(#pin-h2o)"/><circle cx="44" cy="10" r="2.5" fill="#111"/><text x="44" y="20" text-anchor="middle" fill="#fff" font-size="6" font-weight="bold" font-family="Arial,sans-serif">VCC</text><circle cx="60" cy="10" r="4" fill="url(#pin-h2o)"/><circle cx="60" cy="10" r="2.5" fill="#111"/><text x="60" y="20" text-anchor="middle" fill="#fff" font-size="6" font-weight="bold" font-family="Arial,sans-serif">GND</text><circle cx="76" cy="10" r="4" fill="url(#pin-h2o)"/><circle cx="76" cy="10" r="2.5" fill="#111"/><text x="76" y="20" text-anchor="middle" fill="#fff" font-size="6" font-weight="bold" font-family="Arial,sans-serif">S</text><text x="60" y="68" text-anchor="middle" fill="#fff" font-size="8" font-weight="bold" font-family="Arial,sans-serif" opacity="0.9">WATER</text></svg>

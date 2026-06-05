@@ -478,6 +478,7 @@ export class ComponentRegistry {
             specs: { processor: 'ARM Cortex-M7', clockSpeed: '600 MHz', memory: '2 MB Flash + 1 MB RAM', operatingVoltage: 3.3 }, protocols: ['UART', 'I2C', 'SPI', 'USB', 'CAN'] });
 
         this.register({ id: 'bbc-microbit', name: 'BBC micro:bit V2', category: 'Microcontroller', price: 15,
+            pins: { '0': { type: 'analog' }, '1': { type: 'analog' }, '2': { type: 'analog' }, '3V': { type: 'power', voltage: 3.3 }, 'GND': { type: 'ground' } },
             specs: { processor: 'nRF52833 ARM Cortex-M4', clockSpeed: '64 MHz', memory: '512 KB Flash + 128 KB RAM', operatingVoltage: 3.3 }, protocols: ['Bluetooth', 'I2C', 'SPI', 'USB'] });
 
         this.register({ id: 'esp32-s3', name: 'ESP32-S3', category: 'Microcontroller', price: 10,
@@ -492,7 +493,7 @@ export class ComponentRegistry {
             specs: { operatingVoltage: 5, temperature: { range: '0-50°C', accuracy: '±2°C' }, humidity: { range: '20-90%', accuracy: '±5%' } } });
 
         this.register({ id: 'ldr', name: 'LDR (Light Dependent Resistor)', category: 'Sensor', subcategory: 'Light', price: 0.30,
-            pins: { 'pin1': { type: 'analog' }, 'pin2': { type: 'analog' } },
+            pins: { 'VCC': { type: 'power', voltage: 5 }, 'GND': { type: 'ground' }, 'OUT': { type: 'analog' } },
             specs: { resistance: '1kΩ (light) to 10MΩ (dark)', operatingVoltage: 5 } });
 
         this.register({ id: 'pir-sensor', name: 'PIR Motion Sensor (HC-SR501)', category: 'Sensor', subcategory: 'Motion', price: 1.50,
@@ -926,7 +927,7 @@ export class ComponentRegistry {
             pins: { '12V': {type:'power', voltage: 12}, 'GND': {type:'ground'}, '5V': {type:'power', voltage: 5}, 'IN1': {type:'digital_input'}, 'IN2': {type:'digital_input'}, 'IN3': {type:'digital_input'}, 'IN4': {type:'digital_input'}, 'ENA': {type:'pwm'}, 'ENB': {type:'pwm'}, 'OUT1': {type:'motor'}, 'OUT2': {type:'motor'}, 'OUT3': {type:'motor'}, 'OUT4': {type:'motor'} },
             specs: { operatingVoltage: '5-35V', maxCurrent: '2A per channel', channels: 2 } });
 
-        this.register({ id: 'l293d', name: 'L293D Motor Driver IC', category: 'Motor Driver', price: 1.50,
+        this.register({ id: 'l293d', name: 'L293D Motor Driver Module', category: 'Motor Driver', price: 1.50,
             pins: { 'VCC1': {type:'power', voltage: 5}, 'VCC2': {type:'power'}, 'GND': {type:'ground'}, '1A': {type:'digital_input'}, '2A': {type:'digital_input'}, '3A': {type:'digital_input'}, '4A': {type:'digital_input'}, '1Y': {type:'motor'}, '2Y': {type:'motor'}, '3Y': {type:'motor'}, '4Y': {type:'motor'}, 'EN12': {type:'digital_input'}, 'EN34': {type:'digital_input'} },
             specs: { operatingVoltage: '4.5-36V', maxCurrent: '600mA per channel', channels: 4 } });
 
@@ -1090,6 +1091,58 @@ export class ComponentRegistry {
         this.register({ id: 'level-shifter-4ch', name: 'Logic Level Shifter (4-Ch)', category: 'Connector', subcategory: 'Level Shifter', price: 1,
             pins: { 'LV': {type:'power', voltage: 3.3}, 'HV': {type:'power', voltage: 5}, 'GND': {type:'ground'}, 'LV1-LV4': {type:'digital_io', count: 4}, 'HV1-HV4': {type:'digital_io', count: 4} },
             specs: { channels: 4, lowVoltage: '1.8-3.3V', highVoltage: '3.3-5V' } });
+
+        // === ROBOCRAZE EXPANSION ===
+        this.register({ id: 'esp32-cam', name: 'ESP32-CAM Module', category: 'Microcontroller', subcategory: 'IoT', price: 5, pins: { '5V': { type: 'power', voltage: 5 }, 'GND': { type: 'ground' }, 'U0R': { type: 'rx' }, 'U0T': { type: 'tx' }, 'IO0': { type: 'digital_io' }, 'IO16': { type: 'digital_io' } } });
+        this.register({ id: 'ov7670', name: 'OV7670 Camera Module', category: 'Sensor', subcategory: 'Vision', price: 5, pins: { 'VCC': { type: 'generic' }, 'GND': { type: 'generic' }, 'SCL': { type: 'generic' }, 'SDA': { type: 'generic' }, 'VSYNC': { type: 'generic' }, 'HREF': { type: 'generic' }, 'PCLK': { type: 'generic' }, 'D0-D7': { type: 'generic' } } });
+        this.register({ id: 'pi-camera-v2', name: 'Raspberry Pi Camera V2', category: 'Sensor', subcategory: 'Vision', price: 5, pins: { 'CSI': { type: 'generic' } } });
+        this.register({ id: 'mpu9250', name: 'MPU9250 9-DOF IMU', category: 'Sensor', subcategory: 'Motion', price: 5, pins: { 'VCC': { type: 'generic' }, 'GND': { type: 'generic' }, 'SCL': { type: 'generic' }, 'SDA': { type: 'generic' }, 'EDA': { type: 'generic' }, 'ECL': { type: 'generic' }, 'AD0': { type: 'generic' }, 'INT': { type: 'generic' } } });
+        this.register({ id: 'vl53l0x', name: 'VL53L0X ToF Laser Ranging Sensor', category: 'Sensor', subcategory: 'Distance', price: 5, pins: { 'VCC': { type: 'generic' }, 'GND': { type: 'generic' }, 'SCL': { type: 'generic' }, 'SDA': { type: 'generic' }, 'XSHUT': { type: 'generic' }, 'GPIO1': { type: 'generic' } } });
+        this.register({ id: 'mlx90614', name: 'MLX90614 IR Temperature Sensor', category: 'Sensor', subcategory: 'Temperature', price: 5, pins: { 'VIN': { type: 'generic' }, 'GND': { type: 'generic' }, 'SCL': { type: 'generic' }, 'SDA': { type: 'generic' } } });
+        this.register({ id: 'mq3-gas', name: 'MQ-3 Alcohol Sensor', category: 'Sensor', subcategory: 'Gas', price: 5, pins: { 'VCC': { type: 'generic' }, 'GND': { type: 'generic' }, 'AO': { type: 'generic' }, 'DO': { type: 'generic' } } });
+        this.register({ id: 'mq7-gas', name: 'MQ-7 CO Sensor', category: 'Sensor', subcategory: 'Gas', price: 5, pins: { 'VCC': { type: 'generic' }, 'GND': { type: 'generic' }, 'AO': { type: 'generic' }, 'DO': { type: 'generic' } } });
+        this.register({ id: 'mq8-gas', name: 'MQ-8 Hydrogen Sensor', category: 'Sensor', subcategory: 'Gas', price: 5, pins: { 'VCC': { type: 'generic' }, 'GND': { type: 'generic' }, 'AO': { type: 'generic' }, 'DO': { type: 'generic' } } });
+        this.register({ id: 'max6675', name: 'MAX6675 Thermocouple Amp', category: 'Sensor', subcategory: 'Temperature', price: 5, pins: { 'VCC': { type: 'generic' }, 'GND': { type: 'generic' }, 'SCK': { type: 'generic' }, 'CS': { type: 'generic' }, 'SO': { type: 'generic' } } });
+        this.register({ id: 'hmc5883l', name: 'HMC5883L Magnetometer', category: 'Sensor', subcategory: 'Motion', price: 5, pins: { 'VCC': { type: 'generic' }, 'GND': { type: 'generic' }, 'SCL': { type: 'generic' }, 'SDA': { type: 'generic' }, 'DRDY': { type: 'generic' } } });
+        this.register({ id: 'ina219', name: 'INA219 Current/Power Sensor', category: 'Sensor', subcategory: 'Power', price: 5, pins: { 'VCC': { type: 'generic' }, 'GND': { type: 'generic' }, 'SCL': { type: 'generic' }, 'SDA': { type: 'generic' }, 'VIN+': { type: 'generic' }, 'VIN-': { type: 'generic' } } });
+        this.register({ id: 'bh1750', name: 'BH1750 Light Sensor', category: 'Sensor', subcategory: 'Light', price: 5, pins: { 'VCC': { type: 'generic' }, 'GND': { type: 'generic' }, 'SCL': { type: 'generic' }, 'SDA': { type: 'generic' }, 'ADDR': { type: 'generic' } } });
+        this.register({ id: 'tsl2561', name: 'TSL2561 Luminosity Sensor', category: 'Sensor', subcategory: 'Light', price: 5, pins: { 'VCC': { type: 'generic' }, 'GND': { type: 'generic' }, 'SCL': { type: 'generic' }, 'SDA': { type: 'generic' }, 'INT': { type: 'generic' } } });
+        this.register({ id: 'pzem-004t', name: 'PZEM-004T AC Power Sensor', category: 'Sensor', subcategory: 'Power', price: 5, pins: { '5V': { type: 'generic' }, 'RX': { type: 'generic' }, 'TX': { type: 'generic' }, 'GND': { type: 'generic' } } });
+        this.register({ id: 'cny70', name: 'CNY70 Reflective Optical Sensor', category: 'Sensor', subcategory: 'Optical', price: 5, pins: { 'A': { type: 'generic' }, 'K': { type: 'generic' }, 'E': { type: 'generic' }, 'C': { type: 'generic' } } });
+        this.register({ id: 'ky-038', name: 'KY-038 Sound Sensor', category: 'Sensor', subcategory: 'Audio', price: 5, pins: { 'AO': { type: 'generic' }, 'GND': { type: 'generic' }, 'VCC': { type: 'generic' }, 'DO': { type: 'generic' } } });
+        this.register({ id: 'ph-sensor', name: 'pH Sensor Module', category: 'Sensor', subcategory: 'Liquid', price: 5, pins: { 'V+': { type: 'generic' }, 'G': { type: 'generic' }, 'G': { type: 'generic' }, 'Po': { type: 'generic' }, 'Do': { type: 'generic' }, 'To': { type: 'generic' } } });
+        this.register({ id: 'turbidity-sensor', name: 'Turbidity Sensor', category: 'Sensor', subcategory: 'Liquid', price: 5, pins: { 'VCC': { type: 'generic' }, 'GND': { type: 'generic' }, 'AOUT': { type: 'generic' }, 'DOUT': { type: 'generic' } } });
+        this.register({ id: 'sim900a', name: 'SIM900A GSM/GPRS Module', category: 'Communication', subcategory: 'GSM', price: 5, pins: { '5V': { type: 'generic' }, 'GND': { type: 'generic' }, 'TXD': { type: 'generic' }, 'RXD': { type: 'generic' } } });
+        this.register({ id: 'hc-12', name: 'HC-12 433MHz Transceiver', category: 'Communication', subcategory: 'RF', price: 5, pins: { 'VCC': { type: 'generic' }, 'GND': { type: 'generic' }, 'RXD': { type: 'generic' }, 'TXD': { type: 'generic' }, 'SET': { type: 'generic' } } });
+        this.register({ id: 'nrf24l01-pa-lna', name: 'NRF24L01+PA+LNA', category: 'Communication', subcategory: 'RF', price: 5, pins: { 'GND': { type: 'generic' }, 'VCC': { type: 'generic' }, 'CE': { type: 'generic' }, 'CSN': { type: 'generic' }, 'SCK': { type: 'generic' }, 'MOSI': { type: 'generic' }, 'MISO': { type: 'generic' }, 'IRQ': { type: 'generic' } } });
+        this.register({ id: 'cc2530', name: 'CC2530 Zigbee Module', category: 'Communication', subcategory: 'Zigbee', price: 5, pins: { 'VCC': { type: 'generic' }, 'GND': { type: 'generic' }, 'TX': { type: 'generic' }, 'RX': { type: 'generic' } } });
+        this.register({ id: 'rx470', name: '433MHz RF Receiver', category: 'Communication', subcategory: 'RF', price: 5, pins: { 'VCC': { type: 'generic' }, 'DATA': { type: 'generic' }, 'DATA': { type: 'generic' }, 'GND': { type: 'generic' } } });
+        this.register({ id: 'tx118sa', name: '433MHz RF Transmitter', category: 'Communication', subcategory: 'RF', price: 5, pins: { 'ATAD': { type: 'generic' }, 'VCC': { type: 'generic' }, 'GND': { type: 'generic' } } });
+        this.register({ id: 'nextion-24', name: 'Nextion 2.4" HMI Display', category: 'Display', subcategory: 'Touch', price: 5, pins: { '5V': { type: 'generic' }, 'TX': { type: 'generic' }, 'RX': { type: 'generic' }, 'GND': { type: 'generic' } } });
+        this.register({ id: 'lcd-12864', name: '12864 Graphic LCD', category: 'Display', subcategory: 'LCD', price: 5, pins: { 'VSS': { type: 'generic' }, 'VDD': { type: 'generic' }, 'V0': { type: 'generic' }, 'RS': { type: 'generic' }, 'RW': { type: 'generic' }, 'E': { type: 'generic' }, 'D0-D7': { type: 'generic' }, 'A': { type: 'generic' }, 'K': { type: 'generic' } } });
+        this.register({ id: 'max7219-matrix', name: 'MAX7219 8x8 LED Matrix', category: 'Display', subcategory: 'LED', price: 5, pins: { 'VCC': { type: 'generic' }, 'GND': { type: 'generic' }, 'DIN': { type: 'generic' }, 'CS': { type: 'generic' }, 'CLK': { type: 'generic' } } });
+        this.register({ id: 'tm1637', name: 'TM1637 4-Digit Display', category: 'Display', subcategory: 'LED', price: 5, pins: { 'CLK': { type: 'generic' }, 'DIO': { type: 'generic' }, 'VCC': { type: 'generic' }, 'GND': { type: 'generic' } } });
+        this.register({ id: 'bts7960', name: 'BTS7960 43A Motor Driver', category: 'Motor Driver', subcategory: 'High Power', price: 5, pins: { 'VCC': { type: 'generic' }, 'GND': { type: 'generic' }, 'R_EN': { type: 'generic' }, 'L_EN': { type: 'generic' }, 'RPWM': { type: 'generic' }, 'LPWM': { type: 'generic' } } });
+        this.register({ id: 'pca9685', name: 'PCA9685 16-Ch PWM Driver', category: 'Motor Driver', subcategory: 'PWM', price: 5, pins: { 'VCC': { type: 'generic' }, 'GND': { type: 'generic' }, 'SDA': { type: 'generic' }, 'SCL': { type: 'generic' }, 'OE': { type: 'generic' } } });
+        this.register({ id: 'l298n-mini', name: 'Mini L298N Motor Driver', category: 'Motor Driver', subcategory: 'DC Motor', price: 5, pins: { 'VCC': { type: 'generic' }, 'GND': { type: 'generic' }, 'IN1': { type: 'generic' }, 'IN2': { type: 'generic' }, 'IN3': { type: 'generic' }, 'IN4': { type: 'generic' }, 'MOTA': { type: 'generic' }, 'MOTB': { type: 'generic' } } });
+        this.register({ id: 'mg90s', name: 'MG90S Metal Gear Servo', category: 'Actuator', subcategory: 'Servo', price: 5, pins: { 'GND': { type: 'generic' }, 'VCC': { type: 'generic' }, 'SIG': { type: 'generic' } } });
+        this.register({ id: 'sg90s-360', name: 'SG90s 360° Continuous Servo', category: 'Actuator', subcategory: 'Servo', price: 5, pins: { 'GND': { type: 'generic' }, 'VCC': { type: 'generic' }, 'SIG': { type: 'generic' } } });
+        this.register({ id: 'ws2812-matrix', name: 'WS2812 8x8 LED Matrix', category: 'Display', subcategory: 'LED', price: 5, pins: { 'DIN': { type: 'generic' }, '5V': { type: 'generic' }, 'GND': { type: 'generic' } } });
+        this.register({ id: 'ds18b20-waterproof', name: 'DS18B20 Waterproof Probe', category: 'Sensor', subcategory: 'Temperature', price: 5, pins: { 'VCC': { type: 'generic' }, 'DATA': { type: 'generic' }, 'GND': { type: 'generic' } } });
+        this.register({ id: 'tca9548a', name: 'TCA9548A I2C Multiplexer', category: 'IC', subcategory: 'Multiplexer', price: 5, pins: { 'VIN': { type: 'generic' }, 'GND': { type: 'generic' }, 'SDA': { type: 'generic' }, 'SCL': { type: 'generic' }, 'A0': { type: 'generic' }, 'A1': { type: 'generic' }, 'A2': { type: 'generic' } } });
+        this.register({ id: 'max232', name: 'MAX232 RS232 to TTL', category: 'IC', subcategory: 'Interface', price: 5, pins: { 'VCC': { type: 'generic' }, 'GND': { type: 'generic' }, 'TXD': { type: 'generic' }, 'RXD': { type: 'generic' }, 'T1OUT': { type: 'generic' }, 'R1IN': { type: 'generic' } } });
+        this.register({ id: 'ch340g', name: 'CH340G USB to TTL', category: 'IC', subcategory: 'Interface', price: 5, pins: { '5V': { type: 'generic' }, '3.3V': { type: 'generic' }, 'TXD': { type: 'generic' }, 'RXD': { type: 'generic' }, 'GND': { type: 'generic' } } });
+        this.register({ id: 'cp2102', name: 'CP2102 USB to UART', category: 'IC', subcategory: 'Interface', price: 5, pins: { '3V3': { type: 'generic' }, 'TXD': { type: 'generic' }, 'RXD': { type: 'generic' }, 'GND': { type: 'generic' }, '5V': { type: 'generic' } } });
+        this.register({ id: 'logic-analyzer-8ch', name: '24MHz 8Ch Logic Analyzer', category: 'Tool', subcategory: 'Logic Analyzer', price: 5, pins: { 'CH0-CH7': { type: 'generic' }, 'GND': { type: 'generic' } } });
+        this.register({ id: 'mt3608', name: 'MT3608 Boost Converter', category: 'Power', subcategory: 'Boost', price: 5, pins: { 'VIN+': { type: 'generic' }, 'VIN-': { type: 'generic' }, 'VOUT+': { type: 'generic' }, 'VOUT-': { type: 'generic' } } });
+        this.register({ id: 'xl4015', name: 'XL4015 Step-Down Buck', category: 'Power', subcategory: 'Buck', price: 5, pins: { 'IN+': { type: 'generic' }, 'IN-': { type: 'generic' }, 'OUT+': { type: 'generic' }, 'OUT-': { type: 'generic' } } });
+        this.register({ id: 'lm2596', name: 'LM2596 Buck Converter', category: 'Power', subcategory: 'Buck', price: 5, pins: { 'IN+': { type: 'generic' }, 'IN-': { type: 'generic' }, 'OUT+': { type: 'generic' }, 'OUT-': { type: 'generic' } } });
+        this.register({ id: 'bms-3s', name: '3S 12V BMS Protection Board', category: 'Power', subcategory: 'Battery', price: 5, pins: { '0V': { type: 'generic' }, '4.2V': { type: 'generic' }, '8.4V': { type: 'generic' }, '12.6V': { type: 'generic' }, 'P+': { type: 'generic' }, 'P-': { type: 'generic' } } });
+        this.register({ id: 'xt60-connector', name: 'XT60 Connector Pair', category: 'Connector', subcategory: 'Power', price: 5, pins: { '+': { type: 'generic' }, '-': { type: 'generic' } } });
+        this.register({ id: 'barrel-jack', name: '5.5mm DC Barrel Jack', category: 'Connector', subcategory: 'Power', price: 5, pins: { '+': { type: 'generic' }, '-': { type: 'generic' } } });
+        this.register({ id: 'jetson-nano', name: 'NVIDIA Jetson Nano', category: 'Microcontroller', subcategory: 'SBC', price: 5, pins: { '5V': { type: 'generic' }, '3.3V': { type: 'generic' }, 'GND': { type: 'generic' }, 'GPIOx40': { type: 'generic' } } });
+        this.register({ id: 'google-coral', name: 'Google Coral USB', category: 'IC', subcategory: 'AI', price: 5, pins: { 'USB': { type: 'generic' } } });
+        this.register({ id: 'sipeed-maix-duino', name: 'Sipeed Maixduino', category: 'Microcontroller', subcategory: 'AI', price: 5, pins: { '3.3V': { type: 'generic' }, '5V': { type: 'generic' }, 'GND': { type: 'generic' }, 'A0-A5': { type: 'generic' }, 'D0-D13': { type: 'generic' } } });
     }
 
     /**

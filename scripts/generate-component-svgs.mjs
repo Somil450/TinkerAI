@@ -4,7 +4,7 @@
 import fs from 'fs'
 import path from 'path'
 import { fileURLToPath } from 'url'
-import { PART_BUILDERS, ledFromTemplate, blueBreakout } from './svgPartsLibrary.mjs'
+import { PART_BUILDERS, ledFromTemplate, blueBreakout, dipBreakout, icDip } from './svgPartsLibrary.mjs'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const OUT_SRC = path.join(__dirname, '../src/assets/components')
@@ -77,13 +77,13 @@ write('thermistor-ntc', () => blueBreakout(110, 70, 'NTC', ['VCC', 'GND', 'SIG']
 
 write('oled-module', `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 110 75" width="110" height="75">
 <defs><filter id="osh"><feDropShadow dx="1" dy="2" stdDeviation="2" flood-opacity="0.3"/></filter></defs>
-<rect x="3" y="10" width="104" height="58" rx="3" fill="#111" stroke="#333" filter="url(#osh)"/>
+<rect x="3" y="2" width="104" height="66" rx="3" fill="#111" stroke="#333" filter="url(#osh)"/>
 <rect x="10" y="16" width="90" height="42" rx="1" fill="#000"/>
 <rect x="12" y="18" width="86" height="38" fill="#0a0a0a"/>
 <text x="55" y="42" text-anchor="middle" fill="#0f0" font-family="monospace" font-size="10">0.96" OLED</text>
-<rect x="8" y="4" width="94" height="8" fill="#1a1a1a"/>
-<g fill="#ddd"><rect x="14" y="5" width="4" height="6"/><rect x="34" y="5" width="4" height="6"/><rect x="54" y="5" width="4" height="6"/><rect x="74" y="5" width="4" height="6"/></g>
-<text x="14" y="3" font-size="5" fill="#fff">VCC</text><text x="34" y="3" font-size="5" fill="#fff">GND</text><text x="54" y="3" font-size="5" fill="#fff">SCL</text><text x="74" y="3" font-size="5" fill="#fff">SDA</text>
+<g fill="#ddd"><circle cx="16" cy="8" r="3"/><circle cx="36" cy="8" r="3"/><circle cx="56" cy="8" r="3"/><circle cx="76" cy="8" r="3"/></g>
+<g fill="#111"><circle cx="16" cy="8" r="1.5"/><circle cx="36" cy="8" r="1.5"/><circle cx="56" cy="8" r="1.5"/><circle cx="76" cy="8" r="1.5"/></g>
+<text x="16" y="15" text-anchor="middle" font-size="4" fill="#fff">VCC</text><text x="36" y="15" text-anchor="middle" font-size="4" fill="#fff">GND</text><text x="56" y="15" text-anchor="middle" font-size="4" fill="#fff">SCL</text><text x="76" y="15" text-anchor="middle" font-size="4" fill="#fff">SDA</text>
 </svg>`)
 
 write('tft-module', `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130 110" width="130" height="110">
@@ -96,27 +96,30 @@ write('tft-module', `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130 11
 </svg>`)
 
 write('esp8266', `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130 65" width="130" height="65">
-<rect x="2" y="6" width="126" height="52" rx="2" fill="#1a1a1a" stroke="#333"/>
+<rect x="2" y="2" width="126" height="60" rx="2" fill="#1a1a1a" stroke="#333"/>
 <rect x="42" y="14" width="46" height="32" fill="#111" stroke="#444"/>
 <text x="65" y="34" text-anchor="middle" fill="#fff" font-size="8" font-family="monospace">ESP-12E</text>
-<rect x="6" y="2" width="118" height="6" fill="#0a0a0a"/><rect x="6" y="56" width="118" height="6" fill="#0a0a0a"/>
-<g fill="#ccc">${Array.from({ length: 8 }, (_, i) => `<rect x="${10 + i * 14}" y="1" width="4" height="6"/><rect x="${10 + i * 14}" y="58" width="4" height="6"/>`).join('')}</g>
+<g fill="#ccc">${Array.from({ length: 8 }, (_, i) => `<circle cx="${12 + i * 14}" cy="6" r="3"/><circle cx="${12 + i * 14}" cy="58" r="3"/>`).join('')}</g>
+<g fill="#111">${Array.from({ length: 8 }, (_, i) => `<circle cx="${12 + i * 14}" cy="6" r="1.5"/><circle cx="${12 + i * 14}" cy="58" r="1.5"/>`).join('')}</g>
 </svg>`)
 
 write('rpi-pico', `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 95" width="220" height="95">
-<rect x="4" y="10" width="212" height="75" rx="3" fill="#059669" stroke="#047857"/>
+<rect x="4" y="4" width="212" height="87" rx="3" fill="#059669" stroke="#047857"/>
 <rect x="78" y="28" width="64" height="40" rx="2" fill="#111"/>
 <text x="110" y="54" text-anchor="middle" fill="#fff" font-size="11" font-weight="bold">Raspberry Pi Pico</text>
 <g fill="#D4AF37"><circle cx="14" cy="18" r="4"/><circle cx="206" cy="18" r="4"/><circle cx="14" cy="77" r="4"/><circle cx="206" cy="77" r="4"/></g>
-<rect x="10" y="4" width="200" height="6" fill="#111"/><rect x="10" y="85" width="200" height="6" fill="#111"/>
-<g fill="#ddd">${Array.from({ length: 20 }, (_, i) => `<rect x="${12 + i * 10}" y="3" width="4" height="6"/><rect x="${12 + i * 10}" y="86" width="4" height="6"/>`).join('')}</g>
+<g fill="#ddd">${Array.from({ length: 20 }, (_, i) => `<circle cx="${14 + i * 10}" cy="8" r="3"/><circle cx="${14 + i * 10}" cy="87" r="3"/>`).join('')}
+<circle cx="120" cy="80" r="3"/><circle cx="130" cy="80" r="3"/><circle cx="140" cy="80" r="3"/></g>
+<g fill="#111">${Array.from({ length: 20 }, (_, i) => `<circle cx="${14 + i * 10}" cy="8" r="1.5"/><circle cx="${14 + i * 10}" cy="87" r="1.5"/>`).join('')}
+<circle cx="120" cy="80" r="1.5"/><circle cx="130" cy="80" r="1.5"/><circle cx="140" cy="80" r="1.5"/></g>
 </svg>`)
 
 write('stm32-bluepill', `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150 55" width="150" height="55">
-<rect x="3" y="6" width="144" height="42" rx="2" fill="#1565C0" stroke="#0D47A1"/>
+<rect x="3" y="2" width="144" height="50" rx="2" fill="#1565C0" stroke="#0D47A1"/>
 <rect x="55" y="14" width="40" height="26" fill="#111"/>
 <text x="75" y="31" text-anchor="middle" fill="#fff" font-size="8">STM32F103</text>
-<rect x="6" y="2" width="138" height="5" fill="#111"/><rect x="6" y="47" width="138" height="5" fill="#111"/>
+<g fill="#ddd">${Array.from({ length: 20 }, (_, i) => `<circle cx="${9.5 + i * 7}" cy="6" r="2.5"/><circle cx="${9.5 + i * 7}" cy="48" r="2.5"/>`).join('')}</g>
+<g fill="#111">${Array.from({ length: 20 }, (_, i) => `<circle cx="${9.5 + i * 7}" cy="6" r="1.5"/><circle cx="${9.5 + i * 7}" cy="48" r="1.5"/>`).join('')}</g>
 </svg>`)
 
 write('microbit', `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 110 125" width="110" height="125">
@@ -124,6 +127,11 @@ write('microbit', `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 110 125"
 <rect x="24" y="24" width="62" height="48" rx="3" fill="#111"/>
 <g fill="#555">${Array.from({ length: 25 }, (_, i) => `<circle cx="${30 + (i % 5) * 12}" cy="${32 + Math.floor(i / 5) * 10}" r="2.5"/>`).join('')}</g>
 <text x="55" y="95" text-anchor="middle" fill="#fff" font-size="9" font-weight="bold">micro:bit</text>
+<circle cx="20" cy="110" r="3" fill="#E0E0E0"/><text x="20" y="120" text-anchor="middle" fill="#111" font-size="6">0</text>
+<circle cx="37" cy="110" r="3" fill="#E0E0E0"/><text x="37" y="120" text-anchor="middle" fill="#111" font-size="6">1</text>
+<circle cx="55" cy="110" r="3" fill="#E0E0E0"/><text x="55" y="120" text-anchor="middle" fill="#111" font-size="6">2</text>
+<circle cx="72" cy="110" r="3" fill="#E0E0E0"/><text x="72" y="120" text-anchor="middle" fill="#111" font-size="6">3V</text>
+<circle cx="90" cy="110" r="3" fill="#E0E0E0"/><text x="90" y="120" text-anchor="middle" fill="#111" font-size="6">GND</text>
 </svg>`)
 
 write('rgb-led', `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 70 110" width="70" height="110">
@@ -186,6 +194,8 @@ write('dc-motor', `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 80" 
 <circle cx="38" cy="40" r="10" fill="#424242"/>
 <rect x="66" y="32" width="32" height="16" fill="#757575" rx="2"/>
 <rect x="92" y="35" width="8" height="10" fill="#BDBDBD"/>
+<circle cx="30" cy="70" r="2" fill="#ddd"/><text x="30" y="78" text-anchor="middle" fill="#111" font-size="6">M+</text>
+<circle cx="46" cy="70" r="2" fill="#ddd"/><text x="46" y="78" text-anchor="middle" fill="#111" font-size="6">M-</text>
 </svg>`)
 
 write('stepper', `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 95 95" width="95" height="95">
@@ -193,15 +203,24 @@ write('stepper', `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 95 95" wi
 <circle cx="47" cy="47" r="30" fill="#546E7A"/>
 <circle cx="47" cy="47" r="12" fill="#CFD8DC"/>
 <rect x="41" y="0" width="13" height="12" fill="#9E9E9E"/>
+<circle cx="20" cy="85" r="2" fill="#ddd"/><text x="20" y="93" text-anchor="middle" fill="#fff" font-size="6">A+</text>
+<circle cx="38" cy="85" r="2" fill="#ddd"/><text x="38" y="93" text-anchor="middle" fill="#fff" font-size="6">A-</text>
+<circle cx="56" cy="85" r="2" fill="#ddd"/><text x="56" y="93" text-anchor="middle" fill="#fff" font-size="6">B+</text>
+<circle cx="74" cy="85" r="2" fill="#ddd"/><text x="74" y="93" text-anchor="middle" fill="#fff" font-size="6">B-</text>
 </svg>`)
 
-write('relay-module', `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 110 85" width="110" height="85">
-<rect x="4" y="8" width="102" height="70" rx="4" fill="#1565C0"/>
-<rect x="12" y="16" width="40" height="30" rx="2" fill="#111"/>
-<rect x="58" y="18" width="40" height="44" fill="#E0E0E0" stroke="#9E9E9E"/>
-<circle cx="78" cy="32" r="8" fill="#F44336" opacity="0.8"/>
-<text x="55" y="78" text-anchor="middle" fill="#fff" font-size="8">RELAY</text>
-</svg>`)
+  const relayBase = (w, h, label, pins) => {
+    let base = blueBreakout(w, h, label, pins, { uid: 'relay' })
+    return base.replace('</svg>', '') + 
+    `<rect x="12" y="30" width="40" height="30" rx="2" fill="#111"/>
+    <rect x="68" y="30" width="40" height="44" fill="#E0E0E0" stroke="#9E9E9E"/>
+    <circle cx="88" cy="45" r="8" fill="#F44336" opacity="0.8"/>
+    </svg>`
+  }
+
+  write('relay-module', () => relayBase(120, 85, 'Relay Module', ['VCC', 'GND', 'IN', 'COM', 'NO', 'NC']))
+  write('relay-4ch', () => blueBreakout(160, 90, '4-Channel Relay', ['VCC', 'GND', 'IN1', 'IN2', 'IN3', 'IN4'], { uid: 'relay4' }).replace('</svg>', `<rect x="10" y="30" width="140" height="40" fill="#E0E0E0" stroke="#9E9E9E"/><circle cx="30" cy="50" r="8" fill="#F44336" opacity="0.8"/><circle cx="65" cy="50" r="8" fill="#F44336" opacity="0.8"/><circle cx="100" cy="50" r="8" fill="#F44336" opacity="0.8"/><circle cx="135" cy="50" r="8" fill="#F44336" opacity="0.8"/></svg>`))
+  write('relay-8ch', () => blueBreakout(220, 90, '8-Channel Relay', ['VCC', 'GND', 'IN1', 'IN2', 'IN3', 'IN4', 'IN5', 'IN6', 'IN7', 'IN8'], { uid: 'relay8' }).replace('</svg>', `<rect x="10" y="30" width="200" height="40" fill="#E0E0E0" stroke="#9E9E9E"/><rect x="20" y="45" width="180" height="10" fill="#F44336" opacity="0.8"/></svg>`))
 
 write('motor-driver', `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 80" width="120" height="80">
 <rect x="4" y="8" width="112" height="64" rx="3" fill="#E65100" stroke="#BF360C"/>
@@ -209,19 +228,71 @@ write('motor-driver', `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 
 <rect x="8" y="4" width="104" height="6" fill="#1a1a1a"/>
 </svg>`)
 
+  write('l293d', `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 100" width="120" height="100">
+    <rect x="4" y="4" width="112" height="92" rx="4" fill="#D32F2F" stroke="#B71C1C" stroke-width="2"/>
+    <!-- L293D IC -->
+    <rect x="40" y="20" width="40" height="60" fill="#212121" rx="2"/>
+    <circle cx="45" cy="25" r="2" fill="#555"/>
+    <text x="60" y="55" fill="#E0E0E0" font-family="monospace" font-size="10" font-weight="bold" text-anchor="middle" transform="rotate(90 60 55)">L293D</text>
+    <rect x="36" y="25" width="4" height="4" fill="#9E9E9E"/><rect x="80" y="25" width="4" height="4" fill="#9E9E9E"/>
+    <rect x="36" y="32" width="4" height="4" fill="#9E9E9E"/><rect x="80" y="32" width="4" height="4" fill="#9E9E9E"/>
+    <rect x="36" y="39" width="4" height="4" fill="#9E9E9E"/><rect x="80" y="39" width="4" height="4" fill="#9E9E9E"/>
+    <rect x="36" y="46" width="4" height="4" fill="#9E9E9E"/><rect x="80" y="46" width="4" height="4" fill="#9E9E9E"/>
+    <rect x="36" y="53" width="4" height="4" fill="#9E9E9E"/><rect x="80" y="53" width="4" height="4" fill="#9E9E9E"/>
+    <rect x="36" y="60" width="4" height="4" fill="#9E9E9E"/><rect x="80" y="60" width="4" height="4" fill="#9E9E9E"/>
+    <rect x="36" y="67" width="4" height="4" fill="#9E9E9E"/><rect x="80" y="67" width="4" height="4" fill="#9E9E9E"/>
+    <rect x="36" y="74" width="4" height="4" fill="#9E9E9E"/><rect x="80" y="74" width="4" height="4" fill="#9E9E9E"/>
+    <!-- Screw Terminal Left Top (Motor A) -->
+    <rect x="4" y="15" width="20" height="30" fill="#1565C0" stroke="#0D47A1"/>
+    <circle cx="10" cy="22" r="3" fill="#E0E0E0"/>
+    <circle cx="10" cy="38" r="3" fill="#E0E0E0"/>
+    <text x="28" y="25" fill="#E0E0E0" font-family="monospace" font-size="8">M1</text>
+    <!-- Screw Terminal Left Bottom (Motor B) -->
+    <rect x="4" y="50" width="20" height="30" fill="#1565C0" stroke="#0D47A1"/>
+    <circle cx="10" cy="57" r="3" fill="#E0E0E0"/>
+    <circle cx="10" cy="73" r="3" fill="#E0E0E0"/>
+    <text x="28" y="60" fill="#E0E0E0" font-family="monospace" font-size="8">M2</text>
+    <!-- Screw Terminal Right (Power) -->
+    <rect x="96" y="25" width="20" height="45" fill="#1565C0" stroke="#0D47A1"/>
+    <circle cx="110" cy="32" r="3" fill="#E0E0E0"/>
+    <circle cx="110" cy="47" r="3" fill="#E0E0E0"/>
+    <circle cx="110" cy="62" r="3" fill="#E0E0E0"/>
+    <text x="92" y="35" fill="#E0E0E0" font-family="monospace" font-size="7" text-anchor="end">5V</text>
+    <text x="92" y="50" fill="#E0E0E0" font-family="monospace" font-size="7" text-anchor="end">GND</text>
+    <text x="92" y="65" fill="#E0E0E0" font-family="monospace" font-size="7" text-anchor="end">VCC</text>
+    <!-- Bottom Header Pins -->
+    <rect x="32" y="86" width="56" height="8" fill="#424242"/>
+    <circle cx="35" cy="90" r="2" fill="#FFC107"/>
+    <circle cx="45" cy="90" r="2" fill="#FFC107"/>
+    <circle cx="55" cy="90" r="2" fill="#FFC107"/>
+    <circle cx="65" cy="90" r="2" fill="#FFC107"/>
+    <circle cx="75" cy="90" r="2" fill="#FFC107"/>
+    <circle cx="85" cy="90" r="2" fill="#FFC107"/>
+    <text x="35" y="82" fill="#E0E0E0" font-family="monospace" font-size="6" text-anchor="middle" transform="rotate(-90 35 82)">EN1</text>
+    <text x="45" y="82" fill="#E0E0E0" font-family="monospace" font-size="6" text-anchor="middle" transform="rotate(-90 45 82)">IN1</text>
+    <text x="55" y="82" fill="#E0E0E0" font-family="monospace" font-size="6" text-anchor="middle" transform="rotate(-90 55 82)">IN2</text>
+    <text x="65" y="82" fill="#E0E0E0" font-family="monospace" font-size="6" text-anchor="middle" transform="rotate(-90 65 82)">IN3</text>
+    <text x="75" y="82" fill="#E0E0E0" font-family="monospace" font-size="6" text-anchor="middle" transform="rotate(-90 75 82)">IN4</text>
+    <text x="85" y="82" fill="#E0E0E0" font-family="monospace" font-size="6" text-anchor="middle" transform="rotate(-90 85 82)">EN2</text>
+  </svg>`)
+write('a4988', () => dipBreakout(16, 'A4988', '#F44336'))
+write('drv8825', () => dipBreakout(16, 'DRV8825', '#9C27B0'))
+write('tb6612fng', () => dipBreakout(16, 'TB6612', '#E65100'))
+write('uln2003', () => blueBreakout(140, 85, 'ULN2003', ['IN1', 'IN2', 'IN3', 'IN4', 'VCC', 'GND'], { uid: 'uln' }))
+write('bts7960', () => blueBreakout(140, 85, 'BTS7960', ['VCC', 'GND', 'R_EN', 'L_EN', 'RPWM', 'LPWM'], { uid: 'bts' }))
+write('pca9685', () => blueBreakout(140, 85, 'PCA9685', ['VCC', 'GND', 'SDA', 'SCL', 'OE'], { uid: 'pca' }))
+write('l298n-mini', () => blueBreakout(160, 85, 'MINI L298N', ['VCC', 'GND', 'IN1', 'IN2', 'IN3', 'IN4', 'MOTA', 'MOTB'], { uid: 'l298m' }))
+
 write('buzzer', `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 75 75" width="75" height="75">
 <circle cx="37" cy="42" r="28" fill="#222"/>
 <circle cx="37" cy="42" r="12" fill="#444"/>
 <circle cx="37" cy="42" r="4" fill="#666"/>
 <rect x="32" y="4" width="10" height="12" fill="#999"/>
+<circle cx="25" cy="15" r="2" fill="#ddd"/><text x="25" y="25" text-anchor="middle" fill="#fff" font-size="6">+</text>
+<circle cx="50" cy="15" r="2" fill="#ddd"/><text x="50" y="25" text-anchor="middle" fill="#fff" font-size="6">-</text>
 </svg>`)
 
-write('bluetooth-hc05', `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 75" width="100" height="75">
-<rect x="4" y="8" width="92" height="58" rx="4" fill="#1565C0"/>
-<text x="50" y="42" text-anchor="middle" fill="#fff" font-size="11" font-weight="bold">HC-05</text>
-<circle cx="82" cy="16" r="4" fill="#F44336"/>
-<rect x="8" y="4" width="84" height="6" fill="#111"/>
-</svg>`)
+write('bluetooth-hc05', () => blueBreakout(120, 85, 'HC-05', ['VCC', 'GND', 'TXD', 'RXD', 'STATE', 'EN'], { uid: 'hc05' }))
 
 write('comm-module', `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 115 80" width="115" height="80">
 <rect x="4" y="8" width="107" height="64" rx="3" fill="#4A148C"/>
@@ -278,8 +349,12 @@ ${['#F44336','#FF9800','#FFEB3B','#4CAF50','#2196F3','#9C27B0','#E91E63','#00BCD
 </svg>`)
 
 write('neopixel-strip', `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150 45" width="150" height="45">
-<rect x="2" y="14" width="146" height="18" rx="2" fill="#222"/>
-${['#F44336','#FF9800','#FFEB3B','#4CAF50','#2196F3','#9C27B0','#E91E63','#00BCD4','#F44336','#4CAF50'].map((c,i)=>`<circle cx="${14+i*13}" cy="23" r="5" fill="${c}"/>`).join('')}
+<rect x="12" y="14" width="136" height="18" rx="2" fill="#222"/>
+<rect x="0" y="10" width="16" height="26" rx="1" fill="#333"/>
+${['#F44336','#FF9800','#FFEB3B','#4CAF50','#2196F3','#9C27B0','#E91E63','#00BCD4'].map((c,i)=>`<circle cx="${30+i*15}" cy="23" r="5" fill="${c}"/>`).join('')}
+<circle cx="6" cy="14" r="2" fill="#ddd"/><text x="6" y="10" text-anchor="middle" fill="#fff" font-size="5">VCC</text>
+<circle cx="6" cy="23" r="2" fill="#ddd"/><text x="6" y="32" text-anchor="middle" fill="#fff" font-size="5">DIN</text>
+<circle cx="6" cy="32" r="2" fill="#ddd"/><text x="6" y="42" text-anchor="middle" fill="#fff" font-size="5">GND</text>
 </svg>`)
 
 write('jumper-wire', `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 110 35" width="110" height="35">
@@ -295,10 +370,14 @@ write('solar-panel', `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 125 8
 </svg>`)
 
 write('display-7seg', `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 110 65" width="110" height="65">
-<rect x="4" y="8" width="102" height="50" rx="3" fill="#111"/>
-<text x="32" y="45" fill="#F44336" font-family="monospace" font-size="32" font-weight="bold">8</text>
-<text x="72" y="45" fill="#F44336" font-family="monospace" font-size="32" font-weight="bold">8</text>
-</svg>`)
+  <rect x="4" y="8" width="102" height="50" rx="3" fill="#111"/>
+  <text x="32" y="45" fill="#F44336" font-family="monospace" font-size="32" font-weight="bold">8</text>
+  <text x="72" y="45" fill="#F44336" font-family="monospace" font-size="32" font-weight="bold">8</text>
+  <circle cx="35" cy="5" r="2" fill="#ddd"/><text x="35" y="15" text-anchor="middle" fill="#fff" font-size="5">VCC</text>
+  <circle cx="48" cy="5" r="2" fill="#ddd"/><text x="48" y="15" text-anchor="middle" fill="#fff" font-size="5">GND</text>
+  <circle cx="61" cy="5" r="2" fill="#ddd"/><text x="61" y="15" text-anchor="middle" fill="#fff" font-size="5">DIO</text>
+  <circle cx="74" cy="5" r="2" fill="#ddd"/><text x="74" y="15" text-anchor="middle" fill="#fff" font-size="5">CLK</text>
+  </svg>`)
 
 write('sensor-module', () => blueBreakout(130, 78, 'SENSOR', ['VCC', 'GND', 'OUT', 'AO'], { uid: 'sns' }))
 
@@ -338,12 +417,12 @@ write('l298n', `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" wi
     <rect x="172" y="180" width="8" height="8"/>
     <rect x="188" y="180" width="8" height="8"/>
   </g>
-  <text x="112" y="160" fill="#fff" font-size="10" text-anchor="middle">ENA</text>
-  <text x="128" y="160" fill="#fff" font-size="10" text-anchor="middle">IN1</text>
-  <text x="144" y="160" fill="#fff" font-size="10" text-anchor="middle">IN2</text>
-  <text x="160" y="160" fill="#fff" font-size="10" text-anchor="middle">IN3</text>
-  <text x="176" y="160" fill="#fff" font-size="10" text-anchor="middle">IN4</text>
-  <text x="192" y="160" fill="#fff" font-size="10" text-anchor="middle">ENB</text>
+    <text x="112" y="165" fill="#fff" font-size="8" text-anchor="start" transform="rotate(-90 112 165)">ENA</text>
+    <text x="128" y="165" fill="#fff" font-size="8" text-anchor="start" transform="rotate(-90 128 165)">IN1</text>
+    <text x="144" y="165" fill="#fff" font-size="8" text-anchor="start" transform="rotate(-90 144 165)">IN2</text>
+    <text x="160" y="165" fill="#fff" font-size="8" text-anchor="start" transform="rotate(-90 160 165)">IN3</text>
+    <text x="176" y="165" fill="#fff" font-size="8" text-anchor="start" transform="rotate(-90 176 165)">IN4</text>
+    <text x="192" y="165" fill="#fff" font-size="8" text-anchor="start" transform="rotate(-90 192 165)">ENB</text>
   <!-- Capacitors -->
   <circle cx="70" cy="260" r="12" fill="#111"/>
   <circle cx="230" cy="260" r="12" fill="#111"/>

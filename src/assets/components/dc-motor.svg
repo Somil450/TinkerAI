@@ -3,4 +3,6 @@
 <circle cx="38" cy="40" r="10" fill="#424242"/>
 <rect x="66" y="32" width="32" height="16" fill="#757575" rx="2"/>
 <rect x="92" y="35" width="8" height="10" fill="#BDBDBD"/>
+<circle cx="30" cy="70" r="2" fill="#ddd"/><text x="30" y="78" text-anchor="middle" fill="#111" font-size="6">M+</text>
+<circle cx="46" cy="70" r="2" fill="#ddd"/><text x="46" y="78" text-anchor="middle" fill="#111" font-size="6">M-</text>
 </svg>

@@ -1,5 +1,8 @@
+import { expandBreadboardConnections } from './graph.js';
+import { componentRegistry } from './componentRegistry.js';
+
 let selectedPin = null;
-const connections = [];
+let connections = [];
 
 export function selectPin(componentId, pinId, pinElement) {
     const fullPin = `${componentId}.${pinId}`;
@@ -25,5 +28,9 @@ export function selectPin(componentId, pinId, pinElement) {
 }
 
 export function getConnections() {
-    return connections;
+    return expandBreadboardConnections(connections, componentRegistry);
+}
+
+export function removeConnection(index) {
+    connections.splice(index, 1);
 }

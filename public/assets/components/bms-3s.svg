@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 100" width="160" height="100">
+  <defs><filter id="sh"><feDropShadow dx="1" dy="2" stdDeviation="2.5" flood-opacity="0.3"/></filter>
+  <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#1a237e"/><stop offset="100%" stop-color="#0d1452"/>
+  </linearGradient></defs>
+  <rect x="2" y="2" width="156" height="96" rx="4" fill="url(#bg)" stroke="#0d1452" stroke-width="2" filter="url(#sh)"/>
+  <!-- DW01 ICs (protection) -->
+  <rect x="10" y="14" width="30" height="20" rx="1" fill="#111" stroke="#333"/>
+  <text x="25" y="27" text-anchor="middle" font-size="5.5" fill="#888" font-family="monospace">DW01x3</text>
+  <!-- MOSFETs (large TO-252) -->
+  <rect x="50" y="10" width="24" height="54" rx="1" fill="#333" stroke="#555"/>
+  <text x="62" y="40" text-anchor="middle" font-size="5" fill="#888" font-family="monospace" transform="rotate(-90 62 40)">N-MOS</text>
+  <rect x="78" y="10" width="24" height="54" rx="1" fill="#333" stroke="#555"/>
+  <!-- Thermal pad / heatsink area -->
+  <rect x="52" y="12" width="48" height="8" rx="1" fill="#888" stroke="#666"/>
+  <!-- Balancing resistors -->
+  <rect x="110" y="18" width="36" height="8" rx="3" fill="#c8a800" stroke="#a07800"/>
+  <rect x="110" y="32" width="36" height="8" rx="3" fill="#c8a800" stroke="#a07800"/>
+  <rect x="110" y="46" width="36" height="8" rx="3" fill="#c8a800" stroke="#a07800"/>
+  <!-- Terminal blocks (7 pins: B- B1 B2 B+ P- P+) -->
+  <rect x="10" y="68" width="136" height="24" rx="2" fill="#333" stroke="#555"/>
+  <circle cx="22" cy="78" r="5.5" fill="#888" stroke="#666"/>
+  <circle cx="40" cy="78" r="5.5" fill="#888" stroke="#666"/>
+  <circle cx="58" cy="78" r="5.5" fill="#888" stroke="#666"/>
+  <circle cx="76" cy="78" r="5.5" fill="#888" stroke="#666"/>
+  <circle cx="94" cy="78" r="5.5" fill="#f44336" stroke="#c62828"/>
+  <circle cx="112" cy="78" r="5.5" fill="#111" stroke="#333"/>
+  <circle cx="130" cy="78" r="5.5" fill="#111" stroke="#333"/>
+  <text x="22" y="88" text-anchor="middle" font-size="4.5" fill="#aaa" font-family="Arial">B-</text>
+  <text x="40" y="88" text-anchor="middle" font-size="4.5" fill="#aaa" font-family="Arial">B1</text>
+  <text x="58" y="88" text-anchor="middle" font-size="4.5" fill="#aaa" font-family="Arial">B2</text>
+  <text x="76" y="88" text-anchor="middle" font-size="4.5" fill="#aaa" font-family="Arial">B+</text>
+  <text x="94" y="88" text-anchor="middle" font-size="4.5" fill="#f44336" font-family="Arial">P+</text>
+  <text x="112" y="88" text-anchor="middle" font-size="4.5" fill="#aaa" font-family="Arial">C+</text>
+  <text x="130" y="88" text-anchor="middle" font-size="4.5" fill="#aaa" font-family="Arial">P-</text>
+  <text x="80" y="98" text-anchor="middle" font-size="8.5" font-weight="bold" fill="white" font-family="Arial">BMS 3S 10A Li-Ion</text>
+</svg>

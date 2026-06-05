@@ -665,19 +665,17 @@ canvas.addEventListener('dragover', e => {
     }
   })
 
-  canvas.addEventListener('drop', e => {
-    e.preventDefault()
-
-    const type = e.dataTransfer.getData('type')
-    if (!type) return
-
+  window.placeComponent = function(type, x, y) {
     componentCounter++
 
-  const item = document.createElement('div')
-  item.className = 'placed-component'
-  item.dataset.componentId = `${type}_${componentCounter}`
-  item.style.left = `${e.offsetX}px`
-  item.style.top = `${e.offsetY}px`
+    const item = document.createElement('div')
+    item.className = 'placed-component'
+    item.dataset.componentId = `${type}_${componentCounter}`
+    item.style.left = `${x}px`
+    item.style.top = `${y}px`
+    
+    // Resume existing logic
+
 
   item.innerHTML = getComponentHTML(type)
 
@@ -782,7 +780,19 @@ canvas.addEventListener('dragover', e => {
     dragOffsetY = e.clientY - itemRect.top
   })
   
+  item.addEventListener('touchstart', (e) => {
+    isDragging = true
+    const touch = e.touches[0]
+    const itemRect = item.getBoundingClientRect()
+    dragOffsetX = touch.clientX - itemRect.left
+    dragOffsetY = touch.clientY - itemRect.top
+  }, {passive: true})
+  
   document.addEventListener('mouseup', () => {
+    isDragging = false
+  })
+
+  document.addEventListener('touchend', () => {
     isDragging = false
   })
   
@@ -801,7 +811,48 @@ canvas.addEventListener('dragover', e => {
     item.style.top = `${newTop}px`
     renderWires()
   })
-})
+
+  document.addEventListener('touchmove', e => {
+    if (!isDragging) return
+    e.preventDefault() // prevent page scroll while dragging
+    const touch = e.touches[0]
+  
+    const rect = canvas.getBoundingClientRect()
+    let newLeft = touch.clientX - rect.left - dragOffsetX
+    let newTop = touch.clientY - rect.top - dragOffsetY
+    
+    // Snap to 20px grid
+    newLeft = Math.round(newLeft / 20) * 20
+    newTop = Math.round(newTop / 20) * 20
+    
+    item.style.left = `${newLeft}px`
+    item.style.top = `${newTop}px`
+    renderWires()
+  }, {passive: false})
+  } // End of placeComponent
+
+  canvas.addEventListener('drop', e => {
+    e.preventDefault();
+    const type = e.dataTransfer.getData('type');
+    if (!type) return;
+    placeComponent(type, e.offsetX, e.offsetY);
+  });
+document.getElementById('component-list').addEventListener('click', (e) => {
+  const comp = e.target.closest('.component');
+  if (comp) {
+    const type = comp.dataset.type;
+    const canvasRect = canvas.getBoundingClientRect();
+    const x = Math.round((canvasRect.width / 2 - 50) / 20) * 20;
+    const y = Math.round((canvasRect.height / 2 - 50) / 20) * 20;
+    placeComponent(type, x, y);
+
+    // On mobile, automatically close the sidebar after adding
+    if (window.innerWidth <= 1024) {
+      rightSidebar.classList.add('hidden');
+      sidebarResizer.classList.add('hidden');
+    }
+  }
+});
 
 function renderWires() {
   window.renderWires = renderWires; // Expose for simulator
@@ -976,10 +1027,14 @@ function renderWires() {
   }
 
   chatFab.addEventListener('click', () => {
-    chatPanel.classList.toggle('hidden')
-    if (!chatPanel.classList.contains('hidden')) chatInput.focus()
+    chatPanel.classList.remove('hidden')
+    chatInput.focus()
+    chatFab.classList.add('hidden')
   })
-  chatClose.addEventListener('click', () => chatPanel.classList.add('hidden'))
+  chatClose.addEventListener('click', () => {
+    chatPanel.classList.add('hidden')
+    chatFab.classList.remove('hidden')
+  })
   chatSend.addEventListener('click', sendChatMessage)
   chatInput.addEventListener('keydown', e => { if (e.key === 'Enter') sendChatMessage() })
 

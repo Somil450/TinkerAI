@@ -1419,7 +1419,7 @@ If the user wants to build a circuit, you MUST respond in Markdown, explaining t
 
 CRITICAL WIRING RULES:
 1. ALWAYS use the EXACT pin names provided in the registry.
-2. If using LEDs, you MUST wire a resistor IN SERIES (e.g. MCU Pin -> Resistor pin1, Resistor pin2 -> LED anode, LED cathode -> GND). DO NOT wire the LED directly to the MCU if you add a resistor!`;
+2. If using LEDs, you MUST wire a resistor IN SERIES (e.g. MCU Pin -> Resistor pin1, Resistor pin2 -> LED anode, LED cathode -> GND). DO NOT wire the LED directly to the MCU if you add a resistor!
 * Note: The "components" array must contain ONLY the base component IDs (e.g. "dht22"). Do NOT append the index.
 * Note: For "wiring", "fromComp" and "toComp" must be either "mcu", or the exact component ID appended with its index (e.g., "dht22_0", "l298n_0", "4wd-car-chassis_0"). DO NOT use human readable names.
 * Note: DO NOT include "jumper wires", "breadboards", or any physical connectors in the components array. Wiring is handled virtually!
@@ -1427,7 +1427,7 @@ CRITICAL WIRING RULES:
 WIRING HINTS:
 - If using '4wd-car-chassis', it has 8 pins. Wire left motors (M1, M2) in parallel to a single motor driver OUT1/OUT2. Wire right motors (M3, M4) in parallel to the SAME driver's OUT3/OUT4. Do NOT use two motor drivers for a standard 4WD car.
 
-Provide the complete accurate wiring IN A TABULAR FORMAT, and the actual C++ code snippet in the code field. Only use components and pins from the available registry.`;
+Provide the complete accurate wiring IN A TABULAR FORMAT, and the actual C++ code snippet in the code field. Only use components and pins from the available registry.\`;
         
         const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent?key=${apiKey}`, {
           method: 'POST',

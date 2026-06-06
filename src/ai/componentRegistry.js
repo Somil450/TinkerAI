@@ -1143,6 +1143,20 @@ export class ComponentRegistry {
         this.register({ id: 'jetson-nano', name: 'NVIDIA Jetson Nano', category: 'Microcontroller', subcategory: 'SBC', price: 5, pins: { '5V': { type: 'generic' }, '3.3V': { type: 'generic' }, 'GND': { type: 'generic' }, 'GPIOx40': { type: 'generic' } } });
         this.register({ id: 'google-coral', name: 'Google Coral USB', category: 'IC', subcategory: 'AI', price: 5, pins: { 'USB': { type: 'generic' } } });
         this.register({ id: 'sipeed-maix-duino', name: 'Sipeed Maixduino', category: 'Microcontroller', subcategory: 'AI', price: 5, pins: { '3.3V': { type: 'generic' }, '5V': { type: 'generic' }, 'GND': { type: 'generic' }, 'A0-A5': { type: 'generic' }, 'D0-D13': { type: 'generic' } } });
+
+        // === PASSIVES ===
+        this.register({
+            id: 'resistor-220ohm',
+            name: 'Resistor 220Ω',
+            category: 'Passive',
+            manufacturer: 'Generic',
+            price: 0.1,
+            pins: {
+                'pin1': { type: 'generic' },
+                'pin2': { type: 'generic' }
+            },
+            specs: { resistance: '220Ω' }
+        });
     }
 
     /**

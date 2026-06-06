@@ -1415,7 +1415,11 @@ Available components in our registry: ${availableComps}.
 User request: ${msg}
 
 If the user wants to build a circuit, you MUST respond in Markdown, explaining the wiring in a clear Markdown table format (e.g., | Component | Pin | Connects To |), and you MUST include the following JSON payload exactly inside an HTML comment at the end of your response to auto-generate the circuit:
-<!-- ACTION: {"mcu": "arduino-uno", "components": ["dht22", "oled-i2c", "l298n", "4wd-car-chassis"], "wiring": [{"fromComp": "mcu", "fromPin": "5V", "toComp": "dht22_0", "toPin": "VCC"}, {"fromComp": "mcu", "fromPin": "A4", "toComp": "oled-i2c_0", "toPin": "SDA"}, {"fromComp": "l298n_0", "fromPin": "OUT1", "toComp": "4wd-car-chassis_0", "toPin": "M1+"}], "code": "void setup() {}\\nvoid loop() {}"} -->
+<!-- ACTION: {"mcu": "arduino-uno", "components": ["led-red", "resistor-220ohm", "dht22"], "wiring": [{"fromComp": "mcu", "fromPin": "D4", "toComp": "resistor-220ohm_0", "toPin": "pin1"}, {"fromComp": "resistor-220ohm_0", "fromPin": "pin2", "toComp": "led-red_0", "toPin": "anode"}, {"fromComp": "led-red_0", "fromPin": "cathode", "toComp": "mcu", "toPin": "GND"}], "code": "void setup() {}\\nvoid loop() {}"} -->
+
+CRITICAL WIRING RULES:
+1. ALWAYS use the EXACT pin names provided in the registry.
+2. If using LEDs, you MUST wire a resistor IN SERIES (e.g. MCU Pin -> Resistor pin1, Resistor pin2 -> LED anode, LED cathode -> GND). DO NOT wire the LED directly to the MCU if you add a resistor!`;
 * Note: The "components" array must contain ONLY the base component IDs (e.g. "dht22"). Do NOT append the index.
 * Note: For "wiring", "fromComp" and "toComp" must be either "mcu", or the exact component ID appended with its index (e.g., "dht22_0", "l298n_0", "4wd-car-chassis_0"). DO NOT use human readable names.
 * Note: DO NOT include "jumper wires", "breadboards", or any physical connectors in the components array. Wiring is handled virtually!

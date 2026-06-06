@@ -754,8 +754,10 @@ canvas.addEventListener('dragover', e => {
       let defColor = "#00cc66" // Green for signal
       const pinALower = firstPinElement.dataset.pin.toLowerCase()
       const pinBLower = pin.dataset.pin.toLowerCase()
-      if (pinALower.includes("5v") || pinALower.includes("3.3v") || pinALower.includes("vcc") || pinALower.includes("vin") || pinBLower.includes("5v") || pinBLower.includes("3.3v") || pinBLower.includes("vcc") || pinBLower.includes("vin") || pinALower === "v+" || pinBLower === "v+") defColor = "#ff3333" // Red
-      if (pinALower.includes("gnd") || pinALower.includes("ground") || pinALower === "-" || pinBLower.includes("gnd") || pinBLower.includes("ground") || pinBLower === "-") defColor = "#333333" // Black
+      const isPower = (p) => p.includes("5v") || p.includes("3.3v") || p.includes("vcc") || p.includes("vin") || p.includes("vdd") || p === "v+";
+      const isGround = (p) => p.includes("gnd") || p.includes("ground") || p.includes("vss") || p === "-";
+      if (isPower(pinALower) || isPower(pinBLower)) defColor = "#ff3333" // Red
+      if (isGround(pinALower) || isGround(pinBLower)) defColor = "#333333" // Black
 
       wireObjects.push({ 
         pin1: firstPinElement, 
@@ -1251,9 +1253,13 @@ function renderWires() {
                 ];
                 let defColor = palette[wIdx % palette.length]; 
                 
-                const pinLower = pin2Id.toLowerCase();
-                if (pinLower.includes("5v") || pinLower.includes("3.3v") || pinLower.includes("vcc")) defColor = "#ff3333";
-                if (pinLower.includes("gnd") || pinLower === "-") defColor = "#333333";
+                const pin1Lower = pin1Id.toLowerCase();
+                const pin2Lower = pin2Id.toLowerCase();
+                const isPower = (p) => p.includes("5v") || p.includes("3.3v") || p.includes("vcc") || p.includes("vin") || p.includes("vdd") || p === "v+";
+                const isGround = (p) => p.includes("gnd") || p.includes("ground") || p.includes("vss") || p === "-";
+                
+                if (isPower(pin1Lower) || isPower(pin2Lower)) defColor = "#ff3333";
+                if (isGround(pin1Lower) || isGround(pin2Lower)) defColor = "#333333";
                 
                 // Calculate orthogonal waypoints to prevent messy overlaps
                 const rect1 = pin1El.getBoundingClientRect();

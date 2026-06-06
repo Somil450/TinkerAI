@@ -1421,6 +1421,7 @@ CRITICAL WIRING RULES:
 1. ALWAYS use the EXACT pin names provided in the registry.
 2. If using LEDs, you MUST wire a resistor IN SERIES (e.g. MCU Pin -> Resistor pin1, Resistor pin2 -> LED anode, LED cathode -> GND). DO NOT wire the LED directly to the MCU if you add a resistor!
 * Note: The "components" array must contain ONLY the base component IDs (e.g. "dht22"). Do NOT append the index.
+* Note: DO NOT include the main MCU itself in the "components" array. It is already defined in the "mcu" field.
 * Note: For "wiring", "fromComp" and "toComp" must be either "mcu", or the exact component ID appended with its index (e.g., "dht22_0", "l298n_0", "4wd-car-chassis_0"). DO NOT use human readable names.
 * Note: DO NOT include "jumper wires", "breadboards", or any physical connectors in the components array. Wiring is handled virtually!
 

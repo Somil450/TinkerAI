@@ -1171,7 +1171,10 @@ function renderWires() {
       const angleStep = (2 * Math.PI) / plan.components.length;
       const compCounts = {};
       
-      plan.components.forEach((rawCompId, idx) => {
+      // Filter out the MCU itself if the AI mistakenly included it in the components array
+      const filteredComponents = plan.components.filter(c => c.replace(/_\d+$/, '') !== plan.mcu);
+      
+      filteredComponents.forEach((rawCompId, idx) => {
         // Robustness: If the AI accidentally includes the index in the components array, strip it
         const compId = rawCompId.replace(/_\d+$/, '');
         const angle = idx * angleStep;

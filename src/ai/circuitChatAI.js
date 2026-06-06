@@ -1392,7 +1392,7 @@ class CircuitChatAI {
        return res;
     }
 
-    const apiKey = localStorage.getItem('gemini_api_key') || 'AIzaSyARTCKKYPcqFl2KJxWVDmzsAm9HnP9xV84';
+    const apiKey = localStorage.getItem('gemini_api_key');
     const low = msg.toLowerCase();
     const placed = this._getPlaced();
     const comps  = this._findComps(msg);

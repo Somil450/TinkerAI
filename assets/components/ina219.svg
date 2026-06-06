@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130 90" width="130" height="90">
+  <defs><filter id="sh"><feDropShadow dx="1" dy="2" stdDeviation="2.5" flood-opacity="0.3"/></filter>
+  <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#7b1fa2"/><stop offset="100%" stop-color="#4a148c"/>
+  </linearGradient></defs>
+  <rect x="3" y="18" width="124" height="68" rx="4" fill="url(#bg)" stroke="#4a148c" stroke-width="1.5" filter="url(#sh)"/>
+  <!-- INA219 SOIC chip -->
+  <rect x="32" y="30" width="66" height="40" rx="2" fill="#111" stroke="#333" stroke-width="1.5"/>
+  <circle cx="35" cy="33" r="2" fill="#555"/>
+  <text x="65" y="50" text-anchor="middle" font-size="7.5" fill="#888" font-family="monospace">INA219</text>
+  <text x="65" y="60" text-anchor="middle" font-size="5.5" fill="#666" font-family="monospace">I+V Monitor</text>
+  <!-- Shunt resistor (R100 = 0.1 ohm) visible on PCB -->
+  <rect x="4" y="40" width="24" height="12" rx="3" fill="#c8a800" stroke="#a07800" stroke-width="1.5"/>
+  <text x="16" y="49" text-anchor="middle" font-size="5" fill="#7a5c00" font-family="Arial">R100</text>
+  <!-- VIN+/VIN- screw terminals -->
+  <rect x="4" y="36" width="10" height="10" rx="2" fill="#333" stroke="#555"/>
+  <circle cx="9" cy="41" r="3.5" fill="#888" stroke="#666"/>
+  <rect x="4" y="50" width="10" height="10" rx="2" fill="#333" stroke="#555"/>
+  <circle cx="9" cy="55" r="3.5" fill="#888" stroke="#666"/>
+  <text x="9" y="34" text-anchor="middle" font-size="4.5" fill="#ddd" font-family="Arial">IN+</text>
+  <text x="9" y="64" text-anchor="middle" font-size="4.5" fill="#ddd" font-family="Arial">IN-</text>
+  <!-- 4-pin header: VCC GND SDA SCL -->
+  <rect x="24" y="6" width="82" height="14" rx="2" fill="#1a1a1a" stroke="#333"/>
+  <rect x="28" y="8" width="10" height="10" rx="1" fill="#c8b400"/>
+  <rect x="44" y="8" width="10" height="10" rx="1" fill="#c8b400"/>
+  <rect x="60" y="8" width="10" height="10" rx="1" fill="#c8b400"/>
+  <rect x="76" y="8" width="10" height="10" rx="1" fill="#c8b400"/>
+  <text x="33" y="3" text-anchor="middle" font-size="5.5" fill="#ddd" font-family="Arial" font-weight="bold">VCC</text>
+  <text x="49" y="3" text-anchor="middle" font-size="5.5" fill="#ddd" font-family="Arial" font-weight="bold">GND</text>
+  <text x="65" y="3" text-anchor="middle" font-size="5.5" fill="#ddd" font-family="Arial" font-weight="bold">SDA</text>
+  <text x="81" y="3" text-anchor="middle" font-size="5.5" fill="#ddd" font-family="Arial" font-weight="bold">SCL</text>
+  <text x="65" y="80" text-anchor="middle" font-size="9" font-weight="bold" fill="white" font-family="Arial">INA219 Power Monitor</text>
+</svg>

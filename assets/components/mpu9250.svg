@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150 90" width="150" height="90">
+  <defs><filter id="sh"><feDropShadow dx="1" dy="2" stdDeviation="2.5" flood-opacity="0.3"/></filter>
+  <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#1565C0"/><stop offset="100%" stop-color="#0a3d7a"/>
+  </linearGradient></defs>
+  <rect x="3" y="18" width="144" height="68" rx="4" fill="url(#bg)" stroke="#0a3d7a" stroke-width="1.5" filter="url(#sh)"/>
+  <!-- MPU chip (QFN) -->
+  <rect x="46" y="30" width="58" height="44" rx="2" fill="#111" stroke="#333" stroke-width="1.5"/>
+  <circle cx="49" cy="33" r="2" fill="#555"/>
+  <text x="75" y="52" text-anchor="middle" font-size="7.5" fill="#888" font-family="monospace">MPU-9250</text>
+  <text x="75" y="63" text-anchor="middle" font-size="5.5" fill="#666" font-family="monospace">Gyro+Accel+Mag</text>
+  <!-- 8-pin header: INT AD0 XDA XCL SDA SCL GND VCC -->
+  <rect x="4" y="6" width="142" height="14" rx="2" fill="#1a1a1a" stroke="#333"/>
+  <rect x="8" y="8" width="10" height="10" rx="1" fill="#c8b400"/>
+  <rect x="24" y="8" width="10" height="10" rx="1" fill="#c8b400"/>
+  <rect x="40" y="8" width="10" height="10" rx="1" fill="#c8b400"/>
+  <rect x="56" y="8" width="10" height="10" rx="1" fill="#c8b400"/>
+  <rect x="72" y="8" width="10" height="10" rx="1" fill="#c8b400"/>
+  <rect x="88" y="8" width="10" height="10" rx="1" fill="#c8b400"/>
+  <rect x="104" y="8" width="10" height="10" rx="1" fill="#c8b400"/>
+  <rect x="120" y="8" width="10" height="10" rx="1" fill="#c8b400"/>
+  <text x="13" y="3" text-anchor="middle" font-size="5" fill="#ddd" font-family="Arial" font-weight="bold">INT</text>
+  <text x="29" y="3" text-anchor="middle" font-size="5" fill="#ddd" font-family="Arial" font-weight="bold">AD0</text>
+  <text x="45" y="3" text-anchor="middle" font-size="5" fill="#ddd" font-family="Arial" font-weight="bold">XDA</text>
+  <text x="61" y="3" text-anchor="middle" font-size="5" fill="#ddd" font-family="Arial" font-weight="bold">XCL</text>
+  <text x="77" y="3" text-anchor="middle" font-size="5" fill="#ddd" font-family="Arial" font-weight="bold">SDA</text>
+  <text x="93" y="3" text-anchor="middle" font-size="5" fill="#ddd" font-family="Arial" font-weight="bold">SCL</text>
+  <text x="109" y="3" text-anchor="middle" font-size="5" fill="#ddd" font-family="Arial" font-weight="bold">GND</text>
+  <text x="125" y="3" text-anchor="middle" font-size="5" fill="#ddd" font-family="Arial" font-weight="bold">VCC</text>
+  <text x="75" y="80" text-anchor="middle" font-size="9" font-weight="bold" fill="white" font-family="Arial">MPU-9250 DoF IMU IMU</text>
+</svg>

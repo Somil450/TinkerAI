@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150 100" width="150" height="100">
+  <defs><filter id="sh"><feDropShadow dx="1" dy="2" stdDeviation="2.5" flood-opacity="0.3"/></filter>
+  <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#212121"/><stop offset="100%" stop-color="#111111"/>
+  </linearGradient></defs>
+  <rect x="2" y="2" width="146" height="96" rx="4" fill="url(#bg)" stroke="#111" stroke-width="2" filter="url(#sh)"/>
+  <!-- XL4015 SOP8 chip with exposed pad + big heatsink -->
+  <rect x="46" y="18" width="56" height="42" rx="2" fill="#333" stroke="#555"/>
+  <rect x="52" y="12" width="44" height="12" rx="1" fill="#999" stroke="#777"/>
+  <text x="74" y="38" text-anchor="middle" font-size="7.5" fill="#888" font-family="monospace">XL4015</text>
+  <text x="74" y="50" text-anchor="middle" font-size="5.5" fill="#666" font-family="monospace">Buck 5A</text>
+  <!-- Diode -->
+  <rect x="8" y="26" width="30" height="16" rx="2" fill="#1a1a1a" stroke="#333"/>
+  <text x="23" y="37" text-anchor="middle" font-size="5.5" fill="#888" font-family="monospace">SS56</text>
+  <!-- Inductor (large, rated 5A) -->
+  <rect x="106" y="26" width="36" height="16" rx="2" fill="#555" stroke="#333"/>
+  <path d="M110,34 a5,5 0 0,1 10,0 a5,5 0 0,1 10,0 a5,5 0 0,1 10,0" stroke="#c8a800" stroke-width="2.5" fill="none"/>
+  <text x="124" y="50" text-anchor="middle" font-size="5" fill="#aaa" font-family="Arial">33µH 5A</text>
+  <!-- Electrolytic caps -->
+  <rect x="8" y="50" width="14" height="24" rx="3" fill="#111" stroke="#333"/>
+  <rect x="26" y="50" width="14" height="24" rx="3" fill="#111" stroke="#333"/>
+  <!-- Trim pot x2 (CV + CC) -->
+  <circle cx="74" cy="74" r="9" fill="#e0e0e0" stroke="#aaa" stroke-width="1.5"/>
+  <line x1="74" y1="65" x2="74" y2="71" stroke="#555" stroke-width="2"/>
+  <text x="74" y="86" text-anchor="middle" font-size="5" fill="#aaa" font-family="Arial">CV</text>
+  <circle cx="110" cy="74" r="9" fill="#e0e0e0" stroke="#aaa" stroke-width="1.5"/>
+  <line x1="110" y1="65" x2="110" y2="71" stroke="#555" stroke-width="2"/>
+  <text x="110" y="86" text-anchor="middle" font-size="5" fill="#aaa" font-family="Arial">CC</text>
+  <text x="75" y="96" text-anchor="middle" font-size="8.5" font-weight="bold" fill="white" font-family="Arial">XL4015 CC/CV Buck</text>
+</svg>

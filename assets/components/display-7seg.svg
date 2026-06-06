@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 110 65" width="110" height="65">
+  <rect x="4" y="8" width="102" height="50" rx="3" fill="#111"/>
+  <text x="32" y="45" fill="#F44336" font-family="monospace" font-size="32" font-weight="bold">8</text>
+  <text x="72" y="45" fill="#F44336" font-family="monospace" font-size="32" font-weight="bold">8</text>
+  <circle cx="35" cy="5" r="2" fill="#ddd"/><text x="35" y="15" text-anchor="middle" fill="#fff" font-size="5">VCC</text>
+  <circle cx="48" cy="5" r="2" fill="#ddd"/><text x="48" y="15" text-anchor="middle" fill="#fff" font-size="5">GND</text>
+  <circle cx="61" cy="5" r="2" fill="#ddd"/><text x="61" y="15" text-anchor="middle" fill="#fff" font-size="5">DIO</text>
+  <circle cx="74" cy="5" r="2" fill="#ddd"/><text x="74" y="15" text-anchor="middle" fill="#fff" font-size="5">CLK</text>
+  </svg>

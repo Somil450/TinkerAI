@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 130" width="180" height="130">
+  <defs><filter id="sh"><feDropShadow dx="1" dy="2" stdDeviation="3" flood-opacity="0.3"/></filter></defs>
+  <!-- Chassis plate (acrylic/PCB style) -->
+  <rect x="20" y="14" width="140" height="100" rx="8" fill="#1a237e" stroke="#0d1452" stroke-width="3" filter="url(#sh)"/>
+  <!-- 2 drive wheels + caster -->
+  <rect x="2" y="26" width="24" height="52" rx="8" fill="#333" stroke="#111" stroke-width="2"/>
+  <rect x="6" y="34" width="16" height="36" rx="5" fill="#555" stroke="#333"/>
+  <rect x="154" y="26" width="24" height="52" rx="8" fill="#333" stroke="#111" stroke-width="2"/>
+  <rect x="156" y="34" width="16" height="36" rx="5" fill="#555" stroke="#333"/>
+  <!-- Caster (front ball) -->
+  <circle cx="90" cy="106" r="10" fill="#888" stroke="#666" stroke-width="2"/>
+  <circle cx="90" cy="106" r="6" fill="#999"/>
+  <!-- Sensors / component placeholders -->
+  <rect x="50" y="24" width="80" height="32" rx="4" fill="#111" stroke="#333"/>
+  <text x="90" y="40" text-anchor="middle" font-size="7" fill="#888" font-family="Arial">Sensor Bay</text>
+  <!-- Motor labels -->
+  <text x="14" y="55" text-anchor="middle" font-size="5" fill="#aaa" font-family="Arial" transform="rotate(-90 14 55)">Motor L</text>
+  <text x="166" y="55" text-anchor="middle" font-size="5" fill="#aaa" font-family="Arial" transform="rotate(90 166 55)">Motor R</text>
+  <text x="90" y="88" text-anchor="middle" font-size="9" font-weight="bold" fill="#aaa" font-family="Arial">2WD Robot Car</text>
+</svg>

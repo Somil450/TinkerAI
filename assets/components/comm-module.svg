@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 115 80" width="115" height="80">
+<rect x="4" y="8" width="107" height="64" rx="3" fill="#4A148C"/>
+<path d="M25 45 L35 30 L45 45 L55 30 L65 45 L75 30 L85 45" fill="none" stroke="#fff" stroke-width="2" opacity="0.4"/>
+<text x="57" y="70" text-anchor="middle" fill="#fff" font-size="8">RF MODULE</text>
+</svg>

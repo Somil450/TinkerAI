@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 110 100" width="110" height="100">
+  <defs><filter id="sh"><feDropShadow dx="1" dy="2" stdDeviation="2.5" flood-opacity="0.3"/></filter></defs>
+  <!-- Raspberry Pi camera module v2 PCB -->
+  <rect x="4" y="4" width="102" height="86" rx="5" fill="#007a2f" stroke="#004d1a" stroke-width="2" filter="url(#sh)"/>
+  <!-- Lens barrel (Sony IMX219) -->
+  <circle cx="55" cy="40" r="28" fill="#111" stroke="#333" stroke-width="2"/>
+  <circle cx="55" cy="40" r="20" fill="#0d0d0d" stroke="#222" stroke-width="1.5"/>
+  <circle cx="55" cy="40" r="13" fill="#1a1a1a"/>
+  <circle cx="55" cy="40" r="6" fill="#222"/>
+  <ellipse cx="46" cy="32" rx="7" ry="6" fill="white" opacity="0.12"/>
+  <!-- IMX219 sensor label -->
+  <text x="55" y="57" text-anchor="middle" font-size="6" fill="#888" font-family="monospace">IMX219</text>
+  <text x="55" y="66" text-anchor="middle" font-size="5.5" fill="#666" font-family="monospace">8MP NoIR</text>
+  <!-- FFC connector (flat flex cable) at bottom -->
+  <rect x="30" y="76" width="50" height="12" rx="2" fill="#888" stroke="#666" stroke-width="1.5"/>
+  <rect x="34" y="78" width="42" height="8" rx="1" fill="#444"/>
+  <text x="55" y="85" text-anchor="middle" font-size="5.5" fill="#aaa" font-family="Arial">CSI Flat Cable</text>
+  <text x="55" y="96" text-anchor="middle" font-size="7.5" font-weight="bold" fill="white" font-family="Arial">Pi Camera v2</text>
+</svg>

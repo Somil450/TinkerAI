@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 100" width="200" height="100">
+  <defs><filter id="sh"><feDropShadow dx="1" dy="2" stdDeviation="2.5" flood-opacity="0.3"/></filter></defs>
+  <!-- PCB -->
+  <rect x="2" y="2" width="196" height="96" rx="4" fill="#1565C0" stroke="#0a3d7a" stroke-width="2" filter="url(#sh)"/>
+  <!-- Screen area -->
+  <rect x="14" y="10" width="172" height="60" rx="3" fill="#2e7d32" stroke="#1b5e20" stroke-width="2"/>
+  <!-- Graphical pixel area -->
+  <rect x="16" y="12" width="168" height="56" rx="2" fill="#388e3c"/>
+  <!-- Simulated text and simple graphic -->
+  <text x="18" y="24" font-family="Courier New" font-size="8" fill="#1b5e20">TinkerAI System</text>
+  <text x="18" y="34" font-family="Courier New" font-size="7" fill="#1b5e20">128x64 Graphical</text>
+  <!-- Simple waveform graphic -->
+  <path d="M18,46 L28,42 L38,50 L48,42 L58,50 L68,42 L78,50 L88,42 L98,50" stroke="#1b5e20" stroke-width="1.5" fill="none"/>
+  <!-- 20-pin header -->
+  <rect x="14" y="74" width="172" height="14" rx="1" fill="#1a1a1a"/>
+  <text x="100" y="83" text-anchor="middle" font-size="5" fill="#aaa" font-family="Arial">VSS VDD V0 RS R/W E DB0..DB7 CS1 CS2 RST VEE A K</text>
+  <text x="100" y="97" text-anchor="middle" font-size="8" font-weight="bold" fill="white" font-family="Arial">LCD 128x64 Graphical</text>
+</svg>

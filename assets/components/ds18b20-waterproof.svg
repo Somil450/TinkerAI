@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 55" width="160" height="55">
+  <!-- Cable -->
+  <rect x="2" y="22" width="120" height="10" rx="4" fill="#333" stroke="#222" stroke-width="1.5"/>
+  <!-- Stainless steel probe tube -->
+  <rect x="118" y="14" width="40" height="26" rx="13" fill="#c0c0c0" stroke="#999" stroke-width="2"/>
+  <!-- Probe tip (rounded) -->
+  <ellipse cx="155" cy="27" rx="8" ry="13" fill="#aaa" stroke="#888" stroke-width="1.5"/>
+  <!-- Wire colors at end: Red=VDD, Yellow=DQ, Black=GND -->
+  <rect x="2" y="18" width="4" height="4" rx="1" fill="#f44336"/>
+  <rect x="2" y="24" width="4" height="4" rx="1" fill="#ffeb3b"/>
+  <rect x="2" y="30" width="4" height="4" rx="1" fill="#111"/>
+  <text x="0" y="15" font-size="5.5" fill="#c8b400" font-family="Arial" font-weight="bold">VDD</text>
+  <text x="0" y="23" font-size="5.5" fill="#c8b400" font-family="Arial" font-weight="bold">DQ</text>
+  <text x="0" y="31" font-size="5.5" fill="#c8b400" font-family="Arial" font-weight="bold">GND</text>
+  <text x="80" y="50" text-anchor="middle" font-size="8.5" font-weight="bold" fill="#555" font-family="Arial">DS18B20 Waterproof</text>
+</svg>

@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 90" width="160" height="90">
+  <defs><filter id="sh"><feDropShadow dx="1" dy="2" stdDeviation="2.5" flood-opacity="0.3"/></filter>
+  <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#1a237e"/><stop offset="100%" stop-color="#0d1452"/>
+  </linearGradient></defs>
+  <rect x="2" y="2" width="156" height="86" rx="6" fill="url(#bg)" stroke="#0d1452" stroke-width="2" filter="url(#sh)"/>
+  <!-- USB connector -->
+  <rect x="6" y="30" width="28" height="20" rx="3" fill="#888" stroke="#666" stroke-width="1.5"/>
+  <rect x="9" y="33" width="22" height="14" rx="1" fill="#444"/>
+  <text x="20" y="60" text-anchor="middle" font-size="5" fill="#aaa" font-family="Arial">USB</text>
+  <!-- Cypress FX2 chip -->
+  <rect x="44" y="14" width="66" height="52" rx="2" fill="#111" stroke="#333"/>
+  <text x="77" y="38" text-anchor="middle" font-size="7.5" fill="#888" font-family="monospace">CY7C68013</text>
+  <text x="77" y="50" text-anchor="middle" font-size="5.5" fill="#666" font-family="monospace">Cypress FX2</text>
+  <!-- 10-pin test hook header: CH0-CH7 GND GND -->
+  <rect x="118" y="10" width="36" height="68" rx="2" fill="#1a1a1a" stroke="#333"/>
+  <text x="136" y="17" text-anchor="middle" font-size="4.5" fill="#f44336" font-family="Arial">CH0</text>
+  <text x="136" y="25" text-anchor="middle" font-size="4.5" fill="#ff9800" font-family="Arial">CH1</text>
+  <text x="136" y="33" text-anchor="middle" font-size="4.5" fill="#ffeb3b" font-family="Arial">CH2</text>
+  <text x="136" y="41" text-anchor="middle" font-size="4.5" fill="#4caf50" font-family="Arial">CH3</text>
+  <text x="136" y="49" text-anchor="middle" font-size="4.5" fill="#00bcd4" font-family="Arial">CH4</text>
+  <text x="136" y="57" text-anchor="middle" font-size="4.5" fill="#2196f3" font-family="Arial">CH5</text>
+  <text x="136" y="65" text-anchor="middle" font-size="4.5" fill="#9c27b0" font-family="Arial">CH6</text>
+  <text x="136" y="73" text-anchor="middle" font-size="4.5" fill="#e91e63" font-family="Arial">CH7</text>
+  <text x="80" y="80" text-anchor="middle" font-size="8.5" font-weight="bold" fill="white" font-family="Arial">8CH Logic Analyzer</text>
+</svg>

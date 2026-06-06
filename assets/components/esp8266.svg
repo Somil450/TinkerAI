@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130 65" width="130" height="65">
+<rect x="2" y="2" width="126" height="60" rx="2" fill="#1a1a1a" stroke="#333"/>
+<rect x="42" y="14" width="46" height="32" fill="#111" stroke="#444"/>
+<text x="65" y="34" text-anchor="middle" fill="#fff" font-size="8" font-family="monospace">ESP-12E</text>
+<g fill="#ccc"><circle cx="12" cy="6" r="3"/><circle cx="12" cy="58" r="3"/><circle cx="26" cy="6" r="3"/><circle cx="26" cy="58" r="3"/><circle cx="40" cy="6" r="3"/><circle cx="40" cy="58" r="3"/><circle cx="54" cy="6" r="3"/><circle cx="54" cy="58" r="3"/><circle cx="68" cy="6" r="3"/><circle cx="68" cy="58" r="3"/><circle cx="82" cy="6" r="3"/><circle cx="82" cy="58" r="3"/><circle cx="96" cy="6" r="3"/><circle cx="96" cy="58" r="3"/><circle cx="110" cy="6" r="3"/><circle cx="110" cy="58" r="3"/></g>
+<g fill="#111"><circle cx="12" cy="6" r="1.5"/><circle cx="12" cy="58" r="1.5"/><circle cx="26" cy="6" r="1.5"/><circle cx="26" cy="58" r="1.5"/><circle cx="40" cy="6" r="1.5"/><circle cx="40" cy="58" r="1.5"/><circle cx="54" cy="6" r="1.5"/><circle cx="54" cy="58" r="1.5"/><circle cx="68" cy="6" r="1.5"/><circle cx="68" cy="58" r="1.5"/><circle cx="82" cy="6" r="1.5"/><circle cx="82" cy="58" r="1.5"/><circle cx="96" cy="6" r="1.5"/><circle cx="96" cy="58" r="1.5"/><circle cx="110" cy="6" r="1.5"/><circle cx="110" cy="58" r="1.5"/></g>
+</svg>

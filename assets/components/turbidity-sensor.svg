@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 100" width="140" height="100">
+  <defs><filter id="sh"><feDropShadow dx="1" dy="2" stdDeviation="2.5" flood-opacity="0.3"/></filter></defs>
+  <!-- Control module PCB (blue) -->
+  <rect x="3" y="3" width="90" height="60" rx="4" fill="#1565C0" stroke="#0a3d7a" stroke-width="2" filter="url(#sh)"/>
+  <!-- Op-amp chip -->
+  <rect x="12" y="14" width="36" height="28" rx="1" fill="#111" stroke="#333"/>
+  <text x="30" y="30" text-anchor="middle" font-size="5.5" fill="#666" font-family="monospace">LM358</text>
+  <!-- LED power indicator -->
+  <circle cx="58" cy="20" r="4" fill="#f44336"/>
+  <!-- Trim pot -->
+  <circle cx="70" cy="38" r="8" fill="#e0e0e0" stroke="#aaa" stroke-width="1.5"/>
+  <line x1="70" y1="30" x2="70" y2="36" stroke="#555" stroke-width="2.5"/>
+  <!-- 5-pin header: GND VCC AO DO -->
+  <rect x="6" y="54" width="80" height="12" rx="1" fill="#1a1a1a"/>
+  <rect x="10" y="56" width="8" height="8" rx="1" fill="#c8b400"/>
+  <rect x="24" y="56" width="8" height="8" rx="1" fill="#c8b400"/>
+  <rect x="38" y="56" width="8" height="8" rx="1" fill="#c8b400"/>
+  <rect x="52" y="56" width="8" height="8" rx="1" fill="#c8b400"/>
+  <text x="14" y="54" text-anchor="middle" font-size="5" fill="#ddd" font-family="Arial" font-weight="bold">GND</text>
+  <text x="28" y="54" text-anchor="middle" font-size="5" fill="#ddd" font-family="Arial" font-weight="bold">VCC</text>
+  <text x="42" y="54" text-anchor="middle" font-size="5" fill="#ddd" font-family="Arial" font-weight="bold">AO</text>
+  <text x="56" y="54" text-anchor="middle" font-size="5" fill="#ddd" font-family="Arial" font-weight="bold">DO</text>
+  <!-- Sensor probe (Y-fork shape) -->
+  <rect x="100" y="10" width="36" height="78" rx="4" fill="#e0e0e0" stroke="#bbb" stroke-width="2" filter="url(#sh)"/>
+  <!-- LED window + photoreceiver -->
+  <rect x="105" y="22" width="12" height="16" rx="2" fill="#1a237e" stroke="#3f51b5"/>
+  <circle cx="111" cy="30" r="5" fill="#3f51b5" opacity="0.8"/>
+  <rect x="119" y="22" width="12" height="16" rx="2" fill="#111" stroke="#444"/>
+  <circle cx="125" cy="30" r="5" fill="#2196f3" opacity="0.5"/>
+  <text x="111" y="50" text-anchor="middle" font-size="5" fill="#aaa" font-family="Arial">EMIT</text>
+  <text x="125" y="50" text-anchor="middle" font-size="5" fill="#aaa" font-family="Arial">RECV</text>
+  <text x="118" y="82" text-anchor="middle" font-size="6" fill="#555" font-family="Arial">Probe</text>
+  <text x="70" y="90" text-anchor="middle" font-size="8.5" font-weight="bold" fill="#333" font-family="Arial">Turbidity Sensor</text>
+</svg>

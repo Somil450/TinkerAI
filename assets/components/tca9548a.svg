@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150 100" width="150" height="100">
+  <defs><filter id="sh"><feDropShadow dx="1" dy="2" stdDeviation="2.5" flood-opacity="0.3"/></filter>
+  <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="#4a148c"/><stop offset="100%" stop-color="#2e0060"/>
+  </linearGradient></defs>
+  <rect x="2" y="2" width="146" height="96" rx="4" fill="url(#bg)" stroke="#2e0060" stroke-width="2" filter="url(#sh)"/>
+  <!-- TCA9548A TSSOP-24 chip -->
+  <rect x="36" y="18" width="78" height="58" rx="2" fill="#111" stroke="#333" stroke-width="1.5"/>
+  <circle cx="39" cy="21" r="2" fill="#555"/>
+  <text x="75" y="44" text-anchor="middle" font-size="7.5" fill="#888" font-family="monospace">TCA9548A</text>
+  <text x="75" y="55" text-anchor="middle" font-size="5.5" fill="#666" font-family="monospace">I2C Mux 1-to-8</text>
+  <text x="75" y="65" text-anchor="middle" font-size="5" fill="#555" font-family="monospace">0x70..0x77</text>
+  <!-- 10-pin header: VIN GND SDA SCL A0 A1 A2 RST SD0-7 SC0-7 -->
+  <rect x="4" y="80" width="142" height="14" rx="2" fill="#1a1a1a" stroke="#333"/>
+  <text x="75" y="90" text-anchor="middle" font-size="5" fill="#aaa" font-family="Arial">VIN GND SDA SCL A0 A1 A2 RST | SD0..7 SC0..7</text>
+  <text x="75" y="98" text-anchor="middle" font-size="8.5" font-weight="bold" fill="white" font-family="Arial">TCA9548A I2C Mux</text>
+</svg>

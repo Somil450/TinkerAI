@@ -31,6 +31,7 @@ function renderPins(pins) {
       return `
         <div class="pin-group" style="left: ${p.x}px; top: ${p.y}px;">
           <div class="pin" data-pin="${escapeHtml(p.id)}" title="${escapeHtml(p.id)}"></div>
+          <div class="pin-label pin-label-${side} ${labelCls}">${escapeHtml(p.id)}</div>
         </div>
       `
     })

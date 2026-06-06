@@ -1048,6 +1048,12 @@ function buildPlan(comps, mcuId) {
 
   let codeIncludes = new Set();
   let codeSetup = [];
+  
+  const payload = {
+    mcu: mcuId,
+    components: sensors,
+    wiring: []
+  };
 
   sensors.forEach((id, idx) => {
     const compData = componentRegistry.components.get(id);
@@ -1070,6 +1076,7 @@ function buildPlan(comps, mcuId) {
     out += `---\n### ${title}\n| Pin | Connect To |\n|---|---|\n`;
     routes.forEach(([pin, target]) => {
       out += `| **${pin}** | ${target} |\n`;
+      payload.wiring.push({ component: id, compIndex: idx, pin: pin, target: target });
     });
 
     // Tips
@@ -1092,13 +1099,23 @@ function buildPlan(comps, mcuId) {
 
   out += `---\n### ⚡ Power Summary\n- All **GND** → ${mcuName} **GND** (common ground)\n- **5V components** → ${alloc.pins.power5}\n- **3.3V components** → ${alloc.pins.power33}\n`;
 
+  let codeStr = "";
   if (codeIncludes.size > 0 || codeSetup.length > 0) {
-    out += `\n### 📝 Code Template\n\`\`\`cpp\n`;
-    codeIncludes.forEach(inc => out += inc + '\n');
-    out += `\nvoid setup() {\n  Serial.begin(115200);\n`;
-    codeSetup.forEach(s => out += s + '\n');
-    out += `}\n\nvoid loop() {\n  // Your logic here\n}\n\`\`\`\n`;
+    codeStr += `\n`;
+    codeIncludes.forEach(inc => codeStr += inc + '\n');
+    codeStr += `\nvoid setup() {\n  Serial.begin(115200);\n`;
+    codeSetup.forEach(s => codeStr += s + '\n');
+    codeStr += `}\n\nvoid loop() {\n  // Your logic here\n}\n`;
+    
+    out += `\n### 📝 Code Template\n\`\`\`cpp\n${codeStr}\`\`\`\n`;
+    
+    // Add code to payload
+    payload.code = codeStr;
   }
+  
+  // Inject payload
+  out += `\n<!-- ACTION: ${JSON.stringify(payload)} -->\n`;
+  out += `<button class="ai-action-btn" onclick="window.executeAIAction(this.parentElement)">🚀 Generate Circuit</button>\n`;
 
   return out;
 }
@@ -1121,6 +1138,7 @@ class CircuitChatAI {
     let searchStr = orig;
     const found = [];
     const allComps = Array.from(componentRegistry.components.values())
+      .filter(c => !c.id.includes('jumper') && !c.id.includes('breadboard'))
       .sort((a, b) => b.name.length - a.name.length); // longest first
 
     // ── Comprehensive shorthand alias map (any word a user might say) ──────
@@ -1361,26 +1379,85 @@ class CircuitChatAI {
     return any || 'arduino-uno';
   }
 
-  respond(msg) {
+  async respond(msg) {
     if (!msg?.trim()) return 'Ask me anything about your circuit! 😊';
+    
+    // Check for API key submission
+    const trimmedMsg = msg.trim();
+    if (trimmedMsg.startsWith('AIza') || (trimmedMsg.length > 35 && !trimmedMsg.includes(' ') && !trimmedMsg.includes('{'))) {
+       localStorage.setItem('gemini_api_key', trimmedMsg);
+       this.history.push({ role:'user', text:"[API KEY SUBMITTED]" });
+       const res = "API Key saved securely! 🚀 I am now connected to the Gemini AI brain and know everything about electronics. What shall we build?";
+       this.history.push({ role:'ai', text:res });
+       return res;
+    }
+
+    const apiKey = localStorage.getItem('gemini_api_key') || 'AIzaSyARTCKKYPcqFl2KJxWVDmzsAm9HnP9xV84';
     const low = msg.toLowerCase();
     const placed = this._getPlaced();
     const comps  = this._findComps(msg);
     const mcuId  = this._getMCU(comps, placed);
     this.history.push({ role:'user', text:msg });
+    
+    if (apiKey) {
+      // Gemini mode
+      try {
+        const availableComps = Array.from(componentRegistry.components.entries()).map(([id, data]) => {
+            const pins = data.pins ? Object.keys(data.pins).join(", ") : "none";
+            return `${id} (${data.name}) PINS:[${pins}]`;
+        }).join(" | ");
+        
+        const systemPrompt = `You are TinkerAI, an expert electronics engineer.
+You are helping the user build circuits.
+Available components in our registry: ${availableComps}.
+User request: ${msg}
+
+If the user wants to build a circuit, you MUST respond in Markdown, explaining the wiring in a clear Markdown table format (e.g., | Component | Pin | Connects To |), and you MUST include the following JSON payload exactly inside an HTML comment at the end of your response to auto-generate the circuit:
+<!-- ACTION: {"mcu": "arduino-uno", "components": ["dht22", "oled-i2c", "l298n", "4wd-car-chassis"], "wiring": [{"fromComp": "mcu", "fromPin": "5V", "toComp": "dht22_0", "toPin": "VCC"}, {"fromComp": "mcu", "fromPin": "A4", "toComp": "oled-i2c_0", "toPin": "SDA"}, {"fromComp": "l298n_0", "fromPin": "OUT1", "toComp": "4wd-car-chassis_0", "toPin": "M1+"}], "code": "void setup() {}\\nvoid loop() {}"} -->
+* Note: The "components" array must contain ONLY the base component IDs (e.g. "dht22"). Do NOT append the index.
+* Note: For "wiring", "fromComp" and "toComp" must be either "mcu", or the exact component name appended with its index (e.g., "dht22_0", "l298n_0", "4wd-car-chassis_0").
+* Note: DO NOT include "jumper wires", "breadboards", or any physical connectors in the components array. Wiring is handled virtually!
+Also include a button at the very end: <button class="ai-action-btn" onclick="window.executeAIAction(this.parentElement)">🚀 Generate Circuit</button>
+
+WIRING HINTS:
+- If using '4wd-car-chassis', it has 8 pins. Wire left motors (M1, M2) in parallel to a single motor driver OUT1/OUT2. Wire right motors (M3, M4) in parallel to the SAME driver's OUT3/OUT4. Do NOT use two motor drivers for a standard 4WD car.
+
+Provide the complete accurate wiring IN A TABULAR FORMAT, and the actual C++ code snippet in the code field. Only use components and pins from the available registry.`;
+        
+        const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            contents: [{ parts: [{ text: systemPrompt }] }]
+          })
+        });
+        
+        const data = await response.json();
+        if (data.error) throw new Error(data.error.message);
+        
+        const res = data.candidates[0].content.parts[0].text;
+        this.history.push({ role:'ai', text:res });
+        return res;
+      } catch (err) {
+        console.error(err);
+        return `⚠️ Gemini API Error: ${err.message}\n*(Check your API Key or internet connection)*`;
+      }
+    }
+
     let res = '';
+    const prefix = "*(Running in offline mode. Paste your API Key to unlock true omniscience!)*\n\n";
 
     // Greeting
     if (/^(hi|hello|hey|sup|yo|howdy)/i.test(msg.trim())) {
-      res = `Hey! 👋 I'm **TinkerAI** — your self-trained generative circuit expert.\n\nI have built-in wiring knowledge for **every component in the registry** — no external APIs needed. I can correctly wire any combination of:\n🔌 Sensors, motors, displays, relays, ICs, communication modules...\n\nTry:\n- *"Connect ESP32 to OLED, DHT22, and 2 LEDs"*\n- *"Build a 4WD robot with L298N and ultrasonic sensor"*\n- *"Wire ESP32-CAM to Arduino and LCD"*`;
+      res = prefix + `Hey! 👋 I'm **TinkerAI** — your self-trained generative circuit expert.\n\nI have built-in wiring knowledge for **every component in the registry** — no external APIs needed. I can correctly wire any combination of:\n🔌 Sensors, motors, displays, relays, ICs, communication modules...\n\nTry:\n- *"Connect ESP32 to OLED, DHT22, and 2 LEDs"*\n- *"Build a 4WD robot with L298N and ultrasonic sensor"*\n- *"Wire ESP32-CAM to Arduino and LCD"*`;
     }
 
     // Canvas query
     else if (/canvas|placed|what.?s on|my circuit|what do i have/i.test(low)) {
       if (!placed.length) {
-        res = `Your canvas is empty. Drag some components from the right panel!`;
+        res = prefix + `Your canvas is empty. Drag some components from the right panel!`;
       } else {
-        res = `**On your canvas (${placed.length} components):**\n`;
+        res = prefix + `**On your canvas (${placed.length} components):**\n`;
         placed.forEach((id,i) => {
           const comp = componentRegistry.components.get(id);
           res += `${i+1}. ${comp ? comp.name : id}\n`;
@@ -1391,30 +1468,30 @@ class CircuitChatAI {
 
     // Wire all on canvas
     else if (/wire all|connect all|connect everything|connect them|connect these/i.test(low)) {
-      if (placed.length) res = buildPlan(placed, this._getMCU([], placed));
-      else res = `Your canvas is empty — drag some components first!`;
+      if (placed.length) res = prefix + buildPlan(placed, this._getMCU([], placed));
+      else res = prefix + `Your canvas is empty — drag some components first!`;
     }
 
     // Wiring plan (any combination)
     else if (comps.length >= 1) {
-      res = buildPlan(comps, mcuId);
+      res = prefix + buildPlan(comps, mcuId);
     }
 
     // FAQ / Troubleshoot
     else if (/not work|doesn.?t|wrong|broken|problem|issue|error|fix|why|fail/i.test(low)) {
-      res = `**Circuit Troubleshooting Checklist:**\n1. ✅ All components share **GND** (common ground)?\n2. ✅ Correct voltage — **3.3V** for ESP/LoRa/RFID, **5V** for Arduino sensors?\n3. ✅ **RX → TX** and **TX → RX** (crossed serial connections)?\n4. ✅ **I2C pull-up resistors** (4.7kΩ on SDA/SCL for long cables)?\n5. ✅ Motor driver has **external power** (not from Arduino's 5V)?\n6. ✅ Code pin numbers match physical wiring?\n7. 🔍 Try adding \`Serial.println("test");\` to verify MCU is running.`;
+      res = prefix + `**Circuit Troubleshooting Checklist:**\n1. ✅ All components share **GND** (common ground)?\n2. ✅ Correct voltage — **3.3V** for ESP/LoRa/RFID, **5V** for Arduino sensors?\n3. ✅ **RX → TX** and **TX → RX** (crossed serial connections)?\n4. ✅ **I2C pull-up resistors** (4.7kΩ on SDA/SCL for long cables)?\n5. ✅ Motor driver has **external power** (not from Arduino's 5V)?\n6. ✅ Code pin numbers match physical wiring?\n7. 🔍 Try adding \`Serial.println("test");\` to verify MCU is running.`;
     }
 
     else if (/\b(who are you|what are you|are you ai|your name)\b/i.test(low)) {
-      res = `I am **TinkerAI** — a self-trained, offline AI wiring expert!\n\nI have deep built-in knowledge of 180+ electronic components. I calculate correct, real-world pin connections for ANY combination — no internet, no API needed.`;
+      res = prefix + `I am **TinkerAI** — a self-trained, offline AI wiring expert!\n\nI have deep built-in knowledge of 180+ electronic components. I calculate correct, real-world pin connections for ANY combination — no internet, no API needed.`;
     }
 
     else if (/help|what can you do|commands/i.test(low)) {
-      res = `**I can help you with:**\n\n🔌 **Wiring** — *"Connect ESP32 to OLED and DHT22"*\n🚗 **Full projects** — *"Build a robot car"*\n📷 **Complex systems** — *"ESP32-CAM + Arduino + L298N + 4WD chassis"*\n🛠️ **Troubleshooting** — *"My sensor is not working"*\n📋 **Canvas wiring** — *"Wire all components on my canvas"*\n\nJust describe what you want to build and I'll generate step-by-step wiring tables!`;
+      res = prefix + `**I can help you with:**\n\n🔌 **Wiring** — *"Connect ESP32 to OLED and DHT22"*\n🚗 **Full projects** — *"Build a robot car"*\n📷 **Complex systems** — *"ESP32-CAM + Arduino + L298N + 4WD chassis"*\n🛠️ **Troubleshooting** — *"My sensor is not working"*\n📋 **Canvas wiring** — *"Wire all components on my canvas"*\n\nJust describe what you want to build and I'll generate step-by-step wiring tables!`;
     }
 
     else {
-      res = `I'm not sure what you mean! 😅\n\nTry something like:\n- *"Connect ESP32 to DHT22 and OLED"*\n- *"Build a weather station"*\n- *"Wire L298N to Arduino and 4WD chassis"*\n\nOr type **"help"** to see all my capabilities.`;
+      res = prefix + `I'm not sure what you mean! 😅\n\nTry something like:\n- *"Connect ESP32 to DHT22 and OLED"*\n- *"Build a weather station"*\n- *"Wire L298N to Arduino and 4WD chassis"*\n\nOr type **"help"** to see all my capabilities.`;
     }
 
     this.history.push({ role:'ai', text:res });

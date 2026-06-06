@@ -210,7 +210,11 @@ export const SOIL_MOISTURE = {
 export const LCD_16X2 = {
   width: 200, height: 90,
   pins: ['VSS', 'VDD', 'V0', 'RS', 'RW', 'E', 'D0', 'D1', 'D2', 'D3', 'D4', 'D5', 'D6', 'D7', 'A', 'K']
-    .map((id, i) => ({ id, x: 16 + i * 11, y: 10, labelSide: 'bottom' })),
+    .map((id, i) => ({ id, x: 16 + i * 11, y: 10, labelSide: 'bottom' }))
+    .concat([
+      { id: 'SDA', x: 181, y: 45, labelSide: 'bottom' },
+      { id: 'SCL', x: 181, y: 55, labelSide: 'bottom' },
+    ]),
 }
 
 // OLED SVG: 110×75, 4 pins at x=16,36,56,76, y≈8

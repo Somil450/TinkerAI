@@ -4352,9 +4352,21 @@
         "x": 217,
         "y": 12,
         "labelSide": "bottom"
+      },
+      {
+        "id": "SDA",
+        "x": 217,
+        "y": 54,
+        "labelSide": "bottom"
+      },
+      {
+        "id": "SCL",
+        "x": 217,
+        "y": 66,
+        "labelSide": "bottom"
       }
     ],
-    "pinCount": 16
+    "pinCount": 18
   },
   "lcd-20x4": {
     "archetype": "lcd-16x2",
@@ -4456,9 +4468,21 @@
         "x": 217,
         "y": 12,
         "labelSide": "bottom"
+      },
+      {
+        "id": "SDA",
+        "x": 217,
+        "y": 54,
+        "labelSide": "bottom"
+      },
+      {
+        "id": "SCL",
+        "x": 217,
+        "y": 66,
+        "labelSide": "bottom"
       }
     ],
-    "pinCount": 16
+    "pinCount": 18
   },
   "oled-096": {
     "archetype": "oled-module",

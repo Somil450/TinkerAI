@@ -669,10 +669,10 @@ canvas.addEventListener('dragover', e => {
       
       const rect1 = firstPinElement.getBoundingClientRect()
       const canvasRect = canvas.getBoundingClientRect()
-      const x1 = rect1.left - canvasRect.left + 7
-      const y1 = rect1.top - canvasRect.top + 7
-      const x2 = e.clientX - canvasRect.left
-      const y2 = e.clientY - canvasRect.top
+      const x1 = rect1.left - canvasRect.left + canvas.scrollLeft + 7
+      const y1 = rect1.top - canvasRect.top + canvas.scrollTop + 7
+      const x2 = e.clientX - canvasRect.left + canvas.scrollLeft
+      const y2 = e.clientY - canvasRect.top + canvas.scrollTop
       
       let d = `M ${x1} ${y1} `;
       if (activeWaypoints.length > 0) {
@@ -779,6 +779,19 @@ canvas.addEventListener('dragover', e => {
       console.log("Graph:", buildGraph(getConnections()))
       const validation = validateCircuit(getConnections())
       console.log("Validation:", validation)
+      
+      if (!validation.valid) {
+        window.showToast(`🚨 HAZARD: ${validation.message}`, 'error')
+        // Highlight the latest wire in red
+        const latestWire = wireObjects[wireObjects.length - 1]
+        if (latestWire) {
+          latestWire.color = '#FF1744'
+          renderWires()
+        }
+      } else if (validation.warnings && validation.warnings.length > 0) {
+        window.showToast(`⚠️ Warning: ${validation.warnings[0].message}`, 'warn')
+      }
+
       if (selectedComponent) {
         const type = componentRegistry.find(c => c.id === selectedComponent.dataset.componentId)?.type || "Unknown";
         propertiesContent.innerHTML = renderProperties({
@@ -823,8 +836,8 @@ canvas.addEventListener('dragover', e => {
     if (!isDragging) return
   
     const rect = canvas.getBoundingClientRect()
-    let newLeft = e.clientX - rect.left - dragOffsetX
-    let newTop = e.clientY - rect.top - dragOffsetY
+    let newLeft = e.clientX - rect.left - dragOffsetX + canvas.scrollLeft
+    let newTop = e.clientY - rect.top - dragOffsetY + canvas.scrollTop
     
     // Snap to 20px grid
     newLeft = Math.round(newLeft / 20) * 20
@@ -841,8 +854,8 @@ canvas.addEventListener('dragover', e => {
     const touch = e.touches[0]
   
     const rect = canvas.getBoundingClientRect()
-    let newLeft = touch.clientX - rect.left - dragOffsetX
-    let newTop = touch.clientY - rect.top - dragOffsetY
+    let newLeft = touch.clientX - rect.left - dragOffsetX + canvas.scrollLeft
+    let newTop = touch.clientY - rect.top - dragOffsetY + canvas.scrollTop
     
     // Snap to 20px grid
     newLeft = Math.round(newLeft / 20) * 20
@@ -858,7 +871,10 @@ canvas.addEventListener('dragover', e => {
     e.preventDefault();
     const type = e.dataTransfer.getData('type');
     if (!type) return;
-    placeComponent(type, e.offsetX, e.offsetY);
+    const rect = canvas.getBoundingClientRect();
+    const x = e.clientX - rect.left + canvas.scrollLeft;
+    const y = e.clientY - rect.top + canvas.scrollTop;
+    placeComponent(type, Math.round(x / 20) * 20, Math.round(y / 20) * 20);
   });
 document.getElementById('component-list').addEventListener('click', (e) => {
   const comp = e.target.closest('.component');
@@ -879,6 +895,8 @@ document.getElementById('component-list').addEventListener('click', (e) => {
 
 function renderWires() {
   window.renderWires = renderWires; // Expose for simulator
+  wireLayer.style.width = Math.max(canvas.clientWidth, canvas.scrollWidth) + 'px';
+  wireLayer.style.height = Math.max(canvas.clientHeight, canvas.scrollHeight) + 'px';
   wireLayer.innerHTML = ""
 
   wireObjects.forEach((wire, index) => {
@@ -886,10 +904,10 @@ function renderWires() {
       const rect2 = wire.pin2.getBoundingClientRect()
       const canvasRect = canvas.getBoundingClientRect()
   
-      const x1 = rect1.left - canvasRect.left + 6
-      const y1 = rect1.top - canvasRect.top + 6
-      const x2 = rect2.left - canvasRect.left + 6
-      const y2 = rect2.top - canvasRect.top + 6
+      const x1 = rect1.left - canvasRect.left + canvas.scrollLeft + 6
+      const y1 = rect1.top - canvasRect.top + canvas.scrollTop + 6
+      const x2 = rect2.left - canvasRect.left + canvas.scrollLeft + 6
+      const y2 = rect2.top - canvasRect.top + canvas.scrollTop + 6
       
       const isSelected = selectedWire === wire
       
@@ -995,15 +1013,15 @@ function renderWires() {
 
   function renderMarkdown(text) {
     return text
+      .replace(/```([\s\S]*?)```/g, (m, code) => `<pre><code>${code.replace(/^\w+\n/, '').replace(/</g, '&lt;').replace(/>/g, '&gt;')}</code></pre>`)
+      .replace(/`([^`]+)`/g, (m, code) => `<code>${code.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</code>`)
       .replace(/\*\*\*(.+?)\*\*\*/g, '<strong><em>$1</em></strong>')
       .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
       .replace(/\*(.+?)\*/g, '<em>$1</em>')
-      .replace(/`([^`]+)`/g, '<code>$1</code>')
-      .replace(/```[\s\S]*?```/g, m => `<pre><code>${m.slice(3, -3).replace(/^\w+\n/, '')}</code></pre>`)
       .replace(/^---$/gm, '<hr>')
       .replace(/^### (.+)$/gm, '<h4>$1</h4>')
       .replace(/^## (.+)$/gm, '<h3>$1</h3>')
-      .replace(/^\|[-|\s]+\|\r?\n/gm, '') // Strip markdown table dividers like |---|---| and their newline
+      .replace(/^\|[-|:\s]+\|\r?\n/gm, '') // Strip markdown table dividers like |---|---| and their newline
       .replace(/^\| (.+) \|$/gm, m => {
         const cells = m.slice(2, -2).split(' | ').map(c => `<td>${c}</td>`).join('')
         return `<tr>${cells}</tr>`
@@ -1042,13 +1060,258 @@ function renderWires() {
     chatInput.value = ''
     appendMessage('user', msg)
     const typing = appendTypingIndicator()
-    setTimeout(() => {
+    
+    Promise.resolve(circuitChatAI.respond(msg)).then(reply => {
       typing.remove()
-      const reply = circuitChatAI.respond(msg)
       appendMessage('ai', reply)
-    }, 400)
+    }).catch(err => {
+      typing.remove()
+      appendMessage('ai', 'Error: ' + err.message)
+    })
   }
 
+  window.executeAIAction = function(container) {
+    try {
+      const html = container.innerHTML;
+      const match = html.match(/(?:<!--|&lt;!--)\s*ACTION:\s*(\{[\s\S]*?\})\s*(?:-->|--&gt;)/);
+      if (!match) {
+        window.showToast("Could not find generation plan", "error");
+        return;
+      }
+      
+      const plan = JSON.parse(match[1]);
+      
+      // Close AI chat panel on mobile so the user can see the circuit being generated
+      if (window.innerWidth <= 768) {
+        const chatPanel = document.getElementById('ai-chat-panel');
+        const chatFab = document.getElementById('ai-chat-fab');
+        if (chatPanel) chatPanel.classList.add('hidden');
+        if (chatFab) chatFab.classList.remove('hidden');
+      }
+      
+      // 1. Clear the canvas
+      document.querySelectorAll('.placed-component').forEach(el => el.remove());
+      wireObjects.length = 0;
+      
+      // If there are objects in the circuit graph or safety engine we need to reset them if possible.
+      // Resetting the canvas completely.
+      canvas.querySelectorAll('.wire-segment, .wire-waypoint').forEach(el => el.remove());
+      renderWires();
+      
+      const addedComps = {}; // id from plan -> DOM element
+      
+      // 2. Place MCU in the center
+      const canvasRect = canvas.getBoundingClientRect();
+      const centerX = Math.round((canvasRect.width / 2) / 20) * 20;
+      const centerY = Math.round((canvasRect.height / 2) / 20) * 20;
+      
+      placeComponent(plan.mcu, centerX - 100, centerY - 100);
+      addedComps[plan.mcu] = componentRegistry[componentRegistry.length - 1].element;
+      
+      // 3. Place other components radially around the MCU
+      // Calculate dynamic radius to ensure all components fit entirely inside the screen
+      const padding = 110; // Account for component sizes
+      const maxRadius = 350;
+      const radiusX = Math.max((canvasRect.width / 2) - padding, 90);
+      const radiusY = Math.max((canvasRect.height / 2) - padding, 90);
+      const radius = Math.min(radiusX, radiusY, maxRadius);
+      
+      const angleStep = (2 * Math.PI) / plan.components.length;
+      const compCounts = {};
+      
+      plan.components.forEach((rawCompId, idx) => {
+        // Robustness: If the AI accidentally includes the index in the components array, strip it
+        const compId = rawCompId.replace(/_\d+$/, '');
+        const angle = idx * angleStep;
+        // Snap to 20px grid
+        const compX = Math.round((centerX + radius * Math.cos(angle)) / 20) * 20;
+        const compY = Math.round((centerY + radius * Math.sin(angle)) / 20) * 20;
+        
+        placeComponent(compId, compX - 50, compY - 50);
+        if (!compCounts[compId]) compCounts[compId] = 0;
+        const cIdx = compCounts[compId]++;
+        addedComps[`${compId}_${cIdx}`] = componentRegistry[componentRegistry.length - 1].element;
+      });
+      
+      // 4. Draw wires with orthogonal routing (Animated)
+      const finalizeGeneration = () => {
+        // Auto-validate for safety
+        const validation = validateCircuit(getConnections());
+        if (!validation.valid) {
+          window.showToast(`🚨 AI Generated Circuit Hazard: ${validation.message}`, 'error');
+        }
+        
+        // 5. Fill Code Editor
+        if (plan.code) {
+          const codeEditor = document.getElementById('code-editor');
+          if (codeEditor) {
+            codeEditor.value = plan.code.trim();
+          }
+        }
+        
+        window.showToast("Circuit generated!", "success");
+        
+        // Attempt to auto-run simulation after 500ms
+        setTimeout(() => {
+          const runBtn = document.getElementById('start-sim-btn');
+          if (runBtn) {
+             runBtn.click();
+          }
+        }, 500);
+      };
+
+      if (plan.wiring && plan.wiring.length > 0) {
+        let wIdx = 0;
+        
+        function drawNextWire() {
+           if (wIdx >= plan.wiring.length) {
+              // After the last wire begins animating, wait for it to finish
+              setTimeout(() => {
+                renderWires(); // solidify wire paths using standard rendering
+                finalizeGeneration();
+              }, 1200); // Wait 1.2s for the last animation to complete
+              return;
+           }
+           
+           const w = plan.wiring[wIdx];
+           let el1, el2;
+           
+           // Old legacy schema fallback support
+           if (w.target && w.pin && w.component) {
+               el1 = addedComps[plan.mcu];
+               el2 = addedComps[`${w.component}_${w.compIndex}`];
+               w.fromPin = w.target;
+               w.toPin = w.pin;
+           } else {
+               // New point-to-point schema
+               el1 = (w.fromComp === 'mcu') ? addedComps[plan.mcu] : addedComps[w.fromComp];
+               el2 = (w.toComp === 'mcu') ? addedComps[plan.mcu] : addedComps[w.toComp];
+           }
+
+           if (el1 && el2) {
+              const pin1Id = w.fromPin.split(' ')[0].trim();
+              const pin2Id = w.toPin.split(' ')[0].trim();
+              
+              function findPinFuzzy(el, pinQuery) {
+                  if (!el || !pinQuery) return null;
+                  const q = pinQuery.toLowerCase().replace(/[^a-z0-9]/g, '');
+                  const pins = Array.from(el.querySelectorAll('.pin'));
+                  
+                  let match = pins.find(p => p.dataset.pin.toLowerCase() === pinQuery.toLowerCase());
+                  if (match) return match;
+                  
+                  match = pins.find(p => p.dataset.pin.toLowerCase().replace(/[^a-z0-9]/g, '') === q);
+                  if (match) return match;
+                  
+                  const aliases = {
+                     'vcc': ['vdd', '5v', '3v3', 'vin', '+'],
+                     'gnd': ['vss', '-', 'ground'],
+                     'sda': ['d20', 'a4', 'sdi'],
+                     'scl': ['d21', 'a5', 'sck']
+                  };
+                  if (aliases[q]) {
+                      for (const alias of aliases[q]) {
+                         match = pins.find(p => p.dataset.pin.toLowerCase().replace(/[^a-z0-9]/g, '') === alias);
+                         if (match) return match;
+                      }
+                  }
+                  
+                  // Handle D vs GPIO prefix mapping
+                  const dMatch = q.match(/^d(\d+)$/);
+                  if (dMatch) {
+                      const num = dMatch[1];
+                      match = pins.find(p => p.dataset.pin.toLowerCase() === `gpio${num}`);
+                      if (match) return match;
+                  }
+                  const gpioMatch = q.match(/^gpio(\d+)$/);
+                  if (gpioMatch) {
+                      const num = gpioMatch[1];
+                      match = pins.find(p => p.dataset.pin.toLowerCase() === `d${num}`);
+                      if (match) return match;
+                  }
+                  
+                  match = pins.find(p => p.dataset.pin.toLowerCase().includes(pinQuery.toLowerCase()) || pinQuery.toLowerCase().includes(p.dataset.pin.toLowerCase()));
+                  return match || null;
+              }
+
+              let pin1El = findPinFuzzy(el1, pin1Id);
+              let pin2El = findPinFuzzy(el2, pin2Id);
+
+              if (pin1El && pin2El) {
+                const palette = [
+                  "#0ea5e9", // sky blue
+                  "#10b981", // emerald
+                  "#f59e0b", // amber
+                  "#8b5cf6", // violet
+                  "#ec4899", // pink
+                  "#14b8a6", // teal
+                  "#f43f5e", // rose
+                  "#a855f7", // purple
+                  "#eab308"  // yellow
+                ];
+                let defColor = palette[wIdx % palette.length]; 
+                
+                const pinLower = pin2Id.toLowerCase();
+                if (pinLower.includes("5v") || pinLower.includes("3.3v") || pinLower.includes("vcc")) defColor = "#ff3333";
+                if (pinLower.includes("gnd") || pinLower === "-") defColor = "#333333";
+                
+                // Calculate orthogonal waypoints to prevent messy overlaps
+                const rect1 = pin1El.getBoundingClientRect();
+                const rect2 = pin2El.getBoundingClientRect();
+                const cRect = canvas.getBoundingClientRect();
+                
+                const x1 = rect1.left - cRect.left + 6;
+                const y1 = rect1.top - cRect.top + 6;
+                const x2 = rect2.left - cRect.left + 6;
+                const y2 = rect2.top - cRect.top + 6;
+                
+                const waypoints = [];
+                // Dynamic staggered orthogonal path based on wire index
+                // Tighter spread to prevent wires from overflowing the board
+                const staggerOffset = ((wIdx % 8) * 4) - 16;
+                const midX = ((x1 + x2) / 2) + staggerOffset;
+                
+                waypoints.push({ x: midX, y: y1 });
+                waypoints.push({ x: midX, y: y2 });
+                
+                wireObjects.push({
+                   pin1: pin1El,
+                   pin2: pin2El,
+                   waypoints: waypoints,
+                   color: defColor
+                });
+
+                // Create individual animated path
+                const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+                let d = `M ${x1} ${y1} `;
+                waypoints.forEach(wp => d += `L ${wp.x} ${wp.y} `);
+                d += `L ${x2} ${y2}`;
+                
+                path.setAttribute("d", d);
+                path.setAttribute("fill", "none");
+                path.setAttribute("stroke-linecap", "round");
+                path.setAttribute("stroke", defColor);
+                path.setAttribute("stroke-width", "4");
+                path.classList.add("wire-animated");
+                wireLayer.appendChild(path);
+                
+                const len = path.getTotalLength();
+                path.style.setProperty('--wire-length', len);
+              }
+           }
+           wIdx++;
+           setTimeout(drawNextWire, 150); // Stagger the animation of each wire
+        }
+        
+        drawNextWire();
+      } else {
+        finalizeGeneration();
+      }
+    } catch(err) {
+      console.error(err);
+      window.showToast("Failed to generate circuit", "error");
+    }
+  }
   chatFab.addEventListener('click', () => {
     chatPanel.classList.remove('hidden')
     chatInput.focus()
@@ -1071,10 +1334,13 @@ function renderWires() {
       if (chipsBar) chipsBar.style.display = 'none'
       appendMessage('user', msg)
       const typing = appendTypingIndicator()
-      setTimeout(() => {
+      
+      Promise.resolve(circuitChatAI.respond(msg)).then(reply => {
         typing.remove()
-        const reply = circuitChatAI.respond(msg)
         appendMessage('ai', reply)
-      }, 500)
+      }).catch(err => {
+        typing.remove()
+        appendMessage('ai', 'Error: ' + err.message)
+      })
     })
   })

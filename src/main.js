@@ -38,6 +38,7 @@ document.querySelector('#app').innerHTML = `
       </button>
       <button class="nav-btn serial" id="serial-btn">Serial Monitor</button>
       <button class="nav-btn outline" id="connect-btn">Connect Board</button>
+      <button class="nav-btn outline" id="clear-board-btn" title="Delete all components and wires">Clear Board</button>
       <button class="nav-btn outline">Export</button>
       <button class="nav-btn outline" id="toggle-sidebar-btn" title="Toggle Component Panel" style="padding: 8px;">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: block;">
@@ -425,6 +426,27 @@ connectBtn.addEventListener('click', async () => {
         setCompilerStatus(e.message, true);
     }
 });
+
+// ── Clear Board ──
+const clearBoardBtn = document.getElementById('clear-board-btn');
+if (clearBoardBtn) {
+    clearBoardBtn.addEventListener('click', () => {
+        if (confirm("Are you sure you want to completely clear the board?")) {
+            document.querySelectorAll('.placed-component').forEach(el => el.remove());
+            wireObjects.length = 0;
+            componentRegistry.length = 0;
+            canvas.querySelectorAll('.wire-segment, .wire-waypoint').forEach(el => el.remove());
+            renderWires();
+            if (isSimulating) {
+                document.getElementById('start-sim-btn').click(); // Stop simulation
+            }
+            if (selectedComponent) {
+                selectedComponent = null;
+                propertiesPanel.classList.add('hidden');
+            }
+        }
+    });
+}
 
 // ── Upload to Board ──
 uploadBtn.addEventListener('click', async () => {
@@ -1040,7 +1062,13 @@ function renderWires() {
     div.className = `ai-msg ${role}`
     const bubble = document.createElement('div')
     bubble.className = 'ai-msg-bubble'
-    bubble.innerHTML = renderMarkdown(text)
+    
+    let html = renderMarkdown(text)
+    if (/(?:<!--|&lt;!--)\s*ACTION:\s*(\{[\s\S]*?\})\s*(?:-->|--&gt;)/.test(html) && !html.includes('ai-action-btn')) {
+        html += '\n<br><button class="ai-action-btn" onclick="window.executeAIAction(this.parentElement)">🚀 Generate Circuit</button>'
+    }
+    
+    bubble.innerHTML = html
     div.appendChild(bubble)
     chatMessages.appendChild(div)
     chatMessages.scrollTop = chatMessages.scrollHeight
@@ -1083,6 +1111,28 @@ function renderWires() {
       
       const plan = JSON.parse(match[1]);
       
+      // Auto-inject missing components from wiring to ensure they are placed
+      if (plan.wiring) {
+          plan.wiring.forEach(w => {
+              [w.fromComp, w.toComp].forEach(compId => {
+                  if (!compId || compId === 'mcu') return;
+                  const baseId = compId.replace(/_\d+$/, '');
+                  
+                  // Auto-correct common hallucinations
+                  let correctedId = baseId;
+                  if (baseId.toLowerCase().includes("motor") && baseId.toLowerCase().includes("driver")) correctedId = "l298n";
+                  
+                  if (!plan.components.includes(correctedId)) {
+                      plan.components.push(correctedId);
+                  }
+                  
+                  // Fix the wiring payload to point to the corrected ID if needed
+                  if (compId === w.fromComp && correctedId !== baseId) w.fromComp = correctedId + "_0";
+                  if (compId === w.toComp && correctedId !== baseId) w.toComp = correctedId + "_0";
+              });
+          });
+      }
+      
       // Close AI chat panel on mobile so the user can see the circuit being generated
       if (window.innerWidth <= 768) {
         const chatPanel = document.getElementById('ai-chat-panel');
@@ -1091,11 +1141,11 @@ function renderWires() {
         if (chatFab) chatFab.classList.remove('hidden');
       }
       
-      // 1. Clear the canvas
+      // 1. Clear the canvas and internal registries
       document.querySelectorAll('.placed-component').forEach(el => el.remove());
       wireObjects.length = 0;
+      componentRegistry.length = 0;
       
-      // If there are objects in the circuit graph or safety engine we need to reset them if possible.
       // Resetting the canvas completely.
       canvas.querySelectorAll('.wire-segment, .wire-waypoint').forEach(el => el.remove());
       renderWires();
@@ -1186,13 +1236,18 @@ function renderWires() {
                w.toPin = w.pin;
            } else {
                // New point-to-point schema
-               el1 = (w.fromComp === 'mcu') ? addedComps[plan.mcu] : addedComps[w.fromComp];
-               el2 = (w.toComp === 'mcu') ? addedComps[plan.mcu] : addedComps[w.toComp];
+               const getEl = (compId) => {
+                   if (!compId) return null;
+                   if (compId === 'mcu' || compId === plan.mcu || compId === plan.mcu + '_0') return addedComps[plan.mcu];
+                   return addedComps[compId] || addedComps[compId + "_0"] || addedComps[compId.replace(/_\d+$/, '')];
+               };
+               el1 = getEl(w.fromComp);
+               el2 = getEl(w.toComp);
            }
 
            if (el1 && el2) {
-              const pin1Id = w.fromPin.split(' ')[0].trim();
-              const pin2Id = w.toPin.split(' ')[0].trim();
+              const pin1Id = w.fromPin.trim();
+              const pin2Id = w.toPin.trim();
               
               function findPinFuzzy(el, pinQuery) {
                   if (!el || !pinQuery) return null;
@@ -1204,6 +1259,12 @@ function renderWires() {
                   
                   match = pins.find(p => p.dataset.pin.toLowerCase().replace(/[^a-z0-9]/g, '') === q);
                   if (match) return match;
+                  
+                  // Substring matching for hallucinated prefixes (e.g. "Motor Driver OUT1" -> matches "OUT1")
+                  const sortedPins = [...pins].sort((a, b) => b.dataset.pin.length - a.dataset.pin.length);
+                  match = sortedPins.find(p => pinQuery.toLowerCase().includes(p.dataset.pin.toLowerCase()));
+                  if (match) return match;
+
                   
                   const aliases = {
                      'vcc': ['vdd', '5v', '3v3', 'vin', '+'],
@@ -1266,10 +1327,10 @@ function renderWires() {
                 const rect2 = pin2El.getBoundingClientRect();
                 const cRect = canvas.getBoundingClientRect();
                 
-                const x1 = rect1.left - cRect.left + 6;
-                const y1 = rect1.top - cRect.top + 6;
-                const x2 = rect2.left - cRect.left + 6;
-                const y2 = rect2.top - cRect.top + 6;
+                const x1 = rect1.left - cRect.left + canvas.scrollLeft + 6;
+                const y1 = rect1.top - cRect.top + canvas.scrollTop + 6;
+                const x2 = rect2.left - cRect.left + canvas.scrollLeft + 6;
+                const y2 = rect2.top - cRect.top + canvas.scrollTop + 6;
                 
                 const waypoints = [];
                 // Dynamic staggered orthogonal path based on wire index

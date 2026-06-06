@@ -1392,7 +1392,9 @@ class CircuitChatAI {
        return res;
     }
 
-    const apiKey = localStorage.getItem('gemini_api_key');
+    // Secure API Key loading: checks local storage ONLY. We cannot bundle the key into the app!
+    let apiKey = localStorage.getItem('gemini_api_key');
+    
     const low = msg.toLowerCase();
     const placed = this._getPlaced();
     const comps  = this._findComps(msg);
@@ -1415,16 +1417,15 @@ User request: ${msg}
 If the user wants to build a circuit, you MUST respond in Markdown, explaining the wiring in a clear Markdown table format (e.g., | Component | Pin | Connects To |), and you MUST include the following JSON payload exactly inside an HTML comment at the end of your response to auto-generate the circuit:
 <!-- ACTION: {"mcu": "arduino-uno", "components": ["dht22", "oled-i2c", "l298n", "4wd-car-chassis"], "wiring": [{"fromComp": "mcu", "fromPin": "5V", "toComp": "dht22_0", "toPin": "VCC"}, {"fromComp": "mcu", "fromPin": "A4", "toComp": "oled-i2c_0", "toPin": "SDA"}, {"fromComp": "l298n_0", "fromPin": "OUT1", "toComp": "4wd-car-chassis_0", "toPin": "M1+"}], "code": "void setup() {}\\nvoid loop() {}"} -->
 * Note: The "components" array must contain ONLY the base component IDs (e.g. "dht22"). Do NOT append the index.
-* Note: For "wiring", "fromComp" and "toComp" must be either "mcu", or the exact component name appended with its index (e.g., "dht22_0", "l298n_0", "4wd-car-chassis_0").
+* Note: For "wiring", "fromComp" and "toComp" must be either "mcu", or the exact component ID appended with its index (e.g., "dht22_0", "l298n_0", "4wd-car-chassis_0"). DO NOT use human readable names.
 * Note: DO NOT include "jumper wires", "breadboards", or any physical connectors in the components array. Wiring is handled virtually!
-Also include a button at the very end: <button class="ai-action-btn" onclick="window.executeAIAction(this.parentElement)">🚀 Generate Circuit</button>
 
 WIRING HINTS:
 - If using '4wd-car-chassis', it has 8 pins. Wire left motors (M1, M2) in parallel to a single motor driver OUT1/OUT2. Wire right motors (M3, M4) in parallel to the SAME driver's OUT3/OUT4. Do NOT use two motor drivers for a standard 4WD car.
 
 Provide the complete accurate wiring IN A TABULAR FORMAT, and the actual C++ code snippet in the code field. Only use components and pins from the available registry.`;
         
-        const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`, {
+        const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent?key=${apiKey}`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({

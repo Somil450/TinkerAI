@@ -71,10 +71,16 @@ export function renderProperties(component, safetyStatus = null){
 }
 
 export function renderWireProperties(wire) {
+    const comp1 = wire.pin1.closest('.placed-component');
+    const comp2 = wire.pin2.closest('.placed-component');
+    
+    const name1 = comp1 ? (comp1.querySelector('.component-name-badge')?.innerText || comp1.dataset.componentId) : 'Unknown';
+    const name2 = comp2 ? (comp2.querySelector('.component-name-badge')?.innerText || comp2.dataset.componentId) : 'Unknown';
+
     return `
         <h3>Wire Properties</h3>
-        <p style="margin-bottom: 5px;"><strong>From:</strong> ${wire.pin1.dataset.pin}</p>
-        <p><strong>To:</strong> ${wire.pin2.dataset.pin}</p>
+        <p style="margin-bottom: 5px;"><strong>From:</strong> ${name1} (${wire.pin1.dataset.pin})</p>
+        <p><strong>To:</strong> ${name2} (${wire.pin2.dataset.pin})</p>
         <div style="margin-top: 15px;">
             <label for="wire-color" style="font-size: 14px; font-weight: bold; color: #333;">Wire Color:</label>
             <select id="wire-color" style="margin-top: 5px; width: 100%; padding: 5px; border-radius: 4px; border: 1px solid #ccc;">

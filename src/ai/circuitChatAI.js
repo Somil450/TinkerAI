@@ -1392,8 +1392,8 @@ class CircuitChatAI {
        return res;
     }
 
-    // Secure API Key loading: checks local storage ONLY. We cannot bundle the key into the app!
-    let apiKey = localStorage.getItem('gemini_api_key');
+    // Secure API Key loading: checks local storage first, then falls back to Vercel environment variables
+    let apiKey = localStorage.getItem('gemini_api_key') || import.meta.env.VITE_GEMINI_API_KEY;
     
     const low = msg.toLowerCase();
     const placed = this._getPlaced();

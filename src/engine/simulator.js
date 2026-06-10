@@ -1,5 +1,6 @@
-import { CPU, AVRIOPort, portBConfig, portCConfig, portDConfig, AVRTimer, timer0Config, timer1Config, timer2Config } from 'avr8js';
+import { CPU, AVRIOPort, portBConfig, portCConfig, portDConfig, AVRTimer, timer0Config, timer1Config, timer2Config, AVRUSART, usart0Config } from 'avr8js';
 import { componentRegistry } from './componentRegistry.js';
+import { evaluateLogic, evaluatePhysics } from './models.js';
 
 function loadHex(source, target) {
   for (const line of source.split('\n')) {
@@ -47,7 +48,15 @@ export class CircuitSimulator {
             D: new AVRIOPort(this.cpu, portDConfig)
         };
         
-        // 4. Start execution loop
+        // 4. Initialize Serial Monitor (USART0)
+        this.usart = new AVRUSART(this.cpu, usart0Config, 16e6);
+        this.usart.onByteTransmit = (data) => {
+            if (this.onSerialData) {
+                this.onSerialData(String.fromCharCode(data));
+            }
+        };
+        
+        // 5. Start execution loop
         this.runLoop(connections);
     }
     
@@ -173,6 +182,20 @@ export class CircuitSimulator {
             }
         });
 
+        // Add manually toggled pins from Hardware Tester
+        if (window.manualPinStates) {
+            Object.keys(window.manualPinStates).forEach(pinId => {
+                const state = window.manualPinStates[pinId];
+                if (state === 'HIGH') {
+                    sources.push(pinId);
+                    // Ensure it's not in grounds if it was previously
+                    grounds.delete(pinId);
+                } else if (state === 'LOW') {
+                    grounds.add(pinId);
+                }
+            });
+        }
+
         // Helper to check reachability in undirected graph
         const canReach = (startPin, targets) => {
             if (targets instanceof Set ? targets.has(startPin) : targets.includes(startPin)) return true;
@@ -192,113 +215,31 @@ export class CircuitSimulator {
             return false;
         };
 
-        // Evaluate L298N logic dynamically
+        // Phase 1: Update Logic (Propagate signals)
         placedIds.forEach(id => {
-            if (id.startsWith('l298n')) {
-                // Allow either 12V or 5V to power the motor driver for easier simulation
-                const isPowered = (canReach(`${id}.12V`, sources) || canReach(`${id}.5V`, sources)) && canReach(`${id}.GND`, grounds);
-                if (!isPowered) {
-                    return; // Driver needs power to function!
-                }
-                
-                const in1 = canReach(`${id}.IN1`, sources);
-                const in2 = canReach(`${id}.IN2`, sources);
-                const in3 = canReach(`${id}.IN3`, sources);
-                const in4 = canReach(`${id}.IN4`, sources);
-                const ena = canReach(`${id}.ENA`, sources) || true; // Assuming jumper is on by default if not connected
-                const enb = canReach(`${id}.ENB`, sources) || true;
+            const el = document.querySelector(`.placed-component[data-component-id="${id}"]`);
+            if (!el) return;
+            
+            let type = id.substring(0, id.lastIndexOf('_'));
+            if (!type) type = id;
 
-                if (ena) {
-                    if (in1 && !in2) {
-                        sources.push(`${id}.OUT1`);
-                        grounds.add(`${id}.OUT2`);
-                    } else if (!in1 && in2) {
-                        sources.push(`${id}.OUT2`);
-                        grounds.add(`${id}.OUT1`);
-                    }
-                }
-                
-                if (enb) {
-                    if (in3 && !in4) {
-                        sources.push(`${id}.OUT3`);
-                        grounds.add(`${id}.OUT4`);
-                    } else if (!in3 && in4) {
-                        sources.push(`${id}.OUT4`);
-                        grounds.add(`${id}.OUT3`);
-                    }
-                }
-            }
+            evaluateLogic(id, type, sources, grounds, this.poweredComponents, el, canReach, pinStates);
         });
 
+        // Let the ground tracing finish for all sources, which now may include newly added outputs from models
         sources.forEach(source => {
             this._findPathsToGround(source, grounds, pinGraph, sources);
         });
 
-        // Evaluate kinematics for 4wd-car-chassis
+        // Phase 2: Update Physics (Actuators, Animations)
         placedIds.forEach(id => {
-            if (id.startsWith('4wd-car-chassis')) {
-                const m1f = canReach(`${id}.M1+`, sources) && canReach(`${id}.M1-`, grounds);
-                const m1r = canReach(`${id}.M1-`, sources) && canReach(`${id}.M1+`, grounds);
-                
-                const m2f = canReach(`${id}.M2+`, sources) && canReach(`${id}.M2-`, grounds);
-                const m2r = canReach(`${id}.M2-`, sources) && canReach(`${id}.M2+`, grounds);
-                
-                const m3f = canReach(`${id}.M3+`, sources) && canReach(`${id}.M3-`, grounds);
-                const m3r = canReach(`${id}.M3-`, sources) && canReach(`${id}.M3+`, grounds);
-                
-                const m4f = canReach(`${id}.M4+`, sources) && canReach(`${id}.M4-`, grounds);
-                const m4r = canReach(`${id}.M4-`, sources) && canReach(`${id}.M4+`, grounds);
-                
-                // M1 (FL), M3 (RL) -> Left side
-                // M2 (FR), M4 (RR) -> Right side
-                let leftSpeed = 0;
-                if (m1f || m3f) leftSpeed = 1;
-                else if (m1r || m3r) leftSpeed = -1;
-                
-                let rightSpeed = 0;
-                if (m2f || m4f) rightSpeed = 1;
-                else if (m2r || m4r) rightSpeed = -1;
-                
-                const el = document.querySelector(`.placed-component[data-component-id="${id}"]`);
-                if (!el) return;
-                
-                el.dataset.m1 = m1f ? '1' : (m1r ? '-1' : '0');
-                el.dataset.m2 = m2f ? '1' : (m2r ? '-1' : '0');
-                el.dataset.m3 = m3f ? '1' : (m3r ? '-1' : '0');
-                el.dataset.m4 = m4f ? '1' : (m4r ? '-1' : '0');
-                
-                if (leftSpeed !== 0 || rightSpeed !== 0) {
-                    this.poweredComponents.add(id);
-                }
+            const el = document.querySelector(`.placed-component[data-component-id="${id}"]`);
+            if (!el) return;
+            
+            let type = id.substring(0, id.lastIndexOf('_'));
+            if (!type) type = id;
 
-                if (!el.physics) {
-                    el.physics = { 
-                        x: parseFloat(el.style.left) || 0, 
-                        y: parseFloat(el.style.top) || 0, 
-                        rotation: 0 
-                    };
-                    el.style.transformOrigin = "center center";
-                }
-                
-                const speedMult = 2.0;
-                const rotMult = 0.05;
-                
-                const v = (leftSpeed + rightSpeed) * speedMult;
-                const omega = (rightSpeed - leftSpeed) * rotMult;
-                
-                if (v !== 0 || omega !== 0) {
-                    el.physics.rotation += omega;
-                    el.physics.x += v * Math.sin(el.physics.rotation);
-                    el.physics.y -= v * Math.cos(el.physics.rotation);
-                    
-                    el.style.left = `${el.physics.x}px`;
-                    el.style.top = `${el.physics.y}px`;
-                    const scale = el.dataset.scale || 1;
-                    el.style.transform = `scale(${scale}) rotate(${el.physics.rotation}rad)`;
-                    
-                    if (window.renderWires) window.renderWires();
-                }
-            }
+            evaluatePhysics(id, type, sources, grounds, this.poweredComponents, el, canReach, pinStates);
         });
         
         // Update DOM classes

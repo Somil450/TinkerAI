@@ -15,13 +15,14 @@ import { initializeAIUI } from './ai/uiIntegration.js'
 import { safetyEngine } from './ai/safetyEngine.js'
 import { autoCorrectionEngine } from './ai/autoCorrectionEngine.js'
 import { simulator } from './engine/simulator.js'
-import { initCodeEditor, getCode, setCompilerStatus } from './ui/codeEditor.js'
+import { initCodeEditor, getCode, setCode, setCompilerStatus } from './ui/codeEditor.js'
 import { compileCode } from './engine/compiler.js'
 import { connectToBoard, disconnectFromBoard, flashToBoard, getPort } from './engine/flasher.js'
 import { startSerialMonitor, sendSerialData, stopSerialMonitor } from './engine/serialMonitor.js'
 import { circuitChatAI } from './ai/circuitChatAI.js'
 import { getComponentVisual } from './ui/componentSvgCatalog.js'
 import { getSvgUrl } from './ui/componentSvg.js'
+import { initSensorUI, updateSensorUI, hideSensorUI } from './ui/sensorUI.js'
 document.querySelector('#app').innerHTML = `
 <div class="app-layout">
   <nav class="navbar">
@@ -358,6 +359,25 @@ function attachPropertiesListeners(componentElement) {
       componentElement.style.zIndex = globalMinZIndex;
     });
   }
+
+  // Attach Hardware Tester pin toggles
+  window.manualPinStates = window.manualPinStates || {};
+  const pinToggles = document.querySelectorAll('.manual-pin-toggle');
+  pinToggles.forEach(toggle => {
+      const pinId = toggle.dataset.pinId;
+      if (window.manualPinStates[pinId]) {
+          toggle.value = window.manualPinStates[pinId];
+      }
+      toggle.addEventListener('change', (e) => {
+          if (e.target.value === 'Z') {
+              delete window.manualPinStates[pinId];
+          } else {
+              window.manualPinStates[pinId] = e.target.value;
+          }
+          // Force an update to the circuit visuals
+          simulator.updateCircuitVisuals(getConnections());
+      });
+  });
 }
 
 let isSimulating = false;
@@ -517,7 +537,22 @@ clearSerialBtn.addEventListener('click', () => {
 
 async function handleSerialSend() {
     const text = serialInput.value;
-    if (!text || !isBoardConnected) return;
+    if (!text) return;
+    
+    if (isSimulating) {
+        if (simulator && simulator.usart) {
+            for (let i = 0; i < text.length; i++) {
+                simulator.usart.writeByte(text.charCodeAt(i));
+            }
+            simulator.usart.writeByte(10); // newline
+            serialOutput.innerText += `> ${text}\n`;
+            serialOutput.scrollTop = serialOutput.scrollHeight;
+            serialInput.value = '';
+        }
+        return;
+    }
+    
+    if (!isBoardConnected) return;
     try {
         await sendSerialData(getPort(), text + '\n');
         serialOutput.innerText += `> ${text}\n`;
@@ -533,6 +568,7 @@ serialInput.addEventListener('keydown', (e) => {
     if (e.key === 'Enter') handleSerialSend();
 });
 
+initSensorUI();
 startSimBtn.addEventListener('click', async () => {
   if (isSimulating) {
     isSimulating = false;
@@ -540,6 +576,7 @@ startSimBtn.addEventListener('click', async () => {
     startSimBtn.style.background = '#00d26a';
     setCompilerStatus('Simulation stopped.');
     simulator.stopSimulation();
+    hideSensorUI();
     
     document.querySelectorAll('.placed-component').forEach(el => {
       el.classList.remove('led-lit');
@@ -570,29 +607,38 @@ startSimBtn.addEventListener('click', async () => {
   }
 
   startSimBtn.innerText = 'Compiling...';
-  startSimBtn.style.background = '#f39c12';
-  setCompilerStatus('Compiling on remote server...');
   
-  const code = getCode();
-  const compileResult = await compileCode(code);
+  // Connect simulated serial output to UI
+  simulator.onSerialData = (char) => {
+      serialOutput.innerText += char;
+      serialOutput.scrollTop = serialOutput.scrollHeight;
+  };
+
+  const result = await compileCode(codeEditor.getValue());
   
-  if (compileResult.compilerError || compileResult.stderr) {
+  if (result.compilerError || result.stderr) {
       startSimBtn.innerText = 'Start Simulation';
       startSimBtn.style.background = '#00d26a';
-      setCompilerStatus(compileResult.compilerError || compileResult.stderr, true);
-      if (!codePanel.classList.contains('hidden')) {
-          // Keep panel open to see error
-      }
+      setCompilerStatus(result.compilerError || result.stderr, true);
       return;
   }
   
-  setCompilerStatus(compileResult.stdout || 'Compiled successfully. Running AVR CPU...');
+  setCompilerStatus(result.stdout || 'Compiled successfully. Running AVR CPU...');
 
   isSimulating = true;
+  startSimBtn.style.background = '#e74c3c';
   startSimBtn.innerText = 'Stop Simulation';
-  startSimBtn.style.background = '#d32f2f'; 
+  setCompilerStatus('Simulation running...');
+  
+  // Show Serial Monitor when simulation starts
+  serialPanel.classList.remove('hidden');
+  if (serialOutput.innerText.length > 5000) {
+      serialOutput.innerText = ''; // Clear if it gets too large
+  }
+  serialOutput.innerText += '\n--- Simulation Started ---\n';
 
-  simulator.startSimulation(compileResult.hex, connections);
+  simulator.startSimulation(result.hex, connections);
+  updateSensorUI();
 });
 
 // Initialize AI UI (Commented out to prevent overlapping new Tinkercad sidebar)
@@ -746,6 +792,7 @@ canvas.addEventListener('dragover', e => {
       type,
       id: item.dataset.componentId,
       pinCount: item.querySelectorAll('.pin').length,
+      pins: Array.from(item.querySelectorAll('.pin')).map(p => p.dataset.pin),
       scale: item.dataset.scale || 1
     }, safetyStatus)
     attachPropertiesListeners(item)
@@ -1111,26 +1158,52 @@ function renderWires() {
       
       const plan = JSON.parse(match[1]);
       
-      // Auto-inject missing components from wiring to ensure they are placed
+      // Reconstruct plan.components based on unique instances found in wiring
+      // This ensures all instances (like led-green_0, led-green_1) are placed, even if the AI only listed the base ID.
       if (plan.wiring) {
+          const uniqueInstances = new Set();
+          
           plan.wiring.forEach(w => {
               [w.fromComp, w.toComp].forEach(compId => {
-                  if (!compId || compId === 'mcu') return;
+                  if (!compId || compId === 'mcu' || compId === plan.mcu) return;
+                  
                   const baseId = compId.replace(/_\d+$/, '');
                   
                   // Auto-correct common hallucinations
                   let correctedId = baseId;
                   if (baseId.toLowerCase().includes("motor") && baseId.toLowerCase().includes("driver")) correctedId = "l298n";
                   
-                  if (!plan.components.includes(correctedId)) {
-                      plan.components.push(correctedId);
-                  }
+                  // Keep track of the exact instance ID (e.g., led-green_2)
+                  const instanceId = compId.includes('_') ? compId.replace(baseId, correctedId) : `${correctedId}_0`;
+                  uniqueInstances.add(instanceId);
                   
-                  // Fix the wiring payload to point to the corrected ID if needed
-                  if (compId === w.fromComp && correctedId !== baseId) w.fromComp = correctedId + "_0";
-                  if (compId === w.toComp && correctedId !== baseId) w.toComp = correctedId + "_0";
+                  // Fix the wiring payload to point to the corrected instance ID
+                  if (compId === w.fromComp) w.fromComp = instanceId;
+                  if (compId === w.toComp) w.toComp = instanceId;
               });
           });
+          
+          // Include any components from plan.components that weren't in wiring (standalone)
+          plan.components.forEach(rawCompId => {
+              if (rawCompId === plan.mcu) return;
+              const baseId = rawCompId.replace(/_\d+$/, '');
+              let correctedId = baseId;
+              if (baseId.toLowerCase().includes("motor") && baseId.toLowerCase().includes("driver")) correctedId = "l298n";
+              
+              // Only add if no instances of this component exist yet
+              let hasInstance = false;
+              for (let item of uniqueInstances) {
+                 if (item.startsWith(correctedId + '_')) {
+                     hasInstance = true;
+                     break;
+                 }
+              }
+              if (!hasInstance) {
+                 uniqueInstances.add(`${correctedId}_0`);
+              }
+          });
+          
+          plan.components = Array.from(uniqueInstances);
       }
       
       // Close AI chat panel on mobile so the user can see the circuit being generated
@@ -1169,23 +1242,22 @@ function renderWires() {
       const radius = Math.min(radiusX, radiusY, maxRadius);
       
       const angleStep = (2 * Math.PI) / plan.components.length;
-      const compCounts = {};
       
       // Filter out the MCU itself if the AI mistakenly included it in the components array
       const filteredComponents = plan.components.filter(c => c.replace(/_\d+$/, '') !== plan.mcu);
       
-      filteredComponents.forEach((rawCompId, idx) => {
-        // Robustness: If the AI accidentally includes the index in the components array, strip it
-        const compId = rawCompId.replace(/_\d+$/, '');
+      filteredComponents.forEach((instanceId, idx) => {
+        // Base ID is used for instantiating the component type
+        const compId = instanceId.replace(/_\d+$/, '');
         const angle = idx * angleStep;
         // Snap to 20px grid
         const compX = Math.round((centerX + radius * Math.cos(angle)) / 20) * 20;
         const compY = Math.round((centerY + radius * Math.sin(angle)) / 20) * 20;
         
         placeComponent(compId, compX - 50, compY - 50);
-        if (!compCounts[compId]) compCounts[compId] = 0;
-        const cIdx = compCounts[compId]++;
-        addedComps[`${compId}_${cIdx}`] = componentRegistry[componentRegistry.length - 1].element;
+        
+        // Map the EXACT instance ID from the plan directly to the newly placed element
+        addedComps[instanceId] = componentRegistry[componentRegistry.length - 1].element;
       });
       
       // 4. Draw wires with orthogonal routing (Animated)
@@ -1198,9 +1270,19 @@ function renderWires() {
         
         // 5. Fill Code Editor
         if (plan.code) {
-          const codeEditor = document.getElementById('code-editor');
-          if (codeEditor) {
-            codeEditor.value = plan.code.trim();
+          setCode(plan.code.trim());
+          
+          // Switch to code panel automatically
+          const rightPanel = document.getElementById('right-panel');
+          const codePanel = document.getElementById('code-panel');
+          
+          if (rightPanel.classList.contains('hidden')) {
+              // Open side panel if hidden
+              rightPanel.classList.remove('hidden');
+          }
+          if (codePanel.classList.contains('hidden')) {
+              document.querySelectorAll('.panel-section').forEach(p => p.classList.add('hidden'));
+              codePanel.classList.remove('hidden');
           }
         }
         
@@ -1249,8 +1331,8 @@ function renderWires() {
            }
 
            if (el1 && el2) {
-              const pin1Id = w.fromPin.trim();
-              const pin2Id = w.toPin.trim();
+              const pin1Id = String(w.fromPin || "").trim();
+              const pin2Id = String(w.toPin || "").trim();
               
               function findPinFuzzy(el, pinQuery) {
                   if (!el || !pinQuery) return null;

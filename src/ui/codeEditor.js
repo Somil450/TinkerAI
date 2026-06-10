@@ -38,6 +38,13 @@ export function getCode() {
     return editor.state.doc.toString();
 }
 
+export function setCode(code) {
+    if (!editor) return;
+    editor.dispatch({
+        changes: { from: 0, to: editor.state.doc.length, insert: code }
+    });
+}
+
 export function setCompilerStatus(status, isError = false) {
     const statusPanel = document.getElementById('compiler-output');
     if (statusPanel) {

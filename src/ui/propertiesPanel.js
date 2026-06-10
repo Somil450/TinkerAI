@@ -66,6 +66,25 @@ export function renderProperties(component, safetyStatus = null){
             </div>
         </div>
 
+        ${component.pins && component.pins.length > 0 ? `
+        <div style="margin-top: 15px; border-top: 1px solid #eee; padding-top: 15px;">
+            <label style="font-size: 14px; font-weight: bold; color: #333; display: block; margin-bottom: 8px;">Manual Hardware Tester</label>
+            <p style="font-size: 11px; color: #666; margin-bottom: 8px;">Test your circuit by manually setting pins HIGH or LOW.</p>
+            <div id="pin-toggles-container" style="max-height: 200px; overflow-y: auto; font-size: 12px; border: 1px solid #ddd; border-radius: 4px; padding: 4px;">
+                ${component.pins.map(pin => `
+                    <div style="display: flex; justify-content: space-between; align-items: center; padding: 4px 6px; border-bottom: 1px solid #f0f0f0;">
+                        <span style="font-family: monospace; font-weight: bold;">${pin}</span>
+                        <select class="manual-pin-toggle" data-pin-id="${component.id}.${pin}" style="padding: 2px; border-radius: 3px; border: 1px solid #ccc;">
+                            <option value="Z">Hi-Z (Off)</option>
+                            <option value="HIGH">HIGH (VCC)</option>
+                            <option value="LOW">LOW (GND)</option>
+                        </select>
+                    </div>
+                `).join('')}
+            </div>
+        </div>
+        ` : ''}
+
         ${safetyHtml}
     `
 }

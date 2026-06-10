@@ -3,6 +3,7 @@
  */
 import { expandRegistryPins } from './registryPinExpansion.js'
 import componentVisuals from '../data/componentVisuals.json'
+import { resolveArchetype } from './componentArchetypes.js'
 
 const POWER_PINS = new Set(['VCC', '5V', '3V3', '3.3V', 'VIN', 'VDD', '+', 'V+', 'VOUT', 'ENA', 'ENB', '12V', 'LV', 'HV'])
 const GROUND_PINS = new Set(['GND', 'VSS', 'Gnd', '-', 'V-', 'VSS'])
@@ -49,7 +50,16 @@ export function buildPins(componentId, visual, registry) {
     }))
   }
 
-  const pinIds = expandRegistryPins(registry.get(componentId)?.pins, componentId)
+  let pinIds = expandRegistryPins(registry.get(componentId)?.pins, componentId)
+
+  // Fallback to archetype if pins not found (handles LLM hallucinated IDs)
+  if (!pinIds.length) {
+    const archetypeId = resolveArchetype(componentId)
+    if (archetypeId !== componentId && archetypeId !== 'sensor-module') {
+      pinIds = expandRegistryPins(registry.get(archetypeId)?.pins, archetypeId)
+    }
+  }
+
   if (!pinIds.length) return visual.pins?.map((p) => ({ ...p, labelSide: p.labelSide ?? 'top' })) ?? []
 
   return layoutPinDualRow(pinIds, visual.width, visual.height)

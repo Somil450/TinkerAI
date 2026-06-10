@@ -187,9 +187,24 @@ export const ID_TO_ARCHETYPE = {
 }
 
 export function resolveArchetype(componentId) {
+  if (!componentId) return 'sensor-module'
+  const cid = componentId.toLowerCase()
+
+  if (ID_TO_ARCHETYPE[cid]) return ID_TO_ARCHETYPE[cid]
   if (ID_TO_ARCHETYPE[componentId]) return ID_TO_ARCHETYPE[componentId]
-  if (componentId.startsWith('led-')) return `led-${componentId.split('-')[1]}`
-  if (componentId.startsWith('resistor-')) return 'resistor'
+
+  // Handle LLM generated variations
+  if (cid.includes('l298n')) return 'l298n'
+  if (cid.includes('l293d')) return 'motor-driver'
+  if (cid.includes('motor-driver')) return 'motor-driver'
+  if (cid.includes('power-supply') || cid.includes('battery') || cid.includes('external-power')) return 'battery-9v'
+  if (cid.includes('chassis') || cid.includes('4wd')) return '4wd-car-chassis'
+  if (cid.includes('servo')) return 'servo'
+  if (cid.includes('stepper')) return 'stepper'
+  if (cid.includes('relay')) return 'relay-module'
+
+  if (cid.startsWith('led-')) return `led-${cid.split('-')[1]}`
+  if (cid.startsWith('resistor-')) return 'resistor'
   return 'sensor-module'
 }
 
@@ -302,7 +317,14 @@ export const COMPONENT_SVG = {
 }
 
 export function resolveSvgAsset(componentId) {
+  if (!componentId) return 'sensor-module'
+  const cid = componentId.toLowerCase()
+  if (COMPONENT_SVG[cid]) return COMPONENT_SVG[cid]
   if (COMPONENT_SVG[componentId]) return COMPONENT_SVG[componentId]
+  
+  if (cid.includes('l298n-mini')) return 'l298n-mini'
+  if (cid.includes('l298n')) return 'l298n'
+
   return resolveArchetype(componentId)
 }
 

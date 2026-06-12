@@ -595,25 +595,25 @@
       {
         "id": "VCC",
         "x": 34,
-        "y": 16,
-        "labelSide": "top"
-      },
-      {
-        "id": "GND",
-        "x": 113,
-        "y": 16,
-        "labelSide": "top"
+        "y": 14,
+        "labelSide": "left"
       },
       {
         "id": "TRIG",
         "x": 60,
-        "y": 16,
+        "y": 14,
         "labelSide": "top"
       },
       {
         "id": "ECHO",
         "x": 86,
-        "y": 16,
+        "y": 14,
+        "labelSide": "top"
+      },
+      {
+        "id": "GND",
+        "x": 110,
+        "y": 44,
         "labelSide": "top"
       }
     ],
@@ -626,7 +626,13 @@
     "pins": [
       {
         "id": "VCC",
-        "x": 22,
+        "x": 23,
+        "y": 12,
+        "labelSide": "left"
+      },
+      {
+        "id": "OUT",
+        "x": 40,
         "y": 12,
         "labelSide": "top"
       },
@@ -634,13 +640,7 @@
         "id": "GND",
         "x": 73,
         "y": 12,
-        "labelSide": "top"
-      },
-      {
-        "id": "OUT",
-        "x": 39,
-        "y": 12,
-        "labelSide": "top"
+        "labelSide": "right"
       }
     ],
     "pinCount": 3
@@ -652,51 +652,51 @@
     "pins": [
       {
         "id": "VCC",
-        "x": 20,
-        "y": 14,
-        "labelSide": "bottom"
+        "x": 18,
+        "y": 12,
+        "labelSide": "left"
       },
       {
         "id": "GND",
         "x": 35,
-        "y": 14,
-        "labelSide": "bottom"
+        "y": 12,
+        "labelSide": "left"
       },
       {
         "id": "SCL",
-        "x": 49,
-        "y": 14,
-        "labelSide": "bottom"
+        "x": 53,
+        "y": 12,
+        "labelSide": "top"
       },
       {
         "id": "SDA",
-        "x": 64,
-        "y": 14,
-        "labelSide": "bottom"
+        "x": 70,
+        "y": 12,
+        "labelSide": "top"
       },
       {
         "id": "XDA",
-        "x": 78,
-        "y": 14,
-        "labelSide": "bottom"
+        "x": 86,
+        "y": 12,
+        "labelSide": "top"
       },
       {
         "id": "XCL",
-        "x": 92,
-        "y": 14,
-        "labelSide": "bottom"
+        "x": 103,
+        "y": 12,
+        "labelSide": "top"
       },
       {
         "id": "AD0",
-        "x": 107,
-        "y": 14,
-        "labelSide": "bottom"
+        "x": 121,
+        "y": 12,
+        "labelSide": "right"
       },
       {
         "id": "INT",
-        "x": 121,
-        "y": 14,
-        "labelSide": "bottom"
+        "x": 138,
+        "y": 12,
+        "labelSide": "right"
       }
     ],
     "pinCount": 8
@@ -841,14 +841,14 @@
       {
         "id": "+",
         "x": 115,
-        "y": 44,
+        "y": 48,
         "labelSide": "right"
       },
       {
         "id": "-",
-        "x": 115,
-        "y": 56,
-        "labelSide": "right"
+        "x": 36,
+        "y": 84,
+        "labelSide": "bottom"
       }
     ],
     "pinCount": 2
@@ -859,22 +859,22 @@
     "height": 114,
     "pins": [
       {
+        "id": "SIGNAL",
+        "x": 7,
+        "y": 50,
+        "labelSide": "left"
+      },
+      {
         "id": "VCC",
-        "x": 8,
+        "x": 7,
         "y": 67,
-        "labelSide": "right"
+        "labelSide": "left"
       },
       {
         "id": "GND",
-        "x": 8,
+        "x": 7,
         "y": 84,
-        "labelSide": "right"
-      },
-      {
-        "id": "SIGNAL",
-        "x": 8,
-        "y": 50,
-        "labelSide": "right"
+        "labelSide": "left"
       }
     ],
     "pinCount": 3
@@ -913,13 +913,13 @@
     "pins": [
       {
         "id": "+",
-        "x": 108,
+        "x": 106,
         "y": 36,
         "labelSide": "right"
       },
       {
         "id": "-",
-        "x": 108,
+        "x": 106,
         "y": 60,
         "labelSide": "right"
       }
@@ -973,101 +973,53 @@
       {
         "id": "3V3",
         "x": 14,
-        "y": 5,
+        "y": 7,
+        "labelSide": "left"
+      },
+      {
+        "id": "GND",
+        "x": 31,
+        "y": 7,
+        "labelSide": "left"
+      },
+      {
+        "id": "TX",
+        "x": 48,
+        "y": 7,
         "labelSide": "top"
       },
       {
-        "id": "RST",
-        "x": 31,
-        "y": 5,
+        "id": "RX",
+        "x": 65,
+        "y": 7,
         "labelSide": "top"
       },
       {
         "id": "EN",
-        "x": 48,
-        "y": 5,
-        "labelSide": "top"
-      },
-      {
-        "id": "GPIO16",
-        "x": 65,
-        "y": 5,
-        "labelSide": "top"
-      },
-      {
-        "id": "GPIO14",
         "x": 82,
-        "y": 5,
+        "y": 7,
         "labelSide": "top"
       },
       {
-        "id": "GPIO12",
+        "id": "RST",
         "x": 98,
-        "y": 5,
+        "y": 7,
         "labelSide": "top"
-      },
-      {
-        "id": "GPIO13",
-        "x": 115,
-        "y": 5,
-        "labelSide": "top"
-      },
-      {
-        "id": "VCC",
-        "x": 132,
-        "y": 5,
-        "labelSide": "top"
-      },
-      {
-        "id": "TX",
-        "x": 14,
-        "y": 73,
-        "labelSide": "bottom"
-      },
-      {
-        "id": "RX",
-        "x": 31,
-        "y": 73,
-        "labelSide": "bottom"
-      },
-      {
-        "id": "GPIO5",
-        "x": 48,
-        "y": 73,
-        "labelSide": "bottom"
-      },
-      {
-        "id": "GPIO4",
-        "x": 65,
-        "y": 73,
-        "labelSide": "bottom"
       },
       {
         "id": "GPIO0",
-        "x": 82,
-        "y": 73,
-        "labelSide": "bottom"
+        "x": 115,
+        "y": 7,
+        "labelSide": "top"
       },
       {
         "id": "GPIO2",
-        "x": 98,
-        "y": 73,
-        "labelSide": "bottom"
-      },
-      {
-        "id": "GPIO15",
-        "x": 115,
-        "y": 73,
-        "labelSide": "bottom"
-      },
-      {
-        "id": "GND",
         "x": 132,
-        "y": 73,
-        "labelSide": "bottom"
+        "y": 7,
+        "labelSide": "right"
       }
     ],
-    "pinCount": 16
+    "pinCount": 8
   },
   "arduino-mega": {
     "archetype": "arduino-mega",
@@ -1855,37 +1807,37 @@
     "height": 114,
     "pins": [
       {
-        "id": "GP0",
+        "id": "3V3",
         "x": 17,
         "y": 10,
-        "labelSide": "top"
+        "labelSide": "left"
+      },
+      {
+        "id": "GND",
+        "x": 29,
+        "y": 10,
+        "labelSide": "left"
+      },
+      {
+        "id": "GP0",
+        "x": 41,
+        "y": 10,
+        "labelSide": "left"
       },
       {
         "id": "GP1",
-        "x": 29,
+        "x": 53,
         "y": 10,
-        "labelSide": "top"
-      },
-      {
-        "id": "GND",
-        "x": 41,
-        "y": 10,
-        "labelSide": "top"
+        "labelSide": "left"
       },
       {
         "id": "GP2",
-        "x": 53,
+        "x": 65,
         "y": 10,
-        "labelSide": "top"
+        "labelSide": "left"
       },
       {
         "id": "GP3",
-        "x": 65,
-        "y": 10,
-        "labelSide": "top"
-      },
-      {
-        "id": "GND",
         "x": 77,
         "y": 10,
         "labelSide": "top"
@@ -1903,229 +1855,145 @@
         "labelSide": "top"
       },
       {
-        "id": "GND",
-        "x": 113,
-        "y": 10,
-        "labelSide": "top"
-      },
-      {
         "id": "GP6",
-        "x": 125,
+        "x": 113,
         "y": 10,
         "labelSide": "top"
       },
       {
         "id": "GP7",
-        "x": 137,
-        "y": 10,
-        "labelSide": "top"
-      },
-      {
-        "id": "GND",
-        "x": 149,
+        "x": 125,
         "y": 10,
         "labelSide": "top"
       },
       {
         "id": "GP8",
-        "x": 161,
+        "x": 137,
         "y": 10,
         "labelSide": "top"
       },
       {
         "id": "GP9",
-        "x": 173,
-        "y": 10,
-        "labelSide": "top"
-      },
-      {
-        "id": "GND",
-        "x": 185,
+        "x": 149,
         "y": 10,
         "labelSide": "top"
       },
       {
         "id": "GP10",
-        "x": 197,
+        "x": 161,
         "y": 10,
         "labelSide": "top"
       },
       {
         "id": "GP11",
-        "x": 209,
-        "y": 10,
-        "labelSide": "top"
-      },
-      {
-        "id": "GND",
-        "x": 221,
+        "x": 173,
         "y": 10,
         "labelSide": "top"
       },
       {
         "id": "GP12",
-        "x": 233,
+        "x": 185,
         "y": 10,
         "labelSide": "top"
       },
       {
         "id": "GP13",
-        "x": 245,
+        "x": 197,
         "y": 10,
         "labelSide": "top"
       },
       {
-        "id": "VBUS",
+        "id": "GP14",
+        "x": 209,
+        "y": 10,
+        "labelSide": "right"
+      },
+      {
+        "id": "GP15",
+        "x": 221,
+        "y": 10,
+        "labelSide": "right"
+      },
+      {
+        "id": "GP16",
+        "x": 233,
+        "y": 10,
+        "labelSide": "right"
+      },
+      {
+        "id": "GP17",
+        "x": 245,
+        "y": 10,
+        "labelSide": "right"
+      },
+      {
+        "id": "GP18",
+        "x": 144,
+        "y": 96,
+        "labelSide": "bottom"
+      },
+      {
+        "id": "GP19",
+        "x": 156,
+        "y": 96,
+        "labelSide": "bottom"
+      },
+      {
+        "id": "GP20",
+        "x": 168,
+        "y": 96,
+        "labelSide": "bottom"
+      },
+      {
+        "id": "GP21",
         "x": 17,
         "y": 104,
-        "labelSide": "bottom"
+        "labelSide": "left"
       },
       {
-        "id": "VSYS",
+        "id": "GP22",
         "x": 29,
         "y": 104,
-        "labelSide": "bottom"
+        "labelSide": "left"
       },
       {
-        "id": "GND",
+        "id": "GP23",
         "x": 41,
         "y": 104,
-        "labelSide": "bottom"
+        "labelSide": "left"
       },
       {
-        "id": "3V3_EN",
+        "id": "GP24",
         "x": 53,
         "y": 104,
-        "labelSide": "bottom"
+        "labelSide": "left"
       },
       {
-        "id": "3V3",
+        "id": "GP25",
         "x": 65,
         "y": 104,
-        "labelSide": "bottom"
+        "labelSide": "left"
       },
       {
-        "id": "ADC_VREF",
+        "id": "GP26",
         "x": 77,
         "y": 104,
         "labelSide": "bottom"
       },
       {
-        "id": "GP28",
+        "id": "GP27",
         "x": 89,
         "y": 104,
         "labelSide": "bottom"
       },
       {
-        "id": "AGND",
+        "id": "GP28",
         "x": 101,
         "y": 104,
         "labelSide": "bottom"
-      },
-      {
-        "id": "GP27",
-        "x": 113,
-        "y": 104,
-        "labelSide": "bottom"
-      },
-      {
-        "id": "GP26",
-        "x": 125,
-        "y": 104,
-        "labelSide": "bottom"
-      },
-      {
-        "id": "RUN",
-        "x": 137,
-        "y": 104,
-        "labelSide": "bottom"
-      },
-      {
-        "id": "GP22",
-        "x": 149,
-        "y": 104,
-        "labelSide": "bottom"
-      },
-      {
-        "id": "GND",
-        "x": 161,
-        "y": 104,
-        "labelSide": "bottom"
-      },
-      {
-        "id": "GP21",
-        "x": 173,
-        "y": 104,
-        "labelSide": "bottom"
-      },
-      {
-        "id": "GP20",
-        "x": 185,
-        "y": 104,
-        "labelSide": "bottom"
-      },
-      {
-        "id": "GP19",
-        "x": 197,
-        "y": 104,
-        "labelSide": "bottom"
-      },
-      {
-        "id": "GP18",
-        "x": 209,
-        "y": 104,
-        "labelSide": "bottom"
-      },
-      {
-        "id": "GND",
-        "x": 221,
-        "y": 104,
-        "labelSide": "bottom"
-      },
-      {
-        "id": "GP17",
-        "x": 233,
-        "y": 104,
-        "labelSide": "bottom"
-      },
-      {
-        "id": "GP16",
-        "x": 245,
-        "y": 104,
-        "labelSide": "bottom"
-      },
-      {
-        "id": "GP14",
-        "x": 197,
-        "y": 107,
-        "labelSide": "bottom"
-      },
-      {
-        "id": "GP15",
-        "x": 209,
-        "y": 107,
-        "labelSide": "bottom"
-      },
-      {
-        "id": "GP23",
-        "x": 221,
-        "y": 107,
-        "labelSide": "bottom"
-      },
-      {
-        "id": "GP24",
-        "x": 233,
-        "y": 107,
-        "labelSide": "bottom"
-      },
-      {
-        "id": "GP25",
-        "x": 245,
-        "y": 107,
-        "labelSide": "bottom"
       }
     ],
-    "pinCount": 45
+    "pinCount": 31
   },
   "raspberry-pi-pico-w": {
     "archetype": "rpi-pico",
@@ -3353,7 +3221,13 @@
     "pins": [
       {
         "id": "VCC",
-        "x": 22,
+        "x": 23,
+        "y": 12,
+        "labelSide": "left"
+      },
+      {
+        "id": "OUT",
+        "x": 40,
         "y": 12,
         "labelSide": "top"
       },
@@ -3361,13 +3235,7 @@
         "id": "GND",
         "x": 73,
         "y": 12,
-        "labelSide": "top"
-      },
-      {
-        "id": "OUT",
-        "x": 39,
-        "y": 12,
-        "labelSide": "top"
+        "labelSide": "right"
       }
     ],
     "pinCount": 3
@@ -3380,20 +3248,20 @@
       {
         "id": "VCC",
         "x": 37,
-        "y": 67,
-        "labelSide": "top"
+        "y": 58,
+        "labelSide": "bottom"
       },
       {
         "id": "GND",
         "x": 64,
-        "y": 67,
-        "labelSide": "top"
+        "y": 58,
+        "labelSide": "bottom"
       },
       {
         "id": "OUT",
         "x": 90,
-        "y": 67,
-        "labelSide": "top"
+        "y": 58,
+        "labelSide": "bottom"
       }
     ],
     "pinCount": 3
@@ -3406,20 +3274,20 @@
       {
         "id": "VCC",
         "x": 49,
-        "y": 67,
-        "labelSide": "top"
-      },
-      {
-        "id": "GND",
-        "x": 102,
-        "y": 67,
-        "labelSide": "top"
+        "y": 62,
+        "labelSide": "bottom"
       },
       {
         "id": "OUT",
         "x": 76,
-        "y": 67,
-        "labelSide": "top"
+        "y": 62,
+        "labelSide": "bottom"
+      },
+      {
+        "id": "GND",
+        "x": 102,
+        "y": 62,
+        "labelSide": "bottom"
       }
     ],
     "pinCount": 3
@@ -3431,21 +3299,21 @@
     "pins": [
       {
         "id": "VCC",
-        "x": 50,
-        "y": 14,
-        "labelSide": "bottom"
+        "x": 53,
+        "y": 12,
+        "labelSide": "top"
       },
       {
         "id": "GND",
-        "x": 65,
-        "y": 14,
-        "labelSide": "bottom"
+        "x": 72,
+        "y": 12,
+        "labelSide": "top"
       },
       {
         "id": "OUT",
-        "x": 79,
-        "y": 14,
-        "labelSide": "bottom"
+        "x": 91,
+        "y": 12,
+        "labelSide": "top"
       }
     ],
     "pinCount": 3
@@ -3457,21 +3325,21 @@
     "pins": [
       {
         "id": "VCC",
-        "x": 44,
-        "y": 14,
-        "labelSide": "bottom"
+        "x": 47,
+        "y": 12,
+        "labelSide": "top"
       },
       {
         "id": "GND",
-        "x": 59,
-        "y": 14,
-        "labelSide": "bottom"
+        "x": 66,
+        "y": 12,
+        "labelSide": "top"
       },
       {
         "id": "OUT",
-        "x": 73,
-        "y": 14,
-        "labelSide": "bottom"
+        "x": 85,
+        "y": 12,
+        "labelSide": "top"
       }
     ],
     "pinCount": 3
@@ -3483,27 +3351,27 @@
     "pins": [
       {
         "id": "VCC",
-        "x": 37,
-        "y": 17,
-        "labelSide": "bottom"
+        "x": 32,
+        "y": 10,
+        "labelSide": "top"
       },
       {
         "id": "GND",
-        "x": 56,
-        "y": 17,
-        "labelSide": "bottom"
+        "x": 46,
+        "y": 10,
+        "labelSide": "top"
       },
       {
         "id": "AO",
-        "x": 75,
-        "y": 17,
-        "labelSide": "bottom"
+        "x": 59,
+        "y": 10,
+        "labelSide": "top"
       },
       {
         "id": "DO",
-        "x": 75,
-        "y": 17,
-        "labelSide": "bottom"
+        "x": 72,
+        "y": 10,
+        "labelSide": "top"
       }
     ],
     "pinCount": 4
@@ -3517,25 +3385,25 @@
         "id": "VCC",
         "x": 49,
         "y": 62,
-        "labelSide": "top"
+        "labelSide": "bottom"
       },
       {
         "id": "GND",
         "x": 71,
         "y": 62,
-        "labelSide": "top"
+        "labelSide": "bottom"
       },
       {
         "id": "AO",
         "x": 92,
         "y": 62,
-        "labelSide": "top"
+        "labelSide": "bottom"
       },
       {
         "id": "DO",
         "x": 114,
         "y": 62,
-        "labelSide": "top"
+        "labelSide": "bottom"
       }
     ],
     "pinCount": 4
@@ -3548,26 +3416,26 @@
       {
         "id": "VCC",
         "x": 49,
-        "y": 14,
-        "labelSide": "bottom"
+        "y": 12,
+        "labelSide": "top"
       },
       {
         "id": "GND",
-        "x": 64,
-        "y": 14,
-        "labelSide": "bottom"
+        "x": 68,
+        "y": 12,
+        "labelSide": "top"
       },
       {
         "id": "AO",
-        "x": 78,
-        "y": 14,
-        "labelSide": "bottom"
+        "x": 88,
+        "y": 12,
+        "labelSide": "top"
       },
       {
         "id": "DO",
-        "x": 92,
-        "y": 14,
-        "labelSide": "bottom"
+        "x": 107,
+        "y": 12,
+        "labelSide": "top"
       }
     ],
     "pinCount": 4
@@ -3579,21 +3447,21 @@
     "pins": [
       {
         "id": "VCC",
-        "x": 50,
-        "y": 14,
-        "labelSide": "bottom"
+        "x": 53,
+        "y": 12,
+        "labelSide": "top"
       },
       {
         "id": "GND",
-        "x": 65,
-        "y": 14,
-        "labelSide": "bottom"
+        "x": 72,
+        "y": 12,
+        "labelSide": "top"
       },
       {
         "id": "S",
-        "x": 79,
-        "y": 14,
-        "labelSide": "bottom"
+        "x": 91,
+        "y": 12,
+        "labelSide": "top"
       }
     ],
     "pinCount": 3
@@ -3606,26 +3474,26 @@
       {
         "id": "VCC",
         "x": 43,
-        "y": 14,
-        "labelSide": "bottom"
+        "y": 12,
+        "labelSide": "top"
       },
       {
         "id": "GND",
-        "x": 58,
-        "y": 14,
-        "labelSide": "bottom"
+        "x": 62,
+        "y": 12,
+        "labelSide": "top"
       },
       {
         "id": "DO",
-        "x": 72,
-        "y": 14,
-        "labelSide": "bottom"
+        "x": 82,
+        "y": 12,
+        "labelSide": "top"
       },
       {
         "id": "AO",
-        "x": 86,
-        "y": 14,
-        "labelSide": "bottom"
+        "x": 101,
+        "y": 12,
+        "labelSide": "top"
       }
     ],
     "pinCount": 4
@@ -3638,26 +3506,26 @@
       {
         "id": "VCC",
         "x": 43,
-        "y": 14,
-        "labelSide": "bottom"
+        "y": 12,
+        "labelSide": "top"
       },
       {
         "id": "GND",
-        "x": 58,
-        "y": 14,
-        "labelSide": "bottom"
+        "x": 62,
+        "y": 12,
+        "labelSide": "top"
       },
       {
         "id": "AO",
-        "x": 72,
-        "y": 14,
-        "labelSide": "bottom"
+        "x": 82,
+        "y": 12,
+        "labelSide": "top"
       },
       {
         "id": "DO",
-        "x": 86,
-        "y": 14,
-        "labelSide": "bottom"
+        "x": 101,
+        "y": 12,
+        "labelSide": "top"
       }
     ],
     "pinCount": 4
@@ -3670,26 +3538,26 @@
       {
         "id": "VCC",
         "x": 43,
-        "y": 14,
-        "labelSide": "bottom"
+        "y": 12,
+        "labelSide": "top"
       },
       {
         "id": "GND",
-        "x": 58,
-        "y": 14,
-        "labelSide": "bottom"
+        "x": 62,
+        "y": 12,
+        "labelSide": "top"
       },
       {
         "id": "SCL",
-        "x": 72,
-        "y": 14,
-        "labelSide": "bottom"
+        "x": 82,
+        "y": 12,
+        "labelSide": "top"
       },
       {
         "id": "SDA",
-        "x": 86,
-        "y": 14,
-        "labelSide": "bottom"
+        "x": 101,
+        "y": 12,
+        "labelSide": "top"
       }
     ],
     "pinCount": 4
@@ -3702,26 +3570,26 @@
       {
         "id": "VCC",
         "x": 43,
-        "y": 14,
-        "labelSide": "bottom"
+        "y": 12,
+        "labelSide": "top"
       },
       {
         "id": "GND",
-        "x": 58,
-        "y": 14,
-        "labelSide": "bottom"
+        "x": 62,
+        "y": 12,
+        "labelSide": "top"
       },
       {
         "id": "SCL",
-        "x": 72,
-        "y": 14,
-        "labelSide": "bottom"
+        "x": 82,
+        "y": 12,
+        "labelSide": "top"
       },
       {
         "id": "SDA",
-        "x": 86,
-        "y": 14,
-        "labelSide": "bottom"
+        "x": 101,
+        "y": 12,
+        "labelSide": "top"
       }
     ],
     "pinCount": 4
@@ -3733,27 +3601,27 @@
     "pins": [
       {
         "id": "VCC",
-        "x": 29,
-        "y": 14,
-        "labelSide": "bottom"
+        "x": 24,
+        "y": 12,
+        "labelSide": "left"
       },
       {
         "id": "GND",
         "x": 43,
-        "y": 14,
-        "labelSide": "bottom"
+        "y": 12,
+        "labelSide": "top"
       },
       {
         "id": "SCL",
-        "x": 58,
-        "y": 14,
-        "labelSide": "bottom"
+        "x": 62,
+        "y": 12,
+        "labelSide": "top"
       },
       {
         "id": "SDA",
-        "x": 72,
-        "y": 14,
-        "labelSide": "bottom"
+        "x": 82,
+        "y": 12,
+        "labelSide": "top"
       }
     ],
     "pinCount": 4
@@ -3765,33 +3633,33 @@
     "pins": [
       {
         "id": "VCC",
-        "x": 42,
-        "y": 14,
-        "labelSide": "bottom"
+        "x": 40,
+        "y": 12,
+        "labelSide": "top"
       },
       {
         "id": "GND",
-        "x": 56,
-        "y": 14,
-        "labelSide": "bottom"
+        "x": 59,
+        "y": 12,
+        "labelSide": "top"
       },
       {
         "id": "OUT",
-        "x": 71,
-        "y": 14,
-        "labelSide": "bottom"
+        "x": 78,
+        "y": 12,
+        "labelSide": "top"
       },
       {
         "id": "IP+",
-        "x": 85,
-        "y": 14,
-        "labelSide": "bottom"
+        "x": 97,
+        "y": 12,
+        "labelSide": "top"
       },
       {
         "id": "IP-",
-        "x": 100,
-        "y": 14,
-        "labelSide": "bottom"
+        "x": 116,
+        "y": 12,
+        "labelSide": "top"
       }
     ],
     "pinCount": 5
@@ -3803,51 +3671,51 @@
     "pins": [
       {
         "id": "VCC",
-        "x": 26,
-        "y": 14,
-        "labelSide": "bottom"
+        "x": 19,
+        "y": 12,
+        "labelSide": "left"
       },
       {
         "id": "GND",
-        "x": 41,
-        "y": 14,
-        "labelSide": "bottom"
+        "x": 37,
+        "y": 12,
+        "labelSide": "left"
       },
       {
         "id": "DT",
-        "x": 55,
-        "y": 14,
-        "labelSide": "bottom"
+        "x": 56,
+        "y": 12,
+        "labelSide": "top"
       },
       {
         "id": "SCK",
-        "x": 70,
-        "y": 14,
-        "labelSide": "bottom"
+        "x": 74,
+        "y": 12,
+        "labelSide": "top"
       },
       {
         "id": "E+",
-        "x": 84,
-        "y": 14,
-        "labelSide": "bottom"
+        "x": 94,
+        "y": 12,
+        "labelSide": "top"
       },
       {
         "id": "E-",
-        "x": 98,
-        "y": 14,
-        "labelSide": "bottom"
+        "x": 112,
+        "y": 12,
+        "labelSide": "top"
       },
       {
         "id": "A+",
-        "x": 113,
-        "y": 14,
-        "labelSide": "bottom"
+        "x": 131,
+        "y": 12,
+        "labelSide": "right"
       },
       {
         "id": "A-",
-        "x": 127,
-        "y": 14,
-        "labelSide": "bottom"
+        "x": 149,
+        "y": 12,
+        "labelSide": "right"
       }
     ],
     "pinCount": 8
@@ -3860,26 +3728,26 @@
       {
         "id": "VCC",
         "x": 43,
-        "y": 14,
-        "labelSide": "bottom"
+        "y": 12,
+        "labelSide": "top"
       },
       {
         "id": "GND",
-        "x": 58,
-        "y": 14,
-        "labelSide": "bottom"
+        "x": 62,
+        "y": 12,
+        "labelSide": "top"
       },
       {
         "id": "SCL",
-        "x": 72,
-        "y": 14,
-        "labelSide": "bottom"
+        "x": 82,
+        "y": 12,
+        "labelSide": "top"
       },
       {
         "id": "SDA",
-        "x": 86,
-        "y": 14,
-        "labelSide": "bottom"
+        "x": 101,
+        "y": 12,
+        "labelSide": "top"
       }
     ],
     "pinCount": 4
@@ -3891,21 +3759,21 @@
     "pins": [
       {
         "id": "VCC",
-        "x": 44,
-        "y": 14,
-        "labelSide": "bottom"
-      },
-      {
-        "id": "GND",
-        "x": 73,
-        "y": 14,
-        "labelSide": "bottom"
+        "x": 47,
+        "y": 12,
+        "labelSide": "top"
       },
       {
         "id": "DQ",
-        "x": 59,
-        "y": 14,
-        "labelSide": "bottom"
+        "x": 66,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "GND",
+        "x": 85,
+        "y": 12,
+        "labelSide": "top"
       }
     ],
     "pinCount": 3
@@ -3917,45 +3785,45 @@
     "pins": [
       {
         "id": "VCC",
-        "x": 28,
-        "y": 14,
-        "labelSide": "bottom"
+        "x": 20,
+        "y": 12,
+        "labelSide": "left"
       },
       {
         "id": "GND",
-        "x": 42,
-        "y": 14,
-        "labelSide": "bottom"
+        "x": 40,
+        "y": 12,
+        "labelSide": "top"
       },
       {
         "id": "S0",
-        "x": 56,
-        "y": 14,
-        "labelSide": "bottom"
+        "x": 59,
+        "y": 12,
+        "labelSide": "top"
       },
       {
         "id": "S1",
-        "x": 71,
-        "y": 14,
-        "labelSide": "bottom"
+        "x": 78,
+        "y": 12,
+        "labelSide": "top"
       },
       {
         "id": "S2",
-        "x": 85,
-        "y": 14,
-        "labelSide": "bottom"
+        "x": 97,
+        "y": 12,
+        "labelSide": "top"
       },
       {
         "id": "S3",
-        "x": 100,
-        "y": 14,
-        "labelSide": "bottom"
+        "x": 116,
+        "y": 12,
+        "labelSide": "top"
       },
       {
         "id": "OUT",
-        "x": 114,
-        "y": 14,
-        "labelSide": "bottom"
+        "x": 136,
+        "y": 12,
+        "labelSide": "right"
       }
     ],
     "pinCount": 7
@@ -3968,26 +3836,26 @@
       {
         "id": "VCC",
         "x": 43,
-        "y": 14,
-        "labelSide": "bottom"
+        "y": 12,
+        "labelSide": "top"
       },
       {
         "id": "GND",
-        "x": 58,
-        "y": 14,
-        "labelSide": "bottom"
+        "x": 62,
+        "y": 12,
+        "labelSide": "top"
       },
       {
         "id": "AO",
-        "x": 72,
-        "y": 14,
-        "labelSide": "bottom"
+        "x": 82,
+        "y": 12,
+        "labelSide": "top"
       },
       {
         "id": "DO",
-        "x": 86,
-        "y": 14,
-        "labelSide": "bottom"
+        "x": 101,
+        "y": 12,
+        "labelSide": "top"
       }
     ],
     "pinCount": 4
@@ -3999,21 +3867,21 @@
     "pins": [
       {
         "id": "VCC",
-        "x": 44,
-        "y": 14,
-        "labelSide": "bottom"
+        "x": 47,
+        "y": 12,
+        "labelSide": "top"
       },
       {
         "id": "GND",
-        "x": 59,
-        "y": 14,
-        "labelSide": "bottom"
+        "x": 66,
+        "y": 12,
+        "labelSide": "top"
       },
       {
         "id": "SIG",
-        "x": 73,
-        "y": 14,
-        "labelSide": "bottom"
+        "x": 85,
+        "y": 12,
+        "labelSide": "top"
       }
     ],
     "pinCount": 3
@@ -4024,34 +3892,34 @@
     "height": 96,
     "pins": [
       {
-        "id": "VCC",
-        "x": 85,
-        "y": 14,
-        "labelSide": "bottom"
-      },
-      {
-        "id": "GND",
-        "x": 100,
-        "y": 14,
-        "labelSide": "bottom"
-      },
-      {
         "id": "CLK",
-        "x": 42,
-        "y": 14,
-        "labelSide": "bottom"
+        "x": 40,
+        "y": 12,
+        "labelSide": "top"
       },
       {
         "id": "DT",
-        "x": 56,
-        "y": 14,
-        "labelSide": "bottom"
+        "x": 59,
+        "y": 12,
+        "labelSide": "top"
       },
       {
         "id": "SW",
-        "x": 71,
-        "y": 14,
-        "labelSide": "bottom"
+        "x": 78,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "VCC",
+        "x": 97,
+        "y": 12,
+        "labelSide": "top"
+      },
+      {
+        "id": "GND",
+        "x": 116,
+        "y": 12,
+        "labelSide": "top"
       }
     ],
     "pinCount": 5
@@ -4063,21 +3931,21 @@
     "pins": [
       {
         "id": "VCC",
-        "x": 44,
-        "y": 14,
-        "labelSide": "bottom"
+        "x": 47,
+        "y": 12,
+        "labelSide": "top"
       },
       {
         "id": "GND",
-        "x": 59,
-        "y": 14,
-        "labelSide": "bottom"
+        "x": 66,
+        "y": 12,
+        "labelSide": "top"
       },
       {
         "id": "OUT",
-        "x": 73,
-        "y": 14,
-        "labelSide": "bottom"
+        "x": 85,
+        "y": 12,
+        "labelSide": "top"
       }
     ],
     "pinCount": 3
@@ -4089,21 +3957,21 @@
     "pins": [
       {
         "id": "VCC",
-        "x": 44,
-        "y": 14,
-        "labelSide": "bottom"
+        "x": 47,
+        "y": 12,
+        "labelSide": "top"
       },
       {
         "id": "GND",
-        "x": 59,
-        "y": 14,
-        "labelSide": "bottom"
+        "x": 66,
+        "y": 12,
+        "labelSide": "top"
       },
       {
         "id": "DO",
-        "x": 73,
-        "y": 14,
-        "labelSide": "bottom"
+        "x": 85,
+        "y": 12,
+        "labelSide": "top"
       }
     ],
     "pinCount": 3
@@ -4115,21 +3983,21 @@
     "pins": [
       {
         "id": "VCC",
-        "x": 44,
-        "y": 14,
-        "labelSide": "bottom"
+        "x": 47,
+        "y": 12,
+        "labelSide": "top"
       },
       {
         "id": "GND",
-        "x": 59,
-        "y": 14,
-        "labelSide": "bottom"
+        "x": 66,
+        "y": 12,
+        "labelSide": "top"
       },
       {
         "id": "OUT",
-        "x": 73,
-        "y": 14,
-        "labelSide": "bottom"
+        "x": 85,
+        "y": 12,
+        "labelSide": "top"
       }
     ],
     "pinCount": 3
@@ -4141,15 +4009,15 @@
     "pins": [
       {
         "id": "pin1",
-        "x": 44,
-        "y": 14,
-        "labelSide": "bottom"
+        "x": 47,
+        "y": 12,
+        "labelSide": "top"
       },
       {
         "id": "pin2",
-        "x": 59,
-        "y": 14,
-        "labelSide": "bottom"
+        "x": 66,
+        "y": 12,
+        "labelSide": "top"
       }
     ],
     "pinCount": 2
@@ -4161,15 +4029,15 @@
     "pins": [
       {
         "id": "pin1",
-        "x": 44,
-        "y": 14,
-        "labelSide": "bottom"
+        "x": 47,
+        "y": 12,
+        "labelSide": "top"
       },
       {
         "id": "pin2",
-        "x": 59,
-        "y": 14,
-        "labelSide": "bottom"
+        "x": 66,
+        "y": 12,
+        "labelSide": "top"
       }
     ],
     "pinCount": 2
@@ -4181,15 +4049,15 @@
     "pins": [
       {
         "id": "pin1",
-        "x": 44,
-        "y": 14,
-        "labelSide": "bottom"
+        "x": 47,
+        "y": 12,
+        "labelSide": "top"
       },
       {
         "id": "pin2",
-        "x": 59,
-        "y": 14,
-        "labelSide": "bottom"
+        "x": 66,
+        "y": 12,
+        "labelSide": "top"
       }
     ],
     "pinCount": 2
@@ -4202,26 +4070,26 @@
       {
         "id": "VCC",
         "x": 49,
-        "y": 14,
-        "labelSide": "bottom"
+        "y": 12,
+        "labelSide": "top"
       },
       {
         "id": "GND",
-        "x": 64,
-        "y": 14,
-        "labelSide": "bottom"
+        "x": 68,
+        "y": 12,
+        "labelSide": "top"
       },
       {
         "id": "TX",
-        "x": 78,
-        "y": 14,
-        "labelSide": "bottom"
+        "x": 88,
+        "y": 12,
+        "labelSide": "top"
       },
       {
         "id": "RX",
-        "x": 92,
-        "y": 14,
-        "labelSide": "bottom"
+        "x": 107,
+        "y": 12,
+        "labelSide": "top"
       }
     ],
     "pinCount": 4
@@ -4233,21 +4101,21 @@
     "pins": [
       {
         "id": "VCC",
-        "x": 44,
-        "y": 14,
-        "labelSide": "bottom"
+        "x": 47,
+        "y": 12,
+        "labelSide": "top"
       },
       {
         "id": "GND",
-        "x": 59,
-        "y": 14,
-        "labelSide": "bottom"
+        "x": 66,
+        "y": 12,
+        "labelSide": "top"
       },
       {
         "id": "S",
-        "x": 73,
-        "y": 14,
-        "labelSide": "bottom"
+        "x": 85,
+        "y": 12,
+        "labelSide": "top"
       }
     ],
     "pinCount": 3
@@ -4261,112 +4129,100 @@
         "id": "VSS",
         "x": 19,
         "y": 12,
-        "labelSide": "bottom"
+        "labelSide": "left"
       },
       {
         "id": "VDD",
         "x": 32,
         "y": 12,
-        "labelSide": "bottom"
+        "labelSide": "left"
       },
       {
         "id": "V0",
         "x": 46,
         "y": 12,
-        "labelSide": "bottom"
+        "labelSide": "left"
       },
       {
         "id": "RS",
         "x": 59,
         "y": 12,
-        "labelSide": "bottom"
+        "labelSide": "left"
       },
       {
         "id": "RW",
         "x": 72,
         "y": 12,
-        "labelSide": "bottom"
+        "labelSide": "top"
       },
       {
         "id": "E",
         "x": 85,
         "y": 12,
-        "labelSide": "bottom"
+        "labelSide": "top"
       },
       {
         "id": "D0",
         "x": 98,
         "y": 12,
-        "labelSide": "bottom"
+        "labelSide": "top"
       },
       {
         "id": "D1",
         "x": 112,
         "y": 12,
-        "labelSide": "bottom"
+        "labelSide": "top"
       },
       {
         "id": "D2",
         "x": 125,
         "y": 12,
-        "labelSide": "bottom"
+        "labelSide": "top"
       },
       {
         "id": "D3",
         "x": 138,
         "y": 12,
-        "labelSide": "bottom"
+        "labelSide": "top"
       },
       {
         "id": "D4",
         "x": 151,
         "y": 12,
-        "labelSide": "bottom"
+        "labelSide": "top"
       },
       {
         "id": "D5",
         "x": 164,
         "y": 12,
-        "labelSide": "bottom"
+        "labelSide": "top"
       },
       {
         "id": "D6",
         "x": 178,
         "y": 12,
-        "labelSide": "bottom"
+        "labelSide": "top"
       },
       {
         "id": "D7",
         "x": 191,
         "y": 12,
-        "labelSide": "bottom"
+        "labelSide": "right"
       },
       {
         "id": "A",
         "x": 204,
         "y": 12,
-        "labelSide": "bottom"
+        "labelSide": "right"
       },
       {
         "id": "K",
         "x": 217,
         "y": 12,
-        "labelSide": "bottom"
-      },
-      {
-        "id": "SDA",
-        "x": 217,
-        "y": 54,
-        "labelSide": "bottom"
-      },
-      {
-        "id": "SCL",
-        "x": 217,
-        "y": 66,
-        "labelSide": "bottom"
+        "labelSide": "right"
       }
     ],
-    "pinCount": 18
+    "pinCount": 16
   },
   "lcd-20x4": {
     "archetype": "lcd-16x2",
@@ -4377,112 +4233,100 @@
         "id": "VSS",
         "x": 19,
         "y": 12,
-        "labelSide": "bottom"
+        "labelSide": "left"
       },
       {
         "id": "VDD",
         "x": 32,
         "y": 12,
-        "labelSide": "bottom"
+        "labelSide": "left"
       },
       {
         "id": "V0",
         "x": 46,
         "y": 12,
-        "labelSide": "bottom"
+        "labelSide": "left"
       },
       {
         "id": "RS",
         "x": 59,
         "y": 12,
-        "labelSide": "bottom"
+        "labelSide": "left"
       },
       {
         "id": "RW",
         "x": 72,
         "y": 12,
-        "labelSide": "bottom"
+        "labelSide": "top"
       },
       {
         "id": "E",
         "x": 85,
         "y": 12,
-        "labelSide": "bottom"
+        "labelSide": "top"
       },
       {
         "id": "D0",
         "x": 98,
         "y": 12,
-        "labelSide": "bottom"
+        "labelSide": "top"
       },
       {
         "id": "D1",
         "x": 112,
         "y": 12,
-        "labelSide": "bottom"
+        "labelSide": "top"
       },
       {
         "id": "D2",
         "x": 125,
         "y": 12,
-        "labelSide": "bottom"
+        "labelSide": "top"
       },
       {
         "id": "D3",
         "x": 138,
         "y": 12,
-        "labelSide": "bottom"
+        "labelSide": "top"
       },
       {
         "id": "D4",
         "x": 151,
         "y": 12,
-        "labelSide": "bottom"
+        "labelSide": "top"
       },
       {
         "id": "D5",
         "x": 164,
         "y": 12,
-        "labelSide": "bottom"
+        "labelSide": "top"
       },
       {
         "id": "D6",
         "x": 178,
         "y": 12,
-        "labelSide": "bottom"
+        "labelSide": "top"
       },
       {
         "id": "D7",
         "x": 191,
         "y": 12,
-        "labelSide": "bottom"
+        "labelSide": "right"
       },
       {
         "id": "A",
         "x": 204,
         "y": 12,
-        "labelSide": "bottom"
+        "labelSide": "right"
       },
       {
         "id": "K",
         "x": 217,
         "y": 12,
-        "labelSide": "bottom"
-      },
-      {
-        "id": "SDA",
-        "x": 217,
-        "y": 54,
-        "labelSide": "bottom"
-      },
-      {
-        "id": "SCL",
-        "x": 217,
-        "y": 66,
-        "labelSide": "bottom"
+        "labelSide": "right"
       }
     ],
-    "pinCount": 18
+    "pinCount": 16
   },
   "oled-096": {
     "archetype": "oled-module",
@@ -4493,7 +4337,7 @@
         "id": "VCC",
         "x": 19,
         "y": 10,
-        "labelSide": "top"
+        "labelSide": "left"
       },
       {
         "id": "GND",
@@ -4525,7 +4369,7 @@
         "id": "VCC",
         "x": 19,
         "y": 10,
-        "labelSide": "top"
+        "labelSide": "left"
       },
       {
         "id": "GND",
@@ -4723,27 +4567,27 @@
     "pins": [
       {
         "id": "VCC",
-        "x": 14,
-        "y": 70,
-        "labelSide": "bottom"
+        "x": 42,
+        "y": 6,
+        "labelSide": "top"
       },
       {
         "id": "GND",
-        "x": 43,
-        "y": 70,
-        "labelSide": "bottom"
-      },
-      {
-        "id": "CLK",
-        "x": 72,
-        "y": 70,
-        "labelSide": "bottom"
+        "x": 58,
+        "y": 6,
+        "labelSide": "top"
       },
       {
         "id": "DIO",
-        "x": 101,
-        "y": 70,
-        "labelSide": "bottom"
+        "x": 73,
+        "y": 6,
+        "labelSide": "top"
+      },
+      {
+        "id": "CLK",
+        "x": 89,
+        "y": 6,
+        "labelSide": "top"
       }
     ],
     "pinCount": 4
@@ -4875,21 +4719,21 @@
     "pins": [
       {
         "id": "VCC",
-        "x": 10,
-        "y": 28,
-        "labelSide": "left"
-      },
-      {
-        "id": "GND",
-        "x": 10,
-        "y": 42,
+        "x": 7,
+        "y": 17,
         "labelSide": "left"
       },
       {
         "id": "DIN",
-        "x": 170,
+        "x": 7,
+        "y": 38,
+        "labelSide": "left"
+      },
+      {
+        "id": "GND",
+        "x": 7,
         "y": 28,
-        "labelSide": "right"
+        "labelSide": "left"
       }
     ],
     "pinCount": 3
@@ -4902,14 +4746,14 @@
       {
         "id": "+",
         "x": 115,
-        "y": 44,
+        "y": 48,
         "labelSide": "right"
       },
       {
         "id": "-",
-        "x": 115,
-        "y": 56,
-        "labelSide": "right"
+        "x": 36,
+        "y": 84,
+        "labelSide": "bottom"
       }
     ],
     "pinCount": 2
@@ -4922,14 +4766,14 @@
       {
         "id": "+",
         "x": 115,
-        "y": 44,
+        "y": 48,
         "labelSide": "right"
       },
       {
         "id": "-",
-        "x": 115,
-        "y": 56,
-        "labelSide": "right"
+        "x": 36,
+        "y": 84,
+        "labelSide": "bottom"
       }
     ],
     "pinCount": 2
@@ -4996,22 +4840,22 @@
     "height": 114,
     "pins": [
       {
+        "id": "SIGNAL",
+        "x": 7,
+        "y": 50,
+        "labelSide": "left"
+      },
+      {
         "id": "VCC",
-        "x": 8,
+        "x": 7,
         "y": 67,
-        "labelSide": "right"
+        "labelSide": "left"
       },
       {
         "id": "GND",
-        "x": 8,
+        "x": 7,
         "y": 84,
-        "labelSide": "right"
-      },
-      {
-        "id": "SIGNAL",
-        "x": 8,
-        "y": 50,
-        "labelSide": "right"
+        "labelSide": "left"
       }
     ],
     "pinCount": 3
@@ -5023,33 +4867,33 @@
     "pins": [
       {
         "id": "IN1",
-        "x": 43,
-        "y": 7,
-        "labelSide": "top"
-      },
-      {
-        "id": "IN2",
-        "x": 50,
-        "y": 7,
-        "labelSide": "top"
-      },
-      {
-        "id": "IN3",
         "x": 58,
         "y": 7,
         "labelSide": "top"
       },
       {
+        "id": "IN2",
+        "x": 24,
+        "y": 102,
+        "labelSide": "left"
+      },
+      {
+        "id": "IN3",
+        "x": 46,
+        "y": 102,
+        "labelSide": "bottom"
+      },
+      {
         "id": "IN4",
-        "x": 65,
-        "y": 7,
-        "labelSide": "top"
+        "x": 67,
+        "y": 102,
+        "labelSide": "bottom"
       },
       {
         "id": "VCC",
-        "x": 72,
-        "y": 7,
-        "labelSide": "top"
+        "x": 89,
+        "y": 102,
+        "labelSide": "right"
       }
     ],
     "pinCount": 5
@@ -5061,27 +4905,27 @@
     "pins": [
       {
         "id": "A+",
-        "x": 43,
-        "y": 7,
-        "labelSide": "top"
+        "x": 24,
+        "y": 102,
+        "labelSide": "left"
       },
       {
         "id": "A-",
-        "x": 50,
-        "y": 7,
-        "labelSide": "top"
+        "x": 46,
+        "y": 102,
+        "labelSide": "bottom"
       },
       {
         "id": "B+",
-        "x": 58,
-        "y": 7,
-        "labelSide": "top"
+        "x": 67,
+        "y": 102,
+        "labelSide": "bottom"
       },
       {
         "id": "B-",
-        "x": 65,
-        "y": 7,
-        "labelSide": "top"
+        "x": 89,
+        "y": 102,
+        "labelSide": "right"
       }
     ],
     "pinCount": 4
@@ -5094,14 +4938,14 @@
       {
         "id": "+",
         "x": 115,
-        "y": 44,
+        "y": 48,
         "labelSide": "right"
       },
       {
         "id": "-",
-        "x": 115,
-        "y": 56,
-        "labelSide": "right"
+        "x": 36,
+        "y": 84,
+        "labelSide": "bottom"
       }
     ],
     "pinCount": 2
@@ -5114,14 +4958,14 @@
       {
         "id": "+",
         "x": 115,
-        "y": 44,
+        "y": 48,
         "labelSide": "right"
       },
       {
         "id": "-",
-        "x": 115,
-        "y": 56,
-        "labelSide": "right"
+        "x": 36,
+        "y": 84,
+        "labelSide": "bottom"
       }
     ],
     "pinCount": 2
@@ -5134,14 +4978,14 @@
       {
         "id": "+",
         "x": 115,
-        "y": 44,
+        "y": 48,
         "labelSide": "right"
       },
       {
         "id": "-",
-        "x": 115,
-        "y": 56,
-        "labelSide": "right"
+        "x": 36,
+        "y": 84,
+        "labelSide": "bottom"
       }
     ],
     "pinCount": 2
@@ -5153,39 +4997,39 @@
     "pins": [
       {
         "id": "VCC",
-        "x": 14,
+        "x": 22,
         "y": 12,
-        "labelSide": "top"
+        "labelSide": "left"
       },
       {
         "id": "GND",
-        "x": 34,
+        "x": 40,
         "y": 12,
         "labelSide": "top"
       },
       {
         "id": "IN",
-        "x": 53,
+        "x": 58,
         "y": 12,
         "labelSide": "top"
       },
       {
         "id": "COM",
-        "x": 86,
-        "y": 90,
-        "labelSide": "bottom"
+        "x": 74,
+        "y": 12,
+        "labelSide": "top"
       },
       {
         "id": "NO",
-        "x": 101,
-        "y": 90,
-        "labelSide": "bottom"
+        "x": 92,
+        "y": 12,
+        "labelSide": "top"
       },
       {
         "id": "NC",
-        "x": 115,
-        "y": 90,
-        "labelSide": "bottom"
+        "x": 110,
+        "y": 12,
+        "labelSide": "right"
       }
     ],
     "pinCount": 6
@@ -5309,14 +5153,14 @@
     "pins": [
       {
         "id": "+",
-        "x": 41,
-        "y": 12,
+        "x": 30,
+        "y": 18,
         "labelSide": "top"
       },
       {
         "id": "-",
-        "x": 50,
-        "y": 12,
+        "x": 60,
+        "y": 18,
         "labelSide": "top"
       }
     ],
@@ -5329,14 +5173,14 @@
     "pins": [
       {
         "id": "+",
-        "x": 41,
-        "y": 12,
+        "x": 30,
+        "y": 18,
         "labelSide": "top"
       },
       {
         "id": "-",
-        "x": 50,
-        "y": 12,
+        "x": 60,
+        "y": 18,
         "labelSide": "top"
       }
     ],
@@ -5349,14 +5193,14 @@
     "pins": [
       {
         "id": "+",
-        "x": 41,
-        "y": 12,
+        "x": 30,
+        "y": 18,
         "labelSide": "top"
       },
       {
         "id": "-",
-        "x": 50,
-        "y": 12,
+        "x": 60,
+        "y": 18,
         "labelSide": "top"
       }
     ],
@@ -5370,14 +5214,14 @@
       {
         "id": "+",
         "x": 115,
-        "y": 44,
+        "y": 48,
         "labelSide": "right"
       },
       {
         "id": "-",
-        "x": 115,
-        "y": 56,
-        "labelSide": "right"
+        "x": 36,
+        "y": 84,
+        "labelSide": "bottom"
       }
     ],
     "pinCount": 2
@@ -5390,14 +5234,14 @@
       {
         "id": "+",
         "x": 115,
-        "y": 44,
+        "y": 48,
         "labelSide": "right"
       },
       {
         "id": "-",
-        "x": 115,
-        "y": 56,
-        "labelSide": "right"
+        "x": 36,
+        "y": 84,
+        "labelSide": "bottom"
       }
     ],
     "pinCount": 2
@@ -5410,14 +5254,14 @@
       {
         "id": "+",
         "x": 115,
-        "y": 44,
+        "y": 48,
         "labelSide": "right"
       },
       {
         "id": "-",
-        "x": 115,
-        "y": 56,
-        "labelSide": "right"
+        "x": 36,
+        "y": 84,
+        "labelSide": "bottom"
       }
     ],
     "pinCount": 2
@@ -5509,21 +5353,21 @@
     "pins": [
       {
         "id": "VCC",
+        "x": 54,
+        "y": 23,
+        "labelSide": "top"
+      },
+      {
+        "id": "GND",
         "x": 7,
         "y": 58,
         "labelSide": "left"
       },
       {
-        "id": "GND",
+        "id": "WIPER",
         "x": 101,
         "y": 58,
         "labelSide": "right"
-      },
-      {
-        "id": "WIPER",
-        "x": 54,
-        "y": 23,
-        "labelSide": "top"
       }
     ],
     "pinCount": 3
@@ -5535,21 +5379,21 @@
     "pins": [
       {
         "id": "VCC",
+        "x": 54,
+        "y": 23,
+        "labelSide": "top"
+      },
+      {
+        "id": "GND",
         "x": 7,
         "y": 58,
         "labelSide": "left"
       },
       {
-        "id": "GND",
+        "id": "WIPER",
         "x": 101,
         "y": 58,
         "labelSide": "right"
-      },
-      {
-        "id": "WIPER",
-        "x": 54,
-        "y": 23,
-        "labelSide": "top"
       }
     ],
     "pinCount": 3
@@ -5561,21 +5405,21 @@
     "pins": [
       {
         "id": "pin1",
+        "x": 54,
+        "y": 23,
+        "labelSide": "top"
+      },
+      {
+        "id": "pin2",
         "x": 7,
         "y": 58,
         "labelSide": "left"
       },
       {
-        "id": "pin2",
+        "id": "wiper",
         "x": 101,
         "y": 58,
         "labelSide": "right"
-      },
-      {
-        "id": "wiper",
-        "x": 54,
-        "y": 23,
-        "labelSide": "top"
       }
     ],
     "pinCount": 3
@@ -5727,15 +5571,15 @@
     "pins": [
       {
         "id": "pin1",
-        "x": 44,
-        "y": 14,
-        "labelSide": "bottom"
+        "x": 47,
+        "y": 12,
+        "labelSide": "top"
       },
       {
         "id": "pin2",
-        "x": 59,
-        "y": 14,
-        "labelSide": "bottom"
+        "x": 66,
+        "y": 12,
+        "labelSide": "top"
       }
     ],
     "pinCount": 2
@@ -5767,15 +5611,15 @@
     "pins": [
       {
         "id": "pin1",
-        "x": 0,
-        "y": 24,
+        "x": 22,
+        "y": 14,
         "labelSide": "left"
       },
       {
         "id": "pin2",
-        "x": 108,
-        "y": 24,
-        "labelSide": "right"
+        "x": 28,
+        "y": 14,
+        "labelSide": "top"
       }
     ],
     "pinCount": 2
@@ -6103,26 +5947,26 @@
     "pins": [
       {
         "id": "A",
-        "x": 31,
-        "y": 18,
+        "x": 24,
+        "y": 20,
         "labelSide": "left"
       },
       {
         "id": "K",
         "x": 31,
-        "y": 28,
-        "labelSide": "left"
+        "y": 20,
+        "labelSide": "top"
       },
       {
         "id": "E",
         "x": 89,
-        "y": 28,
-        "labelSide": "right"
+        "y": 20,
+        "labelSide": "top"
       },
       {
         "id": "C",
-        "x": 89,
-        "y": 18,
+        "x": 96,
+        "y": 20,
         "labelSide": "right"
       }
     ],
@@ -6135,26 +5979,26 @@
     "pins": [
       {
         "id": "AC1",
-        "x": 31,
-        "y": 18,
+        "x": 24,
+        "y": 20,
         "labelSide": "left"
       },
       {
         "id": "AC2",
         "x": 31,
-        "y": 28,
-        "labelSide": "left"
+        "y": 20,
+        "labelSide": "top"
       },
       {
         "id": "+",
         "x": 89,
-        "y": 28,
-        "labelSide": "right"
+        "y": 20,
+        "labelSide": "top"
       },
       {
         "id": "-",
-        "x": 89,
-        "y": 18,
+        "x": 96,
+        "y": 20,
         "labelSide": "right"
       }
     ],
@@ -6167,50 +6011,50 @@
     "pins": [
       {
         "id": "GND",
-        "x": 31,
-        "y": 18,
+        "x": 24,
+        "y": 29,
         "labelSide": "left"
       },
       {
         "id": "TRIG",
         "x": 31,
-        "y": 28,
-        "labelSide": "left"
+        "y": 29,
+        "labelSide": "top"
       },
       {
         "id": "OUT",
-        "x": 31,
-        "y": 37,
-        "labelSide": "left"
+        "x": 89,
+        "y": 29,
+        "labelSide": "top"
       },
       {
         "id": "RST",
-        "x": 31,
-        "y": 47,
-        "labelSide": "left"
+        "x": 96,
+        "y": 29,
+        "labelSide": "right"
       },
       {
         "id": "CTRL",
-        "x": 89,
-        "y": 47,
-        "labelSide": "right"
+        "x": 24,
+        "y": 44,
+        "labelSide": "left"
       },
       {
         "id": "THR",
-        "x": 89,
-        "y": 37,
-        "labelSide": "right"
+        "x": 31,
+        "y": 44,
+        "labelSide": "top"
       },
       {
         "id": "DIS",
         "x": 89,
-        "y": 28,
-        "labelSide": "right"
+        "y": 44,
+        "labelSide": "top"
       },
       {
         "id": "VCC",
-        "x": 89,
-        "y": 18,
+        "x": 96,
+        "y": 44,
         "labelSide": "right"
       }
     ],
@@ -6223,50 +6067,50 @@
     "pins": [
       {
         "id": "IN-",
-        "x": 31,
-        "y": 18,
+        "x": 24,
+        "y": 35,
         "labelSide": "left"
       },
       {
         "id": "IN+",
         "x": 31,
-        "y": 28,
-        "labelSide": "left"
+        "y": 35,
+        "labelSide": "top"
       },
       {
         "id": "OUT",
         "x": 89,
-        "y": 47,
-        "labelSide": "right"
+        "y": 35,
+        "labelSide": "top"
       },
       {
         "id": "V+",
-        "x": 89,
-        "y": 37,
+        "x": 96,
+        "y": 35,
         "labelSide": "right"
       },
       {
         "id": "V-",
-        "x": 31,
-        "y": 37,
+        "x": 24,
+        "y": 53,
         "labelSide": "left"
       },
       {
         "id": "OFFSET1",
         "x": 31,
-        "y": 47,
-        "labelSide": "left"
+        "y": 53,
+        "labelSide": "top"
       },
       {
         "id": "OFFSET2",
         "x": 89,
-        "y": 28,
-        "labelSide": "right"
+        "y": 53,
+        "labelSide": "top"
       },
       {
         "id": "NC",
-        "x": 89,
-        "y": 18,
+        "x": 96,
+        "y": 53,
         "labelSide": "right"
       }
     ],
@@ -6279,50 +6123,50 @@
     "pins": [
       {
         "id": "OUT1",
-        "x": 31,
-        "y": 18,
+        "x": 24,
+        "y": 29,
         "labelSide": "left"
       },
       {
         "id": "IN1-",
         "x": 31,
-        "y": 28,
-        "labelSide": "left"
+        "y": 29,
+        "labelSide": "top"
       },
       {
         "id": "IN1+",
-        "x": 31,
-        "y": 37,
-        "labelSide": "left"
+        "x": 89,
+        "y": 29,
+        "labelSide": "top"
       },
       {
         "id": "GND",
-        "x": 31,
-        "y": 47,
-        "labelSide": "left"
+        "x": 96,
+        "y": 29,
+        "labelSide": "right"
       },
       {
         "id": "IN2+",
-        "x": 89,
-        "y": 47,
-        "labelSide": "right"
+        "x": 24,
+        "y": 44,
+        "labelSide": "left"
       },
       {
         "id": "IN2-",
-        "x": 89,
-        "y": 37,
-        "labelSide": "right"
+        "x": 31,
+        "y": 44,
+        "labelSide": "top"
       },
       {
         "id": "OUT2",
         "x": 89,
-        "y": 28,
-        "labelSide": "right"
+        "y": 44,
+        "labelSide": "top"
       },
       {
         "id": "VCC",
-        "x": 89,
-        "y": 18,
+        "x": 96,
+        "y": 44,
         "labelSide": "right"
       }
     ],
@@ -6335,93 +6179,93 @@
     "pins": [
       {
         "id": "Q0",
-        "x": 31,
-        "y": 18,
+        "x": 24,
+        "y": 52,
         "labelSide": "left"
       },
       {
         "id": "Q1",
         "x": 31,
-        "y": 28,
-        "labelSide": "left"
+        "y": 52,
+        "labelSide": "top"
       },
       {
         "id": "Q2",
-        "x": 31,
-        "y": 37,
-        "labelSide": "left"
+        "x": 89,
+        "y": 52,
+        "labelSide": "top"
       },
       {
         "id": "Q3",
-        "x": 31,
-        "y": 47,
-        "labelSide": "left"
+        "x": 96,
+        "y": 52,
+        "labelSide": "right"
       },
       {
         "id": "Q4",
-        "x": 31,
-        "y": 56,
+        "x": 24,
+        "y": 78,
         "labelSide": "left"
       },
       {
         "id": "Q5",
         "x": 31,
-        "y": 66,
-        "labelSide": "left"
+        "y": 78,
+        "labelSide": "top"
       },
       {
         "id": "Q6",
-        "x": 31,
-        "y": 76,
-        "labelSide": "left"
+        "x": 89,
+        "y": 78,
+        "labelSide": "top"
       },
       {
         "id": "Q7",
-        "x": 31,
-        "y": 85,
-        "labelSide": "left"
+        "x": 96,
+        "y": 78,
+        "labelSide": "right"
       },
       {
         "id": "GND",
-        "x": 89,
-        "y": 76,
-        "labelSide": "right"
+        "x": 24,
+        "y": 106,
+        "labelSide": "left"
       },
       {
         "id": "VCC",
-        "x": 89,
-        "y": 66,
-        "labelSide": "right"
+        "x": 31,
+        "y": 106,
+        "labelSide": "bottom"
       },
       {
         "id": "SER",
         "x": 89,
-        "y": 56,
-        "labelSide": "right"
+        "y": 106,
+        "labelSide": "bottom"
       },
       {
         "id": "SRCLK",
-        "x": 89,
-        "y": 47,
+        "x": 96,
+        "y": 106,
         "labelSide": "right"
       },
       {
         "id": "RCLK",
-        "x": 89,
-        "y": 37,
-        "labelSide": "right"
+        "x": 24,
+        "y": 133,
+        "labelSide": "left"
       },
       {
         "id": "OE",
-        "x": 89,
-        "y": 28,
-        "labelSide": "right"
+        "x": 31,
+        "y": 133,
+        "labelSide": "bottom"
       },
       {
         "id": "SRCLR",
         "x": 89,
-        "y": 18,
-        "labelSide": "right"
+        "y": 133,
+        "labelSide": "bottom"
       }
     ],
     "pinCount": 15
@@ -6433,74 +6277,74 @@
     "pins": [
       {
         "id": "VCC",
-        "x": 31,
-        "y": 18,
+        "x": 24,
+        "y": 40,
         "labelSide": "left"
       },
       {
         "id": "GND",
         "x": 31,
-        "y": 28,
-        "labelSide": "left"
+        "y": 40,
+        "labelSide": "top"
       },
       {
         "id": "SDA",
-        "x": 31,
-        "y": 37,
-        "labelSide": "left"
+        "x": 89,
+        "y": 40,
+        "labelSide": "top"
       },
       {
         "id": "SCL",
-        "x": 31,
-        "y": 47,
-        "labelSide": "left"
+        "x": 96,
+        "y": 40,
+        "labelSide": "right"
       },
       {
         "id": "P0",
-        "x": 31,
-        "y": 56,
+        "x": 24,
+        "y": 61,
         "labelSide": "left"
       },
       {
         "id": "P1",
         "x": 31,
-        "y": 66,
-        "labelSide": "left"
+        "y": 61,
+        "labelSide": "top"
       },
       {
         "id": "P2",
         "x": 89,
-        "y": 66,
-        "labelSide": "right"
+        "y": 61,
+        "labelSide": "top"
       },
       {
         "id": "P3",
-        "x": 89,
-        "y": 56,
+        "x": 96,
+        "y": 61,
         "labelSide": "right"
       },
       {
         "id": "P4",
-        "x": 89,
-        "y": 47,
-        "labelSide": "right"
+        "x": 24,
+        "y": 83,
+        "labelSide": "left"
       },
       {
         "id": "P5",
-        "x": 89,
-        "y": 37,
-        "labelSide": "right"
+        "x": 31,
+        "y": 83,
+        "labelSide": "bottom"
       },
       {
         "id": "P6",
         "x": 89,
-        "y": 28,
-        "labelSide": "right"
+        "y": 83,
+        "labelSide": "bottom"
       },
       {
         "id": "P7",
-        "x": 89,
-        "y": 18,
+        "x": 96,
+        "y": 83,
         "labelSide": "right"
       }
     ],
@@ -6513,50 +6357,50 @@
     "pins": [
       {
         "id": "VCC",
-        "x": 31,
-        "y": 18,
+        "x": 24,
+        "y": 29,
         "labelSide": "left"
       },
       {
         "id": "GND",
         "x": 31,
-        "y": 28,
-        "labelSide": "left"
+        "y": 29,
+        "labelSide": "top"
       },
       {
         "id": "SDA",
-        "x": 31,
-        "y": 37,
-        "labelSide": "left"
+        "x": 89,
+        "y": 29,
+        "labelSide": "top"
       },
       {
         "id": "SCL",
-        "x": 31,
-        "y": 47,
-        "labelSide": "left"
+        "x": 96,
+        "y": 29,
+        "labelSide": "right"
       },
       {
         "id": "A0",
-        "x": 89,
-        "y": 47,
-        "labelSide": "right"
+        "x": 24,
+        "y": 44,
+        "labelSide": "left"
       },
       {
         "id": "A1",
-        "x": 89,
-        "y": 37,
-        "labelSide": "right"
+        "x": 31,
+        "y": 44,
+        "labelSide": "top"
       },
       {
         "id": "A2",
         "x": 89,
-        "y": 28,
-        "labelSide": "right"
+        "y": 44,
+        "labelSide": "top"
       },
       {
         "id": "A3",
-        "x": 89,
-        "y": 18,
+        "x": 96,
+        "y": 44,
         "labelSide": "right"
       }
     ],
@@ -6569,33 +6413,33 @@
     "pins": [
       {
         "id": "VCC",
-        "x": 31,
-        "y": 18,
+        "x": 24,
+        "y": 24,
         "labelSide": "left"
       },
       {
         "id": "GND",
         "x": 31,
-        "y": 28,
-        "labelSide": "left"
+        "y": 24,
+        "labelSide": "top"
       },
       {
         "id": "SDA",
-        "x": 31,
-        "y": 37,
-        "labelSide": "left"
+        "x": 89,
+        "y": 24,
+        "labelSide": "top"
       },
       {
         "id": "SCL",
-        "x": 89,
-        "y": 28,
+        "x": 96,
+        "y": 24,
         "labelSide": "right"
       },
       {
         "id": "OUT",
-        "x": 89,
-        "y": 18,
-        "labelSide": "right"
+        "x": 24,
+        "y": 36,
+        "labelSide": "left"
       }
     ],
     "pinCount": 5
@@ -6607,26 +6451,26 @@
     "pins": [
       {
         "id": "VCC",
-        "x": 31,
-        "y": 18,
+        "x": 24,
+        "y": 20,
         "labelSide": "left"
       },
       {
         "id": "GND",
         "x": 31,
-        "y": 28,
-        "labelSide": "left"
+        "y": 20,
+        "labelSide": "top"
       },
       {
         "id": "SDA",
         "x": 89,
-        "y": 28,
-        "labelSide": "right"
+        "y": 20,
+        "labelSide": "top"
       },
       {
         "id": "SCL",
-        "x": 89,
-        "y": 18,
+        "x": 96,
+        "y": 20,
         "labelSide": "right"
       }
     ],
@@ -6639,26 +6483,26 @@
     "pins": [
       {
         "id": "VCC",
-        "x": 31,
-        "y": 18,
+        "x": 24,
+        "y": 20,
         "labelSide": "left"
       },
       {
         "id": "GND",
         "x": 31,
-        "y": 28,
-        "labelSide": "left"
+        "y": 20,
+        "labelSide": "top"
       },
       {
         "id": "SDA",
         "x": 89,
-        "y": 28,
-        "labelSide": "right"
+        "y": 20,
+        "labelSide": "top"
       },
       {
         "id": "SCL",
-        "x": 89,
-        "y": 18,
+        "x": 96,
+        "y": 20,
         "labelSide": "right"
       }
     ],
@@ -6671,26 +6515,26 @@
     "pins": [
       {
         "id": "VCC",
-        "x": 31,
-        "y": 18,
+        "x": 24,
+        "y": 20,
         "labelSide": "left"
       },
       {
         "id": "GND",
         "x": 31,
-        "y": 28,
-        "labelSide": "left"
+        "y": 20,
+        "labelSide": "top"
       },
       {
         "id": "SDA",
         "x": 89,
-        "y": 28,
-        "labelSide": "right"
+        "y": 20,
+        "labelSide": "top"
       },
       {
         "id": "SCL",
-        "x": 89,
-        "y": 18,
+        "x": 96,
+        "y": 20,
         "labelSide": "right"
       }
     ],
@@ -6703,39 +6547,39 @@
     "pins": [
       {
         "id": "VCC",
-        "x": 31,
-        "y": 18,
+        "x": 24,
+        "y": 24,
         "labelSide": "left"
       },
       {
         "id": "GND",
         "x": 31,
-        "y": 28,
-        "labelSide": "left"
+        "y": 24,
+        "labelSide": "top"
       },
       {
         "id": "MISO",
-        "x": 31,
-        "y": 37,
-        "labelSide": "left"
+        "x": 89,
+        "y": 24,
+        "labelSide": "top"
       },
       {
         "id": "MOSI",
-        "x": 89,
-        "y": 37,
+        "x": 96,
+        "y": 24,
         "labelSide": "right"
       },
       {
         "id": "SCK",
-        "x": 89,
-        "y": 28,
-        "labelSide": "right"
+        "x": 24,
+        "y": 36,
+        "labelSide": "left"
       },
       {
         "id": "CS",
-        "x": 89,
-        "y": 18,
-        "labelSide": "right"
+        "x": 31,
+        "y": 36,
+        "labelSide": "top"
       }
     ],
     "pinCount": 6
@@ -6747,39 +6591,39 @@
     "pins": [
       {
         "id": "VCC",
-        "x": 31,
-        "y": 18,
+        "x": 24,
+        "y": 24,
         "labelSide": "left"
       },
       {
         "id": "GND",
         "x": 31,
-        "y": 28,
-        "labelSide": "left"
+        "y": 24,
+        "labelSide": "top"
       },
       {
         "id": "TX",
-        "x": 31,
-        "y": 37,
-        "labelSide": "left"
+        "x": 89,
+        "y": 24,
+        "labelSide": "top"
       },
       {
         "id": "RX",
-        "x": 89,
-        "y": 37,
+        "x": 96,
+        "y": 24,
         "labelSide": "right"
       },
       {
         "id": "SPK+",
-        "x": 89,
-        "y": 28,
-        "labelSide": "right"
+        "x": 24,
+        "y": 36,
+        "labelSide": "left"
       },
       {
         "id": "SPK-",
-        "x": 89,
-        "y": 18,
-        "labelSide": "right"
+        "x": 31,
+        "y": 36,
+        "labelSide": "top"
       }
     ],
     "pinCount": 6
@@ -6791,50 +6635,50 @@
     "pins": [
       {
         "id": "VCC",
-        "x": 31,
-        "y": 18,
+        "x": 24,
+        "y": 29,
         "labelSide": "left"
       },
       {
         "id": "GND",
         "x": 31,
-        "y": 28,
-        "labelSide": "left"
+        "y": 29,
+        "labelSide": "top"
       },
       {
         "id": "L-IN",
-        "x": 31,
-        "y": 37,
-        "labelSide": "left"
+        "x": 89,
+        "y": 29,
+        "labelSide": "top"
       },
       {
         "id": "R-IN",
-        "x": 31,
-        "y": 47,
-        "labelSide": "left"
+        "x": 96,
+        "y": 29,
+        "labelSide": "right"
       },
       {
         "id": "L+",
-        "x": 89,
-        "y": 47,
-        "labelSide": "right"
+        "x": 24,
+        "y": 44,
+        "labelSide": "left"
       },
       {
         "id": "L-",
-        "x": 89,
-        "y": 37,
-        "labelSide": "right"
+        "x": 31,
+        "y": 44,
+        "labelSide": "top"
       },
       {
         "id": "R+",
         "x": 89,
-        "y": 28,
-        "labelSide": "right"
+        "y": 44,
+        "labelSide": "top"
       },
       {
         "id": "R-",
-        "x": 89,
-        "y": 18,
+        "x": 96,
+        "y": 44,
         "labelSide": "right"
       }
     ],
@@ -6932,82 +6776,82 @@
     "height": 120,
     "pins": [
       {
+        "id": "GND",
+        "x": 98,
+        "y": 58,
+        "labelSide": "top"
+      },
+      {
         "id": "VCC1",
-        "x": 132,
-        "y": 38,
+        "x": 12,
+        "y": 26,
         "labelSide": "left"
       },
       {
         "id": "VCC2",
-        "x": 132,
-        "y": 74,
-        "labelSide": "left"
-      },
-      {
-        "id": "GND",
-        "x": 132,
-        "y": 56,
-        "labelSide": "left"
+        "x": 46,
+        "y": 32,
+        "labelSide": "top"
       },
       {
         "id": "1A",
         "x": 54,
-        "y": 108,
+        "y": 30,
         "labelSide": "top"
       },
       {
         "id": "2A",
-        "x": 66,
-        "y": 108,
+        "x": 98,
+        "y": 32,
         "labelSide": "top"
       },
       {
         "id": "3A",
-        "x": 78,
-        "y": 108,
+        "x": 46,
+        "y": 41,
         "labelSide": "top"
       },
       {
         "id": "4A",
-        "x": 90,
-        "y": 108,
-        "labelSide": "top"
+        "x": 132,
+        "y": 38,
+        "labelSide": "right"
       },
       {
         "id": "1Y",
         "x": 12,
-        "y": 26,
-        "labelSide": "right"
+        "y": 46,
+        "labelSide": "left"
       },
       {
         "id": "2Y",
-        "x": 12,
-        "y": 46,
-        "labelSide": "right"
+        "x": 98,
+        "y": 41,
+        "labelSide": "top"
       },
       {
         "id": "3Y",
-        "x": 12,
-        "y": 68,
-        "labelSide": "right"
+        "x": 46,
+        "y": 49,
+        "labelSide": "top"
       },
       {
         "id": "4Y",
-        "x": 12,
-        "y": 88,
-        "labelSide": "right"
+        "x": 98,
+        "y": 49,
+        "labelSide": "top"
       },
       {
         "id": "EN12",
-        "x": 42,
-        "y": 108,
+        "x": 46,
+        "y": 58,
         "labelSide": "top"
       },
       {
         "id": "EN34",
-        "x": 102,
-        "y": 108,
-        "labelSide": "top"
+        "x": 132,
+        "y": 56,
+        "labelSide": "right"
       }
     ],
     "pinCount": 13
@@ -7019,56 +6863,56 @@
     "pins": [
       {
         "id": "VCC",
-        "x": 126,
-        "y": 110,
-        "labelSide": "right"
+        "x": 18,
+        "y": 24,
+        "labelSide": "left"
       },
       {
         "id": "GND",
         "x": 126,
-        "y": 38,
+        "y": 24,
         "labelSide": "right"
       },
       {
         "id": "VMOT",
-        "x": 126,
-        "y": 24,
-        "labelSide": "right"
-      },
-      {
-        "id": "STEP",
-        "x": 18,
-        "y": 110,
-        "labelSide": "left"
-      },
-      {
-        "id": "DIR",
-        "x": 18,
-        "y": 125,
-        "labelSide": "left"
-      },
-      {
-        "id": "EN",
-        "x": 18,
-        "y": 24,
-        "labelSide": "left"
-      },
-      {
-        "id": "MS1",
         "x": 18,
         "y": 38,
         "labelSide": "left"
       },
       {
-        "id": "MS2",
+        "id": "STEP",
+        "x": 126,
+        "y": 38,
+        "labelSide": "right"
+      },
+      {
+        "id": "DIR",
         "x": 18,
         "y": 53,
         "labelSide": "left"
       },
       {
-        "id": "MS3",
+        "id": "EN",
+        "x": 126,
+        "y": 53,
+        "labelSide": "right"
+      },
+      {
+        "id": "MS1",
         "x": 18,
         "y": 67,
+        "labelSide": "left"
+      },
+      {
+        "id": "MS2",
+        "x": 126,
+        "y": 67,
+        "labelSide": "right"
+      },
+      {
+        "id": "MS3",
+        "x": 18,
+        "y": 82,
         "labelSide": "left"
       },
       {
@@ -7079,21 +6923,21 @@
       },
       {
         "id": "1B",
+        "x": 18,
+        "y": 96,
+        "labelSide": "left"
+      },
+      {
+        "id": "2A",
         "x": 126,
         "y": 96,
         "labelSide": "right"
       },
       {
-        "id": "2A",
-        "x": 126,
-        "y": 67,
-        "labelSide": "right"
-      },
-      {
         "id": "2B",
-        "x": 126,
-        "y": 53,
-        "labelSide": "right"
+        "x": 18,
+        "y": 110,
+        "labelSide": "left"
       }
     ],
     "pinCount": 13
@@ -7105,56 +6949,56 @@
     "pins": [
       {
         "id": "VCC",
-        "x": 126,
-        "y": 110,
-        "labelSide": "right"
+        "x": 18,
+        "y": 24,
+        "labelSide": "left"
       },
       {
         "id": "GND",
         "x": 126,
-        "y": 38,
+        "y": 24,
         "labelSide": "right"
       },
       {
         "id": "VMOT",
-        "x": 126,
-        "y": 24,
-        "labelSide": "right"
-      },
-      {
-        "id": "STEP",
-        "x": 18,
-        "y": 110,
-        "labelSide": "left"
-      },
-      {
-        "id": "DIR",
-        "x": 18,
-        "y": 125,
-        "labelSide": "left"
-      },
-      {
-        "id": "EN",
-        "x": 18,
-        "y": 24,
-        "labelSide": "left"
-      },
-      {
-        "id": "M0",
         "x": 18,
         "y": 38,
         "labelSide": "left"
       },
       {
-        "id": "M1",
+        "id": "STEP",
+        "x": 126,
+        "y": 38,
+        "labelSide": "right"
+      },
+      {
+        "id": "DIR",
         "x": 18,
         "y": 53,
         "labelSide": "left"
       },
       {
-        "id": "M2",
+        "id": "EN",
+        "x": 126,
+        "y": 53,
+        "labelSide": "right"
+      },
+      {
+        "id": "M0",
         "x": 18,
         "y": 67,
+        "labelSide": "left"
+      },
+      {
+        "id": "M1",
+        "x": 126,
+        "y": 67,
+        "labelSide": "right"
+      },
+      {
+        "id": "M2",
+        "x": 18,
+        "y": 82,
         "labelSide": "left"
       },
       {
@@ -7165,21 +7009,21 @@
       },
       {
         "id": "A2",
+        "x": 18,
+        "y": 96,
+        "labelSide": "left"
+      },
+      {
+        "id": "B1",
         "x": 126,
         "y": 96,
         "labelSide": "right"
       },
       {
-        "id": "B1",
-        "x": 126,
-        "y": 67,
-        "labelSide": "right"
-      },
-      {
         "id": "B2",
-        "x": 126,
-        "y": 53,
-        "labelSide": "right"
+        "x": 18,
+        "y": 110,
+        "labelSide": "left"
       }
     ],
     "pinCount": 13
@@ -7197,80 +7041,80 @@
       },
       {
         "id": "VCC",
-        "x": 18,
-        "y": 38,
-        "labelSide": "left"
-      },
-      {
-        "id": "GND",
-        "x": 18,
-        "y": 53,
-        "labelSide": "left"
-      },
-      {
-        "id": "AIN1",
-        "x": 126,
-        "y": 53,
-        "labelSide": "right"
-      },
-      {
-        "id": "AIN2",
-        "x": 126,
-        "y": 38,
-        "labelSide": "right"
-      },
-      {
-        "id": "BIN1",
-        "x": 126,
-        "y": 82,
-        "labelSide": "right"
-      },
-      {
-        "id": "BIN2",
-        "x": 126,
-        "y": 96,
-        "labelSide": "right"
-      },
-      {
-        "id": "PWMA",
         "x": 126,
         "y": 24,
         "labelSide": "right"
       },
       {
-        "id": "PWMB",
+        "id": "GND",
+        "x": 18,
+        "y": 38,
+        "labelSide": "left"
+      },
+      {
+        "id": "AIN1",
         "x": 126,
-        "y": 110,
+        "y": 38,
         "labelSide": "right"
       },
       {
-        "id": "AO1",
+        "id": "AIN2",
+        "x": 18,
+        "y": 53,
+        "labelSide": "left"
+      },
+      {
+        "id": "BIN1",
+        "x": 126,
+        "y": 53,
+        "labelSide": "right"
+      },
+      {
+        "id": "BIN2",
         "x": 18,
         "y": 67,
         "labelSide": "left"
       },
       {
-        "id": "AO2",
+        "id": "PWMA",
+        "x": 126,
+        "y": 67,
+        "labelSide": "right"
+      },
+      {
+        "id": "PWMB",
         "x": 18,
         "y": 82,
         "labelSide": "left"
       },
       {
-        "id": "BO1",
-        "x": 18,
-        "y": 110,
-        "labelSide": "left"
+        "id": "AO1",
+        "x": 126,
+        "y": 82,
+        "labelSide": "right"
       },
       {
-        "id": "BO2",
+        "id": "AO2",
         "x": 18,
         "y": 96,
         "labelSide": "left"
       },
       {
+        "id": "BO1",
+        "x": 126,
+        "y": 96,
+        "labelSide": "right"
+      },
+      {
+        "id": "BO2",
+        "x": 18,
+        "y": 110,
+        "labelSide": "left"
+      },
+      {
         "id": "STBY",
         "x": 126,
-        "y": 67,
+        "y": 110,
         "labelSide": "right"
       }
     ],
@@ -7759,15 +7603,15 @@
     "pins": [
       {
         "id": "anode",
-        "x": 44,
-        "y": 14,
-        "labelSide": "bottom"
+        "x": 47,
+        "y": 12,
+        "labelSide": "top"
       },
       {
         "id": "cathode",
-        "x": 59,
-        "y": 14,
-        "labelSide": "bottom"
+        "x": 66,
+        "y": 12,
+        "labelSide": "top"
       }
     ],
     "pinCount": 2
@@ -15751,69 +15595,69 @@
     "pins": [
       {
         "id": "LV",
-        "x": 31,
-        "y": 18,
+        "x": 24,
+        "y": 40,
         "labelSide": "left"
       },
       {
         "id": "HV",
         "x": 31,
-        "y": 28,
-        "labelSide": "left"
+        "y": 40,
+        "labelSide": "top"
       },
       {
         "id": "GND",
-        "x": 31,
-        "y": 37,
-        "labelSide": "left"
+        "x": 89,
+        "y": 40,
+        "labelSide": "top"
       },
       {
         "id": "LV1",
-        "x": 31,
-        "y": 47,
-        "labelSide": "left"
+        "x": 96,
+        "y": 40,
+        "labelSide": "right"
       },
       {
         "id": "LV2",
-        "x": 31,
-        "y": 56,
+        "x": 24,
+        "y": 61,
         "labelSide": "left"
       },
       {
         "id": "LV3",
         "x": 31,
-        "y": 66,
-        "labelSide": "left"
+        "y": 61,
+        "labelSide": "top"
       },
       {
         "id": "LV4",
         "x": 89,
-        "y": 56,
-        "labelSide": "right"
+        "y": 61,
+        "labelSide": "top"
       },
       {
         "id": "HV1",
-        "x": 89,
-        "y": 47,
+        "x": 96,
+        "y": 61,
         "labelSide": "right"
       },
       {
         "id": "HV2",
-        "x": 89,
-        "y": 37,
-        "labelSide": "right"
+        "x": 24,
+        "y": 83,
+        "labelSide": "left"
       },
       {
         "id": "HV3",
-        "x": 89,
-        "y": 28,
-        "labelSide": "right"
+        "x": 31,
+        "y": 83,
+        "labelSide": "bottom"
       },
       {
         "id": "HV4",
         "x": 89,
-        "y": 18,
-        "labelSide": "right"
+        "y": 83,
+        "labelSide": "bottom"
       }
     ],
     "pinCount": 11
@@ -15980,51 +15824,51 @@
     "height": 94,
     "pins": [
       {
-        "id": "VCC",
-        "x": 19,
-        "y": 14,
-        "labelSide": "top"
+        "id": "INT",
+        "x": 13,
+        "y": 13,
+        "labelSide": "left"
       },
       {
-        "id": "GND",
-        "x": 36,
-        "y": 14,
+        "id": "AD0",
+        "x": 30,
+        "y": 13,
+        "labelSide": "left"
+      },
+      {
+        "id": "SDA",
+        "x": 80,
+        "y": 13,
         "labelSide": "top"
       },
       {
         "id": "SCL",
-        "x": 53,
-        "y": 14,
+        "x": 97,
+        "y": 13,
         "labelSide": "top"
       },
       {
-        "id": "SDA",
-        "x": 70,
-        "y": 14,
+        "id": "GND",
+        "x": 113,
+        "y": 13,
         "labelSide": "top"
+      },
+      {
+        "id": "VCC",
+        "x": 130,
+        "y": 13,
+        "labelSide": "right"
       },
       {
         "id": "EDA",
-        "x": 86,
-        "y": 14,
+        "x": 47,
+        "y": 13,
         "labelSide": "top"
       },
       {
         "id": "ECL",
-        "x": 103,
-        "y": 14,
-        "labelSide": "top"
-      },
-      {
-        "id": "AD0",
-        "x": 120,
-        "y": 14,
-        "labelSide": "top"
-      },
-      {
-        "id": "INT",
-        "x": 137,
-        "y": 14,
+        "x": 64,
+        "y": 13,
         "labelSide": "top"
       }
     ],
@@ -16037,38 +15881,38 @@
     "pins": [
       {
         "id": "VCC",
-        "x": 19,
-        "y": 14,
-        "labelSide": "top"
+        "x": 17,
+        "y": 13,
+        "labelSide": "left"
       },
       {
         "id": "GND",
-        "x": 43,
-        "y": 14,
-        "labelSide": "top"
+        "x": 35,
+        "y": 13,
+        "labelSide": "left"
       },
       {
         "id": "SCL",
-        "x": 66,
-        "y": 14,
+        "x": 53,
+        "y": 13,
         "labelSide": "top"
       },
       {
         "id": "SDA",
-        "x": 90,
-        "y": 14,
+        "x": 72,
+        "y": 13,
         "labelSide": "top"
       },
       {
         "id": "XSHUT",
-        "x": 113,
-        "y": 14,
+        "x": 90,
+        "y": 13,
         "labelSide": "top"
       },
       {
         "id": "GPIO1",
-        "x": 137,
-        "y": 14,
+        "x": 108,
+        "y": 13,
         "labelSide": "top"
       }
     ],
@@ -16113,26 +15957,26 @@
     "pins": [
       {
         "id": "VCC",
-        "x": 19,
-        "y": 14,
-        "labelSide": "top"
+        "x": 32,
+        "y": 13,
+        "labelSide": "left"
       },
       {
         "id": "GND",
-        "x": 59,
-        "y": 14,
+        "x": 52,
+        "y": 13,
         "labelSide": "top"
       },
       {
         "id": "AO",
-        "x": 97,
-        "y": 14,
+        "x": 71,
+        "y": 13,
         "labelSide": "top"
       },
       {
         "id": "DO",
-        "x": 137,
-        "y": 14,
+        "x": 90,
+        "y": 13,
         "labelSide": "top"
       }
     ],
@@ -16145,26 +15989,26 @@
     "pins": [
       {
         "id": "VCC",
-        "x": 19,
-        "y": 14,
-        "labelSide": "top"
+        "x": 32,
+        "y": 13,
+        "labelSide": "left"
       },
       {
         "id": "GND",
-        "x": 59,
-        "y": 14,
+        "x": 52,
+        "y": 13,
         "labelSide": "top"
       },
       {
         "id": "AO",
-        "x": 97,
-        "y": 14,
+        "x": 71,
+        "y": 13,
         "labelSide": "top"
       },
       {
         "id": "DO",
-        "x": 137,
-        "y": 14,
+        "x": 90,
+        "y": 13,
         "labelSide": "top"
       }
     ],
@@ -16177,26 +16021,26 @@
     "pins": [
       {
         "id": "VCC",
-        "x": 19,
-        "y": 14,
-        "labelSide": "top"
+        "x": 32,
+        "y": 13,
+        "labelSide": "left"
       },
       {
         "id": "GND",
-        "x": 59,
-        "y": 14,
+        "x": 52,
+        "y": 13,
         "labelSide": "top"
       },
       {
         "id": "AO",
-        "x": 97,
-        "y": 14,
+        "x": 71,
+        "y": 13,
         "labelSide": "top"
       },
       {
         "id": "DO",
-        "x": 137,
-        "y": 14,
+        "x": 90,
+        "y": 13,
         "labelSide": "top"
       }
     ],
@@ -16208,33 +16052,33 @@
     "height": 94,
     "pins": [
       {
-        "id": "VCC",
-        "x": 19,
-        "y": 14,
-        "labelSide": "top"
-      },
-      {
-        "id": "GND",
-        "x": 49,
-        "y": 14,
-        "labelSide": "top"
+        "id": "SO",
+        "x": 28,
+        "y": 13,
+        "labelSide": "left"
       },
       {
         "id": "SCK",
-        "x": 78,
-        "y": 14,
+        "x": 47,
+        "y": 13,
         "labelSide": "top"
       },
       {
         "id": "CS",
-        "x": 108,
-        "y": 14,
+        "x": 66,
+        "y": 13,
         "labelSide": "top"
       },
       {
-        "id": "SO",
-        "x": 137,
-        "y": 14,
+        "id": "GND",
+        "x": 85,
+        "y": 13,
+        "labelSide": "top"
+      },
+      {
+        "id": "VCC",
+        "x": 104,
+        "y": 13,
         "labelSide": "top"
       }
     ],
@@ -16247,32 +16091,32 @@
     "pins": [
       {
         "id": "VCC",
-        "x": 19,
-        "y": 14,
-        "labelSide": "top"
-      },
-      {
-        "id": "GND",
-        "x": 49,
-        "y": 14,
-        "labelSide": "top"
+        "x": 25,
+        "y": 13,
+        "labelSide": "left"
       },
       {
         "id": "SCL",
-        "x": 78,
-        "y": 14,
+        "x": 44,
+        "y": 13,
         "labelSide": "top"
       },
       {
         "id": "SDA",
-        "x": 108,
-        "y": 14,
+        "x": 64,
+        "y": 13,
+        "labelSide": "top"
+      },
+      {
+        "id": "GND",
+        "x": 102,
+        "y": 13,
         "labelSide": "top"
       },
       {
         "id": "DRDY",
-        "x": 137,
-        "y": 14,
+        "x": 83,
+        "y": 13,
         "labelSide": "top"
       }
     ],
@@ -16285,39 +16129,39 @@
     "pins": [
       {
         "id": "VCC",
-        "x": 19,
-        "y": 14,
+        "x": 40,
+        "y": 13,
         "labelSide": "top"
       },
       {
         "id": "GND",
-        "x": 43,
-        "y": 14,
-        "labelSide": "top"
-      },
-      {
-        "id": "SCL",
-        "x": 66,
-        "y": 14,
+        "x": 59,
+        "y": 13,
         "labelSide": "top"
       },
       {
         "id": "SDA",
-        "x": 90,
-        "y": 14,
+        "x": 78,
+        "y": 13,
+        "labelSide": "top"
+      },
+      {
+        "id": "SCL",
+        "x": 97,
+        "y": 13,
         "labelSide": "top"
       },
       {
         "id": "VIN+",
-        "x": 113,
-        "y": 14,
+        "x": 42,
+        "y": 35,
         "labelSide": "top"
       },
       {
         "id": "VIN-",
-        "x": 137,
-        "y": 14,
-        "labelSide": "top"
+        "x": 11,
+        "y": 43,
+        "labelSide": "left"
       }
     ],
     "pinCount": 6
@@ -16329,32 +16173,32 @@
     "pins": [
       {
         "id": "VCC",
-        "x": 19,
-        "y": 14,
-        "labelSide": "top"
+        "x": 28,
+        "y": 13,
+        "labelSide": "left"
       },
       {
         "id": "GND",
-        "x": 49,
-        "y": 14,
+        "x": 48,
+        "y": 13,
         "labelSide": "top"
       },
       {
         "id": "SCL",
-        "x": 78,
-        "y": 14,
+        "x": 68,
+        "y": 13,
         "labelSide": "top"
       },
       {
         "id": "SDA",
-        "x": 108,
-        "y": 14,
+        "x": 90,
+        "y": 13,
         "labelSide": "top"
       },
       {
         "id": "ADDR",
-        "x": 137,
-        "y": 14,
+        "x": 110,
+        "y": 13,
         "labelSide": "top"
       }
     ],
@@ -16437,27 +16281,27 @@
     "pins": [
       {
         "id": "A",
-        "x": 19,
-        "y": 14,
-        "labelSide": "top"
+        "x": 66,
+        "y": 77,
+        "labelSide": "bottom"
       },
       {
         "id": "K",
-        "x": 59,
-        "y": 14,
-        "labelSide": "top"
-      },
-      {
-        "id": "E",
-        "x": 97,
-        "y": 14,
-        "labelSide": "top"
+        "x": 90,
+        "y": 77,
+        "labelSide": "bottom"
       },
       {
         "id": "C",
-        "x": 137,
-        "y": 14,
-        "labelSide": "top"
+        "x": 90,
+        "y": 94,
+        "labelSide": "bottom"
+      },
+      {
+        "id": "E",
+        "x": 110,
+        "y": 94,
+        "labelSide": "bottom"
       }
     ],
     "pinCount": 4
@@ -16469,26 +16313,26 @@
     "pins": [
       {
         "id": "AO",
-        "x": 19,
-        "y": 14,
-        "labelSide": "top"
+        "x": 30,
+        "y": 13,
+        "labelSide": "left"
       },
       {
         "id": "GND",
-        "x": 59,
-        "y": 14,
+        "x": 55,
+        "y": 13,
         "labelSide": "top"
       },
       {
         "id": "VCC",
-        "x": 97,
-        "y": 14,
+        "x": 79,
+        "y": 13,
         "labelSide": "top"
       },
       {
         "id": "DO",
-        "x": 137,
-        "y": 14,
+        "x": 104,
+        "y": 13,
         "labelSide": "top"
       }
     ],
@@ -16538,28 +16382,28 @@
     "height": 94,
     "pins": [
       {
-        "id": "VCC",
-        "x": 19,
-        "y": 14,
-        "labelSide": "top"
+        "id": "GND",
+        "x": 16,
+        "y": 56,
+        "labelSide": "left"
       },
       {
-        "id": "GND",
-        "x": 59,
-        "y": 14,
-        "labelSide": "top"
+        "id": "VCC",
+        "x": 31,
+        "y": 56,
+        "labelSide": "left"
       },
       {
         "id": "AOUT",
-        "x": 97,
-        "y": 14,
+        "x": 78,
+        "y": 31,
         "labelSide": "top"
       },
       {
         "id": "DOUT",
-        "x": 137,
-        "y": 14,
-        "labelSide": "top"
+        "x": 124,
+        "y": 28,
+        "labelSide": "right"
       }
     ],
     "pinCount": 4
@@ -16603,33 +16447,33 @@
     "pins": [
       {
         "id": "VCC",
-        "x": 19,
-        "y": 14,
-        "labelSide": "top"
+        "x": 32,
+        "y": 82,
+        "labelSide": "left"
       },
       {
         "id": "GND",
-        "x": 49,
-        "y": 14,
-        "labelSide": "top"
+        "x": 52,
+        "y": 82,
+        "labelSide": "bottom"
       },
       {
         "id": "RXD",
-        "x": 78,
-        "y": 14,
-        "labelSide": "top"
+        "x": 71,
+        "y": 82,
+        "labelSide": "bottom"
       },
       {
         "id": "TXD",
-        "x": 108,
-        "y": 14,
-        "labelSide": "top"
+        "x": 90,
+        "y": 82,
+        "labelSide": "bottom"
       },
       {
         "id": "SET",
-        "x": 137,
-        "y": 14,
-        "labelSide": "top"
+        "x": 109,
+        "y": 82,
+        "labelSide": "bottom"
       }
     ],
     "pinCount": 5
@@ -16641,51 +16485,51 @@
     "pins": [
       {
         "id": "GND",
-        "x": 19,
-        "y": 14,
-        "labelSide": "top"
+        "x": 125,
+        "y": 40,
+        "labelSide": "right"
       },
       {
         "id": "VCC",
-        "x": 36,
-        "y": 14,
-        "labelSide": "top"
+        "x": 142,
+        "y": 40,
+        "labelSide": "right"
       },
       {
         "id": "CE",
-        "x": 53,
-        "y": 14,
-        "labelSide": "top"
+        "x": 125,
+        "y": 52,
+        "labelSide": "right"
       },
       {
         "id": "CSN",
-        "x": 70,
-        "y": 14,
-        "labelSide": "top"
+        "x": 142,
+        "y": 52,
+        "labelSide": "right"
       },
       {
         "id": "SCK",
-        "x": 86,
-        "y": 14,
-        "labelSide": "top"
-      },
-      {
-        "id": "MOSI",
-        "x": 103,
-        "y": 14,
-        "labelSide": "top"
-      },
-      {
-        "id": "MISO",
-        "x": 120,
-        "y": 14,
-        "labelSide": "top"
+        "x": 125,
+        "y": 65,
+        "labelSide": "right"
       },
       {
         "id": "IRQ",
-        "x": 137,
-        "y": 14,
-        "labelSide": "top"
+        "x": 142,
+        "y": 65,
+        "labelSide": "right"
+      },
+      {
+        "id": "MOSI",
+        "x": 125,
+        "y": 77,
+        "labelSide": "right"
+      },
+      {
+        "id": "MISO",
+        "x": 142,
+        "y": 77,
+        "labelSide": "right"
       }
     ],
     "pinCount": 8
@@ -16781,27 +16625,27 @@
     "pins": [
       {
         "id": "5V",
-        "x": 19,
-        "y": 14,
-        "labelSide": "top"
-      },
-      {
-        "id": "TX",
-        "x": 59,
-        "y": 14,
-        "labelSide": "top"
-      },
-      {
-        "id": "RX",
-        "x": 97,
-        "y": 14,
-        "labelSide": "top"
+        "x": 54,
+        "y": 85,
+        "labelSide": "bottom"
       },
       {
         "id": "GND",
-        "x": 137,
-        "y": 14,
-        "labelSide": "top"
+        "x": 66,
+        "y": 85,
+        "labelSide": "bottom"
+      },
+      {
+        "id": "TX",
+        "x": 79,
+        "y": 85,
+        "labelSide": "bottom"
+      },
+      {
+        "id": "RX",
+        "x": 91,
+        "y": 85,
+        "labelSide": "bottom"
       }
     ],
     "pinCount": 4
@@ -16955,27 +16799,27 @@
     "pins": [
       {
         "id": "CLK",
-        "x": 19,
-        "y": 14,
-        "labelSide": "top"
+        "x": 14,
+        "y": 80,
+        "labelSide": "left"
       },
       {
         "id": "DIO",
-        "x": 59,
-        "y": 14,
-        "labelSide": "top"
+        "x": 26,
+        "y": 80,
+        "labelSide": "left"
       },
       {
         "id": "VCC",
-        "x": 97,
-        "y": 14,
-        "labelSide": "top"
+        "x": 38,
+        "y": 80,
+        "labelSide": "left"
       },
       {
         "id": "GND",
-        "x": 137,
-        "y": 14,
-        "labelSide": "top"
+        "x": 49,
+        "y": 80,
+        "labelSide": "bottom"
       }
     ],
     "pinCount": 4
@@ -17124,22 +16968,22 @@
     "height": 94,
     "pins": [
       {
-        "id": "GND",
-        "x": 10,
-        "y": 24,
-        "labelSide": "left"
-      },
-      {
         "id": "VCC",
-        "x": 10,
-        "y": 47,
-        "labelSide": "left"
+        "x": 91,
+        "y": 17,
+        "labelSide": "top"
       },
       {
         "id": "SIG",
-        "x": 10,
-        "y": 71,
-        "labelSide": "left"
+        "x": 109,
+        "y": 17,
+        "labelSide": "top"
+      },
+      {
+        "id": "GND",
+        "x": 127,
+        "y": 17,
+        "labelSide": "right"
       }
     ],
     "pinCount": 3
@@ -17150,22 +16994,22 @@
     "height": 94,
     "pins": [
       {
-        "id": "GND",
-        "x": 10,
-        "y": 24,
-        "labelSide": "left"
-      },
-      {
         "id": "VCC",
-        "x": 10,
-        "y": 47,
-        "labelSide": "left"
+        "x": 89,
+        "y": 17,
+        "labelSide": "top"
       },
       {
         "id": "SIG",
-        "x": 10,
-        "y": 71,
-        "labelSide": "left"
+        "x": 107,
+        "y": 17,
+        "labelSide": "top"
+      },
+      {
+        "id": "GND",
+        "x": 125,
+        "y": 17,
+        "labelSide": "right"
       }
     ],
     "pinCount": 3
@@ -17203,20 +17047,20 @@
     "pins": [
       {
         "id": "VCC",
-        "x": 10,
-        "y": 24,
-        "labelSide": "left"
-      },
-      {
-        "id": "DATA",
-        "x": 10,
-        "y": 47,
+        "x": 4,
+        "y": 34,
         "labelSide": "left"
       },
       {
         "id": "GND",
-        "x": 10,
-        "y": 71,
+        "x": 4,
+        "y": 54,
+        "labelSide": "left"
+      },
+      {
+        "id": "DATA",
+        "x": 4,
+        "y": 44,
         "labelSide": "left"
       }
     ],
@@ -17279,39 +17123,39 @@
     "pins": [
       {
         "id": "VCC",
-        "x": 19,
-        "y": 14,
-        "labelSide": "top"
+        "x": 133,
+        "y": 19,
+        "labelSide": "right"
       },
       {
         "id": "GND",
-        "x": 43,
-        "y": 14,
-        "labelSide": "top"
+        "x": 133,
+        "y": 29,
+        "labelSide": "right"
+      },
+      {
+        "id": "R1IN",
+        "x": 133,
+        "y": 82,
+        "labelSide": "right"
       },
       {
         "id": "TXD",
-        "x": 66,
-        "y": 14,
-        "labelSide": "top"
+        "x": 24,
+        "y": 19,
+        "labelSide": "left"
       },
       {
         "id": "RXD",
-        "x": 90,
-        "y": 14,
+        "x": 43,
+        "y": 18,
         "labelSide": "top"
       },
       {
         "id": "T1OUT",
-        "x": 113,
-        "y": 14,
-        "labelSide": "top"
-      },
-      {
-        "id": "R1IN",
-        "x": 137,
-        "y": 14,
-        "labelSide": "top"
+        "x": 24,
+        "y": 29,
+        "labelSide": "left"
       }
     ],
     "pinCount": 6
@@ -17525,26 +17369,26 @@
     "pins": [
       {
         "id": "IN+",
-        "x": 19,
-        "y": 14,
-        "labelSide": "top"
+        "x": 12,
+        "y": 79,
+        "labelSide": "left"
       },
       {
         "id": "IN-",
-        "x": 59,
-        "y": 14,
-        "labelSide": "top"
+        "x": 31,
+        "y": 79,
+        "labelSide": "left"
       },
       {
         "id": "OUT+",
-        "x": 97,
-        "y": 14,
+        "x": 62,
+        "y": 16,
         "labelSide": "top"
       },
       {
         "id": "OUT-",
-        "x": 137,
-        "y": 14,
+        "x": 73,
+        "y": 16,
         "labelSide": "top"
       }
     ],
@@ -17601,15 +17445,15 @@
     "pins": [
       {
         "id": "+",
-        "x": 5,
-        "y": 47,
-        "labelSide": "left"
+        "x": 59,
+        "y": 54,
+        "labelSide": "bottom"
       },
       {
         "id": "-",
-        "x": 151,
-        "y": 47,
-        "labelSide": "right"
+        "x": 97,
+        "y": 54,
+        "labelSide": "bottom"
       }
     ],
     "pinCount": 2
@@ -17621,15 +17465,15 @@
     "pins": [
       {
         "id": "+",
-        "x": 37,
-        "y": 17,
-        "labelSide": "left"
+        "x": 50,
+        "y": 80,
+        "labelSide": "bottom"
       },
       {
         "id": "-",
-        "x": 137,
-        "y": 47,
-        "labelSide": "right"
+        "x": 78,
+        "y": 80,
+        "labelSide": "bottom"
       }
     ],
     "pinCount": 2
@@ -17641,26 +17485,26 @@
     "pins": [
       {
         "id": "5V",
-        "x": 19,
-        "y": 14,
+        "x": 58,
+        "y": 25,
         "labelSide": "top"
       },
       {
         "id": "3.3V",
-        "x": 59,
-        "y": 14,
+        "x": 65,
+        "y": 25,
         "labelSide": "top"
       },
       {
         "id": "GND",
-        "x": 97,
-        "y": 14,
+        "x": 72,
+        "y": 25,
         "labelSide": "top"
       },
       {
         "id": "GPIOx40",
-        "x": 137,
-        "y": 14,
+        "x": 79,
+        "y": 25,
         "labelSide": "top"
       }
     ],

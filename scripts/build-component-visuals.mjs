@@ -53,6 +53,41 @@ function extractSvgPins(archetype, pinIds, compWidth, compHeight) {
       }
     }
   }
+
+  // 1.1. Extract rect pins (small rectangles)
+  const rectRegex = /<rect\s+x="([^"]+)"\s+y="([^"]+)"\s+width="([^"]+)"\s+height="([^"]+)"[^>]*>/g
+  while ((match = rectRegex.exec(content)) !== null) {
+    const x = parseFloat(match[1])
+    const y = parseFloat(match[2])
+    const w = parseFloat(match[3])
+    const h = parseFloat(match[4])
+    if (w >= 4 && w <= 16 && h >= 4 && h <= 16) {
+      const cx = (x + w/2) * scaleX
+      const cy = (y + h/2) * scaleY
+      const key = `${Math.round(cx)},${Math.round(cy)}`
+      if (!uniqueHolesMap.has(key)) {
+        uniqueHolesMap.set(key, { cx, cy, used: false })
+      }
+    }
+  }
+
+  // 1.2. Extract line pins (small lines)
+  const lineRegex = /<line\s+x1="([^"]+)"\s+y1="([^"]+)"\s+x2="([^"]+)"\s+y2="([^"]+)"[^>]*>/g
+  while ((match = lineRegex.exec(content)) !== null) {
+    const x1 = parseFloat(match[1])
+    const y1 = parseFloat(match[2])
+    const x2 = parseFloat(match[3])
+    const y2 = parseFloat(match[4])
+    const len = Math.hypot(x2 - x1, y2 - y1)
+    if (len >= 4 && len <= 24) {
+      const cx = ((x1 + x2) / 2) * scaleX
+      const cy = ((y1 + y2) / 2) * scaleY
+      const key = `${Math.round(cx)},${Math.round(cy)}`
+      if (!uniqueHolesMap.has(key)) {
+        uniqueHolesMap.set(key, { cx, cy, used: false })
+      }
+    }
+  }
   const holes = Array.from(uniqueHolesMap.values())
 
   const foundPins = []
@@ -65,7 +100,31 @@ function extractSvgPins(archetype, pinIds, compWidth, compHeight) {
     const ty = parseFloat(match[2]) * scaleY
     const label = match[3].trim()
     
-    const matchedId = pinIds.find(id => !placedIds.has(id) && (id.toUpperCase() === label.toUpperCase() || id.toUpperCase().startsWith(label.toUpperCase() + '_')))
+    const isMatch = (id, lbl) => {
+      const nId = id.toUpperCase().replace(/[^A-Z0-9+\-]/g, '')
+      const nLbl = lbl.toUpperCase().replace(/[^A-Z0-9+\-]/g, '')
+      if (nId === nLbl) return true
+      if (nId.startsWith(nLbl + '_')) return true
+      
+      const aliases = {
+        'TX': ['TXD'],
+        'RX': ['RXD'],
+        'VCC': ['5V', 'VIN', '3V3', '3.3V', '+', 'VDD'],
+        'GND': ['-', 'VSS'],
+        'TRIG': ['TRG'],
+        'ECHO': ['ECH'],
+        'DATA': ['DAT', 'D'],
+        'SIGNAL': ['SIG', 'S'],
+        'AO': ['A0', 'A'],
+        'DO': ['D0', 'D'],
+        'OUT': ['O', 'DAT', 'SIG']
+      }
+      if (aliases[nId] && aliases[nId].includes(nLbl)) return true
+      if (aliases[nLbl] && aliases[nLbl].includes(nId)) return true
+      return false
+    }
+
+    const matchedId = pinIds.find(id => !placedIds.has(id) && isMatch(id, label))
     if (matchedId) {
       // Find nearest unused hole
       let nearestHole = null
@@ -73,7 +132,8 @@ function extractSvgPins(archetype, pinIds, compWidth, compHeight) {
       for (const hole of holes) {
         if (hole.used) continue
         const dist = Math.hypot(hole.cx - tx, hole.cy - ty)
-        if (dist < minDist) {
+        // Add distance limit so text doesn't map to random holes across the board
+        if (dist < 40 && dist < minDist) {
           minDist = dist
           nearestHole = hole
         }
@@ -91,6 +151,21 @@ function extractSvgPins(archetype, pinIds, compWidth, compHeight) {
           id: matchedId,
           x: Math.round(nearestHole.cx),
           y: Math.round(nearestHole.cy),
+          labelSide
+        })
+        placedIds.add(matchedId)
+      } else {
+        // Fallback: If text found but no hole nearby, place pin at text coords
+        let labelSide = 'top'
+        if (tx < compWidth * 0.25) labelSide = 'left'
+        else if (tx > compWidth * 0.75) labelSide = 'right'
+        else if (ty < compHeight / 2) labelSide = 'top'
+        else labelSide = 'bottom'
+
+        foundPins.push({
+          id: matchedId,
+          x: Math.round(tx),
+          y: Math.round(ty),
           labelSide
         })
         placedIds.add(matchedId)
@@ -291,11 +366,11 @@ for (const comp of componentRegistry.getAll()) {
     height = computed.height
   }
 
-  let pins = mergeBoardPins(comp.id, archetype, pinIds)
+  let pins = extractSvgPins(archetype, pinIds, width, height)
 
   // If extraction couldn't find all pins perfectly (or returned empty), fallback to parsing the SVG
   if (!pins || pins.length === 0) {
-    pins = extractSvgPins(archetype, pinIds, width, height)
+    pins = mergeBoardPins(comp.id, archetype, pinIds)
   }
   
   if (comp.id === 'breadboard-400' && p400Obj) {

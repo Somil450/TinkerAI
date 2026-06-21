@@ -12,7 +12,7 @@ window._buttonStates   = window._buttonStates   || {};
 
 // ─── Sensor type map ─────────────────────────────────────────────────────────
 const SENSOR_CONFIGS = {
-    'hc-sr04':         { label: '📡 Distance',     unit: 'cm',  min: 2,   max: 400, def: 100, key: 'distance' },
+    'hc-sr04':         { label: '📡 Distance',     unit: 'cm',  min: 0,   max: 400, def: 100, key: 'distance' },
     'dht11':           { label: '🌡️ Temp',          unit: '°C',  min: -20, max: 80,  def: 25,  key: 'dhtTemp' },
     'dht22':           { label: '🌡️ Temp',          unit: '°C',  min: -40, max: 80,  def: 25,  key: 'dhtTemp' },
     'ldr':             { label: '☀️ Light',          unit: '',    min: 0,   max: 1023,def: 512, key: 'light', analog: 'A0' },
@@ -120,9 +120,18 @@ export function updateSensorUI() {
             window.simSensorValues[key] = cfg.def;
         const val = window.simSensorValues[key];
 
+        // Immediately sync well-known keys so pulseIn/DHT reads right value before user touches slider
+        if (cfg.key === 'distance') {
+            window.simSensorValues.distance = val;
+        } else if (cfg.key === 'dhtTemp') {
+            window.simSensorValues.dhtTemp = val;
+        } else if (cfg.key === 'dhtHumidity') {
+            window.simSensorValues.dhtHumidity = val;
+        }
+
         html += _sliderRow(key, `${cfg.label} <small style="color:#64748b">(${id.match(/_(\d+)$/)?.[1]||''})</small>`,
             val, cfg.min, cfg.max, cfg.min < 0 ? 0.5 : 1, cfg.unit,
-            `window._sensorSlider('${key}','${cfg.analog||'A0'}', this.value)`
+            `window._sensorSlider('${key}','${cfg.analog||''}', this.value)`
         );
     });
 
@@ -186,7 +195,9 @@ window._sensorSlider = function(key, analogPin, rawValue) {
     // Sync special well-known keys
     if (key === 'dhtTemp')     window.simSensorValues.dhtTemp     = v;
     if (key === 'dhtHumidity') window.simSensorValues.dhtHumidity = v;
-    if (key === 'distance')    window.simSensorValues.distance    = v;
+    // Any distance_xxx key → also sets well-known 'distance'
+    if (key.startsWith('distance')) window.simSensorValues.distance = v;
+    if (key === 'distance')         window.simSensorValues.distance = v;
     // Feed into analog input of interpreter
     if (analogPin) arduinoInterpreter.setSensorValue(analogPin, Math.round(v));
 };

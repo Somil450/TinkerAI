@@ -4,6 +4,7 @@ import { renderSidebar } from './ui/sidebar.js'
 import { selectPin } from './engine/wires.js'
 import { buildGraph, expandBreadboardConnections } from './engine/graph.js'
 import { validateCircuit } from './engine/validator.js'
+import { validatePreSimulation } from './engine/circuitValidator.js'
 import { renderProperties, renderWireProperties } from './ui/propertiesPanel.js'
 import { deleteComponent } from './engine/deleteComponent.js'
 import { componentRegistry } from './engine/componentRegistry.js'
@@ -941,6 +942,23 @@ startSimBtn.addEventListener('click', async () => {
 
   const code = getCode();
 
+  // ── STRICT VALIDATION ───────────────────────────────────────────────────────
+  const placedComponents = Array.from(document.querySelectorAll('.component'));
+  const validationResult = validatePreSimulation(code, connections, placedComponents);
+  
+  if (!validationResult.valid) {
+      serialPanel.classList.remove('hidden');
+      if (serialOutput.textContent.length > 5000) serialOutput.textContent = '';
+      serialOutput.textContent += '\n❌ SIMULATION BLOCKED: STRICT VALIDATION FAILED ❌\n';
+      validationResult.errors.forEach(err => {
+          serialOutput.textContent += `-> ${err}\n`;
+      });
+      serialOutput.scrollTop = serialOutput.scrollHeight;
+      setCompilerStatus('⚠️ Simulation Blocked: Check Serial Monitor for details', true);
+      if (codePanel.classList.contains('hidden')) codePanel.classList.remove('hidden');
+      return;
+  }
+
   // ── Mode 1: JS Interpreter (instant, ALL MCUs) ────────────────────────────
   isSimulating = true;
   startSimBtn.style.background = '#e74c3c';
@@ -1494,8 +1512,13 @@ function renderWires() {
     bubble.className = 'ai-msg-bubble'
     
     let html = renderMarkdown(text)
+    // Circuit generation button
     if (/(?:<!--|&lt;!--)\s*ACTION:\s*(\{[\s\S]*?\})\s*(?:-->|--&gt;)/.test(html) && !html.includes('ai-action-btn')) {
-        html += '\n<br><button class="ai-action-btn" onclick="window.executeAIAction(this.parentElement)">🚀 Generate Circuit</button>'
+        html += '<br><button class="ai-action-btn" onclick="window.executeAIAction(this.parentElement)">🚀 Generate Circuit</button>'
+    }
+    // Code-only apply button
+    if (/(?:<!--|&lt;!--)\s*CODE:\s*(\{[\s\S]*?\})\s*(?:-->|--&gt;)/.test(html) && !html.includes('ai-code-btn')) {
+        html += '<br><button class="ai-action-btn ai-code-btn" style="background:linear-gradient(135deg,#22c55e,#16a34a);" onclick="window.applyAICode(this.parentElement)">⚡ Apply Code to Editor</button>'
     }
     
     bubble.innerHTML = html
@@ -1529,6 +1552,37 @@ function renderWires() {
       appendMessage('ai', 'Error: ' + err.message)
     })
   }
+
+  window.applyAICode = function(container) {
+    try {
+      const html = container.innerHTML;
+      // Try CODE: comment first
+      let match = html.match(/(?:<!--|&lt;!--)\s*CODE:\s*(\{[\s\S]*?\})\s*(?:-->|--&gt;)/);
+      if (match) {
+        const payload = JSON.parse(match[1]);
+        if (payload.code) {
+          setCode(payload.code.replace(/\\n/g, '\n').replace(/\\t/g, '\t'));
+          // Open code panel
+          const cp = document.getElementById('code-panel');
+          if (cp) cp.classList.remove('hidden');
+          window.showToast('✅ Code applied to editor!', 'success');
+          return;
+        }
+      }
+      // Fallback: extract first ```cpp block from rendered HTML
+      const pre = container.querySelector('pre code');
+      if (pre) {
+        setCode(pre.textContent.trim());
+        const cp = document.getElementById('code-panel');
+        if (cp) cp.classList.remove('hidden');
+        window.showToast('✅ Code applied to editor!', 'success');
+        return;
+      }
+      window.showToast('No code found in response', 'warning');
+    } catch(e) {
+      window.showToast('Error applying code: ' + e.message, 'error');
+    }
+  };
 
   window.executeAIAction = function(container) {
     try {

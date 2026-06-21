@@ -25,6 +25,46 @@ import { getComponentVisual } from './ui/componentSvgCatalog.js'
 import { getSvgUrl } from './ui/componentSvg.js'
 import { initSensorUI, updateSensorUI, hideSensorUI } from './ui/sensorUI.js'
 import { initHardwareManager, toggleHardwarePanel } from './ui/hardwareManager.js'
+import { renderWelcomePage } from './ui/welcomePage.js'
+import { auth } from './auth.js'
+
+// --- Welcome Page / Auth Flow ---
+function ensureWelcomePage() {
+  let root = document.getElementById('welcome-root');
+  if (!root) {
+    root = document.createElement('div');
+    root.id = 'welcome-root';
+    document.body.appendChild(root);
+    renderWelcomePage(root);
+  }
+}
+
+// Initial render
+ensureWelcomePage();
+
+auth.onAuthStateChanged((user) => {
+  const root = document.getElementById('welcome-root');
+  if (user) {
+    // User is logged in, fade out and remove welcome screen
+    if (root) {
+      const welcomeEl = root.querySelector('.welcome-container');
+      if (welcomeEl) {
+        welcomeEl.classList.add('fade-out');
+        setTimeout(() => {
+          if (document.getElementById('welcome-root')) {
+            document.getElementById('welcome-root').remove();
+          }
+        }, 600);
+      } else {
+        root.remove();
+      }
+    }
+  } else {
+    // Not logged in (ensure it's visible if they sign out later)
+    ensureWelcomePage();
+  }
+});
+
 document.querySelector('#app').innerHTML = `
 <div class="app-layout">
   <nav class="navbar">
@@ -66,6 +106,7 @@ document.querySelector('#app').innerHTML = `
           <line x1="15" y1="3" x2="15" y2="21"></line>
         </svg>
       </button>
+      <button class="nav-btn danger" id="logout-btn" title="Log out">Logout</button>
     </div>
   </nav>
 
@@ -174,11 +215,16 @@ document.querySelector('#app').innerHTML = `
     <div class="sidebar-resizer" id="sidebar-resizer" role="separator" aria-orientation="vertical" aria-label="Resize component panel"></div>
     <div class="right-sidebar" id="right-sidebar">
       <div class="sidebar-header">
-        <select class="category-select">
-          <option>Basic</option>
-          <option>All</option>
-          <option>Arduino</option>
-        </select>
+        <div class="custom-select" id="category-select">
+          <div class="custom-select-trigger">
+            <span class="custom-select-label">Basic</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </div>
+          <div class="custom-select-options">
+            <div class="custom-option selected" data-value="Basic">Basic</div>
+            <div class="custom-option" data-value="All">All</div>
+          </div>
+        </div>
         <input type="text" placeholder="Search..." class="search-input"/>
         <button id="close-sidebar-mobile" class="close-btn" style="display: none;">&times;</button>
       </div>
@@ -276,11 +322,12 @@ document.addEventListener('mouseup', () => {
 })
 
 const searchInput = document.querySelector('.search-input');
-const categorySelect = document.querySelector('.category-select');
+const categorySelectEl = document.getElementById('category-select');
+let currentCategory = 'Basic';
 
 function filterComponents() {
   const term = searchInput ? searchInput.value.toLowerCase() : '';
-  const category = categorySelect ? categorySelect.value : 'All';
+  const category = currentCategory;
   const components = document.querySelectorAll('.component-list-grid .component');
   
   components.forEach(comp => {
@@ -316,8 +363,33 @@ function filterComponents() {
 if (searchInput) {
   searchInput.addEventListener('input', filterComponents);
 }
-if (categorySelect) {
-  categorySelect.addEventListener('change', filterComponents);
+
+// Custom select logic
+if (categorySelectEl) {
+  const trigger = categorySelectEl.querySelector('.custom-select-trigger');
+  const options = categorySelectEl.querySelectorAll('.custom-option');
+  const label = categorySelectEl.querySelector('.custom-select-label');
+
+  trigger.addEventListener('click', (e) => {
+    categorySelectEl.classList.toggle('open');
+    e.stopPropagation();
+  });
+
+  options.forEach(opt => {
+    opt.addEventListener('click', (e) => {
+      options.forEach(o => o.classList.remove('selected'));
+      opt.classList.add('selected');
+      currentCategory = opt.dataset.value;
+      label.textContent = currentCategory;
+      categorySelectEl.classList.remove('open');
+      filterComponents();
+      e.stopPropagation();
+    });
+  });
+
+  document.addEventListener('click', () => {
+    categorySelectEl.classList.remove('open');
+  });
 }
 
 window.showToast = function(msg, type = 'info') {
@@ -531,6 +603,15 @@ const serialSendBtn = document.getElementById('serial-send');
 const baudRateSelect = document.getElementById('baud-rate');
 const clearSerialBtn = document.getElementById('clear-serial');
 const toggleSidebarBtn = document.getElementById('toggle-sidebar-btn');
+const logoutBtn = document.getElementById('logout-btn');
+
+logoutBtn.addEventListener('click', async () => {
+  try {
+    await auth.signOut();
+  } catch (err) {
+    console.error("Logout error:", err);
+  }
+});
 
 toggleSidebarBtn.addEventListener('click', () => {
   rightSidebar.classList.toggle('hidden');

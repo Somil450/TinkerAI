@@ -9,22 +9,21 @@ export function deleteComponent(
   const pins =
     component.querySelectorAll('.pin')
 
-  wireObjects.forEach((wire,index)=>{
-
-    pins.forEach(pin=>{
-
-      if(
-        wire.pin1 === pin ||
-        wire.pin2 === pin
-      ){
-
-        wireObjects.splice(index,1)
-
+  // Iterate backwards to safely splice elements from the array
+  for (let i = wireObjects.length - 1; i >= 0; i--) {
+    const wire = wireObjects[i];
+    let shouldDelete = false;
+    
+    pins.forEach(pin => {
+      if (wire.pin1 === pin || wire.pin2 === pin) {
+        shouldDelete = true;
       }
+    });
 
-    })
-
-  })
+    if (shouldDelete) {
+      wireObjects.splice(i, 1);
+    }
+  }
 
   component.remove()
 

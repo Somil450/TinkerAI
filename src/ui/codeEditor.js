@@ -52,3 +52,17 @@ export function setCompilerStatus(status, isError = false) {
         statusPanel.style.color = isError ? '#ff4d4d' : '#00ff88';
     }
 }
+
+export function setEditorDisabled(disabled) {
+    const container = document.getElementById('editor-container');
+    if (container) {
+        // Keep pointer-events active so the user can scroll and select text!
+        container.style.opacity = disabled ? '0.8' : '1';
+        
+        // Prevent actual typing by setting contenteditable on CodeMirror
+        const cmContent = container.querySelector('.cm-content');
+        if (cmContent) {
+            cmContent.setAttribute('contenteditable', disabled ? 'false' : 'true');
+        }
+    }
+}

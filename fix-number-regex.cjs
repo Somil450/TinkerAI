@@ -5,8 +5,8 @@ const path = require('path');
 const file = path.join(__dirname, 'src/ai/circuitChatAI.js');
 let code = fs.readFileSync(file, 'utf8');
 
-const startMarker = '    // First: find "N component" patterns';
-const endMarker   = '    // \u2500\u2500 Comprehensive shorthand alias map';
+const startMarker = '    // First: find explicit "N component" patterns';
+const endMarker   = '    for (const c of allComps) {';
 
 const startIdx = code.indexOf(startMarker);
 const endIdx   = code.indexOf(endMarker);

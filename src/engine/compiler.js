@@ -30,7 +30,7 @@ const LIBRARY_MAP = {
     'HX711.h': 'HX711 Arduino Library'
 };
 
-export async function compileCode(code) {
+export async function compileCode(code, fqbn = 'arduino:avr:uno') {
     const files = [];
     
     // Automatically detect required libraries based on includes
@@ -55,7 +55,8 @@ export async function compileCode(code) {
 
     const data = {
         sketch: `${code}`,
-        files: files
+        files: files,
+        board: fqbn   // Pass selected board FQBN to Wokwi compiler
     };
 
     try {

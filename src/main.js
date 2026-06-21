@@ -1,8 +1,8 @@
 import './style.css'
 import { isValidConnection } from './engine/pinRules.js'
 import { renderSidebar } from './ui/sidebar.js'
-import { selectPin, getConnections } from './engine/wires.js'
-import { buildGraph } from './engine/graph.js'
+import { selectPin } from './engine/wires.js'
+import { buildGraph, expandBreadboardConnections } from './engine/graph.js'
 import { validateCircuit } from './engine/validator.js'
 import { renderProperties, renderWireProperties } from './ui/propertiesPanel.js'
 import { deleteComponent } from './engine/deleteComponent.js'
@@ -15,7 +15,7 @@ import { initializeAIUI } from './ai/uiIntegration.js'
 import { safetyEngine } from './ai/safetyEngine.js'
 import { autoCorrectionEngine } from './ai/autoCorrectionEngine.js'
 import { simulator } from './engine/simulator.js'
-import { initCodeEditor, getCode, setCode, setCompilerStatus } from './ui/codeEditor.js'
+import { initCodeEditor, getCode, setCode, setCompilerStatus, setEditorDisabled } from './ui/codeEditor.js'
 import { compileCode } from './engine/compiler.js'
 import { connectToBoard, disconnectFromBoard, flashToBoard, getPort } from './engine/flasher.js'
 import { startSerialMonitor, sendSerialData, stopSerialMonitor } from './engine/serialMonitor.js'
@@ -23,6 +23,7 @@ import { circuitChatAI } from './ai/circuitChatAI.js'
 import { getComponentVisual } from './ui/componentSvgCatalog.js'
 import { getSvgUrl } from './ui/componentSvg.js'
 import { initSensorUI, updateSensorUI, hideSensorUI } from './ui/sensorUI.js'
+import { initHardwareManager, toggleHardwarePanel } from './ui/hardwareManager.js'
 document.querySelector('#app').innerHTML = `
 <div class="app-layout">
   <nav class="navbar">
@@ -32,6 +33,10 @@ document.querySelector('#app').innerHTML = `
     </div>
     <div class="nav-right">
       <button class="nav-btn primary" id="code-btn">Code</button>
+      <button class="nav-btn hardware" id="hardware-btn" title="Hardware Manager — Board, Libraries, Upload">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:4px"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+        Hardware
+      </button>
       <button class="nav-btn success" id="start-sim-btn">Start Simulation</button>
       <button class="nav-btn upload" id="upload-btn" title="Upload sketch to physical Arduino">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 4px;"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>
@@ -40,7 +45,20 @@ document.querySelector('#app').innerHTML = `
       <button class="nav-btn serial" id="serial-btn">Serial Monitor</button>
       <button class="nav-btn outline" id="connect-btn">Connect Board</button>
       <button class="nav-btn outline" id="clear-board-btn" title="Delete all components and wires">Clear Board</button>
-      <button class="nav-btn outline">Export</button>
+      <div class="nav-export-wrap" id="export-wrap">
+        <button class="nav-btn outline" id="export-btn">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:4px"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Export ▾
+        </button>
+        <div class="export-dropdown hidden" id="export-dropdown">
+          <div class="export-item" id="exp-json">💾 Save Circuit (.json)</div>
+          <div class="export-item" id="exp-import">📂 Load Circuit (.json)</div>
+          <div class="export-divider"></div>
+          <div class="export-item" id="exp-png">🖼️ Export as PNG</div>
+          <div class="export-item" id="exp-ino">📄 Download Sketch (.ino)</div>
+        </div>
+        <input type="file" id="import-file-input" accept=".json" style="display:none">
+      </div>
       <button class="nav-btn outline" id="toggle-sidebar-btn" title="Toggle Component Panel" style="padding: 8px;">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: block;">
           <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
@@ -54,6 +72,7 @@ document.querySelector('#app').innerHTML = `
     
     <!-- Code Editor Panel (Hidden by default) -->
     <div id="code-panel" class="code-panel hidden">
+      <div id="code-resizer" class="code-resizer"></div>
       <div class="code-panel-header">
         <span class="code-panel-title">main.cpp</span>
         <button id="close-code-panel" class="close-btn">&times;</button>
@@ -64,6 +83,7 @@ document.querySelector('#app').innerHTML = `
 
     <!-- Serial Monitor Panel (Hidden by default) -->
     <div id="serial-panel" class="serial-panel hidden">
+      <div id="serial-resizer" class="serial-resizer"></div>
       <div class="serial-panel-header">
         <span class="serial-panel-title">Serial Monitor</span>
         <div class="serial-controls">
@@ -188,6 +208,19 @@ function setSidebarWidth(px) {
 }
 
 let isResizingSidebar = false
+let isResizingSerial = false
+let isResizingCode = false
+
+const codeResizer = document.getElementById('code-resizer')
+if (codeResizer) {
+  codeResizer.addEventListener('mousedown', (e) => {
+    e.preventDefault()
+    isResizingCode = true
+    codeResizer.classList.add('is-dragging')
+    document.body.style.cursor = 'col-resize'
+    document.body.style.userSelect = 'none'
+  })
+}
 
 sidebarResizer.addEventListener('mousedown', (e) => {
   e.preventDefault()
@@ -198,18 +231,47 @@ sidebarResizer.addEventListener('mousedown', (e) => {
 })
 
 document.addEventListener('mousemove', (e) => {
-  if (!isResizingSidebar) return
-  const workspace = document.querySelector('.main-workspace')
-  const rect = workspace.getBoundingClientRect()
-  setSidebarWidth(rect.right - e.clientX)
+  if (isResizingSidebar) {
+    const workspace = document.querySelector('.main-workspace')
+    const rect = workspace.getBoundingClientRect()
+    setSidebarWidth(rect.right - e.clientX)
+  }
+  if (isResizingSerial) {
+    const windowHeight = window.innerHeight;
+    let newHeight = windowHeight - e.clientY;
+    if (newHeight < 100) newHeight = 100;
+    if (newHeight > windowHeight * 0.8) newHeight = windowHeight * 0.8;
+    document.getElementById('serial-panel').style.height = `${newHeight}px`;
+  }
+  if (isResizingCode) {
+    const windowWidth = window.innerWidth;
+    let newWidth = e.clientX;
+    if (newWidth < 300) newWidth = 300;
+    if (newWidth > windowWidth * 0.8) newWidth = windowWidth * 0.8;
+    document.getElementById('code-panel').style.width = `${newWidth}px`;
+  }
 })
 
 document.addEventListener('mouseup', () => {
-  if (!isResizingSidebar) return
-  isResizingSidebar = false
-  sidebarResizer.classList.remove('is-dragging')
-  document.body.style.cursor = ''
-  document.body.style.userSelect = ''
+  if (isResizingSidebar) {
+    isResizingSidebar = false
+    sidebarResizer.classList.remove('is-dragging')
+    document.body.style.cursor = ''
+    document.body.style.userSelect = ''
+  }
+  if (isResizingSerial) {
+    isResizingSerial = false
+    const serialResizerEl = document.getElementById('serial-resizer');
+    if (serialResizerEl) serialResizerEl.classList.remove('is-dragging');
+    document.body.style.cursor = ''
+    document.body.style.userSelect = ''
+  }
+  if (isResizingCode) {
+    isResizingCode = false
+    if (codeResizer) codeResizer.classList.remove('is-dragging');
+    document.body.style.cursor = ''
+    document.body.style.userSelect = ''
+  }
 })
 
 const searchInput = document.querySelector('.search-input');
@@ -258,22 +320,95 @@ if (categorySelect) {
 }
 
 window.showToast = function(msg, type = 'info') {
+  const icons = { error: '🚨', warn: '⚠️', warning: '⚠️', success: '✅', info: 'ℹ️' };
+  const colors = { error: 'linear-gradient(135deg,#b91c1c,#ef4444)', warn: 'linear-gradient(135deg,#b45309,#f59e0b)', warning: 'linear-gradient(135deg,#b45309,#f59e0b)', success: 'linear-gradient(135deg,#065f46,#10b981)', info: 'linear-gradient(135deg,#1e40af,#3b82f6)' };
   const toast = document.createElement('div');
-  toast.textContent = msg;
-  toast.style.position = 'fixed';
-  toast.style.bottom = '20px';
-  toast.style.right = '20px';
-  toast.style.padding = '10px 20px';
-  toast.style.borderRadius = '5px';
-  toast.style.color = '#fff';
-  toast.style.background = type === 'error' ? '#f44336' : (type === 'warn' ? '#ff9800' : '#2196F3');
-  toast.style.zIndex = '9999';
-  toast.style.transition = 'opacity 0.3s';
+  toast.innerHTML = `<span style="font-size:16px;margin-right:8px">${icons[type]||'ℹ️'}</span><span>${msg}</span>`;
+  Object.assign(toast.style, {
+    position: 'fixed', bottom: '28px', right: '28px',
+    padding: '12px 20px', borderRadius: '10px', color: '#fff',
+    background: colors[type] || colors.info,
+    zIndex: '99999', display: 'flex', alignItems: 'center',
+    boxShadow: '0 8px 32px rgba(0,0,0,0.4)',
+    fontFamily: 'Inter, sans-serif', fontSize: '13px', fontWeight: '600',
+    transform: 'translateX(120%)', transition: 'transform 0.35s cubic-bezier(.34,1.56,.64,1)',
+    maxWidth: '380px'
+  });
   document.body.appendChild(toast);
+  requestAnimationFrame(() => { toast.style.transform = 'translateX(0)'; });
   setTimeout(() => {
-    toast.style.opacity = '0';
-    setTimeout(() => toast.remove(), 300);
-  }, 3000);
+    toast.style.transform = 'translateX(120%)';
+    setTimeout(() => toast.remove(), 400);
+  }, 3500);
+};
+
+// ── Cinematic Hazard Modal ────────────────────────────────────────────────────
+window.showHazardModal = function(title, message, suggestion) {
+  // Spark burst animation on all placed components
+  document.querySelectorAll('.placed-component').forEach(el => {
+    el.classList.add('hazard-flash');
+    // Spawn spark particles
+    for (let i = 0; i < 8; i++) {
+      const spark = document.createElement('div');
+      spark.className = 'hazard-spark';
+      const angle = (i / 8) * 360;
+      spark.style.setProperty('--angle', `${angle}deg`);
+      spark.style.setProperty('--dist', `${40 + Math.random() * 30}px`);
+      el.appendChild(spark);
+      setTimeout(() => spark.remove(), 900);
+    }
+    setTimeout(() => el.classList.remove('hazard-flash'), 1200);
+  });
+
+  // Remove existing modal if any
+  document.getElementById('hazard-modal')?.remove();
+
+  const overlay = document.createElement('div');
+  overlay.id = 'hazard-modal';
+  Object.assign(overlay.style, {
+    position: 'fixed', inset: '0', background: 'rgba(0,0,0,0.75)', backdropFilter: 'blur(6px)',
+    display: 'flex', alignItems: 'center', justifyContent: 'center',
+    zIndex: '999999', animation: 'fadeInOverlay 0.3s ease'
+  });
+
+  const box = document.createElement('div');
+  Object.assign(box.style, {
+    background: 'linear-gradient(145deg,#1a0a0a,#2d1515)',
+    border: '1.5px solid #ef4444', borderRadius: '18px',
+    padding: '36px 32px 28px', maxWidth: '440px', width: '90%',
+    boxShadow: '0 0 60px rgba(239,68,68,0.5), 0 24px 48px rgba(0,0,0,0.8)',
+    textAlign: 'center', animation: 'popIn 0.4s cubic-bezier(.34,1.56,.64,1)',
+    position: 'relative', overflow: 'hidden'
+  });
+
+  // Animated background shimmer
+  const shimmer = document.createElement('div');
+  Object.assign(shimmer.style, {
+    position: 'absolute', inset: '0', background: 'radial-gradient(circle at 50% 0%, rgba(239,68,68,0.15), transparent 60%)',
+    pointerEvents: 'none'
+  });
+  box.appendChild(shimmer);
+
+  box.innerHTML += `
+    <div style="font-size:52px;margin-bottom:8px;animation:shake 0.5s ease infinite alternate">⚡</div>
+    <div style="font-size:11px;letter-spacing:3px;color:#ef4444;font-weight:700;margin-bottom:6px;text-transform:uppercase">Simulation Halted</div>
+    <h2 style="color:#fff;font-size:20px;margin:0 0 10px;font-weight:700">${title}</h2>
+    <p style="color:#fca5a5;font-size:14px;line-height:1.6;margin:0 0 ${suggestion ? 16 : 24}px">${message}</p>
+    ${suggestion ? `<div style="background:rgba(239,68,68,0.12);border:1px solid rgba(239,68,68,0.3);border-radius:10px;padding:10px 14px;margin-bottom:20px;color:#fcd34d;font-size:13px">💡 ${suggestion}</div>` : ''}
+    <button id="hazard-ok-btn" style="background:linear-gradient(135deg,#ef4444,#b91c1c);color:#fff;border:none;padding:12px 40px;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;transition:transform 0.15s,box-shadow 0.15s;box-shadow:0 4px 20px rgba(239,68,68,0.4)">Dismiss</button>
+  `;
+
+  overlay.appendChild(box);
+  document.body.appendChild(overlay);
+
+  const btn = document.getElementById('hazard-ok-btn');
+  btn.onmouseover = () => { btn.style.transform = 'scale(1.05)'; btn.style.boxShadow = '0 6px 24px rgba(239,68,68,0.6)'; };
+  btn.onmouseout  = () => { btn.style.transform = 'scale(1)';    btn.style.boxShadow = '0 4px 20px rgba(239,68,68,0.4)'; };
+  btn.onclick = () => {
+    overlay.style.animation = 'fadeOutOverlay 0.25s ease forwards';
+    setTimeout(() => overlay.remove(), 250);
+  };
+  overlay.onclick = (e) => { if (e.target === overlay) btn.click(); };
 };
 
 const propertiesPanel = document.getElementById('properties')
@@ -410,6 +545,17 @@ if (closeSidebarMobileBtn) {
 }
 
 const closeSerialBtn = document.getElementById('close-serial');
+const serialResizer = document.getElementById('serial-resizer');
+
+if (serialResizer) {
+  serialResizer.addEventListener('mousedown', (e) => {
+    e.preventDefault();
+    isResizingSerial = true;
+    serialResizer.classList.add('is-dragging');
+    document.body.style.cursor = 'row-resize';
+    document.body.style.userSelect = 'none';
+  });
+}
 
 // Initialize Code Editor
 setTimeout(() => {
@@ -467,6 +613,162 @@ if (clearBoardBtn) {
         }
     });
 }
+
+// ── Export / Import ──────────────────────────────────────────────────────────
+const exportBtn      = document.getElementById('export-btn');
+const exportDropdown = document.getElementById('export-dropdown');
+
+// Toggle dropdown
+exportBtn?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    exportDropdown?.classList.toggle('hidden');
+});
+// Close on outside click
+document.addEventListener('click', () => exportDropdown?.classList.add('hidden'));
+
+/** Serialise current circuit into a plain JSON object */
+function serializeCircuit() {
+    const components = componentRegistry.map(c => ({
+        id:   c.id,
+        type: c.type,
+        x:    parseInt(c.element.style.left) || 0,
+        y:    parseInt(c.element.style.top)  || 0,
+        // Capture any user properties stored on the element
+        props: Object.fromEntries(
+            [...(c.element.dataset ? Object.entries(c.element.dataset) : [])]
+            .filter(([k]) => k !== 'componentId')
+        ),
+    }));
+    const wires = wireObjects.map(w => ({
+        fromId:    w.fromId,
+        toId:      w.toId,
+        fromPin:   w.fromPin,
+        toPin:     w.toPin,
+        from:      w.from,
+        to:        w.to,
+        color:     w.color,
+        waypoints: w.waypoints || [],
+    }));
+    const code = getCode?.() || '';
+    return {
+        version:    2,
+        savedAt:    new Date().toISOString(),
+        boardName:  document.querySelector('.project-name')?.textContent || 'My Circuit',
+        components,
+        wires,
+        code,
+    };
+}
+
+/** Restore a serialised circuit */
+async function deserializeCircuit(data) {
+    // Clear board first
+    document.querySelectorAll('.placed-component').forEach(el => el.remove());
+    wireObjects.length = 0;
+    componentRegistry.length = 0;
+    canvas.querySelectorAll('.wire-segment, .wire-waypoint').forEach(el => el.remove());
+    componentCounter = 0;
+
+    if (!data?.components) throw new Error('Invalid circuit file.');
+
+    // Place components
+    for (const c of data.components) {
+        window.placeComponent(c.type, c.x, c.y);
+        // Restore the original ID so wire refs match
+        const el = canvas.querySelector('.placed-component:last-child');
+        if (el) {
+            componentRegistry[componentRegistry.length - 1].id = c.id;
+            el.dataset.componentId = c.id;
+        }
+    }
+
+    // Allow DOM to settle before drawing wires
+    await new Promise(r => setTimeout(r, 80));
+
+    // Re-create wire objects
+    for (const w of (data.wires || [])) {
+        const pin1El = canvas.querySelector(`[data-component-id="${w.fromId}"] [data-pin="${w.fromPin}"]`);
+        const pin2El = canvas.querySelector(`[data-component-id="${w.toId}"]   [data-pin="${w.toPin}"]`);
+        if (pin1El && pin2El) {
+            wireObjects.push({
+                pin1: pin1El, pin2: pin2El,
+                fromId: w.fromId, toId: w.toId,
+                fromPin: w.fromPin, toPin: w.toPin,
+                from: w.from, to: w.to,
+                color: w.color || '#888',
+                waypoints: w.waypoints || [],
+            });
+        }
+    }
+    renderWires();
+
+    // Restore code
+    if (data.code && setCode) setCode(data.code);
+}
+
+// ── 1. Save Circuit JSON ──
+document.getElementById('exp-json')?.addEventListener('click', () => {
+    exportDropdown?.classList.add('hidden');
+    try {
+        const data = serializeCircuit();
+        const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+        const url  = URL.createObjectURL(blob);
+        const a    = Object.assign(document.createElement('a'), { href: url, download: `tinkerai_circuit_${Date.now()}.json` });
+        document.body.appendChild(a); a.click(); document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+        window.showToast('Circuit saved!', 'success');
+    } catch (e) { window.showToast('Save failed: ' + e.message, 'error'); }
+});
+
+// ── 2. Load Circuit JSON ──
+document.getElementById('exp-import')?.addEventListener('click', () => {
+    exportDropdown?.classList.add('hidden');
+    document.getElementById('import-file-input')?.click();
+});
+document.getElementById('import-file-input')?.addEventListener('change', async (e) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    e.target.value = '';
+    try {
+        const text = await file.text();
+        const data = JSON.parse(text);
+        await deserializeCircuit(data);
+        window.showToast(`Loaded: ${data.boardName || 'circuit'}`, 'success');
+    } catch (err) { window.showToast('Load failed: ' + err.message, 'error'); }
+});
+
+// ── 3. Export PNG ──
+document.getElementById('exp-png')?.addEventListener('click', async () => {
+    exportDropdown?.classList.add('hidden');
+    try {
+        // Use html2canvas if available, otherwise use SVG snapshot
+        const { default: html2canvas } = await import('https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.esm.js');
+        const canvasEl = document.getElementById('canvas');
+        const shot = await html2canvas(canvasEl, { backgroundColor: '#0d1117', scale: 2, useCORS: true });
+        const url = shot.toDataURL('image/png');
+        const a = Object.assign(document.createElement('a'), { href: url, download: `tinkerai_circuit_${Date.now()}.png` });
+        document.body.appendChild(a); a.click(); document.body.removeChild(a);
+        window.showToast('PNG exported!', 'success');
+    } catch(e) {
+        // Fallback: SVG-based screenshot
+        window.showToast('PNG export needs html2canvas. Circuit JSON saved instead.', 'warn');
+        document.getElementById('exp-json')?.click();
+    }
+});
+
+// ── 4. Download .ino Sketch ──
+document.getElementById('exp-ino')?.addEventListener('click', () => {
+    exportDropdown?.classList.add('hidden');
+    try {
+        const code = getCode?.() || '// No code yet\nvoid setup(){}\nvoid loop(){}';
+        const blob = new Blob([code], { type: 'text/plain' });
+        const url  = URL.createObjectURL(blob);
+        const a    = Object.assign(document.createElement('a'), { href: url, download: `sketch_${Date.now()}.ino` });
+        document.body.appendChild(a); a.click(); document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+        window.showToast('Sketch downloaded!', 'success');
+    } catch (e) { window.showToast('Download failed: ' + e.message, 'error'); }
+});
 
 // ── Upload to Board ──
 uploadBtn.addEventListener('click', async () => {
@@ -569,6 +871,12 @@ serialInput.addEventListener('keydown', (e) => {
 });
 
 initSensorUI();
+initHardwareManager();
+
+document.getElementById('hardware-btn')?.addEventListener('click', () => {
+  toggleHardwarePanel();
+});
+
 startSimBtn.addEventListener('click', async () => {
   if (isSimulating) {
     isSimulating = false;
@@ -577,9 +885,18 @@ startSimBtn.addEventListener('click', async () => {
     setCompilerStatus('Simulation stopped.');
     simulator.stopSimulation();
     hideSensorUI();
+    setEditorDisabled(false);
     
     document.querySelectorAll('.placed-component').forEach(el => {
-      el.classList.remove('led-lit');
+      el.classList.remove('led-lit', 'sim-powered', 'sim-glow', 'sim-motor-cw', 'sim-motor-ccw', 'sim-buzzing',
+                          'sim-display-on', 'sim-relay-on', 'sim-neopixel-on', 'sim-sonar', 'sim-driver-active',
+                          'sim-gas-active', 'sim-pir-active', 'hazard-flash');
+      el.style.filter = '';
+      el.style.boxShadow = '';
+      // Also stop any inner wheel animations
+      el.querySelectorAll('.wheel').forEach(w => {
+          w.classList.remove('sim-motor-cw', 'sim-motor-ccw');
+      });
     });
     return;
   }
@@ -595,50 +912,73 @@ startSimBtn.addEventListener('click', async () => {
   if (!safetyStatus.valid) {
     const issue = safetyStatus.issues[0];
     const corrections = autoCorrectionEngine.analyze(circuitGraph);
-    
-    let fixMsg = '';
-    if (corrections.suggestions && corrections.suggestions.length > 0) {
-        const fix = corrections.suggestions[0];
-        fixMsg = `\n\nSuggestion: ${fix.suggestion}`;
+    let suggestion = '';
+    if (corrections.suggestions && corrections.suggestions.length > 0 && corrections.suggestions[0].suggestion !== 'undefined') {
+        suggestion = corrections.suggestions[0].suggestion;
     }
-    
-    alert(`SIMULATION HALTED! Safety Hazard Detected: ${issue.message}${fixMsg}`);
+    window.showHazardModal('Safety Hazard Detected', issue.message, suggestion);
     return;
   }
 
-  startSimBtn.innerText = 'Compiling...';
-  
-  // Connect simulated serial output to UI
+  // Connect serial output to UI
   simulator.onSerialData = (char) => {
-      serialOutput.innerText += char;
+      serialOutput.textContent += char;
       serialOutput.scrollTop = serialOutput.scrollHeight;
   };
 
-  const result = await compileCode(codeEditor.getValue());
-  
-  if (result.compilerError || result.stderr) {
-      startSimBtn.innerText = 'Start Simulation';
-      startSimBtn.style.background = '#00d26a';
-      setCompilerStatus(result.compilerError || result.stderr, true);
-      return;
-  }
-  
-  setCompilerStatus(result.stdout || 'Compiled successfully. Running AVR CPU...');
+  // Expose wireObjects globally so models.js can trace servo/pin connections
+  window.wireObjects = wireObjects;
 
+  // Detect MCU type from canvas
+  const mcuComp = componentRegistry.find(c =>
+    c.type && (c.type.includes('arduino') || c.type.includes('esp') ||
+               c.type.includes('pico') || c.type.includes('stm32') ||
+               c.type.includes('mega') || c.type.includes('nano') || c.type.includes('uno'))
+  );
+  const mcuType = mcuComp?.type || '';
+  const isAVR = mcuType.includes('arduino') || mcuType.includes('uno') ||
+                mcuType.includes('nano') || mcuType.includes('mega');
+
+  const code = getCode();
+
+  // ── Mode 1: JS Interpreter (instant, ALL MCUs) ────────────────────────────
   isSimulating = true;
   startSimBtn.style.background = '#e74c3c';
-  startSimBtn.innerText = 'Stop Simulation';
-  setCompilerStatus('Simulation running...');
-  
-  // Show Serial Monitor when simulation starts
-  serialPanel.classList.remove('hidden');
-  if (serialOutput.innerText.length > 5000) {
-      serialOutput.innerText = ''; // Clear if it gets too large
-  }
-  serialOutput.innerText += '\n--- Simulation Started ---\n';
+  startSimBtn.innerText = '⏹ Stop Simulation';
+  setCompilerStatus('⚡ Simulation running...');
 
-  simulator.startSimulation(result.hex, connections);
+  serialPanel.classList.remove('hidden');
+  if (serialOutput.textContent.length > 5000) serialOutput.textContent = '';
+  serialOutput.textContent += '\n--- Simulation Started ---\n';
+
+  simulator.startJSSimulation(code, connections);
   updateSensorUI();
+  setEditorDisabled(true);
+
+  // ── Mode 2: Wokwi AVR compile in background (Arduino boards only) ─────────
+  if (false && isAVR) { // Temporarily disabled to prevent PWM visual glitches in the chassis
+    setCompilerStatus('⚡ Simulation running · Compiling for AVR verification...');
+    compileCode(code).then(result => {
+      if (!isSimulating) return;
+      if (result.hex && !result.compilerError && !result.stderr) {
+        setCompilerStatus(`✅ Compiled (${(result.hex.length / 1024).toFixed(1)}KB) · Upgrading to AVR mode...`);
+        simulator.stopSimulation();
+        simulator.onSerialData = (char) => {
+          serialOutput.textContent += char;
+          serialOutput.scrollTop = serialOutput.scrollHeight;
+        };
+        window.wireObjects = wireObjects;
+        simulator.startSimulation(result.hex, connections);
+        setCompilerStatus('🔬 AVR simulation running (high-fidelity)');
+      } else if (result.stderr || result.compilerError) {
+        const err = (result.stderr || result.compilerError).slice(0, 200);
+        setCompilerStatus(`⚠️ Compile error (JS mode active): ${err}`, true);
+        if (codePanel.classList.contains('hidden')) codePanel.classList.remove('hidden');
+      }
+    }).catch(e => {
+      setCompilerStatus(`⚠️ Compiler unavailable, JS mode active: ${e.message}`, true);
+    });
+  }
 });
 
 // Initialize AI UI (Commented out to prevent overlapping new Tinkercad sidebar)
@@ -654,8 +994,17 @@ startSimBtn.addEventListener('click', async () => {
   
   const wireObjects = []
 
+  function getConnections() {
+    return expandBreadboardConnections(wireObjects, componentRegistry);
+  }
+
 components.forEach(comp => {
   comp.addEventListener('dragstart', e => {
+    if (isSimulating) {
+      e.preventDefault();
+      window.showToast("Cannot add components during simulation.", "warning");
+      return;
+    }
     e.dataTransfer.setData('type', comp.dataset.type)
     
     // Create actual size drag image
@@ -770,6 +1119,20 @@ canvas.addEventListener('dragover', e => {
 
   item.innerHTML = getComponentHTML(type)
 
+  if (type === '4wd-car-chassis') {
+    fetch(`/assets/components/${type}.svg`).then(r => r.text()).then(svg => {
+      const img = item.querySelector('img.svg-component');
+      if (img) img.outerHTML = svg;
+      const svgEl = item.querySelector('svg');
+      if (svgEl) {
+          svgEl.style.width = '100%';
+          svgEl.style.height = '100%';
+          svgEl.style.display = 'block';
+          svgEl.style.pointerEvents = 'none'; // so we can still interact with the pins over it
+      }
+    });
+  }
+
   canvas.appendChild(item)
   componentRegistry.push({
     id: item.dataset.componentId,
@@ -806,6 +1169,10 @@ canvas.addEventListener('dragover', e => {
     })
     pin.addEventListener('click', (event) => {
       event.stopPropagation()
+      if (isSimulating) {
+        window.showToast("Cannot change wiring during simulation.", "warning");
+        return;
+      }
       const pinId = pin.dataset.pin
       const componentId = item.dataset.componentId
 
@@ -832,7 +1199,14 @@ canvas.addEventListener('dragover', e => {
         pin1: firstPinElement, 
         pin2: pin,
         waypoints: [...activeWaypoints],
-        color: defColor
+        color: defColor,
+        // Store IDs for simulator tracing
+        fromId: firstPinElement.closest('.placed-component')?.dataset?.componentId,
+        toId:   pin.closest('.placed-component')?.dataset?.componentId,
+        fromPin: firstPinElement.dataset.pin,
+        toPin:   pin.dataset.pin,
+        from: `${firstPinElement.closest('.placed-component')?.dataset?.componentId}.${firstPinElement.dataset.pin}`,
+        to:   `${pin.closest('.placed-component')?.dataset?.componentId}.${pin.dataset.pin}`
       })
 
         renderWires()
@@ -881,6 +1255,10 @@ canvas.addEventListener('dragover', e => {
   let dragOffsetY = 0
   
   item.addEventListener('mousedown', (e) => {
+    if (isSimulating) {
+      window.showToast("Cannot move components during simulation.", "warning");
+      return;
+    }
     isDragging = true
     const itemRect = item.getBoundingClientRect()
     dragOffsetX = e.clientX - itemRect.left
@@ -888,6 +1266,7 @@ canvas.addEventListener('dragover', e => {
   })
   
   item.addEventListener('touchstart', (e) => {
+    if (isSimulating) return;
     isDragging = true
     const touch = e.touches[0]
     const itemRect = item.getBoundingClientRect()
@@ -910,9 +1289,9 @@ canvas.addEventListener('dragover', e => {
     let newLeft = e.clientX - rect.left - dragOffsetX + canvas.scrollLeft
     let newTop = e.clientY - rect.top - dragOffsetY + canvas.scrollTop
     
-    // Snap to 20px grid
-    newLeft = Math.round(newLeft / 20) * 20
-    newTop = Math.round(newTop / 20) * 20
+    // Snap to 20px grid and constrain to >= 0
+    newLeft = Math.max(0, Math.round(newLeft / 20) * 20)
+    newTop = Math.max(0, Math.round(newTop / 20) * 20)
     
     item.style.left = `${newLeft}px`
     item.style.top = `${newTop}px`
@@ -928,9 +1307,9 @@ canvas.addEventListener('dragover', e => {
     let newLeft = touch.clientX - rect.left - dragOffsetX + canvas.scrollLeft
     let newTop = touch.clientY - rect.top - dragOffsetY + canvas.scrollTop
     
-    // Snap to 20px grid
-    newLeft = Math.round(newLeft / 20) * 20
-    newTop = Math.round(newTop / 20) * 20
+    // Snap to 20px grid and constrain to >= 0
+    newLeft = Math.max(0, Math.round(newLeft / 20) * 20)
+    newTop = Math.max(0, Math.round(newTop / 20) * 20)
     
     item.style.left = `${newLeft}px`
     item.style.top = `${newTop}px`
@@ -1038,6 +1417,10 @@ function renderWires() {
   
   document.addEventListener('keydown', e => {
     if (e.key === 'Delete') {
+      if (isSimulating) {
+        window.showToast("Cannot delete during simulation.", "warning");
+        return;
+      }
       if (selectedComponent) {
         deleteComponent(selectedComponent, wireObjects, renderWires)
         selectedComponent = null
@@ -1272,29 +1655,15 @@ function renderWires() {
         if (plan.code) {
           setCode(plan.code.trim());
           
-          // Switch to code panel automatically
-          const rightPanel = document.getElementById('right-panel');
-          const codePanel = document.getElementById('code-panel');
-          
-          if (rightPanel.classList.contains('hidden')) {
-              // Open side panel if hidden
-              rightPanel.classList.remove('hidden');
-          }
-          if (codePanel.classList.contains('hidden')) {
-              document.querySelectorAll('.panel-section').forEach(p => p.classList.add('hidden'));
-              codePanel.classList.remove('hidden');
+          // Open code panel automatically to show the generated code
+          const _codePanelEl = document.getElementById('code-panel');
+          if (_codePanelEl && _codePanelEl.classList.contains('hidden')) {
+              _codePanelEl.classList.remove('hidden');
           }
         }
         
         window.showToast("Circuit generated!", "success");
         
-        // Attempt to auto-run simulation after 500ms
-        setTimeout(() => {
-          const runBtn = document.getElementById('start-sim-btn');
-          if (runBtn) {
-             runBtn.click();
-          }
-        }, 500);
       };
 
       if (plan.wiring && plan.wiring.length > 0) {
@@ -1430,7 +1799,13 @@ function renderWires() {
                    pin1: pin1El,
                    pin2: pin2El,
                    waypoints: waypoints,
-                   color: defColor
+                   color: defColor,
+                   fromId: pin1El.closest('.placed-component')?.dataset?.componentId,
+                   toId:   pin2El.closest('.placed-component')?.dataset?.componentId,
+                   fromPin: pin1El.dataset.pin,
+                   toPin:   pin2El.dataset.pin,
+                   from: `${pin1El.closest('.placed-component')?.dataset?.componentId}.${pin1El.dataset.pin}`,
+                   to:   `${pin2El.closest('.placed-component')?.dataset?.componentId}.${pin2El.dataset.pin}`
                 });
 
                 // Create individual animated path

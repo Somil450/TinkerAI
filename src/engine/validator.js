@@ -15,10 +15,13 @@ export function validateCircuit(connections) {
         connections: connections.map(c => ({ from: c.from, to: c.to })),
     };
 
+    console.log("VALIDATING CIRCUIT WITH CONNECTIONS:", circuitGraph.connections);
+
     const safetyStatus = safetyEngine.analyze(circuitGraph);
     
     // We consider the circuit "invalid" if there are any critical issues
     if (safetyStatus.critical.length > 0) {
+        console.log("SAFETY STATUS CRITICAL:", safetyStatus.critical);
         return {
             valid: false,
             message: safetyStatus.critical[0].message,

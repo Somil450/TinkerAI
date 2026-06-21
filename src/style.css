@@ -28,34 +28,33 @@ body {
 }
 
 .app-layout {
-  position: relative;
-  display: block;
+  display: flex;
+  flex-direction: column;
   height: 100%;
   width: 100%;
   max-width: 100vw;
+  min-height: 0;
   overflow: hidden;
 }
 
-/* TOP NAVBAR (Floating Island) */
+/* TOP NAVBAR */
 .navbar {
-  position: absolute;
-  top: 16px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: calc(100% - 32px);
-  max-width: 1400px;
+  flex-shrink: 0;
+  min-width: 0;
+  height: auto;
   min-height: 56px;
-  background: rgba(11, 15, 25, 0.55);
-  backdrop-filter: blur(24px) saturate(200%);
-  -webkit-backdrop-filter: blur(24px) saturate(200%);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 40px;
+  width: 100%;
+  max-width: 100vw;
+  background: rgba(11, 15, 25, 0.4);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 8px 24px;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
-  z-index: 100;
+  padding: 10px 24px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+  z-index: 10;
   flex-wrap: wrap;
   gap: 10px;
 }
@@ -213,29 +212,17 @@ body {
 
 /* SERIAL MONITOR PANEL */
 .serial-panel {
-  position: absolute;
-  bottom: 24px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 90%;
-  max-width: 800px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
   height: 280px;
-  background: rgba(11, 15, 25, 0.45);
-  backdrop-filter: blur(24px) saturate(200%);
-  -webkit-backdrop-filter: blur(24px) saturate(200%);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  border-radius: 24px;
+  background: #1e2227;
+  border-top: 2px solid #7c4dff;
   display: flex;
   flex-direction: column;
   z-index: 300;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.6);
-  animation: slideUpSerial 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
-  overflow: hidden;
-}
-
-@keyframes slideUpSerial {
-  from { opacity: 0; transform: translate(-50%, 20px); }
-  to { opacity: 1; transform: translate(-50%, 0); }
+  animation: slideUp 0.2s ease-out;
 }
 
 .serial-panel.hidden {
@@ -365,34 +352,28 @@ body {
 
 /* MAIN WORKSPACE */
 .main-workspace {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
   display: flex;
+  flex: 1 1 0;
+  min-height: 0;
+  position: relative;
   overflow: hidden;
 }
 
 .code-panel {
   position: absolute;
-  top: 90px;
-  left: 16px;
-  bottom: 24px;
+  top: 0;
+  left: 0;
+  bottom: 0;
   width: 38%;
   min-width: 300px;
   max-width: 560px;
-  background: rgba(11, 15, 25, 0.45);
-  backdrop-filter: blur(24px) saturate(200%);
-  -webkit-backdrop-filter: blur(24px) saturate(200%);
+  background: #282c34;
   display: flex;
   flex-direction: column;
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  border-radius: 24px;
+  border-right: 2px solid #333;
   z-index: 200;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.6);
-  animation: slideInCode 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-  overflow: hidden;
+  box-shadow: 4px 0 24px rgba(0,0,0,0.55);
+  animation: slideInCode 0.22s cubic-bezier(.34,1.26,.64,1);
 }
 @keyframes slideInCode {
   from { transform: translateX(-100%); opacity: 0; }
@@ -518,26 +499,25 @@ body {
   animation: wireDraw 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
 }
 
-/* RIGHT SIDEBAR (Floating Palette) */
+/* RIGHT SIDEBAR */
 .right-sidebar {
-  position: absolute;
-  top: 90px;
-  right: 16px;
-  bottom: 24px;
   --sidebar-width: 280px;
   width: var(--sidebar-width);
   min-width: 200px;
   max-width: min(560px, 50vw);
+  flex-shrink: 0;
+  height: 100%;
+  max-height: 100%;
   background: rgba(11, 15, 25, 0.45);
-  backdrop-filter: blur(24px) saturate(200%);
-  -webkit-backdrop-filter: blur(24px) saturate(200%);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  border-radius: 24px;
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-left: 1px solid rgba(255, 255, 255, 0.05);
   display: flex;
   flex-direction: column;
+  min-height: 0;
   overflow: hidden;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
-  z-index: 100;
+  box-shadow: -8px 0 30px rgba(0,0,0,0.6);
+  z-index: 10;
 }
 
 .right-sidebar.hidden {
@@ -545,14 +525,13 @@ body {
 }
 
 .sidebar-resizer {
-  position: absolute;
-  top: 90px;
-  bottom: 24px;
-  right: calc(16px + var(--sidebar-width) - 3px);
+  flex-shrink: 0;
   width: 6px;
+  margin-left: -3px;
   cursor: col-resize;
   background: transparent;
-  z-index: 101;
+  position: relative;
+  z-index: 11;
   touch-action: none;
 }
 

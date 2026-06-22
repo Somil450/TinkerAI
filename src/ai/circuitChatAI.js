@@ -1547,7 +1547,8 @@ For code-only requests:
 - Include all #define, variables, setup(), and loop().
 - For HC-SR04: use pulseIn, distance = duration/58.2.
 - For buzzer: use tone(pin, freq) and noTone(pin).
-- Always make code immediately runnable.`;
+- Always make code immediately runnable.
+- You MUST ALWAYS output the FULL code block and the <!-- CODE: ... --> comment in your response whenever the user asks for code, EVEN IF the code is exactly the same as before or hasn't changed. NEVER just say "the previous code already accomplishes this". Always provide the full code payload so the UI can apply it.`;
         
         // Filter out system messages (like API key submitted) and map to Gemini format
         const geminiHistory = this.history

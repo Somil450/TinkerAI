@@ -375,8 +375,45 @@ export function renderWelcomePage(container) {
   document.getElementById('google-login-btn').addEventListener('click', () => {
     handleAuthAction(document.getElementById('google-login-btn'), () => auth.signInWithGoogle());
   });
-  document.getElementById('google-register-btn').addEventListener('click', () => {
-    handleAuthAction(document.getElementById('google-register-btn'), () => auth.signInWithGoogle());
+  
+  document.getElementById('google-register-btn').addEventListener('click', async () => {
+    const btn = document.getElementById('google-register-btn');
+    const btnText = btn.querySelector('.google-btn-text');
+    const btnLoader = btn.querySelector('.google-btn-loader');
+    const originalText = btnText.textContent;
+    
+    btn.disabled = true;
+    btn.classList.add('loading');
+    if(btnLoader) btnLoader.classList.remove('hidden');
+    btnText.textContent = 'Processing...';
+
+    try {
+      await auth.signInWithGoogle();
+      // Immediately sign out to prevent auto-login
+      await auth.signOut();
+      
+      btnText.textContent = '✓ Success!';
+      btn.classList.add('success');
+      
+      setTimeout(() => {
+         btn.disabled = false;
+         btn.classList.remove('loading', 'success');
+         btnText.textContent = originalText;
+         if(btnLoader) btnLoader.classList.add('hidden');
+         
+         // Flip to login
+         document.getElementById('go-to-login').click();
+      }, 1200);
+
+    } catch (err) {
+      console.error('Auth Error:', err);
+      btn.disabled = false;
+      btn.classList.remove('loading');
+      btnText.textContent = originalText;
+      if(btnLoader) btnLoader.classList.add('hidden');
+      const msg = mapAuthError(err.code);
+      showAuthError(msg);
+    }
   });
 
   // Cleanup on unmount

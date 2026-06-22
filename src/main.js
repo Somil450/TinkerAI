@@ -168,6 +168,11 @@ document.querySelector('#app').innerHTML = `
           <p>Select Component</p>
         </div>
       </div>
+      
+      <!-- Mobile Add Component FAB -->
+      <button id="mobile-add-btn" class="mobile-fab-add" aria-label="Add Component">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+      </button>
     </div>
 
     <!-- AI Chat FAB & Panel -->
@@ -298,6 +303,26 @@ document.addEventListener('mousemove', (e) => {
     document.getElementById('code-panel').style.width = `${newWidth}px`;
   }
 })
+
+// Mobile Sidebar Toggle Logic
+const mobileAddBtn = document.getElementById('mobile-add-btn')
+const closeSidebarMobile = document.getElementById('close-sidebar-mobile')
+
+if (mobileAddBtn && closeSidebarMobile) {
+  mobileAddBtn.addEventListener('click', () => {
+    rightSidebar.classList.add('mobile-open')
+  })
+  closeSidebarMobile.addEventListener('click', () => {
+    rightSidebar.classList.remove('mobile-open')
+  })
+  
+  // Close sidebar if user clicks on the canvas (outside sidebar)
+  canvas.addEventListener('mousedown', () => {
+    if (window.innerWidth <= 768 && rightSidebar.classList.contains('mobile-open')) {
+      rightSidebar.classList.remove('mobile-open')
+    }
+  })
+}
 
 document.addEventListener('mouseup', () => {
   if (isResizingSidebar) {

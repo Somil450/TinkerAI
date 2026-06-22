@@ -34,6 +34,7 @@ export const auth = {
 
   registerWithEmail: async (email, password) => {
     const result = await createUserWithEmailAndPassword(firebaseAuth, email, password);
+    await firebaseSignOut(firebaseAuth); // Prevent auto-login
     return result.user;
   },
 

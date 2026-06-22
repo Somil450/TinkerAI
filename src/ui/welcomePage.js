@@ -318,7 +318,7 @@ export function renderWelcomePage(container) {
   });
 
   // Bind Email/Password Register
-  document.getElementById('register-form').addEventListener('submit', (e) => {
+  document.getElementById('register-form').addEventListener('submit', async (e) => {
     e.preventDefault();
     const email = document.getElementById('register-email').value;
     const pass = document.getElementById('register-password').value;
@@ -328,7 +328,47 @@ export function renderWelcomePage(container) {
       showAuthError("Passwords do not match.");
       return;
     }
-    handleAuthAction(document.getElementById('register-submit-btn'), () => auth.registerWithEmail(email, pass));
+
+    const btn = document.getElementById('register-submit-btn');
+    const btnText = btn.querySelector('.btn-text');
+    const btnLoader = btn.querySelector('.btn-loader');
+    const originalText = btnText.textContent;
+    
+    btn.disabled = true;
+    btn.classList.add('loading');
+    if(btnLoader) btnLoader.classList.remove('hidden');
+    btnText.textContent = 'Processing...';
+
+    try {
+      await auth.registerWithEmail(email, pass);
+      btnText.textContent = '✓ Account Created!';
+      btn.classList.add('success');
+      
+      // Delay briefly so they see success, then flip to Login view
+      setTimeout(() => {
+         // Reset button
+         btn.disabled = false;
+         btn.classList.remove('loading', 'success');
+         btnText.textContent = originalText;
+         if(btnLoader) btnLoader.classList.add('hidden');
+         
+         // Clear form and flip to login
+         document.getElementById('register-form').reset();
+         document.getElementById('go-to-login').click();
+         
+         // Pre-fill the email on the login form for convenience
+         document.getElementById('login-email').value = email;
+      }, 1200);
+
+    } catch (err) {
+      console.error('Auth Error:', err);
+      btn.disabled = false;
+      btn.classList.remove('loading');
+      btnText.textContent = originalText;
+      if(btnLoader) btnLoader.classList.add('hidden');
+      const msg = mapAuthError(err.code);
+      showAuthError(msg);
+    }
   });
 
   // Bind Google Auth

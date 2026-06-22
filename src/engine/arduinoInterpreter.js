@@ -91,10 +91,8 @@ export class ArduinoInterpreter {
     pulseIn(pin, state, timeout = 1000000) {
         const p = this._pin(pin);
         // cm → µs: duration = cm * 58.2 so that distance = duration/58.2 gives exact cm
-        const cmToUs = (cm) => Math.round(parseFloat(cm) * 58.2);
-
-        // P1: explicit per-pin analog override
-        if (this.analogInputs[p] !== undefined) return cmToUs(this.analogInputs[p]);
+        // Removed Math.round to allow perfect exact distance recovery in JS-Interpreter floats
+        const cmToUs = (cm) => parseFloat(cm) * 58.2;
 
         const sv = window.simSensorValues || {};
 

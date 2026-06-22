@@ -54,7 +54,7 @@ body {
   justify-content: space-between;
   padding: 10px 24px;
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
-  z-index: 10;
+  z-index: 200;
   flex-wrap: wrap;
   gap: 10px;
 }
